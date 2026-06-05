@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Layout from "../components/Layout/Layout";
 import "../styles/About.css";
 import GlitchButton from "../components/GlitchButton";
@@ -72,13 +72,34 @@ const About = () => {
     },
   ];
 
+  const [isPhyIntersecting, setIsPhyIntersecting] = useState(false);
+  const phyRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry], obs) => {
+        if (entry.isIntersecting) {
+          setIsPhyIntersecting(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (phyRef.current) {
+      observer.observe(phyRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Layout>
       {/* Intro section */}
       <section className="discussion-container container-fluid">
-        <div className="row">
+        <div className="row align-items-center">
           {/* Left part */}
-          <div className="col-lg-4 discussion-left">
+          <div className="col-lg-3 discussion-left">
             <h2>
               Now Discussing <br /> Entrepreneurship
             </h2>
@@ -90,56 +111,60 @@ const About = () => {
               As smart one says, "a plan is only as <br /> good as its
               execution".
             </p>
-            <a className="btn-connect-about" href="/contact">
-              Let's Connect <span>›</span>
-            </a>
+            <GlitchButton
+              className="btn-connect-about"
+              href="/contact"
+              targetText="Let's Connect"
+            />
           </div>
 
           {/* Right part (Image) */}
-          <div className="col-lg-8 discussion-right">
+          <div className="col-lg-9 discussion-right">
             <img src="about.png" alt="Entrepreneurship discussion" />
           </div>
         </div>
       </section>
 
       {/* Our Philosophies */}
-      <section className="philosophies-container container-fluid">
-        <div className="row">
-          {/* Left Section */}
-          <div className="col-lg-6 col-12 philosophies-left">
-            <h2>
-              Our
-              <br /> Philosophies
-            </h2>
-            <div className="philosophies-text">
-              <p>BOLD</p>
-              <p>LOCALLY GLOBAL</p>
-              <p>ESSENTIALISM</p>
-              <p>STORYTELLING</p>
-              <p>UNDP ALIGNED</p>
+      <div className="philosophies-sticky-container" ref={phyRef}>
+        <section className={`philosophies-container container-fluid ${isPhyIntersecting ? "philosophies-animate" : ""}`}>
+          <div className="row">
+            {/* Left Section */}
+            <div className="col-lg-6 col-12 philosophies-left">
+              <h2>
+                Our
+                <br /> Philosophies
+              </h2>
+              <div className="philosophies-text">
+                <p>BOLD</p>
+                <p>LOCALLY GLOBAL</p>
+                <p>ESSENTIALISM</p>
+                <p>STORYTELLING</p>
+                <p>UNDP ALIGNED</p>
+              </div>
+            </div>
+
+            {/* Right Section */}
+            <div className="col-lg-3 col-12 philosophies-right">
+              <p>
+                At Dramantram, we have laid down{" "}
+                <strong>five philosophies</strong> that act as a guiding tool for
+                our people, processes, and deliverables for every stage of our
+                interactions and project executions. These philosophies are –
+              </p>
+            </div>
+
+            <div className="col-lg-3 col-12 philosophies-right-2">
+              <p className="phy-p-r">
+                We also call these 5 philosophies our lenses.
+              </p>
+              <p className="phy-p-rr">
+                All our deliverables are scanned through these 5 lenses.
+              </p>
             </div>
           </div>
-
-          {/* Right Section */}
-          <div className="col-lg-3 col-12 philosophies-right">
-            <p>
-              At Dramantram, we have laid down{" "}
-              <strong>five philosophies</strong> that act as a guiding tool for
-              our people, processes, and deliverables for every stage of our
-              interactions and project executions. These philosophies are –
-            </p>
-          </div>
-
-          <div className="col-lg-3 col-12 philosophies-right-2">
-            <p className="phy-p-r">
-              We also call these 5 philosophies our lenses.
-            </p>
-            <p className="phy-p-rr">
-              All our deliverables are scanned through these 5 lenses.
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Teams Section */}
       <div className="team-section">

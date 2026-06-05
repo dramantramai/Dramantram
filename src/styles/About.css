@@ -45,8 +45,8 @@
 }
 
 .discussion-left p {
-  font-size: 20px;
-  line-height: 27px;
+  font-size: 16px;
+  line-height: 24px;
   opacity: 0.9;
   margin-bottom: 30px;
   font-family: "inter", sans-serif;
@@ -56,20 +56,27 @@
 }
 
 .btn-connect-about {
-  padding: 12px 24px;
-  background-color: #ffe600;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+  background-color: transparent;
   border: none;
-  color: black;
+  border-left: 2px solid #ffe600;
+  color: white;
   font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 0;
   margin-left: 50px;
   text-decoration: none;
+  padding: 10px 20px 10px 30px;
+  font-family: "inter", sans-serif;
+  transition: all 0.3s ease;
 }
 
 .btn-connect-about:hover {
-  background-color: #f7c800;
+  color: white;
+  padding-left: 35px;
 }
 
 .discussion-right {
@@ -92,6 +99,7 @@
   color: black;
   position: relative;
   padding-top: 0px;
+  background-color: #ffffff;
 }
 
 .philosophies-container .row {
@@ -104,7 +112,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 1px;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -119,8 +127,8 @@
 
 .philosophies-left {
   position: relative;
-  border-right: 2px solid rgba(0, 0, 0, 0.1);
-  border-left: 2px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
   padding-right: 40px;
   padding-top: 80px;
   padding-bottom: 50px;
@@ -146,7 +154,7 @@
 .philosophies-right {
   padding-left: 30px;
   padding-right: 30px;
-  border-right: 2px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .philosophies-right p {
@@ -180,11 +188,275 @@
   padding-left: 10px;
 }
 
+/* Desktop alignment overlays and animations */
+@media (min-width: 992px) {
+  /* Hero Section Alignment and Height */
+  .discussion-container {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .discussion-container .row {
+    display: grid !important;
+    grid-template-columns: 2.5% 23.75% 71.25% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    align-items: center;
+  }
+
+  .discussion-container .discussion-left {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 40px !important;
+    padding-top: 0 !important;
+  }
+
+  .discussion-container .discussion-left h2,
+  .discussion-container .discussion-left p {
+    margin-left: 0 !important;
+    padding-left: 30px !important;
+  }
+
+  .discussion-container .btn-connect-about {
+    margin-left: 0 !important;
+    padding-left: 30px !important;
+    color: white !important;
+  }
+
+  .discussion-container .btn-connect-about:hover {
+    padding-left: 35px !important;
+    color: white !important;
+  }
+
+  .discussion-container .discussion-right {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .discussion-container .discussion-right img {
+    width: 80% !important;
+    height: auto !important;
+    max-height: 75vh !important;
+    border-radius: 16px !important;
+    object-fit: contain !important;
+  }
+
+  /* Philosophies Sticky & Reveal Styles */
+  .philosophies-sticky-container {
+    height: 140vh; /* Tight viewport sticking lock */
+    position: relative;
+    background-color: #ffffff !important;
+  }
+
+  .philosophies-container {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .philosophies-container .row::before,
+  .philosophies-container .row::after {
+    display: none !important;
+  }
+
+  .philosophies-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: var(--grid-lines-dark);
+  }
+
+  .philosophies-container .row {
+    display: grid !important;
+    grid-template-columns: 2.5% 47.5% 23.75% 23.75% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .philosophies-container .philosophies-left {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 !important;
+    width: auto !important;
+    border-left: none !important;
+    border-right: none !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .philosophies-container .philosophies-left h2 {
+    margin-left: 0 !important;
+    margin-bottom: 50px !important;
+    font-size: 34px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+  }
+
+  .philosophies-container .philosophies-text {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .philosophies-container .philosophies-text p {
+    margin-left: 0 !important;
+    margin: 18px 0 !important;
+    font-size: 52px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    width: max-content !important;
+    background: linear-gradient(to right, #c5c5c5 0%, #444444 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+
+  .philosophies-container .philosophies-right {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 !important;
+    width: auto !important;
+    border-right: none !important;
+    padding-left: 40px !important;
+    padding-right: 20px !important;
+    align-self: flex-start !important;
+    margin-top: 240px !important;
+  }
+
+  .philosophies-container .philosophies-right p {
+    margin-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: 17px !important;
+    line-height: 1.7 !important;
+  }
+
+  .philosophies-container .philosophies-right-2 {
+    grid-column: 4 / 5 !important;
+    grid-row: 1 !important;
+    width: auto !important;
+    padding-left: 40px !important;
+    padding-right: 20px !important;
+    align-self: flex-start !important;
+    margin-top: 240px !important;
+  }
+
+  .philosophies-container .phy-p-r {
+    margin-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: 19px !important;
+    line-height: 1.7 !important;
+  }
+
+  .philosophies-container .phy-p-rr {
+    margin-top: 20px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: 19px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Staggered stack reveal animation */
+  .philosophies-container .philosophies-left h2,
+  .philosophies-container .philosophies-text p,
+  .philosophies-container .philosophies-right p,
+  .philosophies-container .phy-p-r,
+  .philosophies-container .phy-p-rr {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Reveal text on scroll trigger */
+  .philosophies-animate .philosophies-left h2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  .philosophies-animate .philosophies-text p:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+  .philosophies-animate .philosophies-text p:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+  .philosophies-animate .philosophies-text p:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+  .philosophies-animate .philosophies-text p:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+  .philosophies-animate .philosophies-text p:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+
+  .philosophies-animate .philosophies-right p {
+    opacity: 0.9;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+
+  .philosophies-animate .phy-p-r {
+    opacity: 0.9;
+    transform: translateY(0);
+    transition-delay: 0.45s;
+  }
+
+  .philosophies-animate .phy-p-rr {
+    opacity: 0.9;
+    transform: translateY(0);
+    transition-delay: 0.55s;
+  }
+}
+
 /* Team section */
 .team-section {
   background: #000;
   min-height: 100vh;
   color: #fff;
+}
+
+@media (min-width: 992px) {
+  .team-section .container-fluid-custom > .row {
+    display: grid !important;
+    grid-template-columns: 2.5% 23.75% 71.25% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .team-section .team-sidebar {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    padding-left: 40px !important;
+    padding-right: 20px !important;
+  }
+
+  .team-section .col-lg-9 {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 !important;
+    width: auto !important;
+    max-width: 100% !important;
+  }
 }
 
 .team-sidebar {
@@ -361,7 +633,7 @@
 
   .philosophies-left {
     border-right: none;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding-right: 20px;
     padding-left: 20px;
     padding-top: 50px;
@@ -381,7 +653,7 @@
 
   .philosophies-right {
     border-right: none;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 30px 20px;
   }
 

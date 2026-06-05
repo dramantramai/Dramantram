@@ -28,21 +28,7 @@
   pointer-events: none;
   /* Allows clicking through lines */
   z-index: 0;
-
-  /* STRICT MATH: 4 Columns = lines at 25%, 50%, 75% */
-  background: linear-gradient(to right,
-      transparent 25%,
-      rgba(255, 255, 255, 0.2) 25%,
-      rgba(255, 255, 255, 0.2) calc(25% + 1px),
-      transparent calc(25% + 1px),
-      transparent 50%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(255, 255, 255, 0.2) calc(50% + 0.5px),
-      transparent calc(50% + 1px),
-      transparent 75%,
-      rgba(255, 255, 255, 0.2) 75%,
-      rgba(255, 255, 255, 0.2) calc(75% + 1px),
-      transparent calc(75% + 1px));
+  background-image: var(--grid-lines-light) !important;
 }
 
 /* Only show grid lines on Desktop */
@@ -70,14 +56,14 @@
   line-height: 1.2;
   font-family: "Russo One", sans-serif;
   align-items: center;
-  text-align: center;
-  padding-left: 50px;
+  text-align: left;
+  padding-left: 0;
 }
 
 .footer-logo {
-  width: 400px;
-  height: 80px;
-  padding-left: 50px;
+  max-width: 100%;
+  height: auto;
+  padding-left: 0;
 }
 
 /* --- Forms --- */
@@ -209,16 +195,54 @@
 
   .have-a-project-text {
     padding-left: 0px;
+    text-align: center;
   }
 
   .footer-logo {
-    padding-left: 80px;
-    width: auto;
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
     height: auto;
+    padding-left: 0;
     padding-bottom: 50px;
   }
 
   .content-wrapper {
     padding: 0px;
+  }
+}
+
+/* Align columns to the lines on desktop */
+@media (min-width: 768px) {
+  .footer-section {
+    padding: 0 !important;
+  }
+  .footer-row-grid {
+    display: grid !important;
+    grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .footer-col {
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+    padding: 0 !important;
+  }
+  .footer-col:nth-child(1) {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 !important;
+  }
+  .footer-col:nth-child(2) {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 !important;
+  }
+  .footer-col:nth-child(3) {
+    grid-column: 4 / 5 !important;
+    grid-row: 1 !important;
+  }
+  .footer-col:nth-child(4) {
+    grid-column: 5 / 6 !important;
+    grid-row: 1 !important;
   }
 }

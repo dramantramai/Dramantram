@@ -1279,6 +1279,15 @@ h1 {
     color: #000000 !important; /* Always black text */
   }
 
+  .ai-stack {
+    gap: 36px !important;
+  }
+
+  .ai-stack li {
+    font-size: 52px !important;
+    line-height: 1.1 !important;
+  }
+
   /* Staggered stack animations for scroll reveal */
   .ai-kicker,
   .ai-stack li,
@@ -1422,14 +1431,17 @@ h1 {
 
   letter-spacing: 3px;
 
-  color: #d9d9d9;
-
   font-size: clamp(24px, 5vw, 40px);
 
   line-height: 1;
 
   text-transform: uppercase;
-  width: 500px !important;
+  width: max-content !important;
+  background: linear-gradient(to right, #c5c5c5 0%, #444444 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 /* --- COLUMN 2 (Spacer) --- */
