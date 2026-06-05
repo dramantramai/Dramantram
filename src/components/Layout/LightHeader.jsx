@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/LightHeader.css";
 import { Link } from "react-router-dom";
 
 const LightHeader = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   return (
-    <div>
+    <>
       <nav className="navbar navbar-light navbar-expand-lg py-3">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
@@ -29,16 +31,47 @@ const LightHeader = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav m-auto mb-2 mb-lg-0 ">
-              <li className="nav-item">
-                <a className="nav-link-light nav-link" href="/academy">
-                  Academy
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link-light nav-link" href="/services">
+              {/* SERVICES DROPDOWN START */}
+              <li
+                className="nav-item dropdown"
+                onMouseEnter={() => setIsDropdownOpen(true)}
+                onMouseLeave={() => setIsDropdownOpen(false)}
+              >
+                <a
+                  className="nav-link-light nav-link dropdown-toggle"
+                  to="/branding"
+                  role="none"
+                  aria-expanded={isDropdownOpen}
+                >
                   Services
                 </a>
+                <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
+                  <li>
+                    <Link className="dropdown-item" to="/services/branding">
+                      Branding
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="dropdown-item"
+                      to="/services/animated-videos"
+                    >
+                      Animated Videos
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/services/live-action">
+                      Live Action
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/services/ui-ux">
+                      UI/UX
+                    </Link>
+                  </li>
+                </ul>
               </li>
+              {/* SERVICES DROPDOWN END */}
               <li className="nav-item">
                 <a className="nav-link-light nav-link" href="/portfolio">
                   Portfolio
@@ -49,11 +82,6 @@ const LightHeader = () => {
                   About Us
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link-light nav-link" href="/pricing">
-                  Pricing
-                </a>
-              </li>
             </ul>
             <Link className="btn" to="/contact">
               Contact Us
@@ -61,7 +89,7 @@ const LightHeader = () => {
           </div>
         </div>
       </nav>
-    </div>
+    </>
   );
 };
 

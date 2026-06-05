@@ -9,14 +9,10 @@
   /* Keeps navbar above other content */
   width: 100%;
   /* Full width */
-  background-color: rgba(0,
-      0,
-      0,
-      0.52) !important;
-  /* Semi-transparent background */
+  background: linear-gradient(to bottom, rgba(40, 18, 12, 0) 0%, #000000 100%) !important;
   transition: transform 0.3s ease-in-out;
   /* Smooth transition for showing/hiding */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: none !important;
 }
 
 /* Navbar visible */
@@ -36,20 +32,37 @@
 }
 
 /* Nav Buttons */
-.nav-link {
+.navbar:not(.navbar-light) .nav-link {
   color: white !important;
   font-family: "Inter";
   font-weight: 300;
   font-style: normal;
-  /* text-decoration: underline red !important; */
-  transition: all 0.3s ease;
   margin-left: 35px;
+  position: relative;
+  padding-bottom: 6px !important;
 }
 
 /* Hover effect for nav links */
-.nav-link:hover {
-  font-weight: 600;
-  text-decoration: underline red;
+.navbar:not(.navbar-light) .nav-link:hover {
+  /* Keep font weight constant on hover to prevent zoom/layout shift */
+}
+
+/* Left-to-right underline animation with space */
+.navbar:not(.navbar-light) .nav-link::before {
+  content: "";
+  position: absolute;
+  left: 8px; /* Offset to align line with text start */
+  right: 8px; /* Offset to align line with text end */
+  bottom: 0;
+  height: 2px;
+  background-color: red;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar:not(.navbar-light) .nav-link:hover::before {
+  transform: scaleX(1);
 }
 
 /* Contact Us Button */
@@ -85,43 +98,67 @@ body {
 
 /* Ensure the dropdown menu doesn't disappear when moving cursor from link to menu */
 .dropdown-menu {
-  margin-top: 0;
+  margin-top: 10px !important; /* Visual gap so it doesn't overlap the hover underline */
   /* Remove default bootstrap margin */
   border-radius: 0;
   /* Optional: Make edges sharp */
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.3s ease;
   background-color: black !important;
-  /* color: rgb(255, 0, 0) !important; */
+
+  /* Smooth dropdown slide-down and fade animation */
+  display: block !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.3s;
+}
+
+/* Invisible bridge to prevent mouse leaving target dropdown area when crossing the visual gap */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-color: transparent;
+  pointer-events: auto;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .dropdown-item {
   color: white !important;
+  position: relative;
+  padding: 8px 16px !important;
 }
 
-/* Optional: Animation for smooth appearance */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Hover style for the items inside */
+/* Hover style for the items inside with left-to-right underline animation */
 .dropdown-item:hover {
   background-color: #000000 !important;
-  /* Change this to your brand color */
   color: #ffffff !important;
-  text-decoration-line: underline !important;
-  text-underline-offset: 0.2em !important;
-  text-decoration-thickness: 0.2em !important;
-  text-decoration-color: red !important;
+}
+
+.dropdown-item::before {
+  content: "";
+  position: absolute;
+  left: 16px; /* Align with text padding */
+  right: 16px;
+  bottom: 4px; /* Space from text */
+  height: 2px;
+  background-color: red;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dropdown-item:hover::before {
+  transform: scaleX(1);
 }
 
 @media (max-width: 600px) {
@@ -131,5 +168,49 @@ body {
 
   .nav-link {
     margin-left: 0px !important;
+  }
+}
+
+/* Align navbar elements centered inside global vertical grid columns on desktop */
+@media (min-width: 992px) {
+  .navbar.navbar-expand-lg .container-fluid {
+    display: grid !important;
+    grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .navbar.navbar-expand-lg .navbar-brand {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    margin: 0 !important;
+  }
+
+  .navbar.navbar-expand-lg .navbar-collapse {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-column: 3 / 6 !important;
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .navbar.navbar-expand-lg .navbar-nav {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .navbar.navbar-expand-lg .btn {
+    grid-column: 3 !important;
+    justify-self: center !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar .container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
   }
 }

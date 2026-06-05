@@ -1,27 +1,71 @@
-/* .grid-lines {
+:root {
+  --grid-line-1: 2.5%;
+  --grid-line-2: 26.25%;
+  --grid-line-3: 50%;
+  --grid-line-4: 73.75%;
+  --grid-line-5: 97.5%;
+
+  /* Subtle white lines for dark theme backgrounds */
+  --grid-lines-light: linear-gradient(
+    to right,
+    transparent var(--grid-line-1),
+    rgba(255, 255, 255, 0.15) var(--grid-line-1),
+    rgba(255, 255, 255, 0.15) calc(var(--grid-line-1) + 1px),
+    transparent calc(var(--grid-line-1) + 1px),
+    transparent var(--grid-line-2),
+    rgba(255, 255, 255, 0.15) var(--grid-line-2),
+    rgba(255, 255, 255, 0.15) calc(var(--grid-line-2) + 1px),
+    transparent calc(var(--grid-line-2) + 1px),
+    transparent var(--grid-line-3),
+    rgba(255, 255, 255, 0.15) var(--grid-line-3),
+    rgba(255, 255, 255, 0.15) calc(var(--grid-line-3) + 1px),
+    transparent calc(var(--grid-line-3) + 1px),
+    transparent var(--grid-line-4),
+    rgba(255, 255, 255, 0.15) var(--grid-line-4),
+    rgba(255, 255, 255, 0.15) calc(var(--grid-line-4) + 1px),
+    transparent calc(var(--grid-line-4) + 1px),
+    transparent var(--grid-line-5),
+    rgba(255, 255, 255, 0.15) var(--grid-line-5),
+    rgba(255, 255, 255, 0.15) calc(var(--grid-line-5) + 1px),
+    transparent calc(var(--grid-line-5) + 1px)
+  );
+
+  /* Subtle dark lines for light theme backgrounds */
+  --grid-lines-dark: linear-gradient(
+    to right,
+    transparent var(--grid-line-1),
+    rgba(0, 0, 0, 0.15) var(--grid-line-1),
+    rgba(0, 0, 0, 0.15) calc(var(--grid-line-1) + 1px),
+    transparent calc(var(--grid-line-1) + 1px),
+    transparent var(--grid-line-2),
+    rgba(0, 0, 0, 0.15) var(--grid-line-2),
+    rgba(0, 0, 0, 0.15) calc(var(--grid-line-2) + 1px),
+    transparent calc(var(--grid-line-2) + 1px),
+    transparent var(--grid-line-3),
+    rgba(0, 0, 0, 0.15) var(--grid-line-3),
+    rgba(0, 0, 0, 0.15) calc(var(--grid-line-3) + 1px),
+    transparent calc(var(--grid-line-3) + 1px),
+    transparent var(--grid-line-4),
+    rgba(0, 0, 0, 0.15) var(--grid-line-4),
+    rgba(0, 0, 0, 0.15) calc(var(--grid-line-4) + 1px),
+    transparent calc(var(--grid-line-4) + 1px),
+    transparent var(--grid-line-5),
+    rgba(0, 0, 0, 0.15) var(--grid-line-5),
+    rgba(0, 0, 0, 0.15) calc(var(--grid-line-5) + 1px),
+    transparent calc(var(--grid-line-5) + 1px)
+  );
+}
+
+.grid-lines {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-
-  background: linear-gradient(
-    to right,
-    transparent 0,
-    transparent 25%,
-    rgba(255, 255, 255, 0.06) 25%,
-    rgba(255, 255, 255, 0.06) calc(25% + 1px),
-    transparent calc(25% + 1px),
-    transparent 50%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.06) calc(50% + 1px),
-    transparent calc(50% + 1px),
-    transparent 75%,
-    rgba(255, 255, 255, 0.06) 75%,
-    rgba(255, 255, 255, 0.06) calc(75% + 1px),
-    transparent calc(75% + 1px),
-    transparent 100%
-  );
-
+  background-image: var(--grid-lines-light);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-} */
+}
+
+.grid-lines.grid-lines-dark {
+  background-image: var(--grid-lines-dark);
+}

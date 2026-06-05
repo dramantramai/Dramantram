@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kalam:wght@300;400;700&display=swap");
 
-/* Navbar background color */
+/* Navbar background color override to ensure transparency */
 .navbar-light {
   position: fixed;
   top: 0;
@@ -9,25 +9,74 @@
   width: 100%;
   z-index: 1030;
 
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(6px); /* subtle blur over background content */
-  border: none; /* remove any line */
-  box-shadow: none; /* no shadow */
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: none !important;
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* Nav Buttons */
+.navbar-light .container-fluid,
+.navbar-light .navbar-collapse,
+.navbar-light .collapse {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
 .nav-link-light {
   color: black !important;
   font-family: "Inter";
   font-weight: 300;
   font-style: normal;
+  position: relative;
+  padding-bottom: 6px !important;
+  margin-left: 35px !important;
+  white-space: nowrap !important;
 }
 
 /* Hover effect for nav links */
 .nav-link-light:hover {
-  font-weight: 600;
-  text-decoration: underline;
+  text-decoration: none !important;
+  /* Keep font weight constant on hover to prevent zoom/layout shift */
+}
+
+/* Left-to-right underline animation with space */
+.nav-link-light::before {
+  content: "";
+  position: absolute;
+  left: 8px; /* align with text start */
+  right: 8px;
+  bottom: 0;
+  height: 2px;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link-light:hover::before {
+  transform: scaleX(1);
+}
+
+/* Services Dropdown Styles for Light Header */
+.navbar-light .dropdown-menu {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+.navbar-light .dropdown-item {
+  color: #000000 !important;
+}
+
+.navbar-light .dropdown-item:hover {
+  background-color: #f5f5f5 !important;
+  color: #000000 !important;
+}
+
+.navbar-light .dropdown-item::before {
+  background-color: #000000 !important; /* Black underline on hover instead of red */
 }
 
 /* Contact Us Button */
@@ -42,4 +91,55 @@
 /* Move the "Contact Us" button to the right */
 .ms-auto {
   margin-left: auto;
+}
+
+/* Page-wide wrapper for light layout pages to ensure background grey color matches */
+.light-layout-wrapper {
+  background-color: #eceff1 !important;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Align navbar elements centered inside global vertical grid columns on desktop */
+@media (min-width: 992px) {
+  .navbar-light.navbar-expand-lg .container-fluid {
+    display: grid !important;
+    grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .navbar-light.navbar-expand-lg .navbar-brand {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    margin: 0 !important;
+  }
+
+  .navbar-light.navbar-expand-lg .navbar-collapse {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-column: 3 / 6 !important;
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .navbar-light.navbar-expand-lg .navbar-nav {
+    grid-column: 2 !important;
+    justify-self: center !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .navbar-light.navbar-expand-lg .btn {
+    grid-column: 3 !important;
+    justify-self: center !important;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-light .container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
 }

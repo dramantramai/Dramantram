@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/CaseStudyPage.css";
-import Layout from "../components/Layout/Layout";
+import LightLayout from "../components/Layout/LightLayout";
 
 // Helper component for meta fields
 const MetaRow = ({ label, value }) => (
@@ -105,21 +105,21 @@ const CaseStudy = () => {
   // Loading State
   if (loading) {
     return (
-      <Layout>
+      <LightLayout>
         <section
           className="container py-5 text-white"
           style={{ minHeight: "80vh" }}
         >
           <h1>Loading Case Study...</h1>
         </section>
-      </Layout>
+      </LightLayout>
     );
   }
 
   // Error State
   if (error || !cs) {
     return (
-      <Layout>
+      <LightLayout>
         <section
           className="container py-5 text-white"
           style={{ minHeight: "80vh" }}
@@ -130,7 +130,7 @@ const CaseStudy = () => {
             ← Back home
           </Link>
         </section>
-      </Layout>
+      </LightLayout>
     );
   }
 
@@ -140,7 +140,7 @@ const CaseStudy = () => {
   const thumbnailSrc = `${apiUrl}/api/v1/management/get-thumbnail-image/${cs._id}`;
 
   return (
-    <Layout>
+    <LightLayout>
       <section className="case-study-wrap">
         {/* GRID LINES BACKDROP */}
         <div className="cs-grid-lines" />
@@ -249,7 +249,7 @@ const CaseStudy = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </LightLayout>
   );
 };
 

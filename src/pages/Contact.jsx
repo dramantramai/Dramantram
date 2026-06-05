@@ -1,6 +1,5 @@
 import React from "react";
 import LightLayout from "../components/Layout/LightLayout";
-import Layout from "../components/Layout/Layout";
 import "../styles/ContactPage.css";
 
 const Contact = () => {
@@ -32,7 +31,7 @@ Gomti Nagar, Lucknow, Uttar Pradesh 226010`,
   ];
 
   return (
-    <Layout>
+    <LightLayout>
       <section className="page-grid pt-5">
         <section className="contact-wrap pt-4">
           {/* CONTACT GRID & FORM*/}
@@ -250,7 +249,7 @@ Gomti Nagar, Lucknow, Uttar Pradesh 226010`,
           </section>
         </section>
       </section>
-    </Layout>
+    </LightLayout>
   );
 };
 

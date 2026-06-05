@@ -8,8 +8,8 @@ import PortfolioSection from "../components/PortfolioSection";
 import ClientsSection from "../components/Clients";
 import GlitchButton from "../components/GlitchButton";
 
-// Lazy load the 3D component
-const SplineContainer = lazy(() => import("../components/SplineContainer"));
+// Lazy load the Petals SVG component
+const HomePetalsSVG = lazy(() => import("../components/HomePetalsSVG"));
 
 // --- DATA STRUCTURE FOR INTERACTIVE SECTION ---
 // We move the images, titles, and bullets here so they can be switched dynamically
@@ -195,11 +195,10 @@ const Home = () => {
 
         {/* Intro Section */}
         <section className="intro-section">
-          {/* 3D Container Layer */}
+          {/* Background Container Layer */}
           <div className="spline-container">
-            {/* REMOVED THE !isMobile CHECK so it renders on all devices */}
             <Suspense fallback={<div className="loading-3d">Loading...</div>}>
-              <SplineContainer />
+              <HomePetalsSVG />
             </Suspense>
 
             {/* Optional: Add a dark overlay on mobile only so text remains readable over the 3D model */}

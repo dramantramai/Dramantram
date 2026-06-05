@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
   return (
     <>
       {/* Under Construction Banner */}
-      <div style={{
+      {/* <div style={{
         backgroundColor: 'rgba(255, 193, 7, 1)',
         color: '#000',
         textAlign: 'center',
@@ -28,13 +28,13 @@ const Layout = ({ children }) => {
         <span>🚧</span>
         <span>This website is currently under construction. Some features and content may still be updating.</span>
         <span>🚧</span>
-      </div>
+      </div> */}
 
       {/* Push navbar down to accommodate the banner */}
       <style>
         {`
           .navbar {
-            top: 36px !important; /* Height of the banner */
+            top: 0px !important; /* Height of the banner */
           }
         `}
       </style>

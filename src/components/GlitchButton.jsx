@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 // Assuming Link is a wrapper for <a> or a router Link
 const GlitchButton = ({
   children,
@@ -8,6 +8,8 @@ const GlitchButton = ({
 }) => {
   const [displayText, setDisplayText] = useState(targetText);
   const [isHovering, setIsHovering] = useState(false);
+  const isAnimating = useRef(false);
+  const intervalRef = useRef(null);
 
   // Characters to use for the scramble effect
   const chars = "$Z%#X@*!C^&X~Z";
@@ -17,8 +19,11 @@ const GlitchButton = ({
 
   // Scramble effect logic
   const scramble = useCallback(() => {
+    if (isAnimating.current) return;
+    isAnimating.current = true;
+
     let iteration = 0;
-    const interval = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       const newText = targetText
         .split("")
         .map((char, index) => {
@@ -32,16 +37,25 @@ const GlitchButton = ({
       setDisplayText(newText);
 
       if (iteration >= targetText.length) {
-        clearInterval(interval);
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
         // Ensure text is correctly set after animation
         setDisplayText(targetText);
+        isAnimating.current = false;
       }
 
       iteration += 1; // Controls the speed of reveal
     }, 50); // Controls the update frequency
-
-    return () => clearInterval(interval); // Cleanup function
   }, [targetText]);
+
+  // Clean up interval on unmount
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
 
   const handleMouseEnter = () => {
     setIsHovering(true);
@@ -49,9 +63,7 @@ const GlitchButton = ({
   };
 
   const handleMouseLeave = () => {
-    setIsHovering(true);
-    // Reset to original text if not mid-scramble
-    // setDisplayText(targetText);
+    setIsHovering(false);
     scramble();
   };
 
