@@ -42,11 +42,6 @@
   padding-bottom: 6px !important;
 }
 
-/* Hover effect for nav links */
-.navbar:not(.navbar-light) .nav-link:hover {
-  /* Keep font weight constant on hover to prevent zoom/layout shift */
-}
-
 /* Left-to-right underline animation with space */
 .navbar:not(.navbar-light) .nav-link::before {
   content: "";
