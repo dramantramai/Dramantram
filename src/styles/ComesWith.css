@@ -1,0 +1,118 @@
+/* Canvas */
+.cw-wrap {
+  position: relative;
+  background: #000;
+  color: #fff;
+  padding: 56px 0 64px;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+/* bottom red glow */
+.cw-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 95%,
+    rgba(180, 20, 20, 0.85) 0%,
+    rgba(120, 10, 10, 0.45) 18%,
+    rgba(0, 0, 0, 0) 45%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mask image */
+.cw-mask {
+  width: min(520px, 90%);
+  height: auto;
+  display: block;
+  margin-top: 40px;
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+  margin-left: 80px;
+}
+
+/* Headline */
+.cw-head {
+  font-family: "Russo One", system-ui, sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin: 10px 0 22px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tabs row */
+.cw-tabs {
+  display: flex;
+  gap: 28px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+.cw-tab {
+  position: relative;
+  background: transparent;
+  border: 0;
+  padding: 0 0 12px 0;
+  color: #aeb2b7;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+  font-family: "inter", system-ui, sans-serif;
+}
+.cw-tab:hover {
+  color: #d5d9de;
+}
+.cw-tab.is-active {
+  color: #ffffff;
+}
+
+.cw-tab-line {
+  display: block;
+}
+
+/* Active red underline */
+.cw-active-underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: #e33;
+  border-radius: 2px;
+}
+
+/* hairline under tabs */
+.cw-divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Body copy */
+.cw-body {
+  color: #cfd3d6;
+  line-height: 1.8;
+  max-width: 60ch;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+  .cw-mask {
+    margin: 10px auto 24px;
+  }
+}

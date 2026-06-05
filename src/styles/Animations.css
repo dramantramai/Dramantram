@@ -1,0 +1,21 @@
+/* src/styles/animations.css */
+
+/* Define the rotation animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply the animation to the SVG container */
+.animated-svg-container {
+  /* Set dimensions as needed for your layout */
+  width: 500px;
+  height: 500px;
+  /* Apply the animation */
+  animation: spin 20s linear infinite;
+  transform-origin: center center;
+}

@@ -1,0 +1,360 @@
+/* src/pages/CaseStudyPage.css */
+
+/* base */
+.case-study-wrap {
+  padding-top: 100px !important;
+  position: relative;
+  background: #eceff1;
+  color: #0f0f0f;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  padding-top: 60px;
+}
+
+/* subtle vertical grid lines like your ref */
+.cs-grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 0.12) 0,
+      rgba(0, 0, 0, 0.12) 1px,
+      transparent 1px),
+    linear-gradient(to right,
+      transparent 0,
+      transparent 25.4%,
+      rgba(0, 0, 0, 0.12) 25.4%,
+      rgba(0, 0, 0, 0.12) calc(25.4% + 1px),
+      transparent calc(25.4% + 1px),
+      transparent 50.03%,
+      rgba(0, 0, 0, 0.12) 50.03%,
+      rgba(0, 0, 0, 0.12) calc(50.03% + 1px),
+      transparent calc(50.03% + 1px),
+      transparent 74.57%,
+      rgba(0, 0, 0, 0.12) 74.57%,
+      rgba(0, 0, 0, 0.12) calc(74.57% + 1px),
+      transparent calc(74.57% + 1px),
+      transparent 100%);
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+/* container to keep content above lines */
+.cs-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* top bar */
+.cs-topbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 8px 12px;
+}
+
+.cs-pill {
+  background: #111;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.cs-pill-muted {
+  color: #666;
+  font-size: 12px;
+  padding-top: 50px;
+}
+
+/* columns with hard dividers */
+/* .cs-header .cs-col {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+} */
+.cs-header .cs-col-left {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.cs-header .cs-col-right {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.cs-pad {
+  /* padding: 28px 22px; */
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 100px;
+}
+
+/* title + card */
+.cs-title {
+  font-family: "Russo One", sans-serif;
+  letter-spacing: 1px;
+  font-size: clamp(18px, 2.6vw, 28px);
+  margin: 8px 0 16px;
+  font-weight: 400;
+  font-size: 45px;
+}
+
+.cs-card-figure {
+  position: relative;
+  margin: 12px 0 0;
+  margin-bottom: 50px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+/* Image itself */
+.cs-card {
+  border-radius: 6px;
+  display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  transform: scale(1);
+  cursor: pointer;
+}
+
+/* Overlay base */
+.cs-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  letter-spacing: 0.5px;
+}
+
+/* Hover states */
+.cs-card-figure:hover .cs-card {
+  transform: scale(1.05);
+  filter: brightness(1.15);
+}
+
+.cs-card-figure:hover .cs-card-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cs-card-overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
+  animation: fadeSlide 0.4s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cs-cap {
+  font-size: 11px;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* meta */
+.cs-meta-label {
+  color: #7e7e7e;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.cs-meta-value {
+  font-size: 17px;
+  color: #111;
+}
+
+/* text areas */
+.cs-h2 {
+  font-weight: 400;
+  font-size: 38.5px;
+  margin-bottom: 12px;
+}
+
+.cs-h3 {
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 20px);
+  margin-bottom: 10px;
+  font-family: "inter", sans-serif;
+}
+
+.cs-body {
+  color: #202020;
+  line-height: 1.6;
+  margin-top: 20px;
+}
+
+/* hero image */
+.cs-hero-solution-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  align-items: stretch;
+}
+
+.cs-hero-wrap {
+  overflow: hidden;
+  border-radius: 10px;
+  /* put radius on wrapper, not the image */
+  height: 100%;
+}
+
+.cs-hero-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.cs-hero {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* fills without distortion */
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.cs-hero:hover {
+  transform: scale(1.05);
+}
+
+/* solution block border to match columns */
+.cs-solution .cs-col {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.cs-solution {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* gallery thumbs */
+.cs-gallery {
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  /* margin-left: 20px; */
+  padding-top: 50px;
+  padding-left: 100px;
+  padding-right: 400px;
+  padding-bottom: 50px;
+}
+
+.cs-thumb-wrap {
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;
+}
+
+.cs-thumb {
+  display: block;
+  width: 100% !important;
+  height: 100%;
+  transition: transform 0.5s ease;
+  transform: scale(1);
+  object-fit: cover;
+}
+
+.cs-thumb:hover {
+  transform: scale(1.2);
+  /* smooth zoom-in on hover */
+}
+
+.cs-hero-solution-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  align-items: stretch;
+  background-color: #eceff100;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.cs-hero {
+  width: 80%;
+  height: 80% !important;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+  margin-left: 100px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.cs-solution-col {
+  /* border-left: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid rgba(0, 0, 0, 0.12); */
+  display: flex;
+  align-items: center;
+  background: transparent;
+  height: 700px;
+}
+
+.cs-pad {
+  padding: 0px 24px;
+}
+
+/* Responsive tweak */
+@media (max-width: 991.98px) {
+  .cs-solution-col {
+    border-left: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    background: transparent;
+  }
+}
+
+/* responsiveness */
+@media (max-width: 991.98px) {
+
+  .cs-header .cs-col,
+  .cs-solution .cs-col,
+  .cs-header .cs-col-left,
+  .cs-header .cs-col-right {
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .cs-pad {
+    padding: 20px 16px;
+  }
+
+  .cs-hero {
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cs-topbar {
+    padding: 6px 10px;
+  }
+
+  .cs-pad {
+    padding: 16px 14px;
+  }
+
+  .cs-gallery {
+    padding: 12px 8px 28px;
+  }
+
+  .cs-hero {
+    width: 100%;
+    height: auto !important;
+    margin: 0;
+    margin-left: 2.8px;
+  }
+
+  .cs-grid-lines {
+    background: none;
+  }
+}

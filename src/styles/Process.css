@@ -1,0 +1,130 @@
+/* Canvas */
+.process-wrap {
+  background: #000000; /* deep black */
+  color: #fff;
+  padding-top: 30px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Vertical grid lines like the screenshot */
+.process-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.9fr;
+  gap: 0;
+  position: relative;
+}
+.process-grid::before,
+.process-grid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* width: 1px; */
+  background: rgba(0, 0, 0, 1);
+}
+.process-grid::before {
+  left: 0;
+}
+.process-grid::after {
+  right: 0;
+}
+
+.pcol {
+  padding: 28px 28px 36px;
+  position: relative;
+}
+.pcol:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* width: 1px; */
+  background: rgba(0, 0, 0, 1);
+}
+
+/* Title block */
+.stack {
+  margin: 0;
+  font-family: "Russo One", system-ui, sans-serif;
+  text-transform: uppercase;
+  line-height: 1.06;
+  letter-spacing: 0.5px;
+  color: #cfcfcf;
+  opacity: 0.9;
+  display: grid;
+  gap: 8px;
+  font-size: clamp(20px, 3.2vw, 40px);
+}
+
+/* Step column header */
+.step-head {
+  display: grid;
+  grid-template-columns: 6px auto 1fr 42px;
+  align-items: center;
+  column-gap: 16px;
+  margin-bottom: 14px;
+}
+.step-bar {
+  display: block;
+  height: 40px;
+  background: #ffd400; /* yellow bar */
+  border-radius: 2px;
+}
+.step-head h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: clamp(18px, 2vw, 28px);
+}
+
+/* Yellow arrow to the right */
+.arrow {
+  justify-self: end;
+  width: 84%;
+  height: 2px;
+  background: #ffd400;
+  position: relative;
+  opacity: 0.9;
+}
+.arrow::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #ffd400;
+  border-top: 2px solid #ffd400;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Bullets */
+.bullets {
+  margin: 0;
+  padding-left: 18px; /* standard bullet indent */
+  list-style: disc;
+  color: #dcdcdc;
+}
+.bullets li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+  .pcol:not(:last-child)::after,
+  .process-grid::before,
+  .process-grid::after {
+    display: none;
+  }
+  .arrow {
+    width: 40%;
+  }
+}

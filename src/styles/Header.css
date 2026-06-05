@@ -1,0 +1,135 @@
+/* Navbar background color */
+.navbar {
+  position: fixed;
+  top: 0;
+  /* Ensures the navbar stays at the very top */
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  /* Keeps navbar above other content */
+  width: 100%;
+  /* Full width */
+  background-color: rgba(0,
+      0,
+      0,
+      0.52) !important;
+  /* Semi-transparent background */
+  transition: transform 0.3s ease-in-out;
+  /* Smooth transition for showing/hiding */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar visible */
+.navbar-visible {
+  transform: translateY(0);
+  /* Keep navbar at the top */
+}
+
+/* Navbar hidden when scrolling down */
+.navbar-hidden {
+  transform: translateY(-100%);
+  /* Move navbar off-screen */
+}
+
+.navbar-nav {
+  padding-left: 200px !important;
+}
+
+/* Nav Buttons */
+.nav-link {
+  color: white !important;
+  font-family: "Inter";
+  font-weight: 300;
+  font-style: normal;
+  /* text-decoration: underline red !important; */
+  transition: all 0.3s ease;
+  margin-left: 35px;
+}
+
+/* Hover effect for nav links */
+.nav-link:hover {
+  font-weight: 600;
+  text-decoration: underline red;
+}
+
+/* Contact Us Button */
+.btn {
+  color: rgb(0, 0, 0) !important;
+  background-color: #ffe600 !important;
+  font-family: "Inter";
+  font-weight: bolder;
+  font-style: normal;
+  width: 150px;
+}
+
+/* Move the "Contact Us" button to the right */
+.ms-auto {
+  margin-left: auto;
+}
+
+/* Ensure no space at the top of the page */
+body {
+  margin-top: 0 !important;
+  /* Remove any default margin/padding */
+}
+
+/* Scroll Stuff */
+
+.scroll-down {
+  transform: translate3d(0, -100%, 0);
+}
+
+.scroll-up {
+  filter: drop-shadow(0 -10px 20px rgb(45, 0, 0));
+}
+
+/* Ensure the dropdown menu doesn't disappear when moving cursor from link to menu */
+.dropdown-menu {
+  margin-top: 0;
+  /* Remove default bootstrap margin */
+  border-radius: 0;
+  /* Optional: Make edges sharp */
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease;
+  background-color: black !important;
+  /* color: rgb(255, 0, 0) !important; */
+}
+
+.dropdown-item {
+  color: white !important;
+}
+
+/* Optional: Animation for smooth appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover style for the items inside */
+.dropdown-item:hover {
+  background-color: #000000 !important;
+  /* Change this to your brand color */
+  color: #ffffff !important;
+  text-decoration-line: underline !important;
+  text-underline-offset: 0.2em !important;
+  text-decoration-thickness: 0.2em !important;
+  text-decoration-color: red !important;
+}
+
+@media (max-width: 600px) {
+  .navbar-nav {
+    padding-left: 0px !important;
+  }
+
+  .nav-link {
+    margin-left: 0px !important;
+  }
+}

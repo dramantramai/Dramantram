@@ -1,0 +1,155 @@
+/* Main Page Background */
+.case-studies-container {
+  background-color: #050505; /* Deep Black */
+  min-height: 90vh;
+  padding: 40px 0;
+  padding-top: 80px;
+}
+
+/* Gradient Text for Title */
+.gradient-text {
+  background: linear-gradient(90deg, #ff3b3b, #ff7b7b); /* Red Gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* The Card Itself */
+.custom-card {
+  background-color: #121212; /* Slightly lighter black for contrast */
+  border: 1px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  height: 100%; /* Ensures all cards in a row match height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover Effect: Red Glow & Lift */
+.custom-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff3b3b;
+  box-shadow: 0 10px 20px rgba(255, 59, 59, 0.15);
+}
+
+/* Image Container */
+.card-img-wrapper {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 2px solid #ff3b3b; /* Red line separating img and text */
+  position: relative;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills the box without stretching */
+  transition: transform 0.5s ease;
+}
+
+.custom-card:hover .card-img-wrapper img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Card Body */
+.card-body {
+  padding: 20px;
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  color: #fff !important;
+  font-size: 1.25rem;
+  margin-bottom: 10px !important;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 10px;
+}
+
+.card-text {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  flex-grow: 1; /* Pushes button section to bottom */
+  line-height: 1.5;
+}
+
+/* --- ACTION BUTTONS REDESIGN --- */
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+/* Primary Action: View */
+.btn-view {
+  width: 100%;
+  background: linear-gradient(90deg, #d32f2f, #ff5252);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: opacity 0.3s;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-view:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+/* Secondary Actions Container (Edit/Delete) */
+.admin-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Common style for secondary buttons */
+.btn-action {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Edit Button */
+.btn-edit {
+  background-color: transparent;
+  color: #ccc;
+  border: 1px solid #444;
+}
+
+.btn-edit:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #666;
+}
+
+/* Delete Button */
+.btn-delete {
+  background-color: rgba(255, 59, 59, 0.1);
+  color: #ff5252;
+  border: 1px solid #ff5252;
+}
+
+.btn-delete:hover {
+  background-color: #ff5252;
+  color: white;
+}

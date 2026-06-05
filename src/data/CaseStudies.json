@@ -1,0 +1,36 @@
+{
+  "caseStudies": [
+    {
+      "id": 1,
+      "slug": "united-nation",
+      "vision_statement": "United Nation Magazine",
+      "card_image": "/CaseStudies/UnitedNations/un_card.png",
+      "card_text": "BGV Booklet",
+      "client": "United Nation",
+      "services": "Magazine design",
+      "complexity": "High",
+      "industry": "Technology",
+      "duration": "1 Month",
+      "problem": "Our team worked closely with Doosra throughout the entire process, starting from the initial stages of script development.\n We delved into crafting a comprehensive narrative and stylistic concept that truly resonated with their vision. This collaborative effort extended to the meticulous design of artwork, ensuring that every element adhered to the established brandbook guidelines.\n Furthermore, we dedicated ourselves to the animation process, culminating in a polished short explainer video that seamlessly aligns with and enhances their overarching brand narrative.",
+      "image-1": "/CaseStudies/UnitedNations/un_1.png",
+      "image-2": "/CaseStudies/UnitedNations/un_2.png",
+      "solution": "Our team collaborated closely with Doosra from the very beginning of script development. We focused on creating a detailed narrative and stylistic concept that aligned perfectly with their vision. This teamwork also involved carefully designing artwork to ensure every detail followed the brand guidelines.\n Additionally, we committed ourselves to the animation process, resulting in a refined short explainer video that complements and elevates their overall brand story."
+    },
+    {
+      "id": 2,
+      "slug": "caps-delivery",
+      "vision_statement": "Caps Delivery Branding",
+      "card_image": "/CaseStudies/CapsDelivery/caps_card.png",
+      "card_text": "BGV Booklet",
+      "client": "Caps Delivery",
+      "services": "Brand identity Design",
+      "complexity": "Medium",
+      "industry": "Technology",
+      "duration": "1 Month",
+      "problem": "Our team worked closely with Doosra throughout the entire process, starting from the initial stages of script development.\n We delved into crafting a comprehensive narrative and stylistic concept that truly resonated with their vision. This collaborative effort extended to the meticulous design of artwork, ensuring that every element adhered to the established brandbook guidelines.\n Furthermore, we dedicated ourselves to the animation process, culminating in a polished short explainer video that seamlessly aligns with and enhances their overarching brand narrative.",
+      "image-1": "/CaseStudies/CapsDelivery/caps_1.png",
+      "image-2": "/CaseStudies/CapsDelivery/caps_2.png",
+      "solution": "Our team collaborated closely with Doosra from the very beginning of script development. We focused on creating a detailed narrative and stylistic concept that aligned perfectly with their vision. This teamwork also involved carefully designing artwork to ensure every detail followed the brand guidelines.\n Additionally, we committed ourselves to the animation process, resulting in a refined short explainer video that complements and elevates their overall brand story."
+    }
+  ]
+}
