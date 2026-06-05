@@ -100,7 +100,7 @@ const servicesData = [
     image: "Event.avif", // Replace with your actual image
     heading: (
       <>
-        immersive experiences
+        Immersive experiences
         <br /> that leave a mark.
       </>
     ),
@@ -238,7 +238,7 @@ const Home = () => {
         </section>
 
         {/* Portfolio Section */}
-        <section className="portfolio px-2">
+        <section className="portfolio">
           <PortfolioSection showFilters={false} isHomePage={true} />
         </section>
 
@@ -251,7 +251,7 @@ const Home = () => {
         <section className="specialization-sec">
           <section className="svc-band px-5">
             <div className="svc-inner">
-              <h2 className="svc-title">SERVICES WE SPECIALIZE IN</h2>
+              <h2 className="svc-title">SERVICES WE SPECIALISE IN</h2>
               <div className="svc-right">
                 <p className="svc-copy">
                   We are humbled by the trust shown to us by our client partners{" "}
@@ -306,9 +306,7 @@ const Home = () => {
                           onClick={() => setActiveIndex(index)} // Fallback for mobile
                         >
                           <span>{item.menuTitle}</span>
-                          {index === activeIndex && (
-                            <i className="cap-underline" aria-hidden />
-                          )}
+                          <i className="cap-underline" aria-hidden />
                         </button>
                       ))}
                     </nav>
@@ -318,7 +316,7 @@ const Home = () => {
                 {/* RIGHT: Content (Dynamic based on state) */}
                 <div className="col-lg-3 col-12 cap-col cap-right">
                   <div className="content-wrapper">
-                    <div className="cap-copy">
+                    <div className="cap-copy" key={activeIndex}>
                       <h3>
                         <span className="cap-strong">
                           {currentService.heading}
@@ -327,7 +325,9 @@ const Home = () => {
 
                       <ul className="cap-bullets">
                         {currentService.bullets.map((bullet, idx) => (
-                          <li key={idx}>{bullet}</li>
+                          <li key={idx} style={{ animationDelay: `${idx * 0.05}s` }}>
+                            {bullet}
+                          </li>
                         ))}
                       </ul>
                     </div>

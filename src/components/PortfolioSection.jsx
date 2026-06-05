@@ -4,6 +4,7 @@ import "../styles/PortfolioSection.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import GlitchButton from "./GlitchButton";
 
 // --- CONSTANTS ---
 const INDUSTRY_OPTIONS = [
@@ -210,7 +211,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
   const row2Data = caseStudies.slice(3);
 
   return (
-    <div className="portfolio-section">
+    <div className={`portfolio-section ${isHomePage ? "home-portfolio" : ""}`}>
       {/* FILTER ROW - Only show if showFilters is true AND not on Homepage */}
       {showFilters && !isHomePage && (
         <div className="row g-0 p-0 filter-row col-md-12">
@@ -290,9 +291,11 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
                 We're brand builders at heart, creators by design, tech
                 enthusiasts in practice, and integrated at our core.
               </p>
-              <Link to="/contact" className="connect-link">
-                Let's Connect <span>›</span>
-              </Link>
+              <GlitchButton
+                href="/contact"
+                className="connect-link"
+                targetText="Let's Connect ›"
+              />
             </div>
           </div>
 
