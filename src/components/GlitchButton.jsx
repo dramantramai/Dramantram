@@ -8,6 +8,7 @@ const GlitchButton = ({
 }) => {
   const [displayText, setDisplayText] = useState(targetText);
   const [isHovering, setIsHovering] = useState(false);
+  const [isScrambling, setIsScrambling] = useState(false);
   const isAnimating = useRef(false);
   const intervalRef = useRef(null);
 
@@ -21,6 +22,7 @@ const GlitchButton = ({
   const scramble = useCallback(() => {
     if (isAnimating.current) return;
     isAnimating.current = true;
+    setIsScrambling(true);
 
     let iteration = 0;
     intervalRef.current = setInterval(() => {
@@ -42,6 +44,7 @@ const GlitchButton = ({
         // Ensure text is correctly set after animation
         setDisplayText(targetText);
         isAnimating.current = false;
+        setIsScrambling(false);
       }
 
       iteration += 1; // Controls the speed of reveal
@@ -70,7 +73,7 @@ const GlitchButton = ({
   // The 'data-text' is crucial for the CSS pseudo-element glitch
   return (
     <a
-      className={`${className} ${isHovering ? "" : ""}`}
+      className={`${className} ${isScrambling ? "is-scrambling" : ""}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       data-text={targetText} // Required for CSS glitch

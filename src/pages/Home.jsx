@@ -1,6 +1,6 @@
 // src/pages/Home.jsx
 
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState, useEffect, useRef, Suspense, lazy } from "react";
 import Layout from "../components/Layout/Layout";
 import "../styles/Home.css";
 import "../styles/Animations.css";
@@ -188,6 +188,27 @@ const Home = () => {
 
   const currentService = servicesData[activeIndex];
 
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const aiRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry], obs) => {
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (aiRef.current) {
+      observer.observe(aiRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Layout>
       <div className="home-page-wrapper">
@@ -351,86 +372,88 @@ const Home = () => {
         </section>
 
         {/* Agency Intro */}
-        <section className="ai-wrap">
-          {/* ... Rest of your component (No changes needed below) ... */}
-          <div className="container-fluid px-0">
-            <div className="row g-0">
-              <div className="col-lg-6 col-12 ai-col ai-left">
-                <div className="content-wrapper">
-                  <p className="ai-kicker fw-semibold">Dramantram is</p>
-                  <ul className="ai-stack">
-                    <li>BOLD</li>
-                    <li>LOCALLY GLOBAL</li>
-                    <li>ESSENTIALISM</li>
-                    <li>STORYTELLING</li>
-                    <li>UNDP ALIGNED</li>
-                  </ul>
+        <div className="ai-sticky-container" ref={aiRef}>
+          <section className={`ai-wrap ${isIntersecting ? "ai-animate" : ""}`}>
+            {/* ... Rest of your component (No changes needed below) ... */}
+            <div className="container-fluid px-0">
+              <div className="row g-0">
+                <div className="col-lg-6 col-12 ai-col ai-left">
+                  <div className="content-wrapper">
+                    <p className="ai-kicker fw-semibold">Dramantram is</p>
+                    <ul className="ai-stack">
+                      <li>BOLD</li>
+                      <li>LOCALLY GLOBAL</li>
+                      <li>ESSENTIALISM</li>
+                      <li>STORYTELLING</li>
+                      <li>UNDP ALIGNED</li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
 
-              {/* <div className="col-lg-3 d-none d-lg-block ai-col ai-spacer"></div> */}
+                {/* <div className="col-lg-3 d-none d-lg-block ai-col ai-spacer"></div> */}
 
-              <div className="col-lg-3 col-12 ai-col ai-mid">
-                <div className="content-wrapper">
-                  <h2 className="ai-head">
-                    A locally set up global creative agency
-                  </h2>
+                <div className="col-lg-3 col-12 ai-col ai-mid">
+                  <div className="content-wrapper">
+                    <h2 className="ai-head">
+                      A locally set up global creative agency
+                    </h2>
 
-                  <p className="ai-copy">
-                    You know us as a creative agency that works towards
-                    skyrocketing the client’s business.
-                  </p>
+                    <p className="ai-copy">
+                      You know us as a creative agency that works towards
+                      skyrocketing the client’s business.
+                    </p>
 
-                  <p className="ai-copy small">
-                    Our secret is not our services but our approach towards
-                    them.{" "}
-                    <strong>Oops! Did we just disclose our secret?</strong>
-                  </p>
+                    <p className="ai-copy small">
+                      Our secret is not our services but our approach towards
+                      them.{" "}
+                      <strong>Oops! Did we just disclose our secret?</strong>
+                    </p>
 
-                  <a className="ai-cta" href="/about">
-                    <span className="ai-cta-accent" />
-                    <GlitchButton
-                      href="/about"
-                      targetText="Explore More"
-                      className={"explore-btn2"}
-                    >
-                      <span>Explore More</span>
-                    </GlitchButton>
-                    <span className="ai-chev">›</span>
-                  </a>
+                    <a className="ai-cta" href="/about">
+                      <span className="ai-cta-accent" />
+                      <GlitchButton
+                        href="/about"
+                        targetText="Explore More"
+                        className={"explore-btn2"}
+                      >
+                        <span>Explore More</span>
+                      </GlitchButton>
+                      <span className="ai-chev">›</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
 
-              <div className="col-lg-3 col-12 ai-col ai-right">
-                <div className="content-wrapper">
-                  <div className="ai-metric">
-                    <div className="num">70+</div>
-                    <div className="lbl">Identity Design</div>
-                  </div>
-
-                  <div className="ai-metric">
-                    <div className="num">200+</div>
-                    <div className="lbl">UI/UX Design</div>
-                  </div>
-
-                  <div className="ai-metric">
-                    <div className="num">
-                      98K+ <span className="unit">sec</span>
+                <div className="col-lg-3 col-12 ai-col ai-right">
+                  <div className="content-wrapper">
+                    <div className="ai-metric">
+                      <div className="num">70+</div>
+                      <div className="lbl">Identity Design</div>
                     </div>
-                    <div className="lbl">of Animated Video Creation</div>
-                  </div>
 
-                  <div className="ai-metric">
-                    <div className="num">
-                      800+ <span className="unit">min</span>
+                    <div className="ai-metric">
+                      <div className="num">200+</div>
+                      <div className="lbl">UI/UX Design</div>
                     </div>
-                    <div className="lbl">of Live Video Production</div>
+
+                    <div className="ai-metric">
+                      <div className="num">
+                        98K+ <span className="unit">sec</span>
+                      </div>
+                      <div className="lbl">of Animated Video Creation</div>
+                    </div>
+
+                    <div className="ai-metric">
+                      <div className="num">
+                        800+ <span className="unit">min</span>
+                      </div>
+                      <div className="lbl">of Live Video Production</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
         {/* Testimonials */}
         <section className={`testimonial-section`}>

@@ -13,8 +13,8 @@
 
   width: 100%;
 
-  overflow: hidden;
-  /* Prevents horizontal scrollbars */
+  overflow-x: clip;
+  /* Prevents horizontal scrollbars without breaking sticky positioning */
 }
 
 /* 2. The Overlay: The actual lines */
@@ -1252,6 +1252,88 @@ h1 {
 
 /* ===== AGENCY INTRO SECTION ===== */
 
+/* GlitchButton is-scrambling class to turn text red while scrambling - restricted to Agency Intro Explore More button */
+.explore-btn2.is-scrambling {
+  color: red !important;
+}
+
+/* Under desktop viewport, handle the sticky lock and scroll reveal transitions */
+@media (min-width: 992px) {
+  .ai-sticky-container {
+    height: 140vh; /* tight stickiness window (sticks briefly, no large blank scrolling) */
+    position: relative;
+    background-color: #ffffff !important;
+  }
+
+  .ai-wrap {
+    position: sticky !important;
+    top: 0 !important;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background-color: #ffffff !important; /* Always white background */
+    color: #000000 !important; /* Always black text */
+  }
+
+  /* Staggered stack animations for scroll reveal */
+  .ai-kicker,
+  .ai-stack li,
+  .ai-head,
+  .ai-copy,
+  .ai-cta,
+  .ai-metric {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* Reveal text on scroll trigger */
+  .ai-animate .ai-kicker {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  .ai-animate .ai-stack li:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+  .ai-animate .ai-stack li:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+  .ai-animate .ai-stack li:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+  .ai-animate .ai-stack li:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+  .ai-animate .ai-stack li:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+
+  .ai-animate .ai-head {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.35s;
+  }
+
+  .ai-animate .ai-copy:nth-of-type(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.45s;
+  }
+
+  .ai-animate .ai-copy:nth-of-type(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.55s;
+  }
+
+  .ai-animate .ai-cta {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.65s;
+  }
+
+  .ai-animate .ai-metric:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.25s; }
+  .ai-animate .ai-metric:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.35s; }
+  .ai-animate .ai-metric:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.45s; }
+  .ai-animate .ai-metric:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.55s; }
+}
+
 .ai-wrap {
   background: #fff;
 
@@ -1329,7 +1411,7 @@ h1 {
 
   flex-direction: column;
 
-  gap: 14px;
+  gap: 22px; /* increased from 14px */
 }
 
 .ai-stack li {
@@ -1357,9 +1439,9 @@ h1 {
 /* --- COLUMN 3 (Mid) --- */
 
 .ai-head {
-  margin: 0 0 20px;
+  margin: 0 0 35px; /* increased from 20px */
 
-  font-size: clamp(28px, 5vw, 30px);
+  font-size: clamp(28px, 5vw, 34px); /* increased from 30px */
 
   line-height: 1.1;
 
@@ -1369,7 +1451,7 @@ h1 {
 }
 
 .ai-copy {
-  margin: 0 0 14px;
+  margin: 0 0 24px; /* increased from 14px */
 
   max-width: 42ch;
 
@@ -1387,7 +1469,7 @@ h1 {
 }
 
 .ai-cta {
-  margin-top: 10px;
+  margin-top: 35px; /* increased from 10px */
 
   display: inline-flex;
 
@@ -1401,7 +1483,9 @@ h1 {
 
   position: relative;
 
-  padding-left: 16px;
+  margin-left: -40px !important;
+
+  padding-left: 40px !important;
 
   font-size: clamp(14px, 2vw, 16px);
 }
@@ -1418,6 +1502,13 @@ h1 {
   background: #e03a2f;
 
   border-radius: 2px;
+
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+}
+
+.ai-cta:hover .ai-cta-accent {
+  transform: scaleY(1.2) translateX(-2px);
+  background-color: #ff1a1a;
 }
 
 .ai-chev {
@@ -1437,7 +1528,7 @@ h1 {
 .ai-right .content-wrapper {
   display: grid;
 
-  gap: 26px;
+  gap: 36px;
 
   align-content: center;
 }
@@ -1502,6 +1593,11 @@ h1 {
 
   .ai-kicker {
     padding-left: 0px !important;
+  }
+
+  .ai-cta {
+    margin-left: -24px !important;
+    padding-left: 24px !important;
   }
 
   .ai-stack {
