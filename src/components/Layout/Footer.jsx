@@ -49,8 +49,13 @@ const Footer = () => {
                   <label className="form-label">
                     How Did You Get to Know About Us?
                   </label>
-                  <select className="form-select">
-                    <option>Select option</option>
+                  <select className="form-select" defaultValue="">
+                    <option value="" disabled hidden>Select option</option>
+                    <option value="Google">Google Search</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Recommendation">Recommendation</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
                 <div className="mb-3">
@@ -130,7 +135,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Employee Access Section */}
+        {/* Employee Access Section
         <div className="employee-access text-center mt-5 pt-4 border-top border-secondary">
           <div className="row justify-content-center">
             <div className="col-auto">
@@ -142,7 +147,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

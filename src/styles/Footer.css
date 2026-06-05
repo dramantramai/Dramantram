@@ -14,7 +14,8 @@
    This ensures lines stay with the content at any zoom level. */
 .footer-row-grid {
   position: relative;
-  padding-top: 20px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .footer-row-grid::after {
@@ -98,10 +99,32 @@
   padding-left: 0 !important;
 }
 
-.name-form {
-  border-bottom: 1px solid red !important;
+/* Placeholder visibility and font-size settings */
+.name-form::placeholder,
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 13px !important;
 }
 
+/* Style default selected value as a placeholder for select drop-down */
+.form-select:has(option[value=""]:checked) {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 13px !important;
+}
+
+/* Increase gaps between different form inputs */
+.form-contact .mb-3 {
+  margin-bottom: 28px !important;
+}
+
+/* Make sure option elements inside the select dropdown are readable and dark */
+.form-select option {
+  background-color: black !important;
+  color: white !important;
+}
+
+.name-form:focus,
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
@@ -130,9 +153,18 @@
   font-size: 1rem;
 }
 
-.form-check-input:checked {
+/* Checkbox checked style: Red background, black tick */
+.form-check-input[type="checkbox"]:checked {
   background-color: red !important;
   border-color: red !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e") !important;
+}
+
+/* Radio checked style: Red background, black dot */
+.form-check-input[type="radio"]:checked {
+  background-color: red !important;
+  border-color: red !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3ccircle cx='8' cy='8' r='4' fill='%23000'/%3e%3c/svg%3e") !important;
 }
 
 /* --- Buttons --- */
@@ -170,6 +202,11 @@
 }
 
 @media (max-width: 768px) {
+  .footer-row-grid {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
   .have-a-project-text {
     padding-left: 0px;
   }
