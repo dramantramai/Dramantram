@@ -69,6 +69,14 @@ const LightHeader = () => {
                       UI/UX
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      className="dropdown-item"
+                      to="/services/experiential-lab"
+                    >
+                      Experiential Lab
+                    </Link>
+                  </li>
                 </ul>
               </li>
               {/* SERVICES DROPDOWN END */}

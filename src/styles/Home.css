@@ -1095,7 +1095,7 @@ h1 {
 .cap-strong {
   color: #ffffff;
   font-family: "Inter", sans-serif;
-  font-size: clamp(16px, 2vw, 18px);
+  font-size: clamp(13px, 1.4vw, 18px);
   font-weight: 500;
 }
 
@@ -1199,6 +1199,11 @@ h1 {
     grid-column: 5 !important;
     width: 100% !important;
     padding-left: 0 !important;
+  }
+
+  .cap-right .content-wrapper {
+    padding-left: 20px !important;
+    padding-right: 15px !important;
   }
 }
 

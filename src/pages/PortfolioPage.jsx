@@ -10,7 +10,7 @@ import PortfolioFilters from "../components/PortfolioFilters";
 const PortfolioPage = () => {
   return (
     <Layout>
-      <section className="hero-portfolio px-5">
+      <section className="hero-portfolio">
         <div className="bg-grad" />
         <div className="container-fluid upper-container">
           {/* TOP GRID */}
@@ -62,7 +62,7 @@ const PortfolioPage = () => {
         </div>
       </section>
 
-      <section className="portfolio px-5">
+      <section className="portfolio">
         {/* <PortfolioFilters /> */}
         <PortfolioSection showFilters={true} isHomePage={false} />
       </section>

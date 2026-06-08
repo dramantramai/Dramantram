@@ -49,7 +49,7 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className={`navbar navbar-expand-lg fixed-top py-3`}>
+    <nav className={`navbar navbar-expand-lg fixed-top py-3 ${scrollY > 50 ? "navbar-scrolled" : ""}`}>
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           <img
@@ -109,6 +109,14 @@ const Header = () => {
                 <li>
                   <Link className="dropdown-item" to="/services/ui-ux">
                     UI/UX
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="/services/experiential-lab"
+                  >
+                    Experiential Lab
                   </Link>
                 </li>
               </ul>

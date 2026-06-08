@@ -12,7 +12,7 @@ const ComesWith = () => {
 
   const [active, setActive] = useState("revisions");
 
-  const body = {
+  const CONTENTS = {
     revisions:
       "Experience the unparalleled freedom of unlimited revisions! At our company, we are dedicated to perfecting your project to ensure it aligns perfectly with your vision. We believe that creativity knows no bounds, and through collaborative efforts, we can achieve extraordinary results together. There are absolutely no limits to what we can create, so let your imagination run wild!",
     pricing:
@@ -20,7 +20,7 @@ const ComesWith = () => {
     experience:
       "Seasoned team across branding, motion, live action and digital. Battle-tested workflows deliver on time, every time.",
     pm: "From kickoff to delivery, your project is tracked, communicated, and managed with thoughtful care and accountability.",
-  }[active];
+  };
 
   return (
     <section className="cw-wrap container-fluid">
@@ -68,7 +68,19 @@ const ComesWith = () => {
           <div className="cw-divider" />
 
           {/* Body */}
-          <p className="cw-body">{body}</p>
+          <div className="cw-body-container">
+            {TABS.map((t) => {
+              const isActive = t.key === active;
+              return (
+                <p
+                  key={t.key}
+                  className={`cw-body ${isActive ? "is-active" : ""}`}
+                >
+                  {CONTENTS[t.key]}
+                </p>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

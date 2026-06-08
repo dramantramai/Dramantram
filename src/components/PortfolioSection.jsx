@@ -153,34 +153,45 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
   const renderDropdownList = (options, category) => {
     return (
       <ul
-        className="dropdown-menu show"
+        className="dropdown-menu show custom-dropdown-list"
         style={{
           position: "absolute",
           zIndex: 1000,
+          left: 0,
+          right: 0,
           width: "100%",
-          maxHeight: "300px",
+          maxHeight: "280px",
           overflowY: "auto",
-          marginTop: "5px",
-          backgroundColor: "#fff",
-          border: "1px solid #ddd",
+          marginTop: "8px",
+          backgroundColor: "#121212",
+          border: "1px solid rgba(255, 255, 255, 0.15)",
           borderRadius: "8px",
           listStyle: "none",
-          padding: "0",
+          padding: "6px 0",
           textAlign: "left",
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.6)",
+          backdropFilter: "blur(10px)",
         }}
       >
         {/* Option to clear specific filter */}
         <li
           onClick={() => handleSelect(category, "")}
           style={{
-            padding: "8px 12px",
+            padding: "10px 16px",
             cursor: "pointer",
-            borderBottom: "1px solid #eee",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
             color: "#888",
             fontSize: "0.9rem",
+            transition: "all 0.2s ease",
           }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = "#f0f0f0")}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
+            e.target.style.color = "#ffffff";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = "transparent";
+            e.target.style.color = "#888";
+          }}
         >
           All {category.charAt(0).toUpperCase() + category.slice(1)}
         </li>
@@ -189,15 +200,21 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
             key={index}
             onClick={() => handleSelect(category, option)}
             style={{
-              padding: "8px 12px",
+              padding: "10px 16px",
               cursor: "pointer",
-              borderBottom: "1px solid #eee",
-              color: "#8a8a8aff",
+              borderBottom: index === options.length - 1 ? "none" : "1px solid rgba(255, 255, 255, 0.05)",
+              color: "#e0e0e0",
+              fontSize: "0.9rem",
+              transition: "all 0.2s ease",
             }}
-            onMouseEnter={(e) => (e.target.style.backgroundColor = "#f0f0f0")}
-            onMouseLeave={(e) =>
-              (e.target.style.backgroundColor = "transparent")
-            }
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "rgba(255, 255, 255, 0.08)";
+              e.target.style.color = "#ffffff";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = "#e0e0e0";
+            }}
           >
             {option}
           </li>
@@ -226,7 +243,28 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               <span className="text-truncate">
                 {filters.service || "Service"}
               </span>
-              <span className="caret">ˇ</span>
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{
+                  transition: "transform 0.3s ease",
+                  transform: activeDropdown === "service" ? "rotate(180deg)" : "rotate(0deg)",
+                  color: activeDropdown === "service" ? "#ffffff" : "#888",
+                  marginLeft: "10px",
+                  flexShrink: 0
+                }}
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
             {activeDropdown === "service" &&
               renderDropdownList(SERVICE_OPTIONS, "service")}
@@ -241,7 +279,28 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               onClick={() => toggleDropdown("complexity")}
             >
               <span>{filters.complexity || "Complexity"}</span>
-              <span className="caret">ˇ</span>
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{
+                  transition: "transform 0.3s ease",
+                  transform: activeDropdown === "complexity" ? "rotate(180deg)" : "rotate(0deg)",
+                  color: activeDropdown === "complexity" ? "#ffffff" : "#888",
+                  marginLeft: "10px",
+                  flexShrink: 0
+                }}
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
             {activeDropdown === "complexity" &&
               renderDropdownList(COMPLEXITY_OPTIONS, "complexity")}
@@ -256,7 +315,28 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               onClick={() => toggleDropdown("industry")}
             >
               <span>{filters.industry || "Industry"}</span>
-              <span className="caret">ˇ</span>
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{
+                  transition: "transform 0.3s ease",
+                  transform: activeDropdown === "industry" ? "rotate(180deg)" : "rotate(0deg)",
+                  color: activeDropdown === "industry" ? "#ffffff" : "#888",
+                  marginLeft: "10px",
+                  flexShrink: 0
+                }}
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
             {activeDropdown === "industry" &&
               renderDropdownList(INDUSTRY_OPTIONS, "industry")}
@@ -271,7 +351,28 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               onClick={() => toggleDropdown("duration")}
             >
               <span>{filters.duration || "Duration"}</span>
-              <span className="caret">ˇ</span>
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{
+                  transition: "transform 0.3s ease",
+                  transform: activeDropdown === "duration" ? "rotate(180deg)" : "rotate(0deg)",
+                  color: activeDropdown === "duration" ? "#ffffff" : "#888",
+                  marginLeft: "10px",
+                  flexShrink: 0
+                }}
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </button>
             {activeDropdown === "duration" &&
               renderDropdownList(DURATION_OPTIONS, "duration")}

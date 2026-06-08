@@ -132,8 +132,9 @@
 
   .navbar-light.navbar-expand-lg .btn {
     grid-column: 3 !important;
-    justify-self: center !important;
+    justify-self: end !important;
     margin: 0 !important;
+    margin-right: 4px !important;
   }
 }
 

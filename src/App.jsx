@@ -14,6 +14,7 @@ import UpdateCaseStudy from "./pages/internal/UpdateCaseStudy.jsx";
 import AnimatedVideosPage from "./pages/Services/AnimatedVideosPage.jsx";
 import LiveActionPage from "./pages/Services/LiveActionPage.jsx";
 import UIUXPage from "./pages/Services/UIUXPage.jsx";
+import ExperientialLabPage from "./pages/Services/ExperientialLabPage.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services/branding" element={<BrandingPage />}></Route>
+        <Route
+          path="/services/experiential-lab"
+          element={<ExperientialLabPage />}
+        ></Route>
         <Route
           path="/services/animated-videos"
           element={<AnimatedVideosPage />}

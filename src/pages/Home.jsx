@@ -20,8 +20,9 @@ const servicesData = [
     image: "packaging.png", // Ensure this exists in public folder
     heading: (
       <>
-        With great design language comes
-        <br /> great Brand Recall.
+        <span className="d-inline-block text-nowrap">With great design language comes</span>
+        <br />
+        <span className="d-inline-block text-nowrap">great Brand Recall.</span>
       </>
     ),
     bullets: [
@@ -40,8 +41,9 @@ const servicesData = [
     image: "Animation-Hero-Image.avif", // Replace with your actual image
     heading: (
       <>
-        Stories that move people
-        <br /> frame by frame.
+        <span className="d-inline-block text-nowrap">Stories that move people</span>
+        <br />
+        <span className="d-inline-block text-nowrap">frame by frame.</span>
       </>
     ),
     bullets: [
@@ -60,8 +62,9 @@ const servicesData = [
     image: "Live-Action500px.avif", // Replace with your actual image
     heading: (
       <>
-        Capturing reality with
-        <br /> cinematic excellence.
+        <span className="d-inline-block text-nowrap">Capturing reality with</span>
+        <br />
+        <span className="d-inline-block text-nowrap">cinematic excellence.</span>
       </>
     ),
     bullets: [
@@ -80,8 +83,9 @@ const servicesData = [
     image: "Ui_UX.avif", // Replace with your actual image
     heading: (
       <>
-        Designing interfaces that
-        <br /> feel purely intuitive.
+        <span className="d-inline-block text-nowrap">Designing interfaces that</span>
+        <br />
+        <span className="d-inline-block text-nowrap">feel purely intuitive.</span>
       </>
     ),
     bullets: [
@@ -96,12 +100,13 @@ const servicesData = [
   },
   {
     id: 4,
-    menuTitle: "Event Interactions",
+    menuTitle: "Experiential Lab",
     image: "Event.avif", // Replace with your actual image
     heading: (
       <>
-        Immersive experiences
-        <br /> that leave a mark.
+        <span className="d-inline-block text-nowrap">Immersive experiences</span>
+        <br />
+        <span className="d-inline-block text-nowrap">that leave a mark.</span>
       </>
     ),
     bullets: [
@@ -113,7 +118,7 @@ const servicesData = [
       "Anamorphic Displays",
       "Projection Mapping",
     ],
-    link: "/services/events",
+    link: "/services/experiential-lab",
   },
   {
     id: 5,
@@ -121,8 +126,9 @@ const servicesData = [
     image: "Others500px.avif", // Replace with your actual image
     heading: (
       <>
-        Everything else to
-        <br /> complete the puzzle.
+        <span className="d-inline-block text-nowrap">Everything else to</span>
+        <br />
+        <span className="d-inline-block text-nowrap">complete the puzzle.</span>
       </>
     ),
     bullets: [

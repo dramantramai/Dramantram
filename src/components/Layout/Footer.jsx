@@ -1,9 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/Footer.css";
 import logo from "../../assets/images/biglogo.png";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const Footer = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [referrer, setReferrer] = useState("");
+  const [message, setMessage] = useState("");
+  const [services, setServices] = useState([]);
+  const [duration, setDuration] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleServiceChange = (serviceName) => {
+    if (services.includes(serviceName)) {
+      setServices(services.filter((s) => s !== serviceName));
+    } else {
+      setServices([...services, serviceName]);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!name || !email) {
+      toast.error("Name and Email are required");
+      return;
+    }
+    setLoading(true);
+    try {
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("phone", phone);
+      formData.append("referrer", referrer);
+      formData.append("message", message);
+      services.forEach((s) => formData.append("services", s));
+      formData.append("duration", duration);
+
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/v1/management/send-inquiry`,
+        formData
+      );
+
+      if (res.data.success) {
+        toast.success(res.data.message || "Inquiry sent successfully!");
+        setName("");
+        setEmail("");
+        setPhone("");
+        setReferrer("");
+        setMessage("");
+        setServices([]);
+        setDuration("");
+      } else {
+        toast.error(res.data.message || "Failed to send inquiry");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(
+        error.response?.data?.message || "Failed to submit. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <footer className="footer-section text-white">
       <div className="">
@@ -20,13 +83,16 @@ const Footer = () => {
           {/* Middle Column: Form */}
           <div className="col-md-3 footer-col">
             <div className="content-wrapper">
-              <form className="form-contact">
+              <form className="form-contact" onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label className="form-label">Name</label>
                   <input
                     type="text"
                     placeholder="Enter Name"
                     className="form-control name-form"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -35,6 +101,9 @@ const Footer = () => {
                     type="email"
                     placeholder="Enter Mail ID"
                     className="form-control form-input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -43,13 +112,19 @@ const Footer = () => {
                     type="text"
                     placeholder="Enter Number"
                     className="form-control form-input"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
                   <label className="form-label">
                     How Did You Get to Know About Us?
                   </label>
-                  <select className="form-select" defaultValue="">
+                  <select
+                    className="form-select"
+                    value={referrer}
+                    onChange={(e) => setReferrer(e.target.value)}
+                  >
                     <option value="" disabled hidden>Select option</option>
                     <option value="Google">Google Search</option>
                     <option value="LinkedIn">LinkedIn</option>
@@ -64,6 +139,8 @@ const Footer = () => {
                     rows={3}
                     placeholder="Type your message here"
                     className="form-control form-textarea"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
                 </div>
               </form>
@@ -94,6 +171,8 @@ const Footer = () => {
                       name="services"
                       id={service}
                       className="form-check-input"
+                      checked={services.includes(service)}
+                      onChange={() => handleServiceChange(service)}
                     />
                   </div>
                 ))}
@@ -120,6 +199,8 @@ const Footer = () => {
                         name="duration"
                         id={time}
                         className="form-check-input"
+                        checked={duration === time}
+                        onChange={() => setDuration(time)}
                       />
                     </div>
                   )
@@ -128,8 +209,10 @@ const Footer = () => {
               <button
                 type="button"
                 className="btn btn-warning w-100 submit-button"
+                onClick={handleSubmit}
+                disabled={loading}
               >
-                Submit
+                {loading ? "Submitting..." : "Submit"}
               </button>
             </div>
           </div>

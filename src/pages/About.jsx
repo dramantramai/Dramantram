@@ -104,12 +104,10 @@ const About = () => {
               Now Discussing <br /> Entrepreneurship
             </h2>
             <p>
-              We are on a mission to "Help <br /> organizations become a better
-              brand <br /> by curating meaningful visual stories."
+              We are on a mission to "Help organizations become a better brand by curating meaningful visual stories."
             </p>
             <p>
-              As smart one says, "a plan is only as <br /> good as its
-              execution".
+              As smart one says, "a plan is only as good as its execution".
             </p>
             <GlitchButton
               className="btn-connect-about"

@@ -33,11 +33,14 @@
 }
 
 .discussion-left h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 500;
   margin-bottom: 20px;
   font-family: "raleway", sans-serif;
   margin-left: 50px;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 .discussion-left h2 span {
@@ -213,24 +216,29 @@
     width: auto !important;
     max-width: 100% !important;
     padding-left: 0 !important;
-    padding-right: 40px !important;
+    padding-right: 15px !important;
     padding-top: 0 !important;
   }
 
-  .discussion-container .discussion-left h2,
+  .discussion-container .discussion-left h2 {
+    margin-left: 0 !important;
+    padding-left: 15px !important;
+    font-size: clamp(1.2rem, 2.2vw, 2.5rem) !important;
+  }
+
   .discussion-container .discussion-left p {
     margin-left: 0 !important;
-    padding-left: 30px !important;
+    padding-left: 15px !important;
   }
 
   .discussion-container .btn-connect-about {
     margin-left: 0 !important;
-    padding-left: 30px !important;
+    padding-left: 15px !important;
     color: white !important;
   }
 
   .discussion-container .btn-connect-about:hover {
-    padding-left: 35px !important;
+    padding-left: 20px !important;
     color: white !important;
   }
 
@@ -432,14 +440,27 @@
   background: #000;
   min-height: 100vh;
   color: #fff;
+  position: relative;
 }
 
 @media (min-width: 992px) {
+  .team-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--grid-lines-light);
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 3;
+  }
+
   .team-section .container-fluid-custom > .row {
     display: grid !important;
     grid-template-columns: 2.5% 23.75% 71.25% 2.5% !important;
     width: 100% !important;
     margin: 0 !important;
+    position: relative;
+    z-index: 2;
   }
 
   .team-section .team-sidebar {
@@ -456,6 +477,7 @@
     grid-row: 1 !important;
     width: auto !important;
     max-width: 100% !important;
+    position: relative;
   }
 }
 
@@ -512,22 +534,42 @@
 }
 
 .team-card {
-  background: radial-gradient(circle at top, rgba(139, 0, 0, 0.3) 0%, #000 70%);
+  background: #000;
   border: 1px solid rgba(50, 50, 50, 0.3);
   padding: 40px 30px 30px;
   text-align: center;
-  transition: all 0.3s ease;
   height: 100%;
   min-height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.team-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(139, 0, 0, 0.5) 0%, #000 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.team-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.team-card:hover::before {
+  opacity: 1;
 }
 
 .team-card:hover {
-  background: radial-gradient(circle at top, rgba(139, 0, 0, 0.5) 0%, #000 70%);
   border-color: rgba(139, 0, 0, 0.5);
-  transform: translateY(-5px);
 }
 
 .team-image-wrapper {
@@ -539,12 +581,6 @@
   height: 200px;
   border-radius: 8px;
   object-fit: cover;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
-}
-
-.team-card:hover .team-image {
-  filter: grayscale(0%);
 }
 
 .team-info {
@@ -595,7 +631,7 @@
   }
 
   .discussion-left h2 {
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
     margin-left: 20px;
   }
 
@@ -716,7 +752,7 @@
   }
 
   .discussion-left h2 {
-    font-size: 1.75rem;
+    font-size: clamp(1.4rem, 5vw, 1.75rem);
     margin-left: 10px;
   }
 
@@ -815,7 +851,7 @@
 /* Extra small mobile (max-width: 480px) */
 @media (max-width: 480px) {
   .discussion-left h2 {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 6vw, 1.5rem);
   }
 
   .discussion-left p {

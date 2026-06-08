@@ -43,8 +43,7 @@
 
 /* ---------- Grid panels ---------- */
 .hero-grid {
-  min-height: calc(100vh - 72px);
-  /* leave room for filter row */
+  min-height: 55vh;
   position: relative;
   z-index: 1;
 }
@@ -57,9 +56,10 @@
   position: relative;
   border-right: 1px solid var(--divider);
   display: flex;
-  align-items: center;
-  min-height: 100vh !important;
-  height: 100vh !important;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 55vh;
+  height: 55vh;
 }
 
 .portfolio-panel--left {
@@ -185,7 +185,7 @@
   z-index: 1;
   min-height: 72px;
   padding: 12px clamp(12px, 2vw, 24px);
-  border-top: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
   background: linear-gradient(180deg,
       rgba(255, 255, 255, 0.02) 0%,
       rgba(0, 0, 0, 0.4) 100%);
@@ -199,18 +199,24 @@
   justify-content: space-between;
   gap: 12px;
   padding: 0 16px;
-  border-radius: 0px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
   color: #e9e9e9;
   font-size: 14px;
   letter-spacing: 0.2px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: none;
   transition: border-color 0.25s, background 0.25s, transform 0.05s;
 }
 
 .filter-pill:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.filter-pill.active {
+  background: rgba(15, 15, 15, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(8px) !important;
 }
 
 .filter-pill:active {
@@ -233,13 +239,14 @@
     min-height: auto;
   }
 
-  .panel {
+  .portfolio-panel {
     min-height: auto;
+    height: auto !important;
     border-right: none;
     border-bottom: 1px solid var(--divider);
   }
 
-  .panel--left {
+  .portfolio-panel--left {
     border-left: 1px solid var(--divider);
   }
 
@@ -372,5 +379,110 @@
   .body-strong {
     font-size: 12px;
     /* Smaller text for mobile */
+  }
+}
+
+/* ---------- Desktop Grid Alignment and Visibility ---------- */
+@media (min-width: 992px) {
+  .hero-portfolio::after,
+  .portfolio::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--grid-lines-light);
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-portfolio .upper-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .portfolio-section {
+    position: relative;
+    z-index: 2 !important;
+    padding-top: 0 !important;
+  }
+
+  .portfolio-section .filter-row {
+    display: grid !important;
+    grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    height: 88px !important;
+    min-height: 88px !important;
+    padding-top: 12px !important;
+    padding-bottom: 28px !important;
+    margin-bottom: 24px !important;
+    border-top: none !important;
+    border-bottom: 1px solid var(--divider) !important;
+  }
+
+  .portfolio-section .filter-row > div {
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+    padding: 0 10px !important;
+  }
+
+  .portfolio-section .filter-row > div:nth-child(1) {
+    grid-column: 2 / 3 !important;
+  }
+  .portfolio-section .filter-row > div:nth-child(2) {
+    grid-column: 3 / 4 !important;
+  }
+  .portfolio-section .filter-row > div:nth-child(3) {
+    grid-column: 4 / 5 !important;
+  }
+  .portfolio-section .filter-row > div:nth-child(4) {
+    grid-column: 5 / 6 !important;
+  }
+
+  .hero-portfolio .upper-container > .hero-grid {
+    display: grid !important;
+    grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    min-height: calc(100vh - 112px) !important;
+  }
+
+  .portfolio-panel {
+    border-right: none !important;
+    min-height: calc(100vh - 112px) !important;
+    height: calc(100vh - 112px) !important;
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+  }
+
+  .portfolio-panel--left {
+    border-left: none !important;
+  }
+
+  .portfolio-panel:nth-child(1) {
+    grid-column: 2 / 3 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .portfolio-panel:nth-child(2) {
+    grid-column: 3 / 4 !important;
+  }
+  .portfolio-panel:nth-child(3) {
+    grid-column: 4 / 5 !important;
+  }
+  .portfolio-panel:nth-child(4) {
+    grid-column: 5 / 6 !important;
+  }
+
+  .portfolio-panel--right .portfolio-panel-inner {
+    padding-left: 0 !important;
+  }
+
+  .btn-connect-portfolio {
+    margin-left: 0 !important;
   }
 }
