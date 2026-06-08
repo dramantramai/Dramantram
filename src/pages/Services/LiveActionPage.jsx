@@ -5,6 +5,8 @@ import "../../styles/ServicesPage.css";
 import PortfolioSection from "../../components/PortfolioSection";
 import ComesWith from "../../components/ComesWith";
 import "../../styles/Process.css";
+import GlitchButton from "../../components/GlitchButton";
+import ProcessWrap from "../../components/ProcessWrap";
 
 const LiveActionPage = () => {
   const clients = [
@@ -59,9 +61,11 @@ const LiveActionPage = () => {
               When we talk of an something that exists and works, nothing is
               more convincing than a <strong>live action video</strong>.
             </p>
-            <a className="connect-link" href="/contact">
-              Let’s Connect <i>›</i>
-            </a>
+            <GlitchButton
+              className="connect-link"
+              href="/contact"
+              targetText="Let's Connect"
+            />
           </div>
         </section>
 
@@ -107,8 +111,7 @@ const LiveActionPage = () => {
         </section>
 
         {/* PROCESS */}
-        <section className="process-wrap">
-          <div className="process-grid container-fluid">
+        <ProcessWrap>
             {/* Title column */}
             <div className="pcol title-col">
               <h2 className="stack">
@@ -166,12 +169,11 @@ const LiveActionPage = () => {
                 <li>Service Feedback</li>
               </ul>
             </div>
-          </div>
-        </section>
+        </ProcessWrap>
       </section>
 
       {/* Portfolio Section */}
-      <section className="portfolio px-5">
+      <section className="portfolio">
         <PortfolioSection />
       </section>
 
