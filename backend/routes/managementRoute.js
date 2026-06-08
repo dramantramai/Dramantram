@@ -13,6 +13,7 @@ import {
   getImage4Controller,
   getImage5Controller,
   getHomepageCaseStudiesController,
+  sendInquiryController,
 } from "../controllers/managementController.js";
 import formidable from "express-formidable";
 
@@ -23,6 +24,9 @@ const router = express.Router();
 
 // Create Case Study
 router.post("/create-case-study", formidable(), createCaseStudyController);
+
+// Send Inquiry Email
+router.post("/send-inquiry", sendInquiryController);
 
 // Get Thumbnail Image
 router.get("/get-thumbnail-image/:pid", getThumbnailImageController);
