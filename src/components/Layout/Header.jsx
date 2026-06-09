@@ -85,12 +85,12 @@ const Header = () => {
                 role="none"
                 aria-expanded={isDropdownOpen}
               >
-                Services
+                <span className="nav-link-label">Services</span>
               </a>
               <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
                 <li>
                   <Link className="dropdown-item" to="/services/branding">
-                    Branding
+                    <span className="dropdown-item-label">Branding</span>
                   </Link>
                 </li>
                 <li>
@@ -98,17 +98,17 @@ const Header = () => {
                     className="dropdown-item"
                     to="/services/animated-videos"
                   >
-                    Animated Videos
+                    <span className="dropdown-item-label">Animated Videos</span>
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/services/live-action">
-                    Live Action
+                    <span className="dropdown-item-label">Live Action</span>
                   </Link>
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/services/ui-ux">
-                    UI/UX
+                    <span className="dropdown-item-label">UI/UX</span>
                   </Link>
                 </li>
                 <li>
@@ -116,7 +116,7 @@ const Header = () => {
                     className="dropdown-item"
                     to="/services/experiential-lab"
                   >
-                    Experiential Lab
+                    <span className="dropdown-item-label">Experiential Lab</span>
                   </Link>
                 </li>
               </ul>

@@ -59,6 +59,33 @@
   transform: scaleX(1);
 }
 
+/* Services: underline only the text, not the dropdown arrow */
+.nav-link-light.dropdown-toggle::before {
+  display: none;
+}
+
+.nav-link-label {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-link-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link-light:hover .nav-link-label::before {
+  transform: scaleX(1);
+}
+
 /* Services Dropdown Styles for Light Header */
 .navbar-light .dropdown-menu {
   background-color: #ffffff !important;
@@ -75,8 +102,30 @@
   color: #000000 !important;
 }
 
-.navbar-light .dropdown-item::before {
-  background-color: #000000 !important; /* Black underline on hover instead of red */
+.dropdown-item-label {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-item-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background-color: red;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dropdown-item:hover .dropdown-item-label::before {
+  transform: scaleX(1);
+}
+
+.navbar-light .dropdown-item-label::before {
+  background-color: #000000 !important;
 }
 
 /* Contact Us Button */

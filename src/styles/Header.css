@@ -89,6 +89,33 @@
   transform: scaleX(1);
 }
 
+/* Services: underline only the text, not the dropdown arrow */
+.navbar:not(.navbar-light) .nav-link.dropdown-toggle::before {
+  display: none;
+}
+
+.navbar:not(.navbar-light) .nav-link-label {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar:not(.navbar-light) .nav-link-label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: red;
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar:not(.navbar-light) .nav-link:hover .nav-link-label::before {
+  transform: scaleX(1);
+}
+
 /* Contact Us Button */
 .btn {
   color: rgb(0, 0, 0) !important;
@@ -169,11 +196,20 @@ body {
 }
 
 .dropdown-item::before {
+  display: none;
+}
+
+.dropdown-item-label {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-item-label::before {
   content: "";
   position: absolute;
-  left: 16px; /* Align with text padding */
-  right: 16px;
-  bottom: 4px; /* Space from text */
+  left: 0;
+  right: 0;
+  bottom: -4px;
   height: 2px;
   background-color: red;
   transform: scaleX(0);
@@ -181,7 +217,7 @@ body {
   transition: transform 0.3s ease-in-out;
 }
 
-.dropdown-item:hover::before {
+.dropdown-item:hover .dropdown-item-label::before {
   transform: scaleX(1);
 }
 

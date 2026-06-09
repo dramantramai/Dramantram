@@ -20,7 +20,9 @@ const servicesData = [
     image: "packaging.png", // Ensure this exists in public folder
     heading: (
       <>
-        <span className="d-inline-block text-nowrap">With great design language comes</span>
+        <span className="d-inline-block text-nowrap">
+          With great design language comes
+        </span>
         <br />
         <span className="d-inline-block text-nowrap">great Brand Recall.</span>
       </>
@@ -41,7 +43,9 @@ const servicesData = [
     image: "Animation-Hero-Image.avif", // Replace with your actual image
     heading: (
       <>
-        <span className="d-inline-block text-nowrap">Stories that move people</span>
+        <span className="d-inline-block text-nowrap">
+          Stories that move people
+        </span>
         <br />
         <span className="d-inline-block text-nowrap">frame by frame.</span>
       </>
@@ -62,9 +66,13 @@ const servicesData = [
     image: "Live-Action500px.avif", // Replace with your actual image
     heading: (
       <>
-        <span className="d-inline-block text-nowrap">Capturing reality with</span>
+        <span className="d-inline-block text-nowrap">
+          Capturing reality with
+        </span>
         <br />
-        <span className="d-inline-block text-nowrap">cinematic excellence.</span>
+        <span className="d-inline-block text-nowrap">
+          cinematic excellence.
+        </span>
       </>
     ),
     bullets: [
@@ -83,9 +91,13 @@ const servicesData = [
     image: "Ui_UX.avif", // Replace with your actual image
     heading: (
       <>
-        <span className="d-inline-block text-nowrap">Designing interfaces that</span>
+        <span className="d-inline-block text-nowrap">
+          Designing interfaces that
+        </span>
         <br />
-        <span className="d-inline-block text-nowrap">feel purely intuitive.</span>
+        <span className="d-inline-block text-nowrap">
+          feel purely intuitive.
+        </span>
       </>
     ),
     bullets: [
@@ -104,7 +116,9 @@ const servicesData = [
     image: "Event.avif", // Replace with your actual image
     heading: (
       <>
-        <span className="d-inline-block text-nowrap">Immersive experiences</span>
+        <span className="d-inline-block text-nowrap">
+          Immersive experiences
+        </span>
         <br />
         <span className="d-inline-block text-nowrap">that leave a mark.</span>
       </>
@@ -172,7 +186,7 @@ const Home = () => {
 
   // Initialize state based on current window width immediately to prevent flash
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth <= 768 : false
+    typeof window !== "undefined" ? window.innerWidth <= 768 : false,
   );
 
   useEffect(() => {
@@ -194,25 +208,53 @@ const Home = () => {
 
   const currentService = servicesData[activeIndex];
 
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const aiRef = useRef(null);
+  const aiSectionRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry], obs) => {
-        if (entry.isIntersecting) {
-          setIsIntersecting(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
+    const section = aiSectionRef.current;
+    if (!section) return;
 
-    if (aiRef.current) {
-      observer.observe(aiRef.current);
+    let rafId = 0;
+
+    const isHalfInView = () => {
+      const rect = section.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const visibleTop = Math.max(rect.top, 0);
+      const visibleBottom = Math.min(rect.bottom, vh);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+      return visibleHeight >= rect.height * 0.5;
+    };
+
+    const tryAnimate = () => {
+      if (section.classList.contains("ai-animate")) return;
+      if (!isHalfInView()) return;
+
+      section.classList.add("ai-animate");
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(tryAnimate);
+    };
+
+    const start = () => {
+      window.addEventListener("scroll", onScroll, { passive: true });
+      tryAnimate();
+    };
+
+    // Defer until above-the-fold content (portfolio, images) has laid out
+    if (document.readyState === "complete") {
+      requestAnimationFrame(start);
+    } else {
+      window.addEventListener("load", () => requestAnimationFrame(start), {
+        once: true,
+      });
     }
 
-    return () => observer.disconnect();
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
@@ -352,7 +394,10 @@ const Home = () => {
 
                       <ul className="cap-bullets">
                         {currentService.bullets.map((bullet, idx) => (
-                          <li key={idx} style={{ animationDelay: `${idx * 0.05}s` }}>
+                          <li
+                            key={idx}
+                            style={{ animationDelay: `${idx * 0.05}s` }}
+                          >
                             {bullet}
                           </li>
                         ))}
@@ -378,8 +423,8 @@ const Home = () => {
         </section>
 
         {/* Agency Intro */}
-        <div className="ai-sticky-container" ref={aiRef}>
-          <section className={`ai-wrap ${isIntersecting ? "ai-animate" : ""}`}>
+        <div className="ai-sticky-container">
+          <section className="ai-wrap" ref={aiSectionRef}>
             {/* ... Rest of your component (No changes needed below) ... */}
             <div className="container-fluid px-0">
               <div className="row g-0">
@@ -397,23 +442,24 @@ const Home = () => {
                 </div>
 
                 {/* <div className="col-lg-3 d-none d-lg-block ai-col ai-spacer"></div> */}
-
                 <div className="col-lg-3 col-12 ai-col ai-mid">
-                  <div className="content-wrapper">
+                  <div className="content-wrapper ai-mid-layout">
                     <h2 className="ai-head">
                       A locally set up global creative agency
                     </h2>
 
-                    <p className="ai-copy">
-                      You know us as a creative agency that works towards
-                      skyrocketing the client’s business.
-                    </p>
+                    <div className="ai-mid-body">
+                      <p className="ai-copy">
+                        You know us as a creative agency that works towards
+                        skyrocketing the client’s business.
+                      </p>
 
-                    <p className="ai-copy small">
-                      Our secret is not our services but our approach towards
-                      them.{" "}
-                      <strong>Oops! Did we just disclose our secret?</strong>
-                    </p>
+                      <p className="ai-copy small">
+                        Our secret is not our services but our approach towards
+                        them.{" "}
+                        <strong>Oops! Did we just disclose our secret?</strong>
+                      </p>
+                    </div>
 
                     <a className="ai-cta" href="/about">
                       <span className="ai-cta-accent" />
