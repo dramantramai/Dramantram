@@ -7,7 +7,13 @@
   background: #eceff1;
   color: #0f0f0f;
   min-height: 100vh;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
     sans-serif;
   padding-top: 60px;
 }
@@ -89,7 +95,9 @@
 .cs-card {
   border-radius: 6px;
   display: block;
-  transition: transform 0.5s ease, filter 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
   transform: scale(1);
   cursor: pointer;
 }
@@ -108,7 +116,9 @@
   text-align: center;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
   letter-spacing: 0.5px;
 }
 
@@ -312,7 +322,6 @@
 
 /* responsiveness */
 @media (max-width: 991.98px) {
-
   .cs-header .cs-col,
   .cs-solution .cs-col,
   .cs-header .cs-col-left,

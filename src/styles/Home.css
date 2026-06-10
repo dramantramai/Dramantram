@@ -1622,7 +1622,7 @@ h1 {
     sans-serif;
   font-weight: 800;
   letter-spacing: 0.08em;
-  font-size: clamp(1.25rem, 2.2vw + 0.6rem, 2.6rem);
+  font-size: clamp(1.25rem, 3.5vw + 1rem, 4.5rem);
   line-height: 1.05;
   text-transform: uppercase;
   width: max-content !important;
