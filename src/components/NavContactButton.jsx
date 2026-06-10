@@ -1,5 +1,5 @@
 import React, { useRef, useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import "../styles/NavContactButton.css";
 
 const easeInOut = (t) =>
@@ -136,7 +136,7 @@ const NavContactButton = ({
   );
 
   if (to) {
-    return <Link to={to} {...shared}>{content}</Link>;
+    return <Link href={to} {...shared}>{content}</Link>;
   }
 
   return <a href={href} {...shared}>{content}</a>;

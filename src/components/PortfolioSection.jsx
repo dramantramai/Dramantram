@@ -3,7 +3,7 @@ import PortfolioItem from "./PortfolioItem";
 import "../styles/PortfolioSection.css";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import GlitchButton from "./GlitchButton";
 
 // --- CONSTANTS ---
@@ -74,7 +74,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
   });
 
   // API URL helper
-  const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = "";
 
   // --- 1. Main Fetch Function (Handles both Home & All) ---
   const getCaseStudies = async () => {
@@ -447,7 +447,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               ) : row1Data.length > 0 ? (
                 row1Data.map((item) => (
                   <div key={item._id} className="col">
-                    <Link to={`/case-study/${item.slug}`}>
+                    <Link href={`/case-study/${item.slug}`}>
                       <PortfolioItem
                         imageSrc={`${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
                         title={item.case_study_name}
@@ -470,7 +470,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
           {!loading &&
             row2Data.map((item) => (
               <div key={item._id} className="col">
-                <Link to={`/case-study/${item.slug}`}>
+                <Link href={`/case-study/${item.slug}`}>
                   <PortfolioItem
                     imageSrc={`${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
                     title={item.case_study_name}

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "../../styles/LightHeader.css";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import NavContactButton from "../NavContactButton";
 
 const LINKEDIN_URL = "https://www.linkedin.com/company/dramantram/jobs/";
 
 const LightHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const isContactPage = pathname === "/contact";
 
   return (
@@ -52,32 +53,32 @@ const LightHeader = () => {
                 </a>
                 <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
                   <li>
-                    <Link className="dropdown-item" to="/services/branding">
+                    <Link className="dropdown-item" href="/services/branding">
                       <span className="dropdown-item-label">Branding</span>
                     </Link>
                   </li>
                   <li>
                     <Link
                       className="dropdown-item"
-                      to="/services/animated-videos"
+                      href="/services/animated-videos"
                     >
                       <span className="dropdown-item-label">Animated Videos</span>
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/services/live-action">
+                    <Link className="dropdown-item" href="/services/live-action">
                       <span className="dropdown-item-label">Live Action</span>
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/services/ui-ux">
+                    <Link className="dropdown-item" href="/services/ui-ux">
                       <span className="dropdown-item-label">UI/UX</span>
                     </Link>
                   </li>
                   <li>
                     <Link
                       className="dropdown-item"
-                      to="/services/experiential-lab"
+                      href="/services/experiential-lab"
                     >
                       <span className="dropdown-item-label">Experiential Lab</span>
                     </Link>

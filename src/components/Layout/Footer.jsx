@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import "../../styles/Footer.css";
-import logo from "/logos/DM_White.png";
+const logo = "/logos/DM_White.png";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import linkedinIcon from "../../assets/social/linkedin.png";
-import instagramIcon from "../../assets/social/instagram.png";
-import xIcon from "../../assets/social/twitter.png";
-import behanceIcon from "../../assets/social/behance.png";
+const linkedinIcon = "/social/linkedin.png";
+const instagramIcon = "/social/instagram.png";
+const xIcon = "/social/twitter.png";
+const behanceIcon = "/social/behance.png";
 
 const SOCIAL_LINKS = {
   linkedin: "https://www.linkedin.com/company/dramantram/posts/?feedView=all",
@@ -68,18 +69,9 @@ const Footer = () => {
     }
     setLoading(true);
     try {
-      const formData = new FormData();
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("phone", phone);
-      formData.append("referrer", referrer);
-      formData.append("message", message);
-      services.forEach((s) => formData.append("services", s));
-      formData.append("duration", duration);
-
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/management/send-inquiry`,
-        formData
+        `/api/v1/management/send-inquiry`,
+        { name, email, phone, referrer, message, services, duration }
       );
 
       if (res.data.success) {
@@ -299,7 +291,7 @@ const Footer = () => {
               <p className="mb-1 emp-access-text">Already working with us?</p>
             </div>
             <div className="col-auto">
-              <Link className="employee-login-btn" to="/login">
+              <Link className="employee-login-btn" href="/login">
                 Login as Admin
               </Link>
             </div>

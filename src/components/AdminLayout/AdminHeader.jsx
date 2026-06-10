@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../../assets/images/header.png";
+const logo = "/images/header.png";
 import "../../styles/Header.css";
 import { UseAuth } from "../../context/auth";
 import toast from "react-hot-toast";
@@ -63,7 +63,7 @@ const AdminHeader = () => {
   return (
     <nav className={`navbar navbar-expand-lg fixed-top py-3`}>
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" href="/">
           <img
             src={logo}
             alt="Logo"
@@ -86,12 +86,12 @@ const AdminHeader = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav m-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/internal/case-studies">
+              <Link className="nav-link" href="/internal/case-studies">
                 Case-Studies
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/internal/create-case-study">
+              <Link className="nav-link" href="/internal/create-case-study">
                 Create Case-Study
               </Link>
             </li>
@@ -99,14 +99,14 @@ const AdminHeader = () => {
               <Link
                 onClick={handleLogout}
                 className="nav-link"
-                to="/"
+                href="/"
                 style={{ cursor: "pointer" }}
               >
                 Logout
               </Link>
             </li>
           </ul>
-          <Link className="btn" to="">
+          <Link className="btn" href="">
             Hello - <strong>{auth?.user?.name}</strong>
           </Link>
         </div>

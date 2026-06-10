@@ -3,7 +3,7 @@ import PortfolioItem from "./PortfolioItem";
 import "../styles/PortfolioSection.css";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 // --- CONSTANTS ---
 const INDUSTRY_OPTIONS = [
@@ -72,7 +72,7 @@ const PortfolioFilters = () => {
   });
 
   // API URL helper
-  const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = "";
 
   // 1. Get All Data (Initial Load)
   const getAllCaseStudies = async () => {

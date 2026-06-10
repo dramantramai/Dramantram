@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import "../styles/GlitchButton.css";
 
 const GlitchButton = ({
@@ -84,7 +84,7 @@ const GlitchButton = ({
 
   if (to) {
     return (
-      <Link to={to} {...sharedProps}>
+      <Link href={to} {...sharedProps}>
         {displayText}
       </Link>
     );

@@ -1,8 +1,8 @@
 import "../../styles/Header.css";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import NavContactButton from "../NavContactButton";
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../../assets/images/header.png";
+const logo = "/images/header.png";
 
 const Header = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -51,7 +51,7 @@ const Header = () => {
   return (
     <nav className={`navbar navbar-expand-lg fixed-top py-3 ${scrollY > 50 ? "navbar-scrolled" : ""}`}>
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" href="/">
           <img
             src={logo}
             alt="Logo"
@@ -89,32 +89,32 @@ const Header = () => {
               </a>
               <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
                 <li>
-                  <Link className="dropdown-item" to="/services/branding">
+                  <Link className="dropdown-item" href="/services/branding">
                     <span className="dropdown-item-label">Branding</span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     className="dropdown-item"
-                    to="/services/animated-videos"
+                    href="/services/animated-videos"
                   >
                     <span className="dropdown-item-label">Animated Videos</span>
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/services/live-action">
+                  <Link className="dropdown-item" href="/services/live-action">
                     <span className="dropdown-item-label">Live Action</span>
                   </Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/services/ui-ux">
+                  <Link className="dropdown-item" href="/services/ui-ux">
                     <span className="dropdown-item-label">UI/UX</span>
                   </Link>
                 </li>
                 <li>
                   <Link
                     className="dropdown-item"
-                    to="/services/experiential-lab"
+                    href="/services/experiential-lab"
                   >
                     <span className="dropdown-item-label">Experiential Lab</span>
                   </Link>
@@ -124,12 +124,12 @@ const Header = () => {
             {/* SERVICES DROPDOWN END */}
 
             <li className="nav-item">
-              <Link className="nav-link" to="/portfolio">
+              <Link className="nav-link" href="/portfolio">
                 Portfolio
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <Link className="nav-link" href="/about">
                 About Us
               </Link>
             </li>
