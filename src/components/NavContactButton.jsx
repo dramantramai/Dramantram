@@ -5,7 +5,7 @@ import "../styles/NavContactButton.css";
 const easeInOut = (t) =>
   t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
-const MAX_FILL_PERCENT = 50;
+const MAX_FILL_PERCENT = 100;
 
 const NavContactButton = ({
   variant = "dark",

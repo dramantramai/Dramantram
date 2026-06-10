@@ -152,9 +152,14 @@
     padding-left: 0;
   }
 
-  /* Third column logos sit near the centre grid line — nudge left */
+  /* Increase gap between Column 2 and Column 3 (aligning to center grid line) */
+  .lower-section .logo-item:nth-child(4n + 2) {
+    padding-right: 24px !important;
+  }
+
   .lower-section .logo-item:nth-child(4n + 3) {
-    padding-right: 16px;
+    padding-left: 24px !important;
+    padding-right: 0 !important;
   }
 
   .lower-section .service-list {

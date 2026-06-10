@@ -97,7 +97,7 @@
   letter-spacing: 0.5px;
   display: grid;
   gap: 8px;
-  font-size: clamp(20px, 3.2vw, 40px);
+  font-size: clamp(1.3rem, 1.5vw + 0.5rem, 2.2rem);
 }
 
 .stack,
@@ -128,7 +128,7 @@
 .step-head h3 {
   margin: 0;
   font-weight: 500;
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.75rem);
   white-space: nowrap;
 }
 

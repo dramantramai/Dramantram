@@ -347,7 +347,7 @@ const Home = () => {
               <div className="row g-0">
                 {/* LEFT: Image (Dynamic based on state) */}
                 <div className="col-lg-6 col-12 cap-col cap-left">
-                  <div className="">
+                  <div className="cap-hero-frame">
                     {/* OPTIONAL: Add a 'fade-in' class via CSS keyframes for smooth transitions */}
                     <img
                       key={currentService.image} // Key prop forces React to re-render image when src changes (good for animation)
