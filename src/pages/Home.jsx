@@ -407,12 +407,10 @@ const Home = () => {
                     <a href={currentService.link} className="cap-cta">
                       <span className="cap-cta-accent" />
                       <GlitchButton
-                        href={currentService.link}
+                        as="span"
                         targetText="Explore More"
                         className="explore-btn"
-                      >
-                        <span>Explore More</span>
-                      </GlitchButton>
+                      />
                       <span className="cap-chev">›</span>
                     </a>
                   </div>
@@ -464,12 +462,10 @@ const Home = () => {
                     <a className="ai-cta" href="/about">
                       <span className="ai-cta-accent" />
                       <GlitchButton
-                        href="/about"
+                        as="span"
                         targetText="Explore More"
-                        className={"explore-btn2"}
-                      >
-                        <span>Explore More</span>
-                      </GlitchButton>
+                        className="explore-btn2"
+                      />
                       <span className="ai-chev">›</span>
                     </a>
                   </div>

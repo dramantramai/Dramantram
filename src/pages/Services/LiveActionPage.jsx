@@ -7,21 +7,14 @@ import ComesWith from "../../components/ComesWith";
 import "../../styles/Process.css";
 import GlitchButton from "../../components/GlitchButton";
 import ProcessWrap from "../../components/ProcessWrap";
+import ServicesLogosRow from "../../components/ServicesLogosRow";
+
+const LIVE_ACTION_SERVICES = [
+  ["Ad Film", "Corporate Videos", "Testimonials"],
+  ["Event Video", "Demo Video"],
+];
 
 const LiveActionPage = () => {
-  const clients = [
-    { alt: "Deloitte", src: "/logos/clients/deloitte.png" },
-    { alt: "EY", src: "/logos/clients/Ey.png" },
-    { alt: "PwC", src: "/logos/clients/PWC.png" },
-    { alt: "United Nations", src: "/logos/clients/United Nations.png" },
-    { alt: "Amazon", src: "/logos/clients/Amazon Logo.png" },
-    { alt: "Walmart", src: "/logos/clients/Walmart.png" },
-    { alt: "NPCI", src: "/logos/clients/npci.png" },
-    { alt: "Razorpay", src: "/logos/clients/razorpay.png" },
-    { alt: "boAt", src: "/logos/clients/boat.png" },
-    { alt: "HCL", src: "/logos/clients/hcl.png" },
-  ];
-
   return (
     <Layout>
       <section className="brand-wrap container-fluid service-intro pt-5">
@@ -69,41 +62,7 @@ const LiveActionPage = () => {
           </div>
         </section>
 
-        {/* SERVICES + LOGOS ROW */}
-        <section className="row gx-0 align-items-start lower-section">
-          {/* LEFT SERVICE LISTS */}
-          <div className="col-lg-6 px-4 px-lg-5">
-            <div className="row row-cols-1 row-cols-md-2 g-4 service-lists">
-              <div className="col">
-                <ul className="service-list">
-                  <li>Ad Film</li>
-                  <li>Corporate Videos</li>
-                  <li>Testimonials</li>
-                </ul>
-              </div>
-              <div className="col">
-                <ul className="service-list">
-                  <li>Event Video</li>
-                  <li>Demo Video</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT LOGOS */}
-          <div className="col-lg-6 px-4 px-lg-5">
-            <p className="logos-title mb-4">
-              Proud to work with the biggest brands in India &amp; Abroad
-            </p>
-            <div className="logos-grid">
-              {clients.map((client) => (
-                <div key={client.alt} className="logo-item">
-                  <img src={client.src} alt={client.alt} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ServicesLogosRow serviceColumns={LIVE_ACTION_SERVICES} />
 
         {/* PROCESS */}
         <ProcessWrap>

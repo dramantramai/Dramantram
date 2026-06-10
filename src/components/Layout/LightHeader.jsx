@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../styles/LightHeader.css";
+import "../../styles/NavContactButton.css";
 import { Link, useLocation } from "react-router-dom";
 
 const LINKEDIN_URL = "https://www.linkedin.com/company/PLACEHOLDER";

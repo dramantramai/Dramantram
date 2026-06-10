@@ -1,0 +1,31 @@
+.btn.nav-contact-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  overflow: hidden;
+  text-decoration: none;
+  text-align: center;
+  border: none !important;
+  outline: none !important;
+  background-color: #ffe600 !important;
+  background-image: none !important;
+  box-shadow: inset 0 0 0 0 var(--nav-contact-hover-bg) !important;
+  transition:
+    box-shadow var(--nav-contact-fill-duration) cubic-bezier(0.4, 0, 0.2, 1) !important,
+    color 0.3s ease 0.45s !important;
+}
+
+.btn.nav-contact-btn:hover,
+.btn.nav-contact-btn:focus,
+.btn.nav-contact-btn:focus-visible,
+.btn.nav-contact-btn:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: inset 0 0 0 var(--nav-contact-fill-spread) var(--nav-contact-hover-bg) !important;
+  color: var(--nav-contact-hover-text) !important;
+  background-color: #ffe600 !important;
+  background-image: none !important;
+}

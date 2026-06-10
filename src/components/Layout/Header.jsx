@@ -1,4 +1,5 @@
 import "../../styles/Header.css";
+import "../../styles/NavContactButton.css";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/images/header.png";

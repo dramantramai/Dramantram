@@ -126,17 +126,6 @@
   width: 150px;
 }
 
-.nav-contact-btn {
-  text-decoration: none;
-  text-align: center;
-  transition: background-color 0.35s ease, color 0.35s ease;
-}
-
-.nav-contact-btn:hover {
-  background-color: red !important;
-  color: #ffffff !important;
-}
-
 /* Move the "Contact Us" button to the right */
 .ms-auto {
   margin-left: auto;

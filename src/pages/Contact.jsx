@@ -32,16 +32,13 @@ Gomti Nagar, Lucknow, Uttar Pradesh 226010`,
 
   return (
     <LightLayout>
-      <section className="page-grid pt-5">
-        <section className="contact-wrap pt-4">
+      <section className="page-grid">
+        <section className="contact-wrap">
           {/* Office Locations */}
           <section className="offices-wrap">
             <div className="container-fluid office-align">
               {locations.map((loc, i) => (
-                <div
-                  className="row g-0 office-row align-items-center"
-                  key={loc.city}
-                >
+                <div className="row g-0 office-row" key={loc.city}>
                   {/* Col 1 — Image */}
                   <div className="col-12 col-lg-3 office-col office-col--image">
                     <div

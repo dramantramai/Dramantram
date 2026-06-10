@@ -122,25 +122,39 @@
     grid-column: 2 !important;
     width: auto !important;
     max-width: 100% !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
   }
 
   .lower-section .service-lists > .col:nth-child(2) {
     grid-column: 3 !important;
     width: auto !important;
     max-width: 100% !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
   }
 
-  /* Keep logos title + grid together in one cell — prevents vertical shift */
+  /* Match hero column padding (brand-col uses 40px) */
   .lower-section > .col-lg-6:nth-child(2) {
     grid-column: 4 / 6 !important;
     width: auto !important;
     max-width: 100% !important;
     padding-left: 40px !important;
     padding-right: 40px !important;
+  }
+
+  .lower-section .logos-title {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .lower-section .logos-grid {
+    padding-left: 0;
+  }
+
+  /* Third column logos sit near the centre grid line — nudge left */
+  .lower-section .logo-item:nth-child(4n + 3) {
+    padding-right: 16px;
   }
 
   .lower-section .service-list {
@@ -260,32 +274,36 @@
   margin: 12px 0 12px;
 }
 
-/* Logo container */
+/* Logo container — fixed 4 columns so the last row doesn't orphan a logo */
 .logos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 32px;
+  row-gap: 32px;
+  align-items: center;
 }
 
 /* Each logo item */
 .logo-item {
-  flex: 1 1 22%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 10px 0;
+  min-height: 52px;
+  padding: 6px 4px;
 }
 
 /* Image size inside each logo */
 .logo-item img {
-  max-width: 100px;
-  max-height: 25px;
   width: auto;
   height: auto;
+  max-width: 130px;
+  max-height: 40px;
+  min-width: 72px;
+  min-height: 28px;
   opacity: 0.9;
   filter: brightness(1.2) grayscale(1);
   object-fit: contain;
+  object-position: left center;
   transition: transform 0.3s ease;
 }
 
@@ -362,17 +380,32 @@
     margin-top: 10px;
   }
 
+  .lower-section > .col-lg-6:nth-child(2) {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .lower-section .logos-grid {
+    padding-left: 0;
+  }
+
   .logos-grid {
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 24px;
   }
 
   .logo-item {
-    flex: 1 1 45%;
+    min-height: 48px;
+    justify-content: center;
   }
 
   .logo-item img {
-    max-width: 80px;
-    max-height: 22px;
+    max-width: 110px;
+    max-height: 36px;
+    min-width: 64px;
+    min-height: 24px;
+    object-position: center;
   }
 
   /* Hide grid lines on tablet */
@@ -454,17 +487,23 @@
   }
 
   .logos-grid {
-    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 16px;
+    row-gap: 20px;
   }
 
   .logo-item {
-    flex: 1 1 45%;
-    margin: 5px 0;
+    min-height: 44px;
+    margin: 0;
+    justify-content: center;
   }
 
   .logo-item img {
-    max-width: 70px;
-    max-height: 20px;
+    max-width: 100px;
+    max-height: 32px;
+    min-width: 56px;
+    min-height: 22px;
+    object-position: center;
   }
 }
 
@@ -504,17 +543,21 @@
   }
 
   .logos-grid {
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    row-gap: 16px;
   }
 
   .logo-item {
-    flex: 1 1 100%;
     justify-content: center;
   }
 
   .logo-item img {
-    max-width: 80px;
-    max-height: 22px;
+    max-width: 96px;
+    max-height: 30px;
+    min-width: 52px;
+    min-height: 20px;
+    object-position: center;
   }
 
   .lower-section {

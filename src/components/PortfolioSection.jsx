@@ -139,16 +139,40 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, isHomePage]);
 
+  const scrollToFilterRow = () => {
+    const el = filterRowRef.current;
+    if (!el) return;
+
+    const portfolioSection = el.closest("section.portfolio") ?? el;
+    const top =
+      portfolioSection.getBoundingClientRect().top + window.pageYOffset;
+
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (!activeDropdown) return;
+
+    const handleClickOutside = (event) => {
+      if (
+        filterRowRef.current &&
+        !filterRowRef.current.contains(event.target)
+      ) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [activeDropdown]);
+
   // Toggle Dropdown Handler
   const toggleDropdown = (name) => {
     const isOpening = activeDropdown !== name;
     setActiveDropdown(isOpening ? name : null);
 
-    if (isOpening && filterRowRef.current) {
-      filterRowRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    if (isOpening) {
+      scrollToFilterRow();
     }
   };
 
