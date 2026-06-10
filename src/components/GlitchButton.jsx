@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import "./GlitchButton.css";
 // Assuming Link is a wrapper for <a> or a router Link
 const GlitchButton = ({
   children,
@@ -73,7 +74,7 @@ const GlitchButton = ({
   // The 'data-text' is crucial for the CSS pseudo-element glitch
   return (
     <a
-      className={`${className} ${isScrambling ? "is-scrambling" : ""}`}
+      className={`glitch-button ${className ?? ""} ${isScrambling ? "is-scrambling" : ""}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       data-text={targetText} // Required for CSS glitch

@@ -5,7 +5,7 @@ import { useState } from "react";
 const ComesWith = () => {
   const TABS = [
     { key: "revisions", label: "Unlimited\nRevisions" },
-    { key: "pricing", label: "Clear,\nFixed pricing" },
+    { key: "pricing", label: "Clear and\nFixed pricing" },
     { key: "experience", label: "A Wealth of\nExperience" },
     { key: "pm", label: "Project\nManagement" },
   ];

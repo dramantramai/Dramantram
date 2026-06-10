@@ -278,10 +278,6 @@ h1 {
 
 .btn-connect:hover {
   cursor: pointer;
-
-  border-top: 2px solid rgba(255, 255, 255, 0.06) !important;
-
-  border-bottom: 2px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 /* Base style for the glitch layers */
@@ -1129,24 +1125,51 @@ h1 {
   padding-left: var(--col-inset, 20px) !important;
   margin-top: auto; /* Push to the bottom */
   font-size: clamp(14px, 2vw, 16px);
+  min-height: 35px;
+  box-sizing: border-box;
+}
+
+.cap-cta::before,
+.cap-cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.06);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cap-cta::before {
+  top: 0;
+}
+
+.cap-cta::after {
+  bottom: 0;
 }
 
 .cap-cta:hover {
   color: #fff;
 }
 
+.cap-cta:hover::before,
+.cap-cta:hover::after {
+  opacity: 1;
+}
+
 .cap-cta-accent {
   position: absolute;
   left: 0;
-  height: 35px;
+  top: 0;
+  height: 100%;
   width: 3px;
   background: #f6d400;
   border-radius: 2px;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .cap-cta:hover .cap-cta-accent {
-  transform: scaleY(1.2) translateX(-2px);
   background-color: #fbff00;
 }
 
@@ -1450,7 +1473,7 @@ h1 {
   }
 
   .ai-mid-layout .ai-cta-accent {
-    height: 2em !important;
+    height: 100% !important;
   }
 }
 
@@ -1580,20 +1603,47 @@ h1 {
   position: relative;
   font-size: clamp(1.05rem, 5cqi, 1.5rem);
   width: fit-content;
+  min-height: 1.75em;
+  box-sizing: border-box;
+}
+
+.ai-cta::before,
+.ai-cta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ai-cta::before {
+  top: 0;
+}
+
+.ai-cta::after {
+  bottom: 0;
+}
+
+.ai-cta:hover::before,
+.ai-cta:hover::after {
+  opacity: 1;
 }
 
 .ai-cta-accent {
   position: absolute;
   left: 0;
+  top: 0;
   width: 2px;
-  height: 1.75em;
+  height: 100%;
   background: #e03a2f;
   border-radius: 2px;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .ai-cta:hover .ai-cta-accent {
-  transform: scaleY(1.2) translateX(-2px);
   background-color: #ff1a1a;
 }
 

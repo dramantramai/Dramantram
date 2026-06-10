@@ -102,8 +102,6 @@
 
 .btn-connect-portfolio:hover {
   cursor: pointer;
-  border-top: 2px solid rgba(255, 255, 255, 0.06) !important;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 /* ---------- Right rail (Let’s Connect) ---------- */

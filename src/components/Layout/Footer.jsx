@@ -1,9 +1,46 @@
 import React, { useState } from "react";
 import "../../styles/Footer.css";
-import logo from "../../assets/images/biglogo.png";
-import { Link } from "react-router-dom";
+import logo from "/logos/DM_White.png";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import linkedinIcon from "../../assets/social/linkedin.png";
+import instagramIcon from "../../assets/social/instagram.png";
+import xIcon from "../../assets/social/twitter.png";
+import behanceIcon from "../../assets/social/behance.png";
+
+const SOCIAL_LINKS = {
+  linkedin: "https://www.linkedin.com/company/dramantram/posts/?feedView=all",
+  instagram: "https://www.instagram.com/dramantram/",
+  x: "https://x.com/Dramantram",
+  behance: "https://www.behance.net/dramantram",
+};
+
+const socialIcons = [
+  {
+    key: "linkedin",
+    label: "LinkedIn",
+    href: SOCIAL_LINKS.linkedin,
+    src: linkedinIcon,
+  },
+  {
+    key: "instagram",
+    label: "Instagram",
+    href: SOCIAL_LINKS.instagram,
+    src: instagramIcon,
+  },
+  {
+    key: "x",
+    label: "X",
+    href: SOCIAL_LINKS.x,
+    src: xIcon,
+  },
+  {
+    key: "behance",
+    label: "Behance",
+    href: SOCIAL_LINKS.behance,
+    src: behanceIcon,
+  },
+];
 
 const Footer = () => {
   const [name, setName] = useState("");
@@ -76,7 +113,23 @@ const Footer = () => {
           <div className="col-md-3 footer-col">
             <div className="content-wrapper">
               <h1 className="have-a-project-text">HAVE A PROJECT IN MIND?</h1>
-              <img src={logo} alt="Mask Logo" className="footer-logo mt-4" />
+              <div className="footer-brand-block">
+                <img src={logo} alt="Mask Logo" className="footer-logo mt-4" />
+                <div className="footer-social">
+                  {socialIcons.map(({ key, label, href, src }) => (
+                    <a
+                      key={key}
+                      href={href}
+                      className="footer-social-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                    >
+                      <img src={src} alt="" className="footer-social-icon" />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -150,7 +203,7 @@ const Footer = () => {
           {/* Services Column */}
           <div className="col-md-3 checkbox-column footer-col">
             <div className="content-wrapper">
-              <h5 className="mb-3 services-head">What Services Do You Need?</h5>
+              <h5 className="mb-3 services-head">What Services Do <br />You Need?</h5>
               <div className="mb-4">
                 {[
                   "Branding",
@@ -183,7 +236,7 @@ const Footer = () => {
           {/* Duration Column */}
           <div className="col-md-3 checkbox-column footer-col">
             <div className="content-wrapper">
-              <h5 className="mb-3 duration-head">When Do you Need It?</h5>
+              <h5 className="mb-3 duration-head">When Do you Need<br />It?</h5>
               <div className="mb-4">
                 {["ASAP", "Within 15 Days", "Within a Month", "Not Sure"].map(
                   (time) => (

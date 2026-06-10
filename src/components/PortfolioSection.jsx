@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PortfolioItem from "./PortfolioItem";
 import "../styles/PortfolioSection.css";
 import axios from "axios";
@@ -65,6 +65,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
 
   // State for Dropdowns
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const filterRowRef = useRef(null);
   const [filters, setFilters] = useState({
     service: "",
     complexity: "",
@@ -140,7 +141,15 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
 
   // Toggle Dropdown Handler
   const toggleDropdown = (name) => {
-    setActiveDropdown(activeDropdown === name ? null : name);
+    const isOpening = activeDropdown !== name;
+    setActiveDropdown(isOpening ? name : null);
+
+    if (isOpening && filterRowRef.current) {
+      filterRowRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
 
   // Select Option Handler
@@ -231,7 +240,10 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
     <div className={`portfolio-section ${isHomePage ? "home-portfolio" : ""}`}>
       {/* FILTER ROW - Only show if showFilters is true AND not on Homepage */}
       {showFilters && !isHomePage && (
-        <div className="row g-0 p-0 filter-row col-md-12">
+        <div
+          ref={filterRowRef}
+          className="row g-0 p-0 filter-row col-md-12"
+        >
           {/* SERVICE FILTER */}
           <div className="col-6 col-md-3 position-relative">
             <button
@@ -395,7 +407,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               <GlitchButton
                 href="/contact"
                 className="connect-link"
-                targetText="Let's Connect ›"
+                targetText="Let's Connect"
               />
             </div>
           </div>

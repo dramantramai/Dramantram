@@ -88,11 +88,6 @@ const AnimatedVideosPage = () => {
                   <li>e-Learning Video</li>
                   <li>Animated Graphic/GIF</li>
                 </ul>
-                <a href="/contact">
-                  <button className=" btn-cta connect-btn">
-                    Let’s Connect <span>›</span>
-                  </button>
-                </a>
               </div>
             </div>
           </div>

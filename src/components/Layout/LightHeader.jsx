@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "../../styles/LightHeader.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
+const LINKEDIN_URL = "https://www.linkedin.com/company/PLACEHOLDER";
 
 const LightHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isContactPage = pathname === "/contact";
 
   return (
     <>
@@ -91,9 +95,20 @@ const LightHeader = () => {
                 </a>
               </li>
             </ul>
-            <Link className="btn" to="/contact">
-              Contact Us
-            </Link>
+            {isContactPage ? (
+              <a
+                className="btn nav-contact-btn"
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                xyz
+              </a>
+            ) : (
+              <Link className="btn nav-contact-btn" to="/contact">
+                Contact Us
+              </Link>
+            )}
           </div>
         </div>
       </nav>

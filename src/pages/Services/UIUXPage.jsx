@@ -83,11 +83,6 @@ const UIUXPage = () => {
                 <ul className="service-list">
                   <li>Web Development</li>
                 </ul>
-                <a href="/contact">
-                  <button className=" btn-cta connect-btn">
-                    Let’s Connect <span>›</span>
-                  </button>
-                </a>
               </div>
             </div>
           </div>

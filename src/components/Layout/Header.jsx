@@ -2,7 +2,6 @@ import "../../styles/Header.css";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/images/header.png";
-import GlitchButton from "../GlitchButton";
 
 const Header = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -134,9 +133,9 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-          <GlitchButton className="btn" href="/contact" targetText="Contact Us">
-            <a href="/contact">Contact Us</a>
-          </GlitchButton>
+          <Link className="btn nav-contact-btn" to="/contact">
+            Contact Us
+          </Link>
         </div>
       </div>
     </nav>

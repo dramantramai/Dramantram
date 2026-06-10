@@ -85,12 +85,6 @@ const ExperientialLabPage = () => {
                   <li>Catalogues &amp; Brochure Design</li>
                   <li>Packaging Design</li>
                 </ul>
-                <a href="/contact">
-                  <button className=" btn-cta connect-btn">
-                    Let’s Connect
-                    <span>›</span>
-                  </button>
-                </a>
               </div>
             </div>
           </div>

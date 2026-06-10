@@ -148,7 +148,7 @@ const About = () => {
                 At Dramantram, we have laid down{" "}
                 <strong>five philosophies</strong> that act as a guiding tool for
                 our people, processes, and deliverables for every stage of our
-                interactions and project executions. These philosophies are –
+                interactions and project executions.
               </p>
             </div>
 
