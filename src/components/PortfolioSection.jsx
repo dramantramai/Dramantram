@@ -256,9 +256,8 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
     );
   };
 
-  // Split data for the layout requirements
-  const row1Data = caseStudies.slice(0, 3);
-  const row2Data = caseStudies.slice(3);
+  // Limit case studies to 6 items if on homepage (for a 3x2 grid), otherwise show all matching case studies
+  const displayedCaseStudies = isHomePage ? caseStudies.slice(0, 6) : caseStudies;
 
   return (
     <div className={`portfolio-section ${isHomePage ? "home-portfolio" : ""}`}>
@@ -416,15 +415,15 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
         </div>
       )}
 
-      <div className="container-fluid">
-        <div className="row g-4 align-items-start col-md-12">
-          {/* LEFT COLUMN (static text) */}
-          <div className="col-md-3 left-col">
-            <div className="intro-box">
-              <h1>
-                Portfolio &<br /> Case Studies
+      <div className="container-fluid container-fluid-custom">
+        <div className="row g-0">
+          {/* Left Sidebar - Styled like Our Teams */}
+          <div className="col-lg-3 portfolio-sidebar">
+            <div className="sidebar-content">
+              <h1 className="portfolio-title">
+                Portfolio & Case Studies
               </h1>
-              <p>
+              <p className="portfolio-description">
                 We're brand builders at heart, creators by design, tech
                 enthusiasts in practice, and integrated at our core.
               </p>
@@ -436,24 +435,25 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN - UPPER ROW (First 3 items) */}
-          <div className="col-md-9 right-col">
-            <div className="row g-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
+          {/* Right Column - Grid matching Our Teams */}
+          <div className="col-lg-9">
+            <div className="row g-0">
               {loading ? (
-                // Simple Loading State
                 <div className="col-12 text-center text-white py-5">
                   <h5>Loading...</h5>
                 </div>
-              ) : row1Data.length > 0 ? (
-                row1Data.map((item) => (
-                  <div key={item._id} className="col">
-                    <Link href={`/case-study/${item.slug}`}>
-                      <PortfolioItem
-                        imageSrc={item.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
-                        title={item.case_study_name}
-                        slug={item.slug}
-                      />
-                    </Link>
+              ) : displayedCaseStudies.length > 0 ? (
+                displayedCaseStudies.map((item) => (
+                  <div key={item._id} className="col-md-6 col-lg-4">
+                    <div className="portfolio-card-wrapper">
+                      <Link href={`/case-study/${item.slug}`}>
+                        <PortfolioItem
+                          imageSrc={`${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
+                          title={item.case_study_name}
+                          slug={item.slug}
+                        />
+                      </Link>
+                    </div>
                   </div>
                 ))
               ) : (
@@ -463,21 +463,6 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               )}
             </div>
           </div>
-        </div>
-
-        {/* BOTTOM ROW (Next 4+ items) - Spanning full width */}
-        <div className="row g-4 mt-1 right-lower col-md-12 row-cols-md-4">
-          {!loading &&
-            row2Data.map((item) => (
-              <div key={item._id} className="col">
-                <Link href={`/case-study/${item.slug}`}>
-                  <PortfolioItem
-                    imageSrc={item.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
-                    title={item.case_study_name}
-                  />
-                </Link>
-              </div>
-            ))}
         </div>
       </div>
     </div>
