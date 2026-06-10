@@ -11,7 +11,10 @@ export async function GET(request, { params }) {
 
     if (caseStudy?.thumbnail_image?.data) {
       return new Response(caseStudy.thumbnail_image.data, {
-        headers: { "Content-Type": caseStudy.thumbnail_image.contentType },
+        headers: {
+          "Content-Type": caseStudy.thumbnail_image.contentType,
+          "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
+        },
       });
     }
     return Response.json(

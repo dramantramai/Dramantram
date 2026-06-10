@@ -26,5 +26,9 @@ const CaseStudySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+CaseStudySchema.index({ showOnHomepage: 1, createdAt: -1 });
+CaseStudySchema.index({ createdAt: -1 });
+CaseStudySchema.index({ services: 1, industry: 1, duration: 1, complexity: 1 });
+
 export default mongoose.models.CaseStudy ||
   mongoose.model("CaseStudy", CaseStudySchema);
