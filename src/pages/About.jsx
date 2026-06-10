@@ -185,7 +185,7 @@ const About = () => {
                   Avengers have empowered multiple startups and enterprises
                   around the world with our services, SINCE 2015.
                 </p>
-                <a href="#" className="join-team-link">
+                <a href="https://www.linkedin.com/company/dramantram/jobs/" target="_blank" rel="noopener noreferrer" className="join-team-link">
                   Join Our Talented Team
                   <span className="ab-arrow">›</span>
                 </a>

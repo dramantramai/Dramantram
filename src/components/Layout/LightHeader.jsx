@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "../../styles/LightHeader.css";
-import "../../styles/NavContactButton.css";
 import { Link, useLocation } from "react-router-dom";
+import NavContactButton from "../NavContactButton";
 
-const LINKEDIN_URL = "https://www.linkedin.com/company/PLACEHOLDER";
+const LINKEDIN_URL = "https://www.linkedin.com/company/dramantram/jobs/";
 
 const LightHeader = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -97,18 +97,18 @@ const LightHeader = () => {
               </li>
             </ul>
             {isContactPage ? (
-              <a
-                className="btn nav-contact-btn"
+              <NavContactButton
+                variant="light"
                 href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                xyz
-              </a>
+                Join Us
+              </NavContactButton>
             ) : (
-              <Link className="btn nav-contact-btn" to="/contact">
+              <NavContactButton variant="light" to="/contact">
                 Contact Us
-              </Link>
+              </NavContactButton>
             )}
           </div>
         </div>

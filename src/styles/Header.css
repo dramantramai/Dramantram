@@ -116,16 +116,6 @@
   transform: scaleX(1);
 }
 
-/* Contact Us Button */
-.btn {
-  color: rgb(0, 0, 0) !important;
-  background-color: #ffe600 !important;
-  font-family: "Inter";
-  font-weight: bolder;
-  font-style: normal;
-  width: 150px;
-}
-
 /* Move the "Contact Us" button to the right */
 .ms-auto {
   margin-left: auto;

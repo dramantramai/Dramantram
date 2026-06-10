@@ -202,70 +202,91 @@ const Footer = () => {
 
           {/* Services Column */}
           <div className="col-md-3 checkbox-column footer-col">
-            <div className="content-wrapper">
-              <h5 className="mb-3 services-head">What Services Do <br />You Need?</h5>
-              <div className="mb-4">
+            <div className="content-wrapper footer-options-wrap">
+              <h5 className="footer-options-head">
+                What Services Do <br />
+                You Need?
+              </h5>
+              <div className="footer-options-list">
                 {[
                   "Branding",
                   "Animation",
                   "Live Action",
                   "UI/UX",
                   "Others",
-                ].map((service) => (
-                  <div
-                    key={service}
-                    className="d-flex justify-content-between option-row"
-                  >
-                    <label htmlFor={service} className="form-label">
-                      {service}
+                ].map((service) => {
+                  const isSelected = services.includes(service);
+                  return (
+                    <label
+                      key={service}
+                      htmlFor={service}
+                      className={`footer-option-row${isSelected ? " is-selected" : ""}`}
+                    >
+                      <span className="footer-option-accent" aria-hidden="true" />
+                      <span className="footer-option-content">
+                        <span className="footer-option-label">{service}</span>
+                        <input
+                          type="checkbox"
+                          name="services"
+                          id={service}
+                          className="footer-option-input"
+                          checked={isSelected}
+                          onChange={() => handleServiceChange(service)}
+                        />
+                      </span>
                     </label>
-                    <input
-                      type="checkbox"
-                      name="services"
-                      id={service}
-                      className="form-check-input"
-                      checked={services.includes(service)}
-                      onChange={() => handleServiceChange(service)}
-                    />
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
 
           {/* Duration Column */}
           <div className="col-md-3 checkbox-column footer-col">
-            <div className="content-wrapper">
-              <h5 className="mb-3 duration-head">When Do you Need<br />It?</h5>
-              <div className="mb-4">
-                {["ASAP", "Within 15 Days", "Within a Month", "Not Sure"].map(
-                  (time) => (
-                    <div
-                      key={time}
-                      className="d-flex justify-content-between option-row"
-                    >
-                      <label htmlFor={time} className="form-label">
-                        {time}
+            <div className="content-wrapper footer-options-wrap">
+              <h5 className="footer-options-head">
+                When Do You Need <br />
+                Your Product?
+              </h5>
+              <div className="footer-options-list">
+                {["ASAP", "Within 15 days", "Within a Month", "Not Sure"].map(
+                  (time) => {
+                    const isSelected = duration === time;
+                    return (
+                      <label
+                        key={time}
+                        htmlFor={time}
+                        className={`footer-option-row${isSelected ? " is-selected" : ""}`}
+                      >
+                        <span className="footer-option-accent" aria-hidden="true" />
+                        <span className="footer-option-content">
+                          <span className="footer-option-label">{time}</span>
+                          <input
+                            type="radio"
+                            name="duration"
+                            id={time}
+                            className="footer-option-input"
+                            checked={isSelected}
+                            onChange={() => setDuration(time)}
+                          />
+                        </span>
                       </label>
-                      <input
-                        type="radio"
-                        name="duration"
-                        id={time}
-                        className="form-check-input"
-                        checked={duration === time}
-                        onChange={() => setDuration(time)}
-                      />
-                    </div>
-                  )
+                    );
+                  },
                 )}
               </div>
               <button
                 type="button"
-                className="btn btn-warning w-100 submit-button"
+                className="footer-submit-btn"
                 onClick={handleSubmit}
                 disabled={loading}
               >
-                {loading ? "Submitting..." : "Submit"}
+                <span className="footer-submit-text">
+                  {loading ? "Submitting..." : "Submit"}
+                </span>
+                <span className="footer-submit-chev" aria-hidden="true">
+                  ›
+                </span>
               </button>
             </div>
           </div>

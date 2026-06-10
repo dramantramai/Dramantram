@@ -128,15 +128,6 @@
   background-color: #000000 !important;
 }
 
-/* Contact Us Button */
-.btn {
-  color: rgb(0, 0, 0) !important;
-  background-color: #ffe600 !important;
-  font-family: "Inter";
-  font-weight: bolder;
-  font-style: normal;
-}
-
 /* Move the "Contact Us" button to the right */
 .ms-auto {
   margin-left: auto;

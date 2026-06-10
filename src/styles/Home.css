@@ -234,7 +234,11 @@ h1 {
   margin-top: 10px;
 
   line-height: 1.2;
-  color: white;
+  background: linear-gradient(to right, #c5c5c5 0%, #7e7e7e 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 .btn-connect {

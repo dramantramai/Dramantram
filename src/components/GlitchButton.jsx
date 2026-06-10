@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
-import "./GlitchButton.css";
+import "../styles/GlitchButton.css";
 
 const GlitchButton = ({
   children,

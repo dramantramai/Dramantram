@@ -1,5 +1,6 @@
 // src/components/ClientsSection.jsx
 import React from "react";
+import GlitchButton from "./GlitchButton";
 import "../styles/Clients.css";
 
 // Updated Data with individual Width/Height
@@ -177,15 +178,17 @@ const ClientsSection = () => {
 
         {/* CTA gradient tile */}
         <div className="tile tile-cta">
-          <div className="cta-accent" />
           <div className="cta-inner">
             <h3 className="cta-head">
               Check out the <br /> full client list
             </h3>
-            <a href="#clients" className="cta-link">
-              <span>Complete List</span>
-              <span className="chev">›</span>
-            </a>
+            <GlitchButton
+              className="clients-cta-btn"
+              href="#clients"
+              targetText="Complete List"
+            >
+              Complete List
+            </GlitchButton>
           </div>
         </div>
       </div>

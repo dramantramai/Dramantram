@@ -1,10 +1,4 @@
 :root {
-  /* Contact Us navbar button — change hover colour here (applies site-wide) */
-  --nav-contact-hover-bg: #eceff1;
-  --nav-contact-hover-text: #000000;
-  --nav-contact-fill-duration: 1.2s;
-  --nav-contact-fill-spread: 32px;
-
   --grid-line-1: 2.5%;
   --grid-line-2: 26.25%;
   --grid-line-3: 50%;

@@ -1,6 +1,6 @@
 import "../../styles/Header.css";
-import "../../styles/NavContactButton.css";
 import { Link } from "react-router-dom";
+import NavContactButton from "../NavContactButton";
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/images/header.png";
 
@@ -134,9 +134,9 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-          <Link className="btn nav-contact-btn" to="/contact">
+          <NavContactButton variant="dark" to="/contact">
             Contact Us
-          </Link>
+          </NavContactButton>
         </div>
       </div>
     </nav>
