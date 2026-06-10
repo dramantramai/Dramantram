@@ -31,7 +31,7 @@
 }
 
 .intro-title {
-  font-size: 28px;
+  font-size: clamp(22px, 2.4vw, 28px);
   line-height: 1.25;
   font-weight: 700;
   margin: 0 0 18px;
@@ -40,7 +40,7 @@
 .intro-copy {
   max-width: 300px;
   color: #bdbdbd;
-  font-size: 13.5px;
+  font-size: clamp(12.5px, 1vw, 13.5px);
   line-height: 1.55;
   margin: 0;
 }
@@ -93,7 +93,7 @@
 }
 
 .cta-head {
-  font-size: 22px;
+  font-size: clamp(18px, 2vw, 22px);
   line-height: 1.35;
   font-weight: 700;
   margin: 0;

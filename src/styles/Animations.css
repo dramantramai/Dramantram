@@ -12,9 +12,11 @@
 
 /* Apply the animation to the SVG container */
 .animated-svg-container {
-  /* Set dimensions as needed for your layout */
-  width: 500px;
-  height: 500px;
+  /* Responsive square: never wider than the viewport, capped at 500px */
+  width: min(500px, 90vw);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  max-width: 100%;
   /* Apply the animation */
   animation: spin 20s linear infinite;
   transform-origin: center center;

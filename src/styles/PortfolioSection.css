@@ -21,7 +21,7 @@
   /* Match container gutter */
   display: flex;
   justify-content: center;
-  max-width: 110%;
+  max-width: 100%;
   /* Optional: constrain width to match container */
   margin-left: auto;
   margin-right: auto;
@@ -96,7 +96,11 @@
 .left-col {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  /* Flush-left, not centered: the connect-link's negative margin-left assumes
+     the intro-box sits on the column's left edge (the grid line). Centering it
+     (combined with intro-box max-width below 1400px) pushed the yellow line off
+     the grid line. */
+  justify-content: flex-start;
   margin-left: 0px !important;
 }
 
@@ -110,7 +114,8 @@
   border-radius: 8px;
   width: 100%;
   /* max-width: 350px; */
-  height: 355px;
+  /* min-height (not fixed height) so copy never clips when it wraps */
+  min-height: 355px;
   margin-right: 0px;
 }
 
@@ -134,9 +139,9 @@
 
 .connect-link {
   display: inline-block;
-  margin-top: 15px;
-  margin-left: calc(-1 * var(--padding-left)) !important;
-  padding-left: var(--padding-left) !important;
+  margin-top: 43px;
+  margin-left: -20px !important;
+  padding-left: 20px !important;
   border-left: 2px solid #fbff00;
   color: white;
   text-decoration: none;
@@ -144,17 +149,7 @@
   font-size: 1rem;
   transition: color 0.3s ease;
   height: 30px;
-  margin-top: 43px;
 }
-.connect-link:hover {
-  color: white;
-}
-
-.connect-link span {
-  margin-left: 5px;
-  font-size: 1.2em;
-}
-
 /* --- PORTFOLIO GRID --- */
 .portfolio-item {
   position: relative;
@@ -259,6 +254,8 @@
     padding: 25px;
     --padding-left: 25px;
   }
+
+  /* Connect-link inherits base -20px / 20px rules which align perfectly */
 }
 
 /* Large Tablet (992px - 1199px) */
@@ -290,7 +287,7 @@
 
   .connect-link {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 30px;
     color: white;
     text-decoration: none;
     font-weight: 500;
@@ -302,9 +299,9 @@
   .intro-box p {
     color: #bbb;
     font-size: 0.8rem;
-    line-height: 1;
-    margin-bottom: 10px;
-    margin-top: -10px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    margin-top: 0;
   }
 }
 
@@ -368,7 +365,8 @@
   .intro-box {
     padding: 0px;
     margin-right: 0px !important;
-    width: 500px;
+    width: 100%;
+    max-width: 100%;
     --padding-left: 0px;
   }
 
@@ -381,7 +379,8 @@
   }
 
   .connect-link {
-    margin-top: 10px;
+    margin-top: 25px;
+    margin-left: 0 !important;
     padding-left: 15px !important;
   }
 
@@ -479,18 +478,19 @@
   }
 
   .intro-box p {
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-top: 15px;
     font-size: 1rem;
     padding-left: 10px;
     padding-right: 10px;
   }
 
   .connect-link {
-    margin-top: 8px;
+    margin-top: 20px;
     padding-bottom: 20px;
     font-size: 0.9rem;
-    padding-left: 10px;
+    margin-left: 0 !important;
+    padding-left: 15px !important;
     padding-right: 10px;
   }
 
@@ -613,6 +613,10 @@
     grid-column: 2 !important;
     width: 100% !important;
     padding-left: 0 !important;
+    /* Keep the intro-box flush to the grid column edge at every desktop width.
+       Lower breakpoints add margin-left (30px ≤1399, 20px ≤1199) which pushed
+       the "Let's Connect" yellow border off the grid line below 1400px. */
+    margin-left: 0 !important;
   }
 
   .portfolio-section .right-col {
@@ -631,6 +635,13 @@
   .portfolio-section .right-col .col {
     width: 100% !important;
     padding: 0 12px !important;
+  }
+
+  /* Loading / empty-state messages use .col-12; with display:contents on the
+     row they'd land in a single 1fr track and wrap one word per line. Span
+     the full right column so the message stays on one line and isn't clipped. */
+  .portfolio-section .right-col .col-12 {
+    grid-column: 1 / -1 !important;
   }
 
   .portfolio-section .right-lower {

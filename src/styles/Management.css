@@ -78,8 +78,24 @@
 /* GRID LAYOUT */
 .management-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* min() keeps the column from forcing horizontal overflow on narrow phones */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 24px;
+}
+
+@media (max-width: 480px) {
+  .management-wrapper {
+    padding: 24px 12px !important;
+  }
+
+  .management-form-box {
+    padding: 28px 16px;
+    margin-top: 30px;
+  }
+
+  .management-grid {
+    gap: 16px;
+  }
 }
 
 /* BUTTONS */

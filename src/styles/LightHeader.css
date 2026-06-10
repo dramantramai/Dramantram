@@ -183,4 +183,14 @@
     padding-left: 15px !important;
     padding-right: 15px !important;
   }
+
+  /* Collapsed (hamburger) menu: drop the desktop 35px link inset so links
+     align to the left edge of the open menu instead of overflowing. */
+  .navbar-light .navbar-nav {
+    padding-left: 0 !important;
+  }
+
+  .nav-link-light {
+    margin-left: 0 !important;
+  }
 }

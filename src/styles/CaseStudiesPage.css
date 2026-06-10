@@ -35,7 +35,7 @@
 
 /* Image Container */
 .card-img-wrapper {
-  height: 200px;
+  height: clamp(160px, 22vw, 200px);
   width: 100%;
   overflow: hidden;
   border-bottom: 2px solid #ff3b3b; /* Red line separating img and text */
@@ -67,9 +67,8 @@
   font-size: 1.25rem;
   margin-bottom: 10px !important;
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Allow wrapping so long titles are not clipped on narrow cards */
+  overflow-wrap: break-word;
   margin-top: 10px;
 }
 

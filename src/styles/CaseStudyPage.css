@@ -72,10 +72,9 @@
 .cs-title {
   font-family: "Russo One", sans-serif;
   letter-spacing: 1px;
-  font-size: clamp(18px, 2.6vw, 28px);
   margin: 8px 0 16px;
   font-weight: 400;
-  font-size: 45px;
+  font-size: clamp(28px, 4vw, 45px);
 }
 
 .cs-card-figure {
@@ -162,7 +161,7 @@
 /* text areas */
 .cs-h2 {
   font-weight: 400;
-  font-size: 38.5px;
+  font-size: clamp(24px, 3.4vw, 38.5px);
   margin-bottom: 12px;
 }
 
@@ -292,6 +291,22 @@
     border-left: none;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
     background: transparent;
+    /* Release the fixed 700px desktop height so stacked content can breathe */
+    height: auto;
+  }
+
+  /* Drop the desktop 100px / 400px gallery insets that squeeze content */
+  .cs-gallery {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* Hero used 80% width + 100px left margin for the desktop grid; make it
+     full-width and flush once columns stack. */
+  .cs-hero {
+    width: 100%;
+    height: auto !important;
+    margin-left: 0;
   }
 }
 

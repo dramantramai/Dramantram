@@ -157,4 +157,15 @@
   .page-grid::after {
     background: none;
   }
+
+  /* Trim the large desktop side offsets once columns stack */
+  .city {
+    margin-left: 24px;
+  }
+
+  .address,
+  .contact {
+    margin: 0 24px;
+    padding-right: 16px;
+  }
 }

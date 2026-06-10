@@ -211,13 +211,16 @@ body {
   transform: scaleX(1);
 }
 
-@media (max-width: 600px) {
+/* Collapsed (hamburger) menu: reset desktop spacing so links don't get
+   pushed off-screen on tablet/phone (Bootstrap collapses below 992px). */
+@media (max-width: 991.98px) {
   .navbar-nav {
-    padding-left: 0px !important;
+    padding-left: 0 !important;
   }
 
+  .navbar:not(.navbar-light) .nav-link,
   .nav-link {
-    margin-left: 0px !important;
+    margin-left: 0 !important;
   }
 }
 
