@@ -9,7 +9,10 @@ export async function GET(request, { params }) {
 
     if (doc?.image1?.data) {
       return new Response(doc.image1.data, {
-        headers: { "Content-Type": doc.image1.contentType },
+        headers: {
+          "Content-Type": doc.image1.contentType,
+          "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
+        },
       });
     }
     return Response.json(

@@ -449,7 +449,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
                   <div key={item._id} className="col">
                     <Link href={`/case-study/${item.slug}`}>
                       <PortfolioItem
-                        imageSrc={`${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
+                        imageSrc={item.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
                         title={item.case_study_name}
                         slug={item.slug}
                       />
@@ -472,7 +472,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               <div key={item._id} className="col">
                 <Link href={`/case-study/${item.slug}`}>
                   <PortfolioItem
-                    imageSrc={`${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
+                    imageSrc={item.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
                     title={item.case_study_name}
                   />
                 </Link>

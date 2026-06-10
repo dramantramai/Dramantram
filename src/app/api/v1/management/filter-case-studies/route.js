@@ -13,9 +13,9 @@ export async function POST(request) {
     if (duration && duration.length > 0) args.duration = duration;
     if (complexity && complexity.length > 0) args.complexity = complexity;
 
-    const caseStudies = await CaseStudyModel.find(args).select(
-      "-thumbnail_image -image1 -image2 -image3 -image4 -image5"
-    );
+    const caseStudies = await CaseStudyModel.find(args)
+      .select("-thumbnail_image -image1 -image2 -image3 -image4 -image5")
+      .lean();
 
     return NextResponse.json({
       success: true,

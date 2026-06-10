@@ -17,7 +17,7 @@ const LightHeader = () => {
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             <img
-              src="DM_LOGO_Dark.png"
+              src="/DM_LOGO_Dark.png"
               alt="Logo"
               width="250"
               height="22"

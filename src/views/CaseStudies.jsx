@@ -90,7 +90,7 @@ const CaseStudies = () => {
                     {/* Thumbnail Image */}
                     <div className="card-img-wrapper">
                       <img
-                        src={`${apiUrl}/api/v1/management/get-thumbnail-image/${c._id}`}
+                        src={c.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${c._id}`}
                         alt={c.case_study_name}
                         onError={(e) => {
                           e.target.src =

@@ -6,14 +6,23 @@ export async function GET() {
   try {
     await connectDB();
     const caseStudies = await CaseStudyModel.find({})
-      .select("-thumbnail_image -image1 -image2 -image3 -image4 -image5")
+      .select("-image1 -image2 -image3 -image4 -image5")
       .sort({ createdAt: -1 });
+
+    const result = caseStudies.map((cs) => {
+      const obj = cs.toObject();
+      if (obj.thumbnail_image?.data) {
+        obj.thumbnailDataUri = `data:${obj.thumbnail_image.contentType};base64,${obj.thumbnail_image.data.toString("base64")}`;
+      }
+      delete obj.thumbnail_image;
+      return obj;
+    });
 
     return NextResponse.json({
       success: true,
-      count: caseStudies.length,
+      count: result.length,
       message: "All Case Studies Fetched",
-      caseStudies,
+      caseStudies: result,
     });
   } catch (error) {
     console.error(error);
