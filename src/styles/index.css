@@ -41,6 +41,8 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
+  background-color: #000;
+  color: #fff;
 }
 
 /* Raster/embedded media should never overflow its container.

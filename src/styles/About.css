@@ -336,7 +336,7 @@
   .philosophies-container .philosophies-text p {
     margin-left: 0 !important;
     margin: 18px 0 !important;
-    font-size: clamp(1.8rem, 2.5vw + 1.25rem, 3.25rem) !important;
+    font-size: clamp(1.8rem, 2.5vw + 1.25rem, 3.8rem) !important;
     font-weight: 800 !important;
     line-height: 1.1 !important;
     width: max-content !important;

@@ -8,11 +8,14 @@
   padding-bottom: 60px;
   background: transparent;
   border-bottom: 1px solid #222;
-  z-index: -1;
+  position: relative;
+  z-index: 5;
 }
 
 /* --- FILTER ROW STYLING --- */
 .filter-row {
+  position: relative;
+  z-index: 10;
   padding-top: 12px !important;
   padding-bottom: 28px !important;
   margin-bottom: 20px;
@@ -28,11 +31,10 @@
   background: none !important;
   border-top: none !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  /* z-index: 5645; */
 }
 
 /* Ensure columns inside filter row have padding for spacing */
-.filter-row>div {
+.filter-row > div {
   padding: 0 10px;
   /* Horizontal spacing between buttons */
   margin-bottom: 10px;
@@ -115,7 +117,7 @@
   width: 100%;
   /* max-width: 350px; */
   /* min-height (not fixed height) so copy never clips when it wraps */
-  min-height: 355px;
+  /* min-height removed — height is content-driven */
   margin-right: 0px;
 }
 
@@ -169,7 +171,9 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease, opacity 0.4s ease;
+  transition:
+    transform 0.5s ease,
+    opacity 0.4s ease;
 }
 
 .portfolio-item:hover .portfolio-img {
@@ -398,9 +402,8 @@
 
 /* Mobile - CRITICAL FIX FOR IMAGE SIZING */
 @media (max-width: 575px) {
-
   /* Filter Row Mobile */
-  .filter-row>div {
+  .filter-row > div {
     padding: 0 5px;
     /* Tighter spacing on mobile */
   }
@@ -417,12 +420,12 @@
   }
 
   /* Remove the conflicting 100% width rule */
-  .portfolio-section .row.g-4>.col,
-  .portfolio-section .row.g-4>[class^="col-"],
-  .portfolio-section .row.g-4>[class*=" col-"],
-  .portfolio-section .right-lower>.col,
-  .portfolio-section .right-lower>[class^="col-"],
-  .portfolio-section .right-lower>[class*=" col-"] {
+  .portfolio-section .row.g-4 > .col,
+  .portfolio-section .row.g-4 > [class^="col-"],
+  .portfolio-section .row.g-4 > [class*=" col-"],
+  .portfolio-section .right-lower > .col,
+  .portfolio-section .right-lower > [class^="col-"],
+  .portfolio-section .right-lower > [class*=" col-"] {
     /* Let Bootstrap's row-cols handle the sizing */
     flex: unset !important;
     max-width: unset !important;
@@ -594,11 +597,16 @@
   }
 }
 
+.container-fluid-custom {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
 /* --- GRID ALIGNMENT FIXES --- */
 .portfolio-sidebar {
   background: transparent;
   padding: 60px 40px;
-  min-height: 100vh;
+  /* min-height removed — height matches the content column */
   position: relative;
 }
 
@@ -608,13 +616,13 @@
 }
 
 .portfolio-title {
-  font-size: 3.5rem;
-  font-weight: 300;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 500;
   margin-bottom: 30px;
   line-height: 1.1;
   padding-left: 10px;
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .portfolio-description {
@@ -668,8 +676,6 @@
     max-width: 100% !important;
     padding-left: 40px !important;
     padding-right: 20px !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .portfolio-section .col-lg-9 {
@@ -678,7 +684,37 @@
     width: auto !important;
     max-width: 100% !important;
     position: relative;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .portfolio-section .filter-row {
+    display: grid !important;
+    grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .portfolio-section .filter-row > div:nth-child(1) {
+    grid-column: 2 !important;
+    max-width: 100% !important;
+    width: auto !important;
+  }
+  .portfolio-section .filter-row > div:nth-child(2) {
+    grid-column: 3 !important;
+    max-width: 100% !important;
+    width: auto !important;
+  }
+  .portfolio-section .filter-row > div:nth-child(3) {
+    grid-column: 4 !important;
+    max-width: 100% !important;
+    width: auto !important;
+  }
+  .portfolio-section .filter-row > div:nth-child(4) {
+    grid-column: 5 !important;
+    max-width: 100% !important;
+    width: auto !important;
   }
 }
 
@@ -687,9 +723,9 @@
     min-height: auto;
     padding: 40px 30px;
   }
-  
+
   .portfolio-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
   }
 
   .portfolio-section .portfolio-sidebar .connect-link {

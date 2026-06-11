@@ -1,5 +1,4 @@
 /* ---------- Base ---------- */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Russo+One&display=swap");
 
 :root {
   --bg-black: #000;
@@ -17,7 +16,13 @@
   /* width: 100vw; */
   overflow: hidden;
   color: var(--text);
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
   background: #000;
   /* fallback */
 }
@@ -27,16 +32,23 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(60% 70% at 55% 40%,
+  background:
+    radial-gradient(
+      60% 70% at 55% 40%,
       rgba(160, 20, 20, 0.85) 0%,
       rgba(160, 20, 20, 0.6) 45%,
-      rgba(0, 0, 0, 0) 70%),
-    radial-gradient(60% 80% at 10% 50%,
+      rgba(0, 0, 0, 0) 70%
+    ),
+    radial-gradient(
+      60% 80% at 10% 50%,
       rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.95) 70%),
-    radial-gradient(70% 80% at 95% 50%,
+      rgba(0, 0, 0, 0.95) 70%
+    ),
+    radial-gradient(
+      70% 80% at 95% 50%,
       rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 1) 70%),
+      rgba(0, 0, 0, 1) 70%
+    ),
     linear-gradient(180deg, #0a0000 0%, #000 100%);
   z-index: 0;
 }
@@ -100,57 +112,19 @@
   cursor: pointer;
 }
 
-/* ---------- Right rail (Let’s Connect) ---------- */
-.right-rail {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: clamp(56px, 4vw, 72px);
-  border-left: 1px solid var(--divider);
-  z-index: 2;
-  background: linear-gradient(180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.5) 40%,
-      rgba(0, 0, 0, 0.85) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.right-rail::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 25%;
-  height: 50%;
-  width: 2px;
-  background: var(--rail);
-}
-
-.right-rail span {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  letter-spacing: 0.5px;
-  font-size: 12px;
-  color: #d9d9d9;
-  user-select: none;
-}
-
-.right-rail .chev {
-  margin-top: 12px;
-  font-size: 1rem;
-  opacity: 0.75;
-}
-
 /* ---------- Typography ---------- */
 .logo-word {
   font-family: "Russo One", system-ui;
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.2rem, 2.5vw, 2.25rem);
   letter-spacing: 1.5px;
   margin: 0;
-  color: #ffffff;
-  text-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(to right, #c5c5c5 0%, #939393 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .hero-title {
@@ -180,9 +154,11 @@
   min-height: 72px;
   padding: 12px clamp(12px, 2vw, 24px);
   border-bottom: 1px solid var(--divider);
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.02) 0%,
-      rgba(0, 0, 0, 0.4) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
 }
 
 .filter-pill {
@@ -200,7 +176,10 @@
   font-size: 14px;
   letter-spacing: 0.2px;
   backdrop-filter: none;
-  transition: border-color 0.25s, background 0.25s, transform 0.05s;
+  transition:
+    border-color 0.25s,
+    background 0.25s,
+    transform 0.05s;
 }
 
 .filter-pill:hover {
@@ -223,8 +202,8 @@
 
 /* ---------- Responsiveness ---------- */
 @media (max-width: 1199.98px) {
-  .panel-inner {
-    padding: 56px clamp(16px, 4vw, 40px);
+  .portfolio-panel-inner {
+    padding: 40px clamp(12px, 2.5vw, 24px) !important;
   }
 }
 
@@ -435,13 +414,13 @@
     grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
     width: 100% !important;
     margin: 0 !important;
-    min-height: calc(100vh - 112px) !important;
+    min-height: calc(100vh - 140px) !important;
   }
 
   .portfolio-panel {
     border-right: none !important;
-    min-height: calc(100vh - 112px) !important;
-    height: calc(100vh - 112px) !important;
+    min-height: calc(100vh - 140px) !important;
+    height: calc(100vh - 140px) !important;
     width: auto !important;
     max-width: none !important;
     flex: none !important;

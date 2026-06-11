@@ -51,9 +51,7 @@ const AnimatedVideosPage = () => {
             </h2>
             <p className="lede mb-4">
               Nothing exists in animation, we manufacture everything! It is the
-              easiest way to tell a story whatever a human mind can conceive.{" "}
-              <br /> <br />
-              <strong>Juuuuust open your imagination!</strong>
+              easiest way to tell a story whatever a human mind can conceive.
             </p>
             <GlitchButton
               className="connect-link"

@@ -6,13 +6,13 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 const linkedinIcon = "/social/linkedin.png";
 const instagramIcon = "/social/instagram.png";
-const xIcon = "/social/twitter.png";
+const youtubeIcon = "/social/youtube.png";
 const behanceIcon = "/social/behance.png";
 
 const SOCIAL_LINKS = {
   linkedin: "https://www.linkedin.com/company/dramantram/posts/?feedView=all",
   instagram: "https://www.instagram.com/dramantram/",
-  x: "https://x.com/Dramantram",
+  youtube:"https://www.youtube.com/@Dramantram",
   behance: "https://www.behance.net/dramantram",
 };
 
@@ -30,10 +30,10 @@ const socialIcons = [
     src: instagramIcon,
   },
   {
-    key: "x",
-    label: "X",
-    href: SOCIAL_LINKS.x,
-    src: xIcon,
+    key: "youtube",
+    label: "Youtube",
+    href: SOCIAL_LINKS.youtube,
+    src: youtubeIcon,
   },
   {
     key: "behance",
@@ -130,7 +130,7 @@ const Footer = () => {
             <div className="content-wrapper">
               <form className="form-contact" onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label className="form-label">Name</label>
+                  <label className="form-label">Name <span style={{color:"red"}}>*</span></label>
                   <input
                     type="text"
                     placeholder="Enter Name"
@@ -141,7 +141,7 @@ const Footer = () => {
                   />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Email</label>
+                  <label className="form-label">Email <span style={{color:"red"}}>*</span></label>
                   <input
                     type="email"
                     placeholder="Enter Mail ID"

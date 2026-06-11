@@ -7,7 +7,7 @@
   position: relative;
   overflow: hidden;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
 }
 
 /* Vertical grid lines like the screenshot */
@@ -18,8 +18,30 @@
   position: relative;
 }
 
+@media (min-width: 992px) {
+  .process-grid {
+    grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .process-grid > .pcol:nth-child(1) {
+    grid-column: 2 !important;
+  }
+  .process-grid > .pcol:nth-child(2) {
+    grid-column: 3 !important;
+  }
+  .process-grid > .pcol:nth-child(3) {
+    grid-column: 4 !important;
+  }
+  .process-grid > .pcol:nth-child(4) {
+    grid-column: 5 !important;
+  }
+}
+
 .pcol {
-  padding: 28px 28px 36px;
+  padding: 28px 15px 36px;
   position: relative;
   /* No border-right here — the global grid lines from brand-wrap::after
      already draw the dividers at the correct positions */
@@ -90,7 +112,7 @@
 
 /* Title block — same gradient text as agency intro (white section) */
 .stack {
-  margin: 0 0 0 1rem;
+  margin: 0;
   font-family: "Russo One", system-ui, sans-serif;
   text-transform: uppercase;
   line-height: 1.06;
@@ -168,7 +190,7 @@
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 991.98px) {
   .process-grid {
     grid-template-columns: 1fr;
   }

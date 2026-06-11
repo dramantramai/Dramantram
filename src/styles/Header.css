@@ -295,8 +295,7 @@ body {
 
   .navbar.navbar-expand-lg .btn {
     grid-column: 3 !important;
-    justify-self: end !important;
+    justify-self: center !important;
     margin: 0 !important;
-    margin-right: 0 !important;
   }
 }

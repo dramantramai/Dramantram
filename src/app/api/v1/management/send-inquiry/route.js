@@ -13,15 +13,20 @@ export async function POST(request) {
       );
     }
 
-    const apiKey = process.env.RESEND_API_KEY;
+    const rawApiKey = process.env.RESEND_API_KEY;
+    const apiKey = rawApiKey?.trim().replace(/^['"]|['"]$/g, "") ?? "";
     if (!apiKey) {
       return NextResponse.json(
-        { success: false, message: "Server configuration error" },
+        { success: false, message: "Server configuration error (Resend API Key missing)" },
         { status: 500 }
       );
     }
 
     const resend = new Resend(apiKey);
+
+    const fromEmail = (process.env.RESEND_FROM_EMAIL || "Dramantram Inquiry <onboarding@resend.dev>").trim().replace(/^['"]|['"]$/g, "");
+    const toEmail = (process.env.RESEND_TO_EMAIL || "dramantram@gmail.com").trim().replace(/^['"]|['"]$/g, "").toLowerCase();
+
 
     let parsedServices = "";
     if (Array.isArray(services)) {
@@ -34,7 +39,7 @@ export async function POST(request) {
       parsedServices = "None specified";
     }
 
-    const subject = `🔥 New Lead: ${name} is looking for ${parsedServices}`;
+    const subject = `New Lead: ${name} is looking for ${parsedServices.length? parsedServices: 'no services'} duration: ${duration ? duration : 'no duration'}`;
 
     const htmlBody = `
       <table style="width: 100%; max-width: 600px; border-collapse: collapse; font-family: 'Segoe UI', Arial, sans-serif; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
@@ -81,8 +86,8 @@ export async function POST(request) {
     `;
 
     const result = await resend.emails.send({
-      from: "Dramantram Inquiry <onboarding@resend.dev>",
-      to: "Dramantram@gmail.com",
+      from: fromEmail,
+      to: toEmail,
       subject,
       html: htmlBody,
     });

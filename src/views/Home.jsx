@@ -161,22 +161,28 @@ const servicesData = [
 
 const testimonials = [
   {
-    name: "Remya Lakshmanan",
-    role: "Sr. Assistant Vice President, Invest India",
+    firstName: "Remya",
+    lastName: "Lakshmanan",
+    post: "Sr. Assistant Vice President",
+    company: "Invest India",
     quote:
       "Great job guys! You exceed our expectations each time. Looking forward to many more projects with the Team Dramantram.",
     image: "/remya.png",
   },
   {
-    name: "Praveen Dev",
-    role: "Assistant Manager, Bharti Airtel",
+    firstName: "Praveen",
+    lastName: "Dev",
+    post: "Assistant Manager",
+    company: "Bharti Airtel",
     quote:
       "This team has done fantastic work from start to finish, putting in tremendous effort to deliver quality content in a short time. I would definitely recommend Dramantram for their quality and commitment.",
     image: "/praveen.png",
   },
   {
-    name: "Deepanshu Pathak",
-    role: "Project Coordinator",
+    firstName: "Deepanshu",
+    lastName: "Pathak",
+    post: "Project Coordinator",
+    company: "",
     quote:
       "Dramantram was very patient with our requirements and had a great turnaround time. The ease with which they understood the context of the videos and brought them to life was commendable.",
     image: "/deepanshu.png",
@@ -456,7 +462,7 @@ const Home = () => {
 
                       <p className="ai-copy small">
                         Our secret is not our services but our approach towards
-                        them.{" "}
+                        them.<br />
                         <strong>Oops! Did we just disclose our secret?</strong>
                       </p>
                     </div>
@@ -539,14 +545,18 @@ const Home = () => {
                 >
                   <div className="card-content">
                     <h2 className="card-name fw-semibold">
-                      {testimonial.name}
+                      {testimonial.firstName}
                     </h2>
-                    <p className="card-role">{testimonial.role}</p>
+                    <h2 className="card-name fw-semibold">
+                      {testimonial.lastName}
+                    </h2>
+                    <p className="card-role">{testimonial.post}</p>
+                    <p className="card-company">{testimonial.company}</p>
                     <div className="card-image-wrapper">
                       <div className="card-image">
                         <img
                           src={testimonial.image}
-                          alt={testimonial.name}
+                          alt={`${testimonial.firstName} ${testimonial.lastName}`}
                           loading="lazy"
                         />
                       </div>

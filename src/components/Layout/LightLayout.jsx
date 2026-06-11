@@ -10,7 +10,7 @@ const LightLayout = ({ children }) => {
       {/* The background grid lives behind everything */}
       <div className="grid-lines grid-lines-dark"></div>
 
-      <main>{children}</main>
+      <main style={{ paddingTop: "5rem" }}>{children}</main>
 
       <Footer />
     </div>

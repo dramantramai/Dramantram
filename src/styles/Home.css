@@ -1,9 +1,3 @@
-/* Home Page CSS - Fully Responsive */
-
-/* Import fonts */
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kalam:wght@300;400;700&family=Russo+One&display=swap");
-
 /* ===== GLOBAL GRID SYSTEM ===== */
 
 /* 1. The Wrapper: Ensures the grid stretches the full height of the page */
@@ -1499,9 +1493,9 @@ h1 {
     display: flex;
     flex-direction: column;
     /* height: 100%; */
-    align-content: start;
-    justify-content: start;
-    align-items: start;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 1vw;
   }
 
@@ -1527,11 +1521,11 @@ h1 {
   .ai-mid-body {
     /* grid-row: 2; */
     display: flex;
-    align-self: start;
+    align-self: flex-start;
     gap: 3vh;
     /* flex-direction: column; */
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .ai-mid-layout .ai-cta {
@@ -1609,7 +1603,7 @@ h1 {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(1rem, 3.5cqi, 2.25rem);
+  gap: clamp(3rem, 4.5cqi, 3.25rem);
 }
 
 .ai-stack li {
@@ -1622,7 +1616,8 @@ h1 {
     sans-serif;
   font-weight: 800;
   letter-spacing: 0.08em;
-  font-size: clamp(1.25rem, 3.5vw + 1rem, 4.5rem);
+  /* cqi = container query inline-size: scales with the column, not the viewport */
+  font-size: clamp(1.5rem, 8cqi, 4.5rem);
   line-height: 1.05;
   text-transform: uppercase;
   width: max-content !important;
@@ -1653,24 +1648,24 @@ h1 {
   margin: 0 0 3vh !important;
   width: 100%;
   color: #4a4a4a;
-  font-size: clamp(0.875rem, 3.75cqi, 1.125rem);
+  font-size: clamp(0.875rem, 4.75cqi, 1.125rem);
   line-height: 1.5;
 }
 
 .ai-copy.small {
   color: #555;
   font-family: "Inter", sans-serif;
-  font-size: clamp(0.8125rem, 3.4cqi, 1.05rem);
+  font-size: clamp(0.8125rem, 4.4cqi, 1.05rem);
 }
 
 .ai-mid-body {
   display: flex;
   flex-direction: column;
-  gap: 4vh;
+  gap: 5vh;
 }
 
 .ai-cta {
-  margin-top: 2rem;
+  margin-top: 1.75rem;
   display: inline-flex;
   align-items: center;
   gap: 0.65em;
@@ -1737,7 +1732,7 @@ h1 {
 
 .ai-right .content-wrapper {
   display: grid;
-  gap: clamp(1.25rem, 5cqi, 2.25rem);
+  gap: clamp(1.25rem, 6cqi, 4.25rem);
   align-content: center;
 }
 
@@ -2025,7 +2020,7 @@ h1 {
 
   margin-bottom: 10px;
 
-  line-height: 1.3;
+  line-height: 1;
 
   padding-left: 50px;
 }
@@ -2035,13 +2030,31 @@ h1 {
 
   font-family: "Inter", sans-serif;
 
-  margin-bottom: 30px;
+  margin-bottom: 4px;
+
+  min-height: 1.3em;
 
   line-height: 1.3;
 
   padding-left: 50px;
 
   opacity: 0.7;
+}
+
+.card-company {
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+
+  font-family: "Inter", sans-serif;
+
+  margin-bottom: 30px;
+
+  min-height: 1.3em;
+
+  line-height: 1.3;
+
+  padding-left: 50px;
+
+  opacity: 0.5;
 }
 
 .card-title {
