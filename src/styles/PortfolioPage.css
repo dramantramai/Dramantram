@@ -1,6 +1,6 @@
-/* ---------- Base ---------- */
-
-:root {
+.hero-portfolio,
+.portfolio,
+.portfolio-section {
   --bg-black: #000;
   --text: #eaeaea;
   --muted: #a9a9a9;

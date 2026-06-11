@@ -6,27 +6,25 @@
   height: auto !important;
 }
 
-.navbar {
+/* Scope ALL dark-header rules to .navbar:not(.navbar-light) so they never
+   bleed into LightHeader (which also carries the .navbar class). */
+.navbar:not(.navbar-light) {
   position: fixed;
   top: 0;
-  /* Ensures the navbar stays at the very top */
   left: 0;
   right: 0;
   z-index: 1030;
-  /* Keeps navbar above other content */
   width: 100%;
-  /* Full width */
   background: linear-gradient(to bottom, rgba(40, 18, 12, 0) 0%, #000000 100%) !important;
   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  /* Smooth transition for showing/hiding */
   box-shadow: none !important;
 }
 
-.navbar.navbar-scrolled {
+.navbar:not(.navbar-light).navbar-scrolled {
   background: #000000 !important;
 }
 
-.navbar::after {
+.navbar:not(.navbar-light)::after {
   content: "";
   position: absolute;
   top: 0;
@@ -40,12 +38,12 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.navbar.navbar-scrolled::after {
+.navbar:not(.navbar-light).navbar-scrolled::after {
   opacity: 1;
 }
 
 @media (max-width: 991.98px) {
-  .navbar::after {
+  .navbar:not(.navbar-light)::after {
     display: none !important;
   }
 }

@@ -21,7 +21,19 @@
   backdrop-filter: none !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
   box-shadow: none !important;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition:
+    transform 0.3s ease-in-out,
+    background 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+/* Hide on scroll down, show on scroll up (same behaviour as dark Header) */
+.navbar-light.scroll-down {
+  transform: translate3d(0, -100%, 0);
+}
+
+.navbar-light.scroll-up {
+  transform: translate3d(0, 0, 0);
 }
 
 .navbar-light.navbar-scrolled {

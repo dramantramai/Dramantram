@@ -35,9 +35,8 @@ const VideoEmbed = ({ src }) => {
             position: "absolute",
             top: 0,
             left: 0,
-            width: "80%",
-            height: "80%",
-            marginLeft: "100px",
+            width: "100%",
+            height: "100%",
             borderRadius: "10px",
           }}
         />
@@ -61,7 +60,7 @@ const ImageEmbed = ({ src, alt }) => {
         alt={alt}
         className="cs-hero img-fluid"
         style={{
-          width: "80%",
+          width: "100%",
           height: "auto",
           display: "block",
         }}
@@ -142,9 +141,6 @@ const CaseStudy = () => {
   return (
     <LightLayout>
       <section className="case-study-wrap">
-        {/* GRID LINES BACKDROP */}
-        <div className="cs-grid-lines" />
-
         <div className="container-fluid cs-container">
           {/* --- TOP ROW: Header info --- */}
           <div className="row g-0 cs-header">
@@ -202,10 +198,10 @@ const CaseStudy = () => {
           </div>
 
           {/* --- BOTTOM ROW: Media Sequence (Left) + Solution (Right) --- */}
-          <div className="row g-0">
+          <div className="row g-0 cs-content-row">
             {/* LEFT: MEDIA SEQUENCE (Col 9) */}
             <div className="col-12 col-md-9 p-0">
-              <div className="cs-media-stream p-3 p-md-0">
+              <div className="cs-media-stream">
                 {/* 1. Video 1 */}
                 {cs.video_link_1 && <VideoEmbed src={cs.video_link_1} />}
 
@@ -229,20 +225,18 @@ const CaseStudy = () => {
               </div>
             </div>
 
-            {/* RIGHT: SOLUTION TEXT (Col 3) */}
+            {/* RIGHT: SOLUTION TEXT (Col 3) — natural height, flows with page */}
             <div className="col-12 col-md-3 cs-solution-col">
-              {/* Sticky solution text so it follows user as they scroll images */}
-              <div
-                className="cs-pad sticky-top"
-                style={{ top: "80px", zIndex: 1 }}
-              >
+              <div className="cs-pad">
                 <h3 className="cs-h3">Our Solution</h3>
                 <div className="cs-body">
-                  {cs.solution?.split("\n").map((line, i) => (
-                    <p key={i} style={{ marginTop: "10px", marginBottom: "0" }}>
-                      {line}
-                    </p>
-                  ))}
+                  {cs.solution
+                    ?.split("\n")
+                    .map((p) => p.trim())
+                    .filter(Boolean)
+                    .map((p, i) => (
+                      <p key={i} className="cs-solution-para">{p}</p>
+                    ))}
                 </div>
               </div>
             </div>

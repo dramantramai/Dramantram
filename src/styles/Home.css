@@ -212,7 +212,7 @@ h1 {
 
   font-weight: 400;
 
-  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-size: clamp(0.8rem, 2.5vw, 1.5rem);
 
   line-height: 1.2;
 
@@ -225,7 +225,7 @@ h1 {
 
   font-weight: 400;
 
-  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
 
   margin-top: 10px;
 
@@ -547,109 +547,6 @@ h1 {
 }
 
 /* ===== PORTFOLIO SECTION ===== */
-
-.portfolio {
-  position: relative;
-  /* anchor ::after */
-
-  isolation: isolate;
-  /* create stacking context */
-
-  background-color: black;
-
-  background-image: radial-gradient(
-    circle at top left,
-
-    rgb(184, 0, 0),
-    rgba(255, 0, 0, 0) 60%
-  );
-
-  background-size: 600px 450px;
-
-  background-repeat: no-repeat;
-}
-
-.portfolio::after {
-  content: "";
-  /* REQUIRED to render pseudo */
-
-  position: absolute;
-
-  inset: 0;
-
-  pointer-events: none;
-
-  z-index: 0;
-  /* put UNDER content */
-
-  /* Light lines so they show on black */
-
-  /* background:
-
-    /* your 1px grid lines linear-gradient(
-
-      to right,
-
-      rgba(255, 255, 255, 0.1) 0,
-
-      rgba(255, 255, 255, 0.1) 1px,
-
-      transparent 1px
-
-    ), linear-gradient(
-
-    to right,
-
-    transparent 0,
-
-    transparent 26.5%,
-
-    rgba(255, 255, 255, 0.1) 26.5%,
-
-    rgba(255, 255, 255, 0.1) calc(26.5% + 1px),
-
-    transparent calc(26.5% + 1px),
-
-    transparent 50.03%,
-
-    rgba(255, 255, 255, 0.1) 50.03%,
-
-    rgba(255, 255, 255, 0.1) calc(50.03% + 1px),
-
-    transparent calc(50.03% + 1px),
-
-    transparent 73.5%,
-
-    rgba(255, 255, 255, 0.1) 73.5%,
-
-    rgba(255, 255, 255, 0.1) calc(73.5% + 1px),
-
-    transparent calc(73.5% + 1px),
-
-    transparent 100%
-
-  );
-
-  background-repeat: no-repeat;
-
-  background-size: 100% 100%; ensure it fills the section */
-}
-
-/* Ensure content sits above ::after */
-
-.portfolio > * {
-  position: relative;
-
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .portfolio {
-    background-size: 400px 300px;
-
-    padding: 30px 15px;
-  }
-}
 
 /* ===== CLIENTS SECTION ===== */
 
@@ -2328,10 +2225,6 @@ h1 {
 @media (max-width: 576px) {
   .left-section {
     padding: 40px 15px;
-  }
-
-  .portfolio::after {
-    background: none;
   }
 
   .testimonial-card {

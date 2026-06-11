@@ -4,10 +4,26 @@
 .brand-wrap {
   position: relative;
   background: #000;
-  overflow: hidden;
+  overflow-x: clip; /* allow vertical scroll; clip instead of hidden keeps sticky working */
+  overflow-y: visible;
   min-height: 100vh;
   color: #fff;
   padding-bottom: 0;
+}
+
+/*
+  Above-fold zone: hero (video + copy) at the top, brand row (services + logos)
+  at the bottom — together they fill exactly one viewport height.
+  The ProcessWrap that follows is the first thing visible on scroll.
+*/
+.service-above-fold {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  padding-top: 80px; /* clear fixed header */
 }
 
 /* red glow (top-left to mid) + faint vignette */
@@ -62,9 +78,9 @@
 
 /* Per-column lines (between Bootstrap cols) */
 .brand-col {
-  padding-top: 60px;
+  padding-top: 32px;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
 
 @media (min-width: 992px) {

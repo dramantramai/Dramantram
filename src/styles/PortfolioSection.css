@@ -127,7 +127,7 @@
 
 .intro-box h1 {
   font-family: "Russo One", sans-serif;
-  font-size: 30px;
+  font-size: clamp(1.2rem, 3.5vw, 2.5rem);
   line-height: 1.1;
   margin-bottom: 20px;
 }
@@ -616,7 +616,7 @@
 }
 
 .portfolio-title {
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
   font-weight: 500;
   margin-bottom: 30px;
   line-height: 1.1;
@@ -626,7 +626,7 @@
 }
 
 .portfolio-description {
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 1rem);
   line-height: 1.6;
   color: #ccc;
   margin-bottom: 20px;
@@ -731,5 +731,45 @@
   .portfolio-section .portfolio-sidebar .connect-link {
     margin-left: -30px !important;
     padding-left: 30px !important;
+  }
+}
+
+/* ===== PORTFOLIO WRAPPER CLASS ===== */
+.portfolio {
+  position: relative;
+  isolation: isolate;
+  background-color: black;
+  background-image: radial-gradient(
+    circle at top left,
+    rgb(184, 0, 0),
+    rgba(255, 0, 0, 0) 60%
+  );
+  background-size: 600px 450px;
+  background-repeat: no-repeat;
+}
+
+.portfolio::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.portfolio > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .portfolio {
+    background-size: 400px 300px;
+    padding: 30px 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .portfolio::after {
+    background: none;
   }
 }

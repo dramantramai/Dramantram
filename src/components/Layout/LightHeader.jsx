@@ -23,6 +23,7 @@ const LightHeader = () => {
 
       if (currentScrollY <= 0) {
         nav.classList.remove("scroll-up");
+        nav.classList.remove("scroll-down");
       }
 
       if (
