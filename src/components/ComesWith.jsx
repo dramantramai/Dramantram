@@ -36,14 +36,14 @@ const ComesWith = () => {
 
         {/* RIGHT: headline, tabs, copy */}
         <div className="col-12 col-lg-6 px-4 px-lg-5">
-          <h2 className="cw-head">
+          <h2 className="cw-head russo-one-regular">
             AND IT ALL
             <br />
             COMES WITH…
           </h2>
 
           {/* Tabs */}
-          <div className="cw-tabs">
+          <div className="cw-tabs inter-bold">
             {TABS.map((t) => {
               const isActive = t.key === active;
               return (

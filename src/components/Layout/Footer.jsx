@@ -103,24 +103,22 @@ const Footer = () => {
         <div className="row align-items-start footer-row-grid">
           {/* Left Column */}
           <div className="col-md-3 footer-col">
-            <div className="content-wrapper">
-              <h1 className="have-a-project-text">HAVE A PROJECT IN MIND?</h1>
-              <div className="footer-brand-block">
-                <img src={logo} alt="Mask Logo" className="footer-logo mt-4" />
-                <div className="footer-social">
-                  {socialIcons.map(({ key, label, href, src }) => (
-                    <a
-                      key={key}
-                      href={href}
-                      className="footer-social-link"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                    >
-                      <img src={src} alt="" className="footer-social-icon" />
-                    </a>
-                  ))}
-                </div>
+            <div className="content-wrapper footer-left-wrap">
+              <h1 className="have-a-project-text russo-one-regular">HAVE A PROJECT IN MIND?</h1>
+              <img src={logo} alt="Mask Logo" className="footer-logo" />
+              <div className="footer-social">
+                {socialIcons.map(({ key, label, href, src }) => (
+                  <a
+                    key={key}
+                    href={href}
+                    className="footer-social-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                  >
+                    <img src={src} alt="" className="footer-social-icon" />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -195,7 +193,7 @@ const Footer = () => {
           {/* Services Column */}
           <div className="col-md-3 checkbox-column footer-col">
             <div className="content-wrapper footer-options-wrap">
-              <h5 className="footer-options-head">
+              <h5 className="footer-options-head inter-bold">
                 What Services Do <br />
                 You Need?
               </h5>
@@ -236,7 +234,7 @@ const Footer = () => {
           {/* Duration Column */}
           <div className="col-md-3 checkbox-column footer-col">
             <div className="content-wrapper footer-options-wrap">
-              <h5 className="footer-options-head">
+              <h5 className="footer-options-head inter-bold">
                 When Do You Need <br />
                 Your Product?
               </h5>

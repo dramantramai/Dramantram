@@ -74,7 +74,7 @@ const BrandingPage = () => {
         <ProcessWrap>
             {/* Title column */}
             <div className="pcol title-col">
-              <h2 className="stack">
+              <h2 className="stack russo-one-regular">
                 <span>OUR DESIGN</span>
                 <span>PROCESS &</span>
                 <span>DELIVERABLES</span>

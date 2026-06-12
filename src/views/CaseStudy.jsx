@@ -147,7 +147,7 @@ const CaseStudy = () => {
             {/* Col 1: Title + Thumbnail Card */}
             <div className="col-12 col-md-3 cs-col cs-col-left">
               <div className="cs-pad">
-                <h1 className="cs-title">{cs.case_study_name}</h1>
+                <h1 className="cs-title"> {cs.case_study_name}</h1>
                 <figure className="cs-card-figure">
                   <img
                     src={thumbnailSrc}

@@ -1,7 +1,7 @@
 // src/components/ClientsSection.jsx
 import React from "react";
-import GlitchButton from "./GlitchButton";
-import "../styles/Clients.css";
+import GlitchButton from "../GlitchButton";
+import '../../styles/Clients.css';
 
 // Updated Data with individual Width/Height
 const consulting = [
@@ -132,7 +132,7 @@ const ClientsSection = () => {
       <div className="clients-grid">
         {/* Top-left Intro */}
         <div className="tile tile-intro">
-          <h2 className="intro-title">
+          <h2 className="intro-title raleway-semibold">
             Our Valued
             <br />
             Client Partners

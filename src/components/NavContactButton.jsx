@@ -12,7 +12,7 @@ const NavContactButton = ({
   to,
   href,
   children,
-  className = "",
+  className = "inter-bold",
   ...rest
 }) => {
   const elRef = useRef(null);

@@ -36,7 +36,7 @@
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 500;
   margin-bottom: 20px;
-  font-family: "raleway", sans-serif;
+  
   margin-left: 50px;
   word-break: keep-all;
   overflow-wrap: normal;
@@ -52,7 +52,7 @@
   line-height: 24px;
   opacity: 0.9;
   margin-bottom: 30px;
-  font-family: "inter", sans-serif;
+  
   margin-left: 50px;
   padding-right: 80px;
   margin-top: 50px;
@@ -73,7 +73,7 @@
   margin-left: 50px;
   text-decoration: none;
   padding: 10px 20px 10px 30px;
-  font-family: "inter", sans-serif;
+  
   transition: padding-left 0.3s ease, color 0.3s ease;
 }
 
@@ -140,7 +140,7 @@
 .philosophies-left h2 {
   font-size: 42px;
   margin-bottom: 80px;
-  font-family: "Inter", sans-serif;
+  
   margin-left: 100px;
   font-weight: 400;
 }
@@ -151,7 +151,7 @@
   letter-spacing: 1px;
   opacity: 0.4;
   margin-left: 100px;
-  font-family: "Russo One", sans-serif;
+  
 }
 
 .philosophies-right {
@@ -165,7 +165,7 @@
   line-height: 1.7;
   margin-top: 250px;
   opacity: 0.9;
-  font-family: "Inter", sans-serif;
+  
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -174,7 +174,7 @@
   font-size: 19px;
   line-height: 1.7;
   opacity: 0.9;
-  font-family: "Inter", sans-serif;
+  
 }
 
 .phy-p-r {
@@ -520,7 +520,7 @@
   transition: all 0.3s ease;
   padding-left: 10px;
   padding-right: 15px;
-  font-family: "inter", sans-serif;
+  
 }
 
 .join-team-link:hover {

@@ -51,7 +51,7 @@ Gomti Nagar, Lucknow, Uttar Pradesh 226010`,
 
                   {/* Col 2 — City */}
                   <div className="col-12 col-lg-3 office-col">
-                    <h2 className="city">{loc.city}</h2>
+                    <h2 className="city inter-bold">{loc.city}</h2>
                   </div>
 
                   {/* Col 3 — Address */}

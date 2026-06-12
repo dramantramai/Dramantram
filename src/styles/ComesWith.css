@@ -36,7 +36,7 @@
 
 /* Headline */
 .cw-head {
-  font-family: "Russo One", system-ui, sans-serif;
+  
   text-transform: uppercase;
   font-size: clamp(1.75rem, 3.2vw, 2.625rem);
   line-height: 1.05;
@@ -67,7 +67,7 @@
   line-height: 1.2;
   text-align: left;
   cursor: pointer;
-  font-family: "inter", system-ui, sans-serif;
+  
 }
 .cw-tab:hover {
   color: #d5d9de;

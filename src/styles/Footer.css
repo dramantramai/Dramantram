@@ -2,7 +2,7 @@
 
 .footer-section {
   background-color: black;
-  font-family: "Arial", sans-serif;
+  
   position: relative;
   overflow: hidden;
   padding: 0px 12px;
@@ -50,18 +50,24 @@
   height: 100%;
 }
 
+.footer-left-wrap{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+}
+
 .have-a-project-text {
   font-size: clamp(1.3rem, 1.5vw + 0.5rem, 2.2rem);
   font-weight: 300;
   line-height: 1.2;
-  font-family: "Russo One", sans-serif;
   align-items: center;
   text-align: left;
   padding-left: 0;
 }
 
 .footer-logo {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   padding-left: 0;
 }
@@ -78,7 +84,6 @@
   align-items: center;
   justify-content: center;
   gap: 22px;
-  margin-top: 88px;
   width: 100%;
 }
 
@@ -114,7 +119,7 @@
 /* --- Forms --- */
 .form-label {
   color: white;
-  font-family: "Inter", sans-serif;
+  
   font-size: clamp(0.75rem, 0.5vw + 0.5rem, 0.95rem);
 }
 
@@ -170,7 +175,7 @@
 }
 
 .footer-options-head {
-  font-family: "Inter", sans-serif;
+  
   font-weight: 400;
   font-size: clamp(1.1rem, 1.2vw + 0.5rem, 1.75rem);
   line-height: 1.25;
@@ -241,7 +246,7 @@
   flex: 1;
   margin: 0;
   color: #ffffff;
-  font-family: "Inter", sans-serif;
+  
   font-size: clamp(0.75rem, 0.5vw + 0.5rem, 0.95rem);
   font-weight: 400;
   line-height: 1.25;
@@ -291,7 +296,7 @@
   border-radius: 0;
   background-color: #ffe600;
   color: #000000;
-  font-family: "Inter", sans-serif;
+  
   font-size: clamp(0.85rem, 0.6vw + 0.5rem, 1.1rem);
   font-weight: 600;
   line-height: 1;

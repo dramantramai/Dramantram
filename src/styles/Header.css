@@ -67,7 +67,7 @@
 /* Nav Buttons */
 .navbar:not(.navbar-light) .nav-link {
   color: white !important;
-  font-family: "Inter";
+  
   font-weight: 300;
   font-style: normal;
   margin-left: 35px;

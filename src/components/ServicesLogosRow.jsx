@@ -15,7 +15,7 @@ const ServicesLogosRow = ({
         <div className="row row-cols-1 row-cols-md-2 g-4 service-lists">
           {serviceColumns.map((items, columnIndex) => (
             <div key={columnIndex} className="col">
-              <ul className="service-list">
+              <ul className="service-list inter-light">
                 {items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -26,7 +26,7 @@ const ServicesLogosRow = ({
       </div>
 
       <div className="col-lg-6 px-4 px-lg-5">
-        <p className="logos-title mb-4">{logosTitle}</p>
+        <p className="logos-title mb-4 raleway-semibold">{logosTitle}</p>
         <div className="logos-grid">
           {clients.map((client) => (
             <div key={client.alt} className="logo-item">

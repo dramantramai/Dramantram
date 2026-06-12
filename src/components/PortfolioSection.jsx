@@ -270,9 +270,8 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
           {/* SERVICE FILTER */}
           <div className="col-6 col-md-3 position-relative">
             <button
-              className={`filter-pill ${
-                activeDropdown === "service" ? "active" : ""
-              }`}
+              className={`filter-pill ${activeDropdown === "service" ? "active" : ""
+                }`}
               onClick={() => toggleDropdown("service")}
             >
               <span className="text-truncate">
@@ -308,9 +307,8 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
           {/* COMPLEXITY FILTER */}
           <div className="col-6 col-md-3 position-relative">
             <button
-              className={`filter-pill ${
-                activeDropdown === "complexity" ? "active" : ""
-              }`}
+              className={`filter-pill ${activeDropdown === "complexity" ? "active" : ""
+                }`}
               onClick={() => toggleDropdown("complexity")}
             >
               <span>{filters.complexity || "Complexity"}</span>
@@ -344,9 +342,8 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
           {/* INDUSTRY FILTER */}
           <div className="col-6 col-md-3 position-relative">
             <button
-              className={`filter-pill ${
-                activeDropdown === "industry" ? "active" : ""
-              }`}
+              className={`filter-pill ${activeDropdown === "industry" ? "active" : ""
+                }`}
               onClick={() => toggleDropdown("industry")}
             >
               <span>{filters.industry || "Industry"}</span>
@@ -380,9 +377,8 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
           {/* DURATION FILTER */}
           <div className="col-6 col-md-3 position-relative">
             <button
-              className={`filter-pill ${
-                activeDropdown === "duration" ? "active" : ""
-              }`}
+              className={`filter-pill ${activeDropdown === "duration" ? "active" : ""
+                }`}
               onClick={() => toggleDropdown("duration")}
             >
               <span>{filters.duration || "Duration"}</span>
@@ -420,12 +416,12 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
           {/* Left Sidebar - Styled like Our Teams */}
           <div className="col-lg-3 portfolio-sidebar">
             <div className="sidebar-content">
-              <h1 className="portfolio-title">
+              <h1 className="portfolio-title raleway-semibold">
                 Portfolio & Case Studies
               </h1>
               <p className="portfolio-description">
-                We're brand builders at heart, creators by design, tech
-                enthusiasts in practice, and integrated at our core.
+                {"We're brand builders at heart, creators by design, tech"}
+                {" enthusiasts in practice, and integrated at our core."}
               </p>
               <GlitchButton
                 href="/contact"

@@ -203,12 +203,8 @@
   align-items: flex-start;
 }
 
-h1 {
-  font-family: "Russo One", sans-serif;
-}
-
 .headText {
-  font-family: "Inter", sans-serif;
+  
 
   font-weight: 400;
 
@@ -221,7 +217,7 @@ h1 {
 }
 
 .heading {
-  font-family: "Russo One", sans-serif;
+  
 
   font-weight: 400;
 
@@ -690,13 +686,7 @@ h1 {
 
   margin: 0;
 
-  font-family:
-    "Russo One",
-    system-ui,
-    -apple-system,
-    Segoe UI,
-    Roboto,
-    sans-serif;
+  
 
   font-weight: 800;
 
@@ -761,7 +751,7 @@ h1 {
 
   line-height: 1.1;
 
-  font-family: "russo one";
+  
 }
 
 .metric .label {
@@ -1007,7 +997,7 @@ h1 {
 
 .cap-strong {
   color: #ffffff;
-  font-family: "Inter", sans-serif;
+  
   font-size: clamp(0.8125rem, 1.4vw, 1.125rem);
   font-weight: 500;
 }
@@ -1022,7 +1012,7 @@ h1 {
   font-size: clamp(0.875rem, 2vw, 1rem);
   line-height: 1.4;
   max-width: 36ch;
-  font-family: "Inter", sans-serif;
+  
 }
 
 .cap-bullets li {
@@ -1491,7 +1481,7 @@ h1 {
   margin: 0 0 1rem;
   font-size: clamp(1rem, 4.5cqi, 1.4rem);
   color: #3c3c3c;
-  font-family: "Raleway", sans-serif;
+  
 }
 
 .ai-stack {
@@ -1504,13 +1494,7 @@ h1 {
 }
 
 .ai-stack li {
-  font-family:
-    "Russo One",
-    system-ui,
-    -apple-system,
-    Segoe UI,
-    Roboto,
-    sans-serif;
+  
   font-weight: 800;
   letter-spacing: 0.08em;
   /* cqi = container query inline-size: scales with the column, not the viewport */
@@ -1536,7 +1520,7 @@ h1 {
   font-size: clamp(1.1rem, 6cqi + 0.2rem, 1.8rem);
   line-height: 1.2;
   font-weight: 400;
-  font-family: "Inter", sans-serif;
+  
   width: 100%;
   text-wrap: pretty;
 }
@@ -1551,7 +1535,7 @@ h1 {
 
 .ai-copy.small {
   color: #555;
-  font-family: "Inter", sans-serif;
+  
   font-size: clamp(0.8125rem, 4.4cqi, 1.05rem);
 }
 
@@ -1638,7 +1622,7 @@ h1 {
   font-weight: 500;
   font-size: clamp(1.5rem, 2vw + 0.8rem, 2.8rem);
   line-height: 1.1;
-  font-family: "Russo One", sans-serif;
+  
 }
 
 .ai-metric .num .unit {
@@ -1650,7 +1634,7 @@ h1 {
   color: #3a3a3a;
   font-size: clamp(0.8125rem, 3.6cqi, 1.05rem);
   margin-top: 0.25rem;
-  font-family: "Inter", sans-serif;
+  
 }
 
 /* --- Responsive Adjustments --- */
@@ -1829,13 +1813,7 @@ h1 {
 
   text-transform: uppercase;
 
-  font-family:
-    "Russo One",
-    system-ui,
-    -apple-system,
-    Segoe UI,
-    Roboto,
-    sans-serif;
+  
 }
 
 .subtitle {
@@ -1847,7 +1825,7 @@ h1 {
 
   font-weight: 300;
 
-  font-family: "Inter", sans-serif;
+  
 }
 
 .description {
@@ -1859,7 +1837,7 @@ h1 {
 
   font-weight: 300;
 
-  font-family: "Inter", sans-serif;
+  
 }
 
 .quote-marks {
@@ -1913,7 +1891,7 @@ h1 {
 .card-name {
   font-size: clamp(1.1rem, 3vw, 1.5rem);
 
-  font-family: "Raleway", sans-serif;
+  
 
   margin-bottom: 10px;
 
@@ -1925,7 +1903,7 @@ h1 {
 .card-role {
   font-size: clamp(0.75rem, 2vw, 0.85rem);
 
-  font-family: "Inter", sans-serif;
+  
 
   margin-bottom: 4px;
 
@@ -1941,7 +1919,7 @@ h1 {
 .card-company {
   font-size: clamp(0.75rem, 2vw, 0.85rem);
 
-  font-family: "Inter", sans-serif;
+  
 
   margin-bottom: 30px;
 

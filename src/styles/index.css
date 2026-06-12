@@ -67,3 +67,53 @@ h6,
 span {
   overflow-wrap: break-word;
 }
+
+/* ============================================================
+   Typography System & Utility Classes
+   ============================================================ */
+
+/* Enforce Inter Regular as the default base font across the app */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.russo-one-regular {
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  background: linear-gradient(to right, #ffffff 0%, #999999 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+.raleway-semibold {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+}
+
+.inter-light {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+}
+
+.inter-semibold {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+.raleway-regular {
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+}
+

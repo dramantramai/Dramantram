@@ -209,7 +209,7 @@
 }
 .hero {
   margin: 6px 0 12px;
-  font-family: "Russo One", system-ui, sans-serif;
+  
   font-size: 35px;
   line-height: 1.07;
   text-transform: uppercase;
@@ -281,7 +281,7 @@
   padding: 12px 24px;
   width: 100%;
   text-align: left;
-  font-family: "inter", system-ui, sans-serif;
+  
   margin-left: 15px;
 }
 

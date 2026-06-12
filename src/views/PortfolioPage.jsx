@@ -17,7 +17,7 @@ const PortfolioPage = () => {
             {/* Col 1 */}
             <div className="col-12 col-md-3 portfolio-panel portfolio-panel--left">
               <div className="portfolio-panel-inner">
-                <h1 className="logo-word">PORTFOLIO</h1>
+                <h1 className="logo-word russo-one-regular">PORTFOLIO</h1>
               </div>
             </div>
 

@@ -56,6 +56,7 @@ const SplineContainer = memo(() => {
     </ErrorBoundary>
   );
 });
+SplineContainer.displayName = "SplineContainer";
 
 // Styles for the fallback
 const fallbackStyle = {

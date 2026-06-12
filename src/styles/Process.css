@@ -113,7 +113,7 @@
 /* Title block — same gradient text as agency intro (white section) */
 .stack {
   margin: 0;
-  font-family: "Russo One", system-ui, sans-serif;
+  
   text-transform: uppercase;
   line-height: 1.06;
   letter-spacing: 0.5px;

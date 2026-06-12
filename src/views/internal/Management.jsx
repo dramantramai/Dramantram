@@ -237,7 +237,7 @@ export default function Management() {
             {/* CLIENT */}
             <div>
               <label className="management-label">
-                <strong>Client's Name</strong>
+                <strong>{"Client's Name"}</strong>
               </label>
               <input
                 name="client"

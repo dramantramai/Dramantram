@@ -3,7 +3,7 @@
 /* --- MAIN SECTION --- */
 .portfolio-section {
   color: white;
-  font-family: "Inter", sans-serif;
+  
   padding-top: 23px !important;
   padding-bottom: 60px;
   background: transparent;
@@ -50,7 +50,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Inter", sans-serif;
+  
   font-weight: 500;
   font-size: 0.95rem;
   cursor: pointer;
@@ -126,7 +126,7 @@
 }
 
 .intro-box h1 {
-  font-family: "Russo One", sans-serif;
+  
   font-size: clamp(1.2rem, 3.5vw, 2.5rem);
   line-height: 1.1;
   margin-bottom: 20px;
@@ -622,7 +622,7 @@
   line-height: 1.1;
   padding-left: 10px;
   color: #fff;
-  font-family: "Raleway", sans-serif;
+  
 }
 
 .portfolio-description {
@@ -632,7 +632,7 @@
   margin-bottom: 20px;
   padding-left: 10px;
   padding-right: 15px;
-  font-family: "Inter", sans-serif;
+  
 }
 
 .portfolio-card-wrapper {

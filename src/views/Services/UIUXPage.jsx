@@ -39,7 +39,7 @@ const UIUXPage = () => {
             {/* RIGHT COPY */}
             <div className="col-lg-6 px-4 px-lg-5 brand-col mid-copy d-flex flex-column justify-content-center">
               <small className="pill mb-2">UI-UX</small>
-              <h2 className="hero mb-4">
+              <h2 className="hero mb-4 russo-one-regular">
                 WITH GREAT DESIGN LANGUAGE
                 <br />
                 COMES GREAT BRAND RECALL
