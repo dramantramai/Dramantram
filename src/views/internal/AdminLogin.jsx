@@ -31,7 +31,7 @@ const AdminLogin = () => {
         });
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("auth", JSON.stringify(res.data));
-        router.push("/internal/case-studies");
+        router.push("/internal/management");
       } else {
         toast.error(res.data.message);
       }

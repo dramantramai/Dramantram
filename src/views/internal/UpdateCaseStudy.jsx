@@ -67,6 +67,7 @@ const UpdateCaseStudy = () => {
     case_study_description: "",
     client: "",
     services: "",
+    service: "Branding",
     complexity: "",
     industry: "",
     duration: "",
@@ -103,6 +104,7 @@ const UpdateCaseStudy = () => {
           case_study_description: cs.case_study_description || "",
           client: cs.client || "",
           services: cs.services || "",
+          service: cs.service || "Branding",
           complexity: cs.complexity || "",
           industry: cs.industry || "",
           duration: cs.duration || "",
@@ -169,6 +171,7 @@ const UpdateCaseStudy = () => {
       );
       caseStudyData.append("client", form.client);
       caseStudyData.append("services", form.services);
+      caseStudyData.append("service", form.service);
       caseStudyData.append("complexity", form.complexity);
       caseStudyData.append("industry", form.industry);
       caseStudyData.append("duration", form.duration);
@@ -199,7 +202,7 @@ const UpdateCaseStudy = () => {
 
       if (data?.success) {
         toast.success("Case Study Updated Successfully");
-        router.push("/internal/case-studies");
+        router.push("/internal/management");
       } else {
         toast.error(data?.message || "Update failed");
       }
@@ -293,23 +296,41 @@ const UpdateCaseStudy = () => {
               />
             </div>
 
-            {/* SERVICES */}
-            <div>
-              <label className="management-label">Services</label>
-              <select
-                name="services"
-                value={form.services}
-                onChange={handleChange}
-                className="management-select"
-              >
-                <option value="">Select Service</option>
-                {SERVICE_OPTIONS.map((service) => (
-                  <option key={service} value={service}>
-                    {service}
-                  </option>
-                ))}
-              </select>
-            </div>
+             {/* SERVICES */}
+             <div>
+               <label className="management-label">Services</label>
+               <select
+                 name="services"
+                 value={form.services}
+                 onChange={handleChange}
+                 className="management-select"
+               >
+                 <option value="">Select Service</option>
+                 {SERVICE_OPTIONS.map((service) => (
+                   <option key={service} value={service}>
+                     {service}
+                   </option>
+                 ))}
+               </select>
+             </div>
+
+             {/* NAVBAR SERVICE CATEGORY */}
+             <div>
+               <label className="management-label"><strong>Navbar Service Category</strong></label>
+               <select
+                 name="service"
+                 value={form.service}
+                 onChange={handleChange}
+                 className="management-select"
+                 required
+               >
+                 <option value="Branding">Branding</option>
+                 <option value="Animated Videos">Animated Videos</option>
+                 <option value="Live Action">Live Action</option>
+                 <option value="UI/UX">UI/UX</option>
+                 <option value="Experiential Lab">Experiential Lab</option>
+               </select>
+             </div>
 
             {/* DESCRIPTION */}
             <div style={{ gridColumn: "1 / -1" }}>
@@ -617,7 +638,7 @@ const UpdateCaseStudy = () => {
             >
               <button
                 type="button"
-                onClick={() => router.push("/internal/case-studies")}
+                onClick={() => router.push("/internal/management")}
                 className="management-btn management-reset"
                 aria-label="Cancel"
               >

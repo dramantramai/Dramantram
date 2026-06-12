@@ -130,3 +130,190 @@
 .management-save:hover {
   transform: scale(1.03);
 }
+
+/* TABS */
+.management-tabs {
+  display: flex;
+  gap: 12px;
+  border-bottom: 2px solid #222;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.management-tab-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.management-tab-btn:hover {
+  color: #fff;
+}
+
+.management-tab-btn.active {
+  color: #ff3b3b;
+}
+
+.management-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff1b1b, #ff4d4d);
+  border-radius: 99px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+/* LIST TABLE / CARDS */
+.management-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.management-add-btn {
+  background: linear-gradient(90deg, #ff1b1b, #ff4d4d);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 0.9rem;
+}
+
+.management-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.4);
+}
+
+.management-table-wrapper {
+  overflow-x: auto;
+  background: #0b0b0b;
+  border: 1px solid #222;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.management-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.management-table th,
+.management-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #1c1c1c;
+  vertical-align: middle;
+}
+
+.management-table th {
+  background: #121212;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.management-table tr:hover td {
+  background: #141414;
+  color: #fff;
+}
+
+.management-table-img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #222;
+}
+
+.management-action-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.management-action-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.management-edit-btn {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.management-edit-btn:hover {
+  background: #333;
+  border-color: #666;
+}
+
+.management-delete-btn {
+  background: rgba(255, 59, 59, 0.1);
+  color: #ff5555;
+  border: 1px solid rgba(255, 59, 59, 0.2);
+}
+
+.management-delete-btn:hover {
+  background: #ff3b3b;
+  color: #000;
+  border-color: #ff3b3b;
+}
+
+/* IMAGE PREVIEW IN FORMS */
+.image-preview-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.image-preview-box {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  border: 1px dashed #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #121212;
+}
+
+.image-preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-preview-text {
+  font-size: 0.75rem;
+  color: #666;
+}
+

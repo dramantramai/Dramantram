@@ -41,6 +41,18 @@ export async function PUT(request, { params }) {
       if (val) caseStudy[field] = val;
     }
 
+    const service = formData.get("service");
+    if (service) {
+      const ALLOWED_SERVICES = ["Branding", "Animated Videos", "Live Action", "UI/UX", "Experiential Lab"];
+      if (!ALLOWED_SERVICES.includes(service)) {
+        return NextResponse.json(
+          { success: false, message: `Invalid service classification: ${service}` },
+          { status: 400 }
+        );
+      }
+      caseStudy.service = service;
+    }
+
     const showOnHomepage = formData.get("showOnHomepage");
     if (showOnHomepage !== null) {
       caseStudy.showOnHomepage = showOnHomepage === "true";

@@ -22,6 +22,7 @@ export async function POST(request) {
     const video_link_2 = formData.get("video_link_2");
     const showOnHomepage = formData.get("showOnHomepage");
     const thumbnail_image = formData.get("thumbnail_image");
+    const service = formData.get("service");
 
     // Validation
     if (!case_study_name)
@@ -44,6 +45,18 @@ export async function POST(request) {
         { error: "Services are required" },
         { status: 400 }
       );
+    if (!service)
+      return NextResponse.json(
+        { error: "Service classification is required" },
+        { status: 400 }
+      );
+    const ALLOWED_SERVICES = ["Branding", "Animated Videos", "Live Action", "UI/UX", "Experiential Lab"];
+    if (!ALLOWED_SERVICES.includes(service)) {
+      return NextResponse.json(
+        { error: `Invalid service classification. Must be one of: ${ALLOWED_SERVICES.join(", ")}` },
+        { status: 400 }
+      );
+    }
     if (!complexity)
       return NextResponse.json(
         { error: "Complexity is required" },
@@ -90,6 +103,7 @@ export async function POST(request) {
       case_study_description,
       client,
       services,
+      service,
       complexity,
       industry,
       duration,

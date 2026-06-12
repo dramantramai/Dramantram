@@ -86,13 +86,8 @@ const AdminHeader = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav m-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" href="/internal/case-studies">
-                Case-Studies
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" href="/internal/create-case-study">
-                Create Case-Study
+              <Link className="nav-link" href="/internal/management">
+                Management
               </Link>
             </li>
             <li className="nav-item">

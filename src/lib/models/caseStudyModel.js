@@ -7,6 +7,13 @@ const CaseStudySchema = new mongoose.Schema(
     case_study_description: { type: String, required: true, trim: true },
     client: { type: String, required: true, trim: true },
     services: { type: String, required: true, trim: true },
+    service: {
+      type: String,
+      required: true,
+      enum: ["Branding", "Animated Videos", "Live Action", "UI/UX", "Experiential Lab"],
+      default: "Branding",
+      trim: true,
+    },
     complexity: { type: String, required: true, trim: true },
     industry: { type: String, required: true, trim: true },
     duration: { type: String, required: true, trim: true },
