@@ -51,8 +51,8 @@
   justify-content: space-between;
   align-items: center;
   
-  font-weight: 500;
-  font-size: 0.95rem;
+  
+  
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
@@ -127,14 +127,14 @@
 
 .intro-box h1 {
   
-  font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+  
   line-height: 1.1;
   margin-bottom: 20px;
 }
 
 .intro-box p {
   color: #bbb;
-  font-size: clamp(0.9rem, 2vw, 1rem);
+  
   line-height: 1.6;
   margin-bottom: 10px;
 }
@@ -147,8 +147,8 @@
   border-left: 2px solid #fbff00;
   color: white;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
+  
+  
   transition: color 0.3s ease;
   height: 30px;
 }
@@ -158,12 +158,39 @@
   overflow: hidden;
   border-radius: 20px;
   cursor: pointer;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 4 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Skeleton shimmer loading animation for dark theme portfolio tiles */
+.portfolio-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #111 25%, #222 50%, #111 75%);
+  background-size: 200% 100%;
+  animation: portfolio-shimmer 1.5s infinite linear;
+  border-radius: inherit;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes portfolio-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .portfolio-img {
@@ -186,7 +213,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  right: 0;
   background: rgba(0, 0, 0, 0.8);
   transform: translateY(100%);
   transition: transform 0.4s ease;
@@ -201,8 +228,8 @@
 .case-link {
   color: #fff;
   text-decoration: none;
-  font-weight: 600;
-  font-size: clamp(0.85rem, 2vw, 1rem);
+  
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -214,7 +241,7 @@
 }
 
 .case-link span {
-  font-size: 1.3em;
+  
   margin-left: 10px;
 }
 
@@ -292,24 +319,20 @@
     border: none;
   }
 
-  .intro-box h1 {
-    font-size: 20px;
-  }
-
   .connect-link {
     display: inline-block;
     margin-top: 30px;
     color: white;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.8rem;
+    
+    
     transition: color 0.3s ease;
     height: 20px;
   }
 
   .intro-box p {
     color: #bbb;
-    font-size: 0.8rem;
+    
     line-height: 1.5;
     margin-bottom: 15px;
     margin-top: 0;
@@ -323,7 +346,7 @@
 
   .filter-pill {
     padding: 10px 18px;
-    font-size: 0.85rem;
+    
   }
 
   .left-col {
@@ -410,13 +433,9 @@
 
   .filter-pill {
     padding: 8px 12px;
-    font-size: 0.8rem;
+    
     justify-content: center;
     gap: 5px;
-  }
-
-  .filter-pill .caret {
-    font-size: 0.9em;
   }
 
   /* Remove the conflicting 100% width rule */
@@ -434,9 +453,8 @@
   /* Ensure portfolio item fills its column */
   .portfolio-item {
     width: 100%;
-    height: 100%;
-    min-height: 150px;
-    /* Minimum height for mobile */
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
 
   /* Ensure image fills the container */
@@ -473,7 +491,7 @@
   .intro-box h1 {
     margin-bottom: 10px;
     margin-top: 20px;
-    font-size: 24px;
+    
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -481,7 +499,7 @@
   .intro-box p {
     margin-bottom: 20px;
     margin-top: 15px;
-    font-size: 1rem;
+    
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -489,7 +507,7 @@
   .connect-link {
     margin-top: 20px;
     padding-bottom: 20px;
-    font-size: 0.9rem;
+    
     margin-left: 0 !important;
     padding-left: 15px !important;
     padding-right: 10px;
@@ -500,20 +518,18 @@
   }
 
   .portfolio-item {
-    border-radius: 5px;
-    min-height: 140px;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
   }
 
   .overlay {
     padding: 8px 10px;
   }
 
-  .case-link {
-    font-size: 0.8rem;
-  }
-
   .btn-connect-portfolio {
-    font-size: 0.9rem;
+    
     width: auto !important;
   }
 }
@@ -549,13 +565,6 @@
 
   .portfolio-section .right-lower {
     order: 3;
-  }
-}
-
-/* Single column for very small devices if needed */
-@media (max-width: 360px) {
-  .intro-box h1 {
-    font-size: 1.5rem;
   }
 }
 
@@ -605,7 +614,7 @@
 /* --- GRID ALIGNMENT FIXES --- */
 .portfolio-sidebar {
   background: transparent;
-  padding: 60px 40px;
+  padding: 40px 24px;
   /* min-height removed — height matches the content column */
   position: relative;
 }
@@ -616,21 +625,19 @@
 }
 
 .portfolio-title {
-  font-size: clamp(2.25rem, 4vw, 3.5rem);
-  font-weight: 500;
+  
+  
   margin-bottom: 30px;
   line-height: 1.1;
-  padding-left: 10px;
   color: #fff;
   
 }
 
 .portfolio-description {
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  
   line-height: 1.6;
   color: #ccc;
   margin-bottom: 20px;
-  padding-left: 10px;
   padding-right: 15px;
   
 }
@@ -641,12 +648,19 @@
   height: 100%;
   position: relative;
   overflow: hidden;
-  padding: 30px;
+  padding: 12px;
+}
+
+.portfolio-card-wrapper a {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
 }
 
 .portfolio-section .portfolio-sidebar .connect-link {
-  margin-left: -40px !important;
-  padding-left: 40px !important;
+  margin-left: -24px !important;
+  padding-left: 24px !important;
 }
 
 @media (min-width: 992px) {
@@ -669,12 +683,16 @@
     z-index: 2;
   }
 
+  .portfolio-section .portfolio-card-wrapper {
+    padding: 6px !important;
+  }
+
   .portfolio-section .portfolio-sidebar {
     grid-column: 2 / 3 !important;
     grid-row: 1 !important;
     width: auto !important;
     max-width: 100% !important;
-    padding-left: 40px !important;
+    padding-left: 24px !important;
     padding-right: 20px !important;
   }
 
@@ -722,10 +740,6 @@
   .portfolio-sidebar {
     min-height: auto;
     padding: 40px 30px;
-  }
-
-  .portfolio-title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
   }
 
   .portfolio-section .portfolio-sidebar .connect-link {

@@ -68,7 +68,7 @@
 .navbar:not(.navbar-light) .nav-link {
   color: white !important;
   
-  font-weight: 300;
+  
   font-style: normal;
   margin-left: 35px;
   position: relative;

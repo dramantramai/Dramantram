@@ -179,9 +179,9 @@ const ClientsSection = () => {
         {/* CTA gradient tile */}
         <div className="tile tile-cta">
           <div className="cta-inner">
-            <h3 className="cta-head">
+            <h4 className="cta-head raleway-semibold">
               Check out the <br /> full client list
-            </h3>
+            </h4>
             <GlitchButton
               className="clients-cta-btn"
               href="#clients"

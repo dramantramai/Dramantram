@@ -18,6 +18,19 @@
   --text-md: clamp(1rem, 1.5vw, 1.25rem);
   --text-lg: clamp(1.5rem, 3vw, 3rem);
   --text-xl: clamp(2rem, 5vw, 4rem);
+
+  /* Centralized Continuous Fluid Font Sizes (Way 2) */
+  --fs-hero: clamp(2.5rem, 5vw, 6rem);
+  --fs-h1: clamp(2rem, 3.5vw, 4.5rem);
+  --fs-h2: clamp(1.5rem, 2.5vw, 3rem);
+  --fs-h3: clamp(1.2rem, 2vw, 2rem);
+  --fs-h4: clamp(1rem, 1.5vw, 1.5rem);
+  --fs-body: clamp(0.9rem, 0.8vw, 1.2rem);
+  --fs-small: clamp(0.75rem, 0.8vw, 0.95rem);
+
+  /* Custom Highlighted Span/Div Sizes */
+  --fs-span-lg: clamp(1.2rem, 1.4vw, 2.2rem);
+  --fs-span-xl: clamp(2.5rem, 4.5vw, 5.5rem);
 }
 
 /* Bootstrap already applies border-box; reinforce for any non-bootstrap nodes */
@@ -92,6 +105,11 @@ textarea {
   color: transparent;
 }
 
+.russo-one-regular-plain {
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+}
+
 .inter-bold {
   font-family: "Inter", sans-serif;
   font-weight: 700;
@@ -116,4 +134,75 @@ textarea {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
 }
+
+/* ============================================================
+   Fluid Typography Mappings and Utility Classes
+   ============================================================ */
+
+/* Map standard HTML elements to fluid variables */
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+h4 {
+  font-size: var(--fs-h4);
+}
+
+body,
+p,
+li,
+a,
+span,
+button,
+input,
+select,
+textarea {
+  font-size: var(--fs-body);
+}
+
+/* Utility Classes for Overrides and Highlights */
+.fs-hero {
+  font-size: var(--fs-hero);
+}
+
+.fs-h1 {
+  font-size: var(--fs-h1);
+}
+
+.fs-h2 {
+  font-size: var(--fs-h2);
+}
+
+.fs-h3 {
+  font-size: var(--fs-h3);
+}
+
+.fs-h4 {
+  font-size: var(--fs-h4);
+}
+
+.fs-body {
+  font-size: var(--fs-body);
+}
+
+.fs-small {
+  font-size: var(--fs-small);
+}
+
+.fs-span-lg {
+  font-size: var(--fs-span-lg);
+}
+
+.fs-span-xl {
+  font-size: var(--fs-span-xl);
+}
+
 

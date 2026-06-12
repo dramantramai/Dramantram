@@ -17,18 +17,18 @@ const PortfolioPage = () => {
             {/* Col 1 */}
             <div className="col-12 col-md-3 portfolio-panel portfolio-panel--left">
               <div className="portfolio-panel-inner">
-                <h1 className="logo-word russo-one-regular">PORTFOLIO</h1>
+                <h2 className="logo-word russo-one-regular">PORTFOLIO</h2>
               </div>
             </div>
 
             {/* Col 2 */}
             <div className="col-12 col-md-3 portfolio-panel">
               <div className="portfolio-panel-inner">
-                <h2 className="hero-title">
+                <h3 className="hero-title">
                   A locally set up
                   <br />
                   global creative <br /> agency
-                </h2>
+                </h3>
               </div>
             </div>
 

@@ -23,7 +23,7 @@
   text-align: center;
   color: #ff1a1a;
   margin-bottom: 25px;
-  font-weight: 600;
+  
   letter-spacing: 1px;
 }
 
@@ -36,7 +36,7 @@
 .input-group label {
   color: #ff4a4a;
   margin-bottom: 6px;
-  font-size: 14px;
+  
 }
 
 .input-group input {
@@ -62,7 +62,7 @@
   border: none;
   border-radius: 6px;
   color: white;
-  font-weight: 600;
+  
   cursor: pointer;
   transition: 0.3s;
   margin-top: 8px;

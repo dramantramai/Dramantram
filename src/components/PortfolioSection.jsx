@@ -416,9 +416,9 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
           {/* Left Sidebar - Styled like Our Teams */}
           <div className="col-lg-3 portfolio-sidebar">
             <div className="sidebar-content">
-              <h1 className="portfolio-title raleway-semibold">
-                Portfolio & Case Studies
-              </h1>
+              <h2 className="portfolio-title raleway-semibold">
+                Portfolio & <br/>Case Studies
+              </h2>
               <p className="portfolio-description">
                 {"We're brand builders at heart, creators by design, tech"}
                 {" enthusiasts in practice, and integrated at our core."}
@@ -435,9 +435,15 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
           <div className="col-lg-9">
             <div className="row g-0">
               {loading ? (
-                <div className="col-12 text-center text-white py-5">
-                  <h5>Loading...</h5>
-                </div>
+                Array.from({ length: 6 }).map((_, index) => (
+                  <div key={index} className="col-md-6 col-lg-4">
+                    <div className="portfolio-card-wrapper">
+                      <div className="portfolio-item">
+                        <div className="portfolio-skeleton" />
+                      </div>
+                    </div>
+                  </div>
+                ))
               ) : displayedCaseStudies.length > 0 ? (
                 displayedCaseStudies.map((item) => (
                   <div key={item._id} className="col-md-6 col-lg-4">

@@ -11,7 +11,7 @@
   background: linear-gradient(90deg, #ff3b3b, #ff7b7b); /* Red Gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 700;
+  
 }
 
 /* The Card Itself */
@@ -64,9 +64,9 @@
 
 .card-title {
   color: #fff !important;
-  font-size: 1.25rem;
+  
   margin-bottom: 10px !important;
-  font-weight: 600;
+  
   /* Allow wrapping so long titles are not clipped on narrow cards */
   overflow-wrap: break-word;
   margin-top: 10px;
@@ -74,7 +74,7 @@
 
 .card-text {
   color: #a0a0a0;
-  font-size: 0.9rem;
+  
   margin-bottom: 20px;
   flex-grow: 1; /* Pushes button section to bottom */
   line-height: 1.5;
@@ -96,10 +96,10 @@
   color: white;
   padding: 10px;
   border-radius: 6px;
-  font-weight: 600;
+  
   transition: opacity 0.3s;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  
   letter-spacing: 0.5px;
 }
 
@@ -119,8 +119,8 @@
   flex: 1;
   padding: 8px;
   border-radius: 6px;
-  font-weight: 500;
-  font-size: 0.85rem;
+  
+  
   cursor: pointer;
   transition: all 0.3s;
   display: flex;

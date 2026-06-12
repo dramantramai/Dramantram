@@ -1,19 +1,26 @@
 // src/components/PortfolioItem.jsx
 
-import React from "react";
-import { Card } from "react-bootstrap";
-import Link from "next/link";
+import React, { useState } from "react";
 import "../styles/PortfolioSection.css";
 
 const PortfolioItem = ({ imageSrc, title, slug }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div className="portfolio-item">
-      <img src={imageSrc} alt="Portfolio" className="portfolio-img" />
-      <div className="overlay case-link">
-        {/* <button className=""> */}
-        {title} <span>›</span>
-        {/* </button> */}
-      </div>
+      {!imageLoaded && <div className="portfolio-skeleton" />}
+      <img
+        src={imageSrc}
+        alt="Portfolio"
+        className="portfolio-img"
+        onLoad={() => setImageLoaded(true)}
+        style={{ opacity: imageLoaded ? 1 : 0 }}
+      />
+      {imageLoaded && (
+        <div className="overlay case-link">
+          {title} <span>›</span>
+        </div>
+      )}
     </div>
   );
 };

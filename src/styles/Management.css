@@ -42,7 +42,7 @@
 /* LABELS */
 .management-label {
   color: #ccc;
-  font-size: 14px;
+  
   margin-bottom: 8px;
   display: block;
 }
@@ -57,7 +57,7 @@
   border: 1px solid #222;
   border-radius: 10px;
   color: white;
-  font-size: 15px;
+  
   outline: none;
   transition: 0.25s ease;
 }
@@ -72,7 +72,7 @@
 /* FILE INPUT STYLE */
 .management-file {
   color: #bbb;
-  font-size: 14px;
+  
 }
 
 /* GRID LAYOUT */
@@ -102,8 +102,8 @@
 .management-btn {
   padding: 12px 26px;
   border-radius: 10px;
-  font-weight: 600;
-  font-size: 15px;
+  
+  
   cursor: pointer;
   transition: 0.25s ease;
 }

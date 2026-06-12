@@ -39,7 +39,7 @@ const AnimatedVideosPage = () => {
 
             {/* RIGHT COPY */}
             <div className="col-lg-6 px-4 px-lg-5 brand-col mid-copy d-flex flex-column justify-content-center">
-              <small className="pill mb-2">Animated Videos</small>
+              <small className="pill mb-2 fs-h4">Animated Videos</small>
               <h2 className="hero mb-4 russo-one-regular">
                 Bring out your business
                 <br />
@@ -65,9 +65,9 @@ const AnimatedVideosPage = () => {
             {/* Title column */}
             <div className="pcol title-col">
               <h2 className="stack">
-                <span>ANIMATION</span>
-                <span>PROCESS &</span>
-                <span>DELIVERABLES</span>
+                <span className="russo-one-regular fs-h2">ANIMATION</span>
+                <span className="russo-one-regular fs-h2">PROCESS &</span>
+                <span className="russo-one-regular fs-h2">DELIVERABLES</span>
               </h2>
             </div>
 
@@ -75,7 +75,7 @@ const AnimatedVideosPage = () => {
             <div className="pcol step-col">
               <div className="step-head">
                 <span className="step-bar" />
-                <h3>Define</h3>
+                <h3 className="raleway-regular">Define</h3>
                 <span className="arrow" aria-hidden />
               </div>
               <ul className="bullets">
@@ -91,7 +91,7 @@ const AnimatedVideosPage = () => {
             <div className="pcol step-col">
               <div className="step-head">
                 <span className="step-bar" />
-                <h3>Design</h3>
+                <h3 className="raleway-regular">Design</h3>
                 <span className="arrow" aria-hidden />
               </div>
               <ul className="bullets">
@@ -106,7 +106,7 @@ const AnimatedVideosPage = () => {
             <div className="pcol step-col">
               <div className="step-head">
                 <span className="step-bar" />
-                <h3>Develop</h3>
+                <h3 className="raleway-regular">Develop</h3>
               </div>
               <ul className="bullets">
                 <li>Voice Over Recording</li>

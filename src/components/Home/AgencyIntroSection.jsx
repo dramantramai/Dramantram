@@ -58,7 +58,7 @@ const AgencyIntroSection = () => {
           <div className="row g-0">
             <div className="col-lg-6 col-12 ai-col ai-left">
               <div className="content-wrapper">
-                <p className="ai-kicker fw-semibold">Dramantram is</p>
+                <p className="ai-kicker fw-semibold fs-h4">Dramantram is</p>
                 <ul className="ai-stack russo-one-regular">
                   <li>BOLD</li>
                   <li>LOCALLY GLOBAL</li>
@@ -103,25 +103,25 @@ const AgencyIntroSection = () => {
             <div className="col-lg-3 col-12 ai-col ai-right">
               <div className="content-wrapper">
                 <div className="ai-metric">
-                  <div className="num russo-one-regular">70+</div>
+                  <div className="num russo-one-regular-plain fs-h3">70+</div>
                   <div className="lbl">Identity Design</div>
                 </div>
 
                 <div className="ai-metric">
-                  <div className="num russo-one-regular">200+</div>
+                  <div className="num russo-one-regular-plain fs-h3">200+</div>
                   <div className="lbl">UI/UX Design</div>
                 </div>
 
                 <div className="ai-metric">
-                  <div className="num russo-one-regular">
-                    98K+ <span className="unit">sec</span>
+                  <div className="num russo-one-regular-plain fs-h3">
+                    98K+ <span className="fs-h4">sec</span>
                   </div>
                   <div className="lbl">of Animated Video Creation</div>
                 </div>
 
                 <div className="ai-metric">
-                  <div className="num russo-one-regular">
-                    800+ <span className="unit">min</span>
+                  <div className="num russo-one-regular-plain fs-h3">
+                    800+ <span className="fs-h4">min</span>
                   </div>
                   <div className="lbl">of Live Video Production</div>
                 </div>

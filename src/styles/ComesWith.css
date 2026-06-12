@@ -38,7 +38,7 @@
 .cw-head {
   
   text-transform: uppercase;
-  font-size: clamp(1.75rem, 3.2vw, 2.625rem);
+  
   line-height: 1.05;
   letter-spacing: 0.02em;
   margin: 10px 0 22px;
@@ -62,8 +62,8 @@
   border: 0;
   padding: 0 0 12px 0;
   color: #aeb2b7;
-  font-weight: 600;
-  font-size: 14px;
+  
+  
   line-height: 1.2;
   text-align: left;
   cursor: pointer;

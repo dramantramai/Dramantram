@@ -104,7 +104,7 @@ const Footer = () => {
           {/* Left Column */}
           <div className="col-md-3 footer-col">
             <div className="content-wrapper footer-left-wrap">
-              <h1 className="have-a-project-text russo-one-regular">HAVE A PROJECT IN MIND?</h1>
+              <h2 className="have-a-project-text russo-one-regular">HAVE A PROJECT IN MIND?</h2>
               <img src={logo} alt="Mask Logo" className="footer-logo" />
               <div className="footer-social">
                 {socialIcons.map(({ key, label, href, src }) => (
@@ -193,10 +193,10 @@ const Footer = () => {
           {/* Services Column */}
           <div className="col-md-3 checkbox-column footer-col">
             <div className="content-wrapper footer-options-wrap">
-              <h5 className="footer-options-head inter-bold">
+              <h4 className="footer-options-head inter-bold">
                 What Services Do <br />
                 You Need?
-              </h5>
+              </h4>
               <div className="footer-options-list">
                 {[
                   "Branding",
@@ -234,10 +234,10 @@ const Footer = () => {
           {/* Duration Column */}
           <div className="col-md-3 checkbox-column footer-col">
             <div className="content-wrapper footer-options-wrap">
-              <h5 className="footer-options-head inter-bold">
+              <h4 className="footer-options-head inter-bold">
                 When Do You Need <br />
                 Your Product?
-              </h5>
+              </h4>
               <div className="footer-options-list">
                 {["ASAP", "Within 15 days", "Within a Month", "Not Sure"].map(
                   (time) => {

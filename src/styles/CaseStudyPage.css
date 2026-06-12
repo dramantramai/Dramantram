@@ -30,12 +30,12 @@
   padding: 6px 10px;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 12px;
+  
 }
 
 .cs-pill-muted {
   color: #666;
-  font-size: 12px;
+  
   padding-top: 50px;
 }
 
@@ -54,11 +54,11 @@
 /* title + card */
 .cs-title {
   font-family: "Russo One", sans-serif;
-  font-weight: 400;
+  
   letter-spacing: 1px;
   margin: 8px 0 16px;
-  font-weight: 400;
-  font-size: clamp(1.75rem, 4vw, 2.8125rem);
+  
+  
 }
 
 .cs-card-figure {
@@ -86,8 +86,8 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
   color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
+  
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,7 +129,7 @@
 }
 
 .cs-cap {
-  font-size: 11px;
+  
   color: #666;
   margin-top: 6px;
 }
@@ -137,25 +137,25 @@
 /* meta */
 .cs-meta-label {
   color: #7e7e7e;
-  font-size: 14px;
+  
   margin-top: 30px;
 }
 
 .cs-meta-value {
-  font-size: 17px;
+  
   color: #111;
 }
 
 /* text areas */
 .cs-h2 {
-  font-weight: 400;
-  font-size: clamp(1rem, 2.8vw, 2rem);
+  
+  
   margin-bottom: 12px;
 }
 
 .cs-h3 {
-  font-weight: 500;
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  
+  
   margin-bottom: 10px;
   
 }
@@ -429,4 +429,84 @@
     margin-left: 0;
     width: 100%;
   }
+}
+
+/* --- SKELETON LOADING (LIGHT THEME) --- */
+.cs-skeleton-shimmer {
+  background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: cs-shimmer-animation 1.5s infinite linear;
+  border-radius: 4px;
+  display: block;
+}
+
+@keyframes cs-shimmer-animation {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.cs-skeleton-title {
+  height: 2.5rem;
+  width: 80%;
+  margin: 8px 0 16px;
+}
+
+.cs-skeleton-thumbnail {
+  height: 250px;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+.cs-skeleton-meta-label {
+  height: 1rem;
+  width: 40%;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.cs-skeleton-meta-value {
+  height: 1.25rem;
+  width: 70%;
+  margin-bottom: 12px;
+}
+
+.cs-skeleton-problem-title {
+  height: 2.2rem;
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+.cs-skeleton-pill {
+  height: 1.5rem;
+  width: 80px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.cs-skeleton-text-line {
+  height: 1rem;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.cs-skeleton-text-line.short {
+  width: 60%;
+}
+
+.cs-skeleton-media {
+  height: 400px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+
+.cs-skeleton-solution-title {
+  height: 1.8rem;
+  width: 60%;
+  margin-bottom: 15px;
 }

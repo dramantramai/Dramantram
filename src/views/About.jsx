@@ -171,11 +171,11 @@ const About = () => {
             {/* Left Sidebar */}
             <div className="col-lg-3 team-sidebar">
               <div className="sidebar-content">
-                <h1 className="team-title raleway-semibold">
+                <h2 className="team-title raleway-semibold">
                   Our
                   <br /> {""}
                   Team
-                </h1>
+                </h2>
                 <p className="team-description">
                   {"It's not how happy we look, but what we do that defines us. From our Batman Fan"}
                 </p>
@@ -205,7 +205,7 @@ const About = () => {
                         />
                       </div>
                       <div className="team-info">
-                        <h3 className="member-name">{member.name}</h3>
+                        <h4 className="member-name">{member.name}</h4>
                         <p className="member-role">{member.role}</p>
                         <a href="#" className="linkedin-icon">
                           <svg

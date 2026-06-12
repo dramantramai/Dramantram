@@ -163,12 +163,12 @@ const SpecializationSection = () => {
           </div>
           <div className="svc-metrics">
             <div className="metric">
-              <div className="num russo-one-regular">1600+</div>
+              <div className="num russo-one-regular-plain fs-h3">1600+</div>
               <div className="label">Projects</div>
             </div>
 
             <div className="metric">
-              <div className="num russo-one-regular">100+</div>
+              <div className="num russo-one-regular-plain fs-h3">100+</div>
               <div className="label">Clients</div>
             </div>
           </div>
@@ -207,7 +207,7 @@ const SpecializationSection = () => {
                       onMouseEnter={() => setActiveIndex(index)}
                       onClick={() => setActiveIndex(index)} // Fallback for mobile
                     >
-                      <span>{item.menuTitle}</span>
+                      <span className="fs-span-lg">{item.menuTitle}</span>
                       <i className="cap-underline" aria-hidden />
                     </button>
                   ))}

@@ -49,7 +49,7 @@ const ExperientialLabPage = () => {
 
             {/* RIGHT COPY */}
             <div className="col-lg-6 px-4 px-lg-5 brand-col mid-copy d-flex flex-column justify-content-center">
-              <small className="pill mb-2">Experiential Lab</small>
+              <small className="pill mb-2 fs-h4">Experiential Lab</small>
               <h2 className="hero mb-4 russo-one-regular">
                 WITH GREAT DESIGN LANGUAGE
                 <br />
@@ -75,9 +75,9 @@ const ExperientialLabPage = () => {
             {/* Title column */}
             <div className="pcol title-col">
               <h2 className="stack">
-                <span>OUR DESIGN</span>
-                <span>PROCESS &</span>
-                <span>DELIVERABLES</span>
+                <span className="russo-one-regular fs-h2">OUR DESIGN</span>
+                <span className="russo-one-regular fs-h2">PROCESS &</span>
+                <span className="russo-one-regular fs-h2">DELIVERABLES</span>
               </h2>
             </div>
 
@@ -85,7 +85,7 @@ const ExperientialLabPage = () => {
             <div className="pcol step-col">
               <div className="step-head">
                 <span className="step-bar" />
-                <h3>Research</h3>
+                <h3 className="raleway-regular">Research</h3>
                 <span className="arrow" aria-hidden />
               </div>
               <ul className="bullets">
@@ -100,7 +100,7 @@ const ExperientialLabPage = () => {
             <div className="pcol step-col">
               <div className="step-head">
                 <span className="step-bar" />
-                <h3>Positioning</h3>
+                <h3 className="raleway-regular">Positioning</h3>
                 <span className="arrow" aria-hidden />
               </div>
               <ul className="bullets">
@@ -115,7 +115,7 @@ const ExperientialLabPage = () => {
             <div className="pcol step-col">
               <div className="step-head">
                 <span className="step-bar" />
-                <h3>Deliverables</h3>
+                <h3 className="raleway-regular">Deliverables</h3>
               </div>
               <ul className="bullets">
                 <li>Quality Check</li>

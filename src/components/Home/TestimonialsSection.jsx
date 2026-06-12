@@ -37,20 +37,18 @@ const TestimonialsSection = () => {
         <div className="row g-0">
           <div className="col-lg-3 col-md-6 col-12 left-section">
             <div className="content-wrapper">
-              <h1 className="main-heading russo-one-regular">
+              <h2 className="main-heading russo-one-regular">
                 THE CENTRE
                 <br /> OF OUR
                 <br /> UNIVERSE
-              </h1>
+              </h2>
               <p className="subtitle">
                 More than who we are, what our client
-                <br />
                 partner says, defines us!
               </p>
               <p className="description">
                 See how businesses like yours found
-                <br />
-                solutions with Dramanrtam
+                solutions with Dramantram
               </p>
               <div className="quote-marks">
                 <img src="/Quote Symbol.png" alt="quotes" loading="lazy" />
@@ -64,12 +62,12 @@ const TestimonialsSection = () => {
               className="col-lg-3 col-md-6 col-12 testimonial-card"
             >
               <div className="card-content">
-                <h2 className="card-name fw-semibold raleway-semibold">
+                <h3 className="card-name fw-semibold raleway-semibold">
                   {testimonial.firstName}
-                </h2>
-                <h2 className="card-name fw-semibold raleway-semibold">
+                </h3>
+                <h3 className="card-name fw-semibold raleway-semibold">
                   {testimonial.lastName}
-                </h2>
+                </h3>
                 <p className="card-role">{testimonial.post}</p>
                 <p className="card-company">{testimonial.company}</p>
                 <div className="card-image-wrapper">

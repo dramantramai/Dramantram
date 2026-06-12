@@ -48,13 +48,21 @@ const VideoEmbed = ({ src }) => {
 // Helper component for Images
 const ImageEmbed = ({ src, alt }) => {
   const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   if (error) return null;
 
   return (
-    <div className="cs-image-wrap mb-4">
-      {/* height: "auto" ensures the image height scales proportionally 
-         with the width, preserving the original aspect ratio.
-      */}
+    <div className="cs-image-wrap mb-4 position-relative" style={{ width: "100%" }}>
+      {!loaded && (
+        <div
+          className="cs-skeleton-shimmer"
+          style={{
+            width: "100%",
+            height: "400px",
+            borderRadius: "10px",
+          }}
+        />
+      )}
       <img
         src={src}
         alt={alt}
@@ -62,11 +70,51 @@ const ImageEmbed = ({ src, alt }) => {
         style={{
           width: "100%",
           height: "auto",
-          display: "block",
+          display: loaded ? "block" : "none",
         }}
+        onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
       />
     </div>
+  );
+};
+
+// Helper component for Thumbnail
+const ThumbnailEmbed = ({ src, alt, text }) => {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+  if (error) return null;
+
+  return (
+    <figure className="cs-card-figure position-relative">
+      {!loaded && (
+        <div
+          className="cs-skeleton-shimmer"
+          style={{
+            width: "100%",
+            height: "250px",
+            borderRadius: "6px",
+          }}
+        />
+      )}
+      <img
+        src={src}
+        className="img-fluid cs-card"
+        alt={alt}
+        style={{
+          width: "100%",
+          height: "auto",
+          display: loaded ? "block" : "none",
+        }}
+        onLoad={() => setLoaded(true)}
+        onError={() => setError(true)}
+      />
+      {loaded && text && (
+        <figcaption className="cs-card-overlay">
+          {text}
+        </figcaption>
+      )}
+    </figure>
   );
 };
 
@@ -105,11 +153,65 @@ const CaseStudy = () => {
   if (loading) {
     return (
       <LightLayout>
-        <section
-          className="container py-5 text-white"
-          style={{ minHeight: "80vh" }}
-        >
-          <h1>Loading Case Study...</h1>
+        <section className="case-study-wrap">
+          <div className="container-fluid cs-container">
+            {/* Top row skeleton */}
+            <div className="row g-0 cs-header">
+              {/* Left col */}
+              <div className="col-12 col-md-3 cs-col cs-col-left">
+                <div className="cs-pad">
+                  <div className="cs-skeleton-shimmer cs-skeleton-title" />
+                  <div className="cs-skeleton-shimmer cs-skeleton-thumbnail" />
+                </div>
+              </div>
+
+              {/* Middle col */}
+              <div className="col-12 col-md-3 cs-col">
+                <div className="cs-pad">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <div key={i} className="mb-4">
+                      <div className="cs-skeleton-shimmer cs-skeleton-meta-label" style={{ marginTop: "10px" }} />
+                      <div className="cs-skeleton-shimmer cs-skeleton-meta-value" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right col */}
+              <div className="col-12 col-md-6 cs-col cs-col-right">
+                <div className="cs-pad">
+                  <div className="cs-skeleton-shimmer cs-skeleton-problem-title" />
+                  <div className="cs-skeleton-shimmer cs-skeleton-pill" />
+                  <div className="cs-skeleton-text-line cs-skeleton-shimmer" />
+                  <div className="cs-skeleton-text-line cs-skeleton-shimmer" />
+                  <div className="cs-skeleton-text-line cs-skeleton-shimmer" />
+                  <div className="cs-skeleton-text-line cs-skeleton-shimmer short" />
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom row skeleton */}
+            <div className="row g-0 cs-content-row">
+              {/* Left media */}
+              <div className="col-12 col-md-9 p-0">
+                <div className="cs-media-stream cs-pad">
+                  <div className="cs-skeleton-shimmer cs-skeleton-media" />
+                  <div className="cs-skeleton-shimmer cs-skeleton-media" />
+                </div>
+              </div>
+
+              {/* Right solution */}
+              <div className="col-12 col-md-3 cs-solution-col">
+                <div className="cs-pad w-100">
+                  <div className="cs-skeleton-shimmer cs-skeleton-solution-title" />
+                  <div className="cs-skeleton-text-line cs-skeleton-shimmer" />
+                  <div className="cs-skeleton-text-line cs-skeleton-shimmer" />
+                  <div className="cs-skeleton-text-line cs-skeleton-shimmer" />
+                  <div className="cs-skeleton-text-line cs-skeleton-shimmer short" />
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </LightLayout>
     );
@@ -147,23 +249,12 @@ const CaseStudy = () => {
             {/* Col 1: Title + Thumbnail Card */}
             <div className="col-12 col-md-3 cs-col cs-col-left">
               <div className="cs-pad">
-                <h1 className="cs-title"> {cs.case_study_name}</h1>
-                <figure className="cs-card-figure">
-                  <img
-                    src={thumbnailSrc}
-                    className="img-fluid cs-card"
-                    alt={cs.case_study_name}
-                    // Thumbnail usually needs to fit the card shape, but if you want
-                    // natural ratio here too, use height: auto
-                    style={{ width: "100%", height: "auto" }}
-                    onError={(e) => (e.target.style.display = "none")}
-                  />
-                  {cs.thumbnail_text && (
-                    <figcaption className="cs-card-overlay">
-                      {cs.thumbnail_text}
-                    </figcaption>
-                  )}
-                </figure>
+                <h2 className="cs-title"> {cs.case_study_name}</h2>
+                <ThumbnailEmbed
+                  src={thumbnailSrc}
+                  alt={cs.case_study_name}
+                  text={cs.thumbnail_text}
+                />
               </div>
             </div>
 
@@ -181,10 +272,10 @@ const CaseStudy = () => {
             {/* Col 3: Problem statement */}
             <div className="col-12 col-md-6 cs-col cs-col-right">
               <div className="cs-pad">
-                <h2 className="cs-h2">
+                <h3>
                   {cs.case_study_description ||
                     "Bringing your brand vision to life."}
-                </h2>
+                </h3>
                 <p className="cs-pill-muted">Case Study</p>
                 <div className="cs-body">
                   {cs.problem?.split("\n").map((line, i) => (
