@@ -1,112 +1,8 @@
 // src/components/ClientsSection.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import GlitchButton from "../GlitchButton";
 import '../../styles/Clients.css';
-
-// Updated Data with individual Width/Height
-const consulting = [
-  {
-    alt: "Deloitte",
-    src: "/logos/clients/deloitte.png",
-    width: "140px",
-    height: "auto",
-  },
-  { alt: "EY", src: "/logos/clients/Ey.png", width: "100px", height: "100px" },
-  { alt: "PwC", src: "/logos/clients/PWC.png", width: "100px", height: "auto" },
-];
-
-const international = [
-  {
-    alt: "United Nations",
-    src: "/logos/clients/United Nations.png",
-    width: "120px",
-    height: "auto",
-  },
-  {
-    alt: "Amazon",
-    src: "/logos/clients/Amazon Logo.png",
-    width: "110px",
-    height: "120px",
-  },
-  {
-    alt: "Walmart",
-    src: "/logos/clients/Walmart.png",
-    width: "130px",
-    height: "auto",
-  },
-];
-
-const fintech = [
-  {
-    alt: "NPCI",
-    src: "/logos/clients/npci.png",
-    width: "130px",
-    height: "auto",
-  },
-  {
-    alt: "Pine Labs",
-    src: "/logos/clients/pine-labs.png",
-    width: "140px",
-    height: "120px",
-  },
-  {
-    alt: "Razorpay",
-    src: "/logos/clients/razorpay.png",
-    width: "140px",
-    height: "auto",
-  },
-];
-
-const corporate = [
-  {
-    alt: "boAt",
-    src: "/logos/clients/boat.png",
-    width: "90px",
-    height: "auto",
-  },
-  {
-    alt: "Maruti Suzuki",
-    src: "/logos/clients/suzuki.png",
-    width: "200px",
-    height: "110px",
-  },
-  {
-    alt: "HCL",
-    src: "/logos/clients/hcl.png",
-    width: "120px",
-    height: "auto",
-  },
-];
-
-const government = [
-  {
-    alt: "Invest India",
-    src: "/logos/clients/invest-india.png",
-    width: "180px",
-    height: "auto",
-  },
-];
-
-const csr = [
-  {
-    alt: "Sehgal Foundation",
-    src: "/logos/clients/sehgal.png",
-    width: "120px",
-    height: "auto",
-  },
-  {
-    alt: "TRI",
-    src: "/logos/clients/tri.png",
-    width: "120px",
-    height: "110px",
-  },
-  {
-    alt: "Toilet Board Coalition",
-    src: "/logos/clients/toilet-board.png",
-    width: "140px",
-    height: "auto",
-  },
-];
 
 // UPDATED COMPONENT
 const LogoStack = ({ items }) => (
@@ -127,6 +23,47 @@ const LogoStack = ({ items }) => (
 );
 
 const ClientsSection = () => {
+  const [clients, setClients] = useState({
+    Consulting: [],
+    International: [],
+    Fintech: [],
+    Corporate: [],
+    Government: [],
+    CSR: []
+  });
+
+  useEffect(() => {
+    const fetchClients = async () => {
+      try {
+        const { data } = await axios.get("/api/v1/management/client");
+        if (data?.success) {
+          const grouped = {
+            Consulting: [],
+            International: [],
+            Fintech: [],
+            Corporate: [],
+            Government: [],
+            CSR: []
+          };
+          data.clients.forEach((c) => {
+            if (grouped[c.category]) {
+              grouped[c.category].push({
+                alt: c.name,
+                src: `/api/v1/management/client/${c._id}/image`,
+                width: c.width,
+                height: c.height
+              });
+            }
+          });
+          setClients(grouped);
+        }
+      } catch (err) {
+        console.error("Error fetching clients:", err);
+      }
+    };
+    fetchClients();
+  }, []);
+
   return (
     <section className="clients-section">
       <div className="clients-grid">
@@ -147,33 +84,33 @@ const ClientsSection = () => {
         {/* Top row categories */}
         <div className="tile">
           <div className="tile-label">Consulting</div>
-          <LogoStack items={consulting} />
+          <LogoStack items={clients.Consulting} />
         </div>
 
         <div className="tile">
           <div className="tile-label">International</div>
-          <LogoStack items={international} />
+          <LogoStack items={clients.International} />
         </div>
 
         <div className="tile">
           <div className="tile-label">Fintech</div>
-          <LogoStack items={fintech} />
+          <LogoStack items={clients.Fintech} />
         </div>
 
         {/* Bottom row categories */}
         <div className="tile">
           <div className="tile-label">Corporate</div>
-          <LogoStack items={corporate} />
+          <LogoStack items={clients.Corporate} />
         </div>
 
         <div className="tile">
           <div className="tile-label">Government</div>
-          <LogoStack items={government} />
+          <LogoStack items={clients.Government} />
         </div>
 
         <div className="tile">
           <div className="tile-label">CSR</div>
-          <LogoStack items={csr} />
+          <LogoStack items={clients.CSR} />
         </div>
 
         {/* CTA gradient tile */}
@@ -197,3 +134,4 @@ const ClientsSection = () => {
 };
 
 export default ClientsSection;
+

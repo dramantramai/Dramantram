@@ -1,36 +1,23 @@
-import React from "react";
-
-const testimonials = [
-  {
-    firstName: "Remya",
-    lastName: "Lakshmanan",
-    post: "Sr. Assistant Vice President",
-    company: "Invest India",
-    quote:
-      "Great job guys! You exceed our expectations each time. Looking forward to many more projects with the Team Dramantram.",
-    image: "/remya.png",
-  },
-  {
-    firstName: "Praveen",
-    lastName: "Dev",
-    post: "Assistant Manager",
-    company: "Bharti Airtel",
-    quote:
-      "This team has done fantastic work from start to finish, putting in tremendous effort to deliver quality content in a short time. I would definitely recommend Dramantram for their quality and commitment.",
-    image: "/praveen.png",
-  },
-  {
-    firstName: "Deepanshu",
-    lastName: "Pathak",
-    post: "Project Coordinator",
-    company: "",
-    quote:
-      "Dramantram was very patient with our requirements and had a great turnaround time. The ease with which they understood the context of the videos and brought them to life was commendable.",
-    image: "/deepanshu.png",
-  },
-];
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const TestimonialsSection = () => {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const { data } = await axios.get("/api/v1/management/testimonial");
+        if (data?.success) {
+          setTestimonials(data.testimonials);
+        }
+      } catch (err) {
+        console.error("Error fetching testimonials:", err);
+      }
+    };
+    fetchTestimonials();
+  }, []);
+
   return (
     <section className="testimonial-section">
       <div className="container-fluid">
@@ -58,7 +45,7 @@ const TestimonialsSection = () => {
 
           {testimonials.map((testimonial, index) => (
             <div
-              key={index}
+              key={testimonial._id || index}
               className="col-lg-3 col-md-6 col-12 testimonial-card"
             >
               <div className="card-content">
@@ -73,7 +60,7 @@ const TestimonialsSection = () => {
                 <div className="card-image-wrapper">
                   <div className="card-image">
                     <img
-                      src={testimonial.image}
+                      src={`/api/v1/management/testimonial/${testimonial._id}/image`}
                       alt={`${testimonial.firstName} ${testimonial.lastName}`}
                       loading="lazy"
                     />
@@ -90,3 +77,4 @@ const TestimonialsSection = () => {
 };
 
 export default TestimonialsSection;
+

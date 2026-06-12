@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import Layout from "../components/Layout/Layout";
 import "../styles/About.css";
 import GlitchButton from "../components/GlitchButton";
@@ -15,73 +16,22 @@ const ABOUT_GLOWS = [
 ];
 
 const About = () => {
-  const teamMembers = [
-    {
-      name: "Kundan Kumar",
-      role: "Co-Founder & Anti-CEO",
-      image: "/team/Kundan.png",
-    },
-    {
-      name: "Ankit Raj",
-      role: "Co-Founder & Board Member",
-      image: "/team/Ankit.png",
-    },
-    {
-      name: "Rupam Biswas",
-      role: "Co-Founder & Creative Head",
-      image: "/team/Rupam.png",
-    },
-    {
-      name: "LK Shashi",
-      role: "Co-Founder & CTO",
-      image: "/team/Lalan.png",
-    },
-    {
-      name: "Harsh Bansal",
-      role: "Head Visual Media",
-      image: "/team/Harsh.png",
-    },
-    {
-      name: "Tanishtha Katta",
-      role: "Unit Lead - Graphic & Animation",
-      image: "/team/Tanishtha.png",
-    },
-    {
-      name: "Bhavesh Bhatia",
-      role: "Unit Lead - Design",
-      image: "/team/Bhavesh.png",
-    },
-    {
-      name: "Abdul Rahman",
-      role: "Video Editor",
-      image: "/team/Abdul.png",
-    },
-    {
-      name: "Mohammad Shadab",
-      role: "Lead - 2D/3D Design & Animation",
-      image: "/team/Shadab.png",
-    },
-    {
-      name: "Ayushi Bajpai",
-      role: "Graphic Designer",
-      image: "/team/Ayushi.png",
-    },
-    {
-      name: "Zainab Khan",
-      role: "Graphic Designer",
-      image: "/team/Zainab.png",
-    },
-    {
-      name: "Shivam Sharma",
-      role: "Graphic & Animation",
-      image: "/team/Shivam.png",
-    },
-    {
-      name: "Sushant Sino",
-      role: "Junior Graphic Designer",
-      image: "/team/Shushant.png",
-    },
-  ];
+  const [teamMembers, setTeamMembers] = useState([]);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const { data } = await axios.get("/api/v1/management/team");
+        if (data?.success) {
+          setTeamMembers(data.teamMembers);
+        }
+      } catch (err) {
+        console.error("Error fetching team members:", err);
+      }
+    };
+    fetchTeam();
+  }, []);
+
 
   const [isPhyIntersecting, setIsPhyIntersecting] = useState(false);
   const phyRef = useRef(null);
@@ -214,7 +164,7 @@ const About = () => {
                     <div className="team-card">
                       <div className="team-image-wrapper">
                         <img
-                          src={member.image}
+                          src={`/api/v1/management/team/${member._id}/image`}
                           alt={member.name}
                           className="team-image"
                         />
