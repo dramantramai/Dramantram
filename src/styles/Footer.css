@@ -1,8 +1,7 @@
 /* src/components/Footer.css */
 
 .footer-section {
-  background-color: black;
-  
+  background: transparent; /* body is #000; transparent = same visual but glow extends through */
   position: relative;
   overflow: hidden;
   padding: 0px 12px;
@@ -15,7 +14,6 @@
 .footer-row-grid {
   position: relative;
   padding-top: 100px;
-  padding-bottom: 20px;
 }
 
 .footer-row-grid::after {

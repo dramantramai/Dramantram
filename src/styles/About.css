@@ -4,11 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 50px;
-  background: radial-gradient(100% 200% at 50% 0%,
-      rgba(180, 0, 0, 0.6) 0%,
-      rgba(120, 0, 0, 0.35) 25%,
-      rgba(0, 0, 0, 0) 55%),
-    #000;
+  background: transparent; /* old gradient removed — page-level BackgroundGlow handles it */
   color: white;
   position: relative;
 }
@@ -437,7 +433,7 @@
 
 /* Team section */
 .team-section {
-  background: #000;
+  background: transparent; /* page-level glow handles the gradient */
   min-height: 100vh;
   color: #fff;
   position: relative;

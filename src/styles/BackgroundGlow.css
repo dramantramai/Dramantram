@@ -1,0 +1,51 @@
+/* ================================================================
+   BackgroundGlow.css
+   Page-level gradient "bowl" orbs that scroll with content.
+
+   Strategy (Option A):
+   - The .bg-glow-layer sits as position:absolute inside the page's
+     root wrapper (which must have position:relative).
+   - Orbs use position:absolute with percentage / vw-based sizing,
+     so they stay proportional on every screen size.
+   - pointer-events:none and z-index:0 ensure they never block clicks
+     or appear over content.
+   ================================================================ */
+
+/* The invisible positioning canvas that spans the FULL page height */
+.bg-glow-layer {
+  position: absolute;
+  inset: 0;              /* top:0 right:0 bottom:0 left:0 */
+  width: 100%;
+  pointer-events: none;
+  overflow-x: clip;      /* clip horizontal bleed only; vertical glows remain visible on scroll */
+  z-index: 0;
+}
+
+/* Individual orb */
+.bg-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  /* width / height / background / filter / opacity are set inline
+     from the JS config so each orb is individually tunable */
+  mix-blend-mode: screen;   /* additive light blending: glow adds brightness even over dark bgs */
+  will-change: transform;   /* hint GPU for smoother scroll */
+}
+
+/* ── Responsive size corrections ──────────────────────────────── */
+
+/* On tablet (≤ 991px) shrink orbs slightly so they don't crowd content */
+@media (max-width: 991px) {
+  .bg-glow-orb {
+    /* Scale down inline sizes by ~30% via CSS custom property fallback */
+    transform: scale(0.7);
+    transform-origin: center center;
+  }
+}
+
+/* On mobile (≤ 600px) shrink even further */
+@media (max-width: 600px) {
+  .bg-glow-orb {
+    transform: scale(0.45);
+    transform-origin: center center;
+  }
+}

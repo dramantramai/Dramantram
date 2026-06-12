@@ -2,6 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import Layout from "../components/Layout/Layout";
 import "../styles/About.css";
 import GlitchButton from "../components/GlitchButton";
+import BackgroundGlow from "../components/BackgroundGlow";
+
+// Glow orbs for About page
+const ABOUT_GLOWS = [
+  // Hero (discussion) section — warm glow top-right
+  { top: "-50vh",   right: "10vw", size: "85vw", opacity: 0.85, blur: "80px" },
+  // Team section (black bg) — bottom-left warm orb
+  { top: "250vh", left:  "-10vw", size: "55vw", opacity: 0.65, blur: "80px" },
+  // Team section right
+  { top: "320vh", right: "-15vw", size: "45vw", opacity: 0.55, blur: "80px" },
+];
 
 const About = () => {
   const teamMembers = [
@@ -95,12 +106,16 @@ const About = () => {
 
   return (
     <Layout>
-      {/* Intro section */}
+      {/* Page-level glow wrapper */}
+      <div style={{ position: "relative" }}>
+        <BackgroundGlow glows={ABOUT_GLOWS} />
+
+        {/* Intro section */}
       <section className="discussion-container container-fluid">
         <div className="row align-items-center">
           {/* Left part */}
-          <div className="col-lg-3 discussion-left raleway-semibold">
-            <h2>
+          <div className="col-lg-3 discussion-left">
+            <h2 className="raleway-semibold">
               Now Discussing <br /> Entrepreneurship
             </h2>
             <p>
@@ -225,6 +240,7 @@ const About = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </Layout>
   );

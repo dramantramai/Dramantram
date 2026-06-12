@@ -2,7 +2,7 @@
 
 /* --- Section background --- */
 .clients-section {
-  background: #000;
+  background: transparent;
   color: #fff;
 }
 
@@ -21,13 +21,12 @@
   padding: 28px 24px;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  background: #000;
-  /* subtle difference vs pure black like screenshot */
+  background: transparent;
 }
 
 /* --- Intro tile (top-left) --- */
 .tile-intro {
-  background: #000;
+  background: transparent;
 }
 
 .intro-title {

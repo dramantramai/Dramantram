@@ -752,14 +752,7 @@
 .portfolio {
   position: relative;
   isolation: isolate;
-  background-color: black;
-  background-image: radial-gradient(
-    circle at top left,
-    rgb(184, 0, 0),
-    rgba(255, 0, 0, 0) 60%
-  );
-  background-size: 600px 450px;
-  background-repeat: no-repeat;
+  background: transparent; /* old gradient removed — page-level BackgroundGlow handles it */
 }
 
 .portfolio::after {
@@ -777,7 +770,6 @@
 
 @media (max-width: 768px) {
   .portfolio {
-    background-size: 400px 300px;
     padding: 30px 15px;
   }
 }

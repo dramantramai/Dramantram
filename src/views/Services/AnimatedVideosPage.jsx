@@ -8,6 +8,14 @@ import "../../styles/Process.css";
 import GlitchButton from "../../components/GlitchButton";
 import ProcessWrap from "../../components/ProcessWrap";
 import ServicesLogosRow from "../../components/ServicesLogosRow";
+import BackgroundGlow from "../../components/BackgroundGlow";
+
+const SERVICE_GLOWS = [
+  { top: "-50vh",   left:  "5vw", size: "85vw", opacity: 0.9,  blur: "80px" },
+  { top: "60vh",  left: "-15vw", size: "55vw", opacity: 0.75, blur: "80px" },
+  { top: "130vh", right:  "-20vw", size: "80vw", opacity: 0.75,  blur: "80px" },
+  { top: "280vh", right: "25vw", size: "55vw", opacity: 0.75, blur: "80px" },
+];
 
 const ANIMATED_VIDEO_SERVICES = [
   ["Explainer", "Ad Film", "Sales & Marketing Video"],
@@ -17,7 +25,10 @@ const ANIMATED_VIDEO_SERVICES = [
 const AnimatedVideosPage = () => {
   return (
     <Layout>
-      <section className="brand-wrap container-fluid">
+      <div style={{ position: "relative" }}>
+        <BackgroundGlow glows={SERVICE_GLOWS} />
+
+        <section className="brand-wrap container-fluid">
         {/* ── ABOVE FOLD: hero + brand row fill exactly one viewport ── */}
         <div className="service-above-fold">
           <section className="row gx-0 brand-grid align-items-center">
@@ -129,6 +140,7 @@ const AnimatedVideosPage = () => {
       {/* Dimaag Kharab Section */}
       {/* Comes With Section */}
       <ComesWith />
+      </div>
     </Layout>
   );
 };

@@ -3,8 +3,8 @@
 /* Background: deep black with red radial glow + vertical grid lines */
 .brand-wrap {
   position: relative;
-  background: #000;
-  overflow-x: clip; /* allow vertical scroll; clip instead of hidden keeps sticky working */
+  background: transparent; /* body is #000; transparent lets page-level glow show through */
+  overflow-x: clip;
   overflow-y: visible;
   min-height: 100vh;
   color: #fff;
@@ -26,28 +26,9 @@
   padding-top: 80px; /* clear fixed header */
 }
 
-/* red glow (top-left to mid) + faint vignette */
+/* Old per-section red glow removed — replaced by page-level BackgroundGlow component */
 .brand-wrap::before {
-  content: "";
-  position: absolute;
-  inset: -20% -10% auto -10%;
-  height: 140vh;
-  inset: 0;
-  width: 80vw;
-  background: radial-gradient(
-      ellipse at 50% 10%,
-      rgba(191, 22, 22, 0.75) 10%,
-      rgba(120, 10, 10, 0.35) 50%,
-      rgba(0, 0, 0, 0) 75%
-    ),
-    radial-gradient(
-      circle at 0% 70%,
-      rgba(229, 6, 6, 0.8),
-      rgba(0, 0, 0, 0) 20%
-    );
-  pointer-events: none;
-  filter: blur(2px);
-  z-index: 0;
+  display: none;
 }
 
 /* subtle outer vignette and vertical grid lines */

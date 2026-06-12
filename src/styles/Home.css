@@ -547,8 +547,7 @@
 /* ===== CLIENTS SECTION ===== */
 
 .clients {
-  background-color: black;
-
+  background: transparent;
   padding: 0px 0px;
 }
 
@@ -571,7 +570,7 @@
 
   width: 100%;
 
-  background: #000;
+  background: transparent; /* page-level glow handles the gradient */
 
   color: #fff;
 
@@ -579,28 +578,9 @@
   border-bottom: 1px solid rgb(38, 38, 38);
 }
 
+/* Old section-level gradient removed — replaced by page-level BackgroundGlow */
 .svc-band::before {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    radial-gradient(
-      100% 200% at 50% 0%,
-
-      rgba(180, 0, 0, 0.6) 0%,
-
-      rgba(120, 0, 0, 0.35) 25%,
-
-      rgba(0, 0, 0, 0) 55%
-    ),
-    #000;
-
-  pointer-events: none;
-
-  z-index: 0;
+  display: none;
 }
 
 .svc-band::after {
@@ -817,15 +797,13 @@
 /* ===== SPECIALIZATION LOWER SECTION ===== */
 
 .cap-wrap {
-  background: #000;
+  background: transparent; /* page-level glow handles the gradient */
 
   color: #fff;
 
   position: relative;
 
   overflow: hidden;
-
-  /* Top/bottom padding for the section */
 
   padding-top: 60px;
 
@@ -1748,20 +1726,9 @@
 /* ===== TESTIMONIALS SECTION ===== */
 
 .testimonial-section {
-  background: radial-gradient(
-    circle at bottom right,
-
-    rgb(184, 0, 0),
-    rgba(255, 0, 0, 0) 50%
-  );
-
+  background: transparent; /* old gradient removed — page-level BackgroundGlow handles it */
   min-height: 80vh;
-
   color: white;
-
-  background-color: black;
-
-  /* padding: 0px 64px !important; */
 }
 
 .container-fluid {
@@ -1775,7 +1742,7 @@
 }
 
 .left-section {
-  background-color: #000000;
+  background: transparent;
 
   display: flex;
 

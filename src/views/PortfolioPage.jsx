@@ -5,11 +5,24 @@ import PortfolioSection from "../components/PortfolioSection";
 import ComesWith from "../components/ComesWith";
 import GlitchButton from "../components/GlitchButton";
 import PortfolioFilters from "../components/PortfolioFilters";
+import BackgroundGlow from "../components/BackgroundGlow";
+
+const PORTFOLIO_GLOWS = [
+  // Hero area — upper centre-right
+  { top: "-40vh",   right: "10vw", size: "85vw", opacity: 0.85, blur: "80px" },
+  // Portfolio grid mid — left glow
+  { top: "100vh",  left:  "-15vw", size: "55vw", opacity: 0.6,  blur: "80px" },
+  // ComesWith bottom — right glow
+  { top: "200vh", right: "10vw", size: "60vw", opacity: 0.65, blur: "80px" },
+];
 
 const PortfolioPage = () => {
   return (
     <Layout>
-      <section className="hero-portfolio">
+      <div style={{ position: "relative" }}>
+        <BackgroundGlow glows={PORTFOLIO_GLOWS} />
+
+        <section className="hero-portfolio">
         <div className="bg-grad" />
         <div className="container-fluid upper-container">
           {/* TOP GRID */}
@@ -64,6 +77,7 @@ const PortfolioPage = () => {
       </section>
 
       <ComesWith />
+      </div>
     </Layout>
   );
 };

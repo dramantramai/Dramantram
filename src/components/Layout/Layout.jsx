@@ -43,9 +43,29 @@ const Layout = ({ children }) => {
       {/* The background grid lives behind everything */}
       <div className="grid-lines"></div>
 
-      <main>{children}</main>
-
-      <Footer />
+      {/* Shared wrapper: page content + footer in one stacking context.
+          The layout-footer-glow ensures the warm red reaches the footer area. */}
+      <div style={{ position: "relative", overflowX: "clip" }}>
+        {/* Permanent bottom-of-page glow — always bleeds into footer */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: "-10vh",
+            left: "-10vw",
+            width: "55vw",
+            height: "55vw",
+            background: "radial-gradient(circle, rgba(184,0,0,0.55) 0%, transparent 50%)",
+            filter: "blur(80px)",
+            borderRadius: "50%",
+            pointerEvents: "none",
+            mixBlendMode: "screen",
+            zIndex: 0,
+          }}
+        />
+        <main>{children}</main>
+        <Footer />
+      </div>
     </>
   );
 };

@@ -13,37 +13,27 @@
 .hero-portfolio {
   position: relative;
   min-height: auto;
-  /* width: 100vw; */
   overflow: hidden;
   color: var(--text);
-  
-  background: #000;
-  /* fallback */
+  background: transparent; /* page-level glow shows through */
 }
 
-/* Full-bleed vignette + red glow matching the reference */
+/* Edge vignettes only — centre glow handled by page-level BackgroundGlow */
 .bg-grad {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
     radial-gradient(
-      60% 70% at 55% 40%,
-      rgba(160, 20, 20, 0.85) 0%,
-      rgba(160, 20, 20, 0.6) 45%,
-      rgba(0, 0, 0, 0) 70%
+      60% 80% at 5% 50%,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0) 60%
     ),
     radial-gradient(
-      60% 80% at 10% 50%,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.95) 70%
-    ),
-    radial-gradient(
-      70% 80% at 95% 50%,
-      rgba(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 1) 70%
-    ),
-    linear-gradient(180deg, #0a0000 0%, #000 100%);
+      60% 80% at 95% 50%,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0) 60%
+    );
   z-index: 0;
 }
 
@@ -295,18 +285,6 @@
 }
 
 @media (max-width: 450px) {
-  .hero-title {
-    
-  }
-
-  .logo-word {
-    
-  }
-
-  .body-copy,
-  .body-strong {
-    
-  }
 
   .portfolio-panel--left {
     padding-top: 40px;
@@ -336,12 +314,6 @@
   .portfolio-panel-inner {
     align-items: center;
     text-align: center;
-  }
-
-  .body-copy,
-  .body-strong {
-    
-    /* Smaller text for mobile */
   }
 }
 
