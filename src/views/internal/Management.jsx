@@ -42,6 +42,7 @@ const SERVICE_OPTIONS = [
   "Brand Identity & Design",
   "Creating Logo",
   "Branding Strategy",
+  "Booklet design",
   "Defining Brand Style Guide",
   "Social Media Branding",
   "Re-Branding",

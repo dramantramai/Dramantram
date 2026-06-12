@@ -1,19 +1,13 @@
 import mongoose from "mongoose";
 
-const CaseStudySchema = new mongoose.Schema(
+const OldCaseStudySchema = new mongoose.Schema(
   {
     case_study_name: { type: String, required: true, trim: true },
     slug: { type: String, required: true, unique: true },
     case_study_description: { type: String, required: true, trim: true },
     client: { type: String, required: true, trim: true },
     services: { type: String, required: true, trim: true },
-    service: {
-      type: String,
-      required: true,
-      enum: ["Branding", "Animated Videos", "Live Action", "UI/UX", "Experiential Lab"],
-      default: "Branding",
-      trim: true,
-    },
+    service: { type: String, required: false, trim: true },
     complexity: { type: String, required: true, trim: true },
     industry: { type: String, required: true, trim: true },
     duration: { type: String, required: true, trim: true },
@@ -33,9 +27,9 @@ const CaseStudySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-CaseStudySchema.index({ showOnHomepage: 1, createdAt: -1 });
-CaseStudySchema.index({ createdAt: -1 });
-CaseStudySchema.index({ services: 1, industry: 1, duration: 1, complexity: 1 });
+OldCaseStudySchema.index({ showOnHomepage: 1, createdAt: -1 });
+OldCaseStudySchema.index({ createdAt: -1 });
+OldCaseStudySchema.index({ services: 1, industry: 1, duration: 1, complexity: 1 });
 
-export default mongoose.models.CaseStudyNew ||
-  mongoose.model("CaseStudyNew", CaseStudySchema, "casestudies_new");
+export default mongoose.models.OldCaseStudy ||
+  mongoose.model("OldCaseStudy", OldCaseStudySchema, "casestudies");
