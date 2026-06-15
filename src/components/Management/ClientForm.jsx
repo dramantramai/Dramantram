@@ -19,7 +19,9 @@ const ClientForm = ({
       </h3>
       <form onSubmit={onSubmit} className="management-grid">
         <div>
-          <label className="management-label"><strong>Client Name</strong></label>
+          <label className="management-label">
+            <strong>Client Name</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="name"
             value={form.name}
@@ -31,7 +33,7 @@ const ClientForm = ({
         </div>
 
         <div>
-          <label className="management-label">Category</label>
+          <label className="management-label">Category<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <select
             name="category"
             value={form.category}
@@ -81,7 +83,7 @@ const ClientForm = ({
 
         <div style={{ gridColumn: "1 / -1" }}>
           <label className="management-label">
-            Client Logo <span style={infoStyle}>(Max 1MB, Transparent PNG recommended)</span>
+            Client Logo <span style={infoStyle}>(Max 1MB, Transparent PNG recommended, e.g. max 130x40 px)</span>
           </label>
           <input
             name="logo"

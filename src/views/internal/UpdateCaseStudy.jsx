@@ -274,7 +274,7 @@ const UpdateCaseStudy = () => {
             {/* CASE STUDY NAME */}
             <div>
               <label className="management-label">
-                <strong>Case Study Heading</strong>
+                <strong>Case Study Heading</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
               </label>
               <input
                 name="case_study_name"
@@ -288,7 +288,7 @@ const UpdateCaseStudy = () => {
             {/* CLIENT */}
             <div>
               <label className="management-label">
-                <strong>{"Client's Name"}</strong>
+                <strong>{"Client's Name"}</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
               </label>
               <input
                 name="client"
@@ -301,68 +301,68 @@ const UpdateCaseStudy = () => {
 
              {/* SERVICES */}
              <div>
-               <label className="management-label">Services</label>
-               <select
-                 name="services"
-                 value={form.services}
-                 onChange={handleChange}
-                 className="management-select"
-               >
-                 <option value="">Select Service</option>
-                 {SERVICE_OPTIONS.map((service) => (
-                   <option key={service} value={service}>
-                     {service}
-                   </option>
-                 ))}
-               </select>
+                <label className="management-label">Services<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
+                <select
+                  name="services"
+                  value={form.services}
+                  onChange={handleChange}
+                  className="management-select"
+                >
+                  <option value="">Select Service</option>
+                  {SERVICE_OPTIONS.map((service) => (
+                    <option key={service} value={service}>
+                      {service}
+                    </option>
+                  ))}
+                </select>
              </div>
 
-             {/* NAVBAR SERVICE CATEGORY */}
+              {/* NAVBAR SERVICE CATEGORY */}
+              <div>
+                <label className="management-label"><strong>Navbar Service Category</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
+                <select
+                  name="service"
+                  value={form.service}
+                  onChange={handleChange}
+                  className="management-select"
+                  required
+                >
+                  <option value="Branding">Branding</option>
+                  <option value="Animated Videos">Animated Videos</option>
+                  <option value="Live Action">Live Action</option>
+                  <option value="UI/UX">UI/UX</option>
+                  <option value="Experiential Lab">Experiential Lab</option>
+                </select>
+              </div>
+
+             {/* DESCRIPTION */}
+             <div style={{ gridColumn: "1 / -1" }}>
+               <label className="management-label">Case Study Description<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
+               <textarea
+                 name="case_study_description"
+                 value={form.case_study_description}
+                 onChange={handleChange}
+                 className="management-textarea"
+                 rows={2}
+                 placeholder="Short description"
+               />
+             </div>
+
+             {/* THUMBNAIL TEXT */}
              <div>
-               <label className="management-label"><strong>Navbar Service Category</strong></label>
-               <select
-                 name="service"
-                 value={form.service}
+               <label className="management-label">Thumbnail Text<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
+               <input
+                 name="thumbnail_text"
+                 value={form.thumbnail_text}
                  onChange={handleChange}
-                 className="management-select"
-                 required
-               >
-                 <option value="Branding">Branding</option>
-                 <option value="Animated Videos">Animated Videos</option>
-                 <option value="Live Action">Live Action</option>
-                 <option value="UI/UX">UI/UX</option>
-                 <option value="Experiential Lab">Experiential Lab</option>
-               </select>
+                 className="management-input"
+                 placeholder="Text shown on card"
+               />
              </div>
-
-            {/* DESCRIPTION */}
-            <div style={{ gridColumn: "1 / -1" }}>
-              <label className="management-label">Case Study Description</label>
-              <textarea
-                name="case_study_description"
-                value={form.case_study_description}
-                onChange={handleChange}
-                className="management-textarea"
-                rows={2}
-                placeholder="Short description"
-              />
-            </div>
-
-            {/* THUMBNAIL TEXT */}
-            <div>
-              <label className="management-label">Thumbnail Text</label>
-              <input
-                name="thumbnail_text"
-                value={form.thumbnail_text}
-                onChange={handleChange}
-                className="management-input"
-                placeholder="Text shown on card"
-              />
-            </div>
 
             {/* COMPLEXITY */}
             <div>
-              <label className="management-label">Complexity</label>
+              <label className="management-label">Complexity<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
               <select
                 name="complexity"
                 value={form.complexity}
@@ -378,7 +378,7 @@ const UpdateCaseStudy = () => {
 
             {/* INDUSTRY */}
             <div>
-              <label className="management-label">Industry</label>
+              <label className="management-label">Industry<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
               <select
                 name="industry"
                 value={form.industry}
@@ -396,7 +396,7 @@ const UpdateCaseStudy = () => {
 
             {/* DURATION */}
             <div>
-              <label className="management-label">Duration</label>
+              <label className="management-label">Duration<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
               <select
                 name="duration"
                 value={form.duration}
@@ -414,7 +414,7 @@ const UpdateCaseStudy = () => {
 
             {/* PROBLEM */}
             <div style={{ gridColumn: "1 / -1" }}>
-              <label className="management-label">Problem</label>
+              <label className="management-label">Problem<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
               <textarea
                 name="problem"
                 value={form.problem}
@@ -427,7 +427,7 @@ const UpdateCaseStudy = () => {
 
             {/* SOLUTION */}
             <div style={{ gridColumn: "1 / -1" }}>
-              <label className="management-label">Solution</label>
+              <label className="management-label">Solution<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
               <textarea
                 name="solution"
                 value={form.solution}
@@ -442,7 +442,7 @@ const UpdateCaseStudy = () => {
             <div style={{ gridColumn: "1 / -1" }}>
               <label className="management-label">
                 Thumbnail Image
-                <span style={infoStyle}>(Max 1MB, 377x458 px)</span>
+                <span style={infoStyle}>(Max 1MB, recommended 384x467 px)</span>
               </label>
 
               {/* Preview existing thumbnail */}
@@ -530,7 +530,7 @@ const UpdateCaseStudy = () => {
             {/* IMAGE 1 */}
             <div>
               <label className="management-label">
-                Image 1 <span style={infoStyle}>(Max 1MB, 1280x750 px)</span>
+                Image 1 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
               </label>
               <input
                 name="image1"
@@ -544,7 +544,7 @@ const UpdateCaseStudy = () => {
             {/* IMAGE 2 */}
             <div>
               <label className="management-label">
-                Image 2 <span style={infoStyle}>(Max 1MB, 1280x750 px)</span>
+                Image 2 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
               </label>
               <input
                 name="image2"
@@ -558,7 +558,7 @@ const UpdateCaseStudy = () => {
             {/* IMAGE 3 */}
             <div>
               <label className="management-label">
-                Image 3 <span style={infoStyle}>(Max 1MB, 1280x750 px)</span>
+                Image 3 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
               </label>
               <input
                 name="image3"
@@ -572,7 +572,7 @@ const UpdateCaseStudy = () => {
             {/* IMAGE 4 */}
             <div>
               <label className="management-label">
-                Image 4 <span style={infoStyle}>(Max 1MB, 1280x750 px)</span>
+                Image 4 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
               </label>
               <input
                 name="image4"
@@ -586,7 +586,7 @@ const UpdateCaseStudy = () => {
             {/* IMAGE 5 */}
             <div>
               <label className="management-label">
-                Image 5 <span style={infoStyle}>(Max 1MB, 1280x750 px)</span>
+                Image 5 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
               </label>
               <input
                 name="image5"

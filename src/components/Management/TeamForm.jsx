@@ -18,7 +18,9 @@ const TeamForm = ({
       </h3>
       <form onSubmit={onSubmit} className="management-grid">
         <div>
-          <label className="management-label"><strong>Member Name</strong></label>
+          <label className="management-label">
+            <strong>Member Name</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="name"
             value={form.name}
@@ -30,7 +32,9 @@ const TeamForm = ({
         </div>
 
         <div>
-          <label className="management-label"><strong>Role / Designation</strong></label>
+          <label className="management-label">
+            <strong>Role / Designation</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="role"
             value={form.role}
@@ -66,7 +70,7 @@ const TeamForm = ({
 
         <div style={{ gridColumn: "1 / -1" }}>
           <label className="management-label">
-            Member Photo / Avatar <span style={infoStyle}>(Max 1MB, Square aspect recommended)</span>
+            Member Photo / Avatar <span style={infoStyle}>(Max 1MB, Square aspect recommended, e.g. 200x200 px)</span>
           </label>
           <input
             name="image"

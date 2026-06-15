@@ -19,7 +19,9 @@ const CaseStudyForm = ({
       <h3 style={{ color: "#fff", marginBottom: "20px" }}>Create Case Study</h3>
       <form onSubmit={onSubmit} className="management-grid">
         <div>
-          <label className="management-label"><strong>Case Study Heading</strong></label>
+          <label className="management-label">
+            <strong>Case Study Heading</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="case_study_name"
             value={form.case_study_name}
@@ -31,7 +33,9 @@ const CaseStudyForm = ({
         </div>
 
         <div>
-          <label className="management-label"><strong>{"Client's Name"}</strong></label>
+          <label className="management-label">
+            <strong>{"Client's Name"}</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="client"
             value={form.client}
@@ -43,7 +47,7 @@ const CaseStudyForm = ({
         </div>
 
         <div>
-          <label className="management-label">Services</label>
+          <label className="management-label">Services<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <select
             name="services"
             value={form.services}
@@ -59,7 +63,9 @@ const CaseStudyForm = ({
         </div>
 
         <div>
-          <label className="management-label"><strong>Navbar Service Category</strong></label>
+          <label className="management-label">
+            <strong>Navbar Service Category</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <select
             name="service"
             value={form.service}
@@ -76,7 +82,7 @@ const CaseStudyForm = ({
         </div>
 
         <div style={{ gridColumn: "1 / -1" }}>
-          <label className="management-label">Case Study Description</label>
+          <label className="management-label">Case Study Description<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <textarea
             name="case_study_description"
             value={form.case_study_description}
@@ -89,7 +95,7 @@ const CaseStudyForm = ({
         </div>
 
         <div>
-          <label className="management-label">Thumbnail Text</label>
+          <label className="management-label">Thumbnail Text<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <input
             name="thumbnail_text"
             value={form.thumbnail_text}
@@ -101,7 +107,7 @@ const CaseStudyForm = ({
         </div>
 
         <div>
-          <label className="management-label">Complexity</label>
+          <label className="management-label">Complexity<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <select
             name="complexity"
             value={form.complexity}
@@ -117,7 +123,7 @@ const CaseStudyForm = ({
         </div>
 
         <div>
-          <label className="management-label">Industry</label>
+          <label className="management-label">Industry<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <select
             name="industry"
             value={form.industry}
@@ -133,7 +139,7 @@ const CaseStudyForm = ({
         </div>
 
         <div>
-          <label className="management-label">Duration</label>
+          <label className="management-label">Duration<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <select
             name="duration"
             value={form.duration}
@@ -149,7 +155,7 @@ const CaseStudyForm = ({
         </div>
 
         <div style={{ gridColumn: "1 / -1" }}>
-          <label className="management-label">Problem</label>
+          <label className="management-label">Problem<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <textarea
             name="problem"
             value={form.problem}
@@ -162,7 +168,7 @@ const CaseStudyForm = ({
         </div>
 
         <div style={{ gridColumn: "1 / -1" }}>
-          <label className="management-label">Solution</label>
+          <label className="management-label">Solution<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <textarea
             name="solution"
             value={form.solution}
@@ -176,7 +182,7 @@ const CaseStudyForm = ({
 
         <div style={{ gridColumn: "1 / -1" }}>
           <label className="management-label">
-            Thumbnail Image <span style={infoStyle}>(Max 1MB, 377x458 px)</span>
+            Thumbnail Image <span style={infoStyle}>(Max 1MB, recommended 384x467 px)</span>
           </label>
           <input
             name="thumbnail_image"
@@ -232,7 +238,7 @@ const CaseStudyForm = ({
         {[1, 2, 3, 4, 5].map((idx) => (
           <div key={idx}>
             <label className="management-label">
-              Image {idx} <span style={infoStyle}>(Max 1MB, 1280x750 px)</span>
+              Image {idx} <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
             </label>
             <input
               name={`image${idx}`}

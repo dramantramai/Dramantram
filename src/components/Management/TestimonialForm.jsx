@@ -18,7 +18,9 @@ const TestimonialForm = ({
       </h3>
       <form onSubmit={onSubmit} className="management-grid">
         <div>
-          <label className="management-label"><strong>First Name</strong></label>
+          <label className="management-label">
+            <strong>First Name</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="firstName"
             value={form.firstName}
@@ -30,7 +32,9 @@ const TestimonialForm = ({
         </div>
 
         <div>
-          <label className="management-label"><strong>Last Name</strong></label>
+          <label className="management-label">
+            <strong>Last Name</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="lastName"
             value={form.lastName}
@@ -42,7 +46,9 @@ const TestimonialForm = ({
         </div>
 
         <div>
-          <label className="management-label"><strong>Post / Designation</strong></label>
+          <label className="management-label">
+            <strong>Post / Designation</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="post"
             value={form.post}
@@ -54,7 +60,9 @@ const TestimonialForm = ({
         </div>
 
         <div>
-          <label className="management-label"><strong>Company Name</strong></label>
+          <label className="management-label">
+            <strong>Company Name</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <input
             name="company"
             value={form.company}
@@ -78,7 +86,9 @@ const TestimonialForm = ({
         </div>
 
         <div style={{ gridColumn: "1 / -1" }}>
-          <label className="management-label"><strong>Quote / Review</strong></label>
+          <label className="management-label">
+            <strong>Quote / Review</strong><span style={{ color: "#e60000", marginLeft: "4px" }}>*</span>
+          </label>
           <textarea
             name="quote"
             value={form.quote}
@@ -92,7 +102,7 @@ const TestimonialForm = ({
 
         <div style={{ gridColumn: "1 / -1" }}>
           <label className="management-label">
-            Client Photo <span style={infoStyle}>(Max 1MB)</span>
+            Client Photo <span style={infoStyle}>(Max 1MB, Square avatar recommended, e.g. 200x200 px)</span>
           </label>
           <input
             name="image"

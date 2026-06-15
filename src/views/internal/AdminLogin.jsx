@@ -49,7 +49,7 @@ const AdminLogin = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <label>Email</label>
+              <label>Email<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
               <input
                 type="email"
                 placeholder="Enter admin email"
@@ -62,7 +62,7 @@ const AdminLogin = () => {
             </div>
 
             <div className="input-group">
-              <label>Password</label>
+              <label>Password<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
               <input
                 type="password"
                 placeholder="Enter password"
