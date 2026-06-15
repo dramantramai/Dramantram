@@ -139,7 +139,7 @@ const ExperientialLabPage = () => {
 
       {/* Portfolio Section */}
       <section className="portfolio">
-        <PortfolioSection />
+        <PortfolioSection baseService="Experiential Lab" />
       </section>
 
       {/* Dimaag Kharab Section */}

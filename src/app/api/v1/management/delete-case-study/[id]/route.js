@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
-import CaseStudyModel from "@/lib/models/caseStudyModel";
+// OLD MODEL:
+// import CaseStudyModel from "@/lib/models/caseStudyModel";
+import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
+import { invalidateCache } from "@/lib/cache";
 
 export async function DELETE(request, { params }) {
   try {
@@ -14,6 +17,7 @@ export async function DELETE(request, { params }) {
         { status: 404 }
       );
     }
+    invalidateCache();
 
     return NextResponse.json({
       success: true,

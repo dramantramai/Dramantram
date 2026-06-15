@@ -663,24 +663,13 @@
 
 .svc-title {
   grid-column: 1 / span 2;
-
   margin: 0;
-
-  
-
-  
-
-  
-
   line-height: 1.05;
-
   letter-spacing: 0.02em;
 
   text-transform: uppercase;
 
   color: #d9d9d9;
-
-  text-align: center;
 }
 
 .svc-right {
@@ -1468,7 +1457,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(3rem, 4.5cqi, 3.25rem);
+  gap: clamp(1rem, 1.8cqi, 1.25rem);
 }
 
 .ai-stack li {
@@ -1476,11 +1465,11 @@
   
   letter-spacing: 0.08em;
   /* cqi = container query inline-size: scales with the column, not the viewport */
-  font-size: clamp(1.875rem, 3.5vw, 6.25rem);
-  line-height: 1.05;
+  font-size: clamp(1.875rem, 3.3vw, 6.25rem);
+  line-height: 1.1;
   text-transform: uppercase;
   width: max-content !important;
-  background: linear-gradient(to right, #c5c5c5 0%, #444444 100%) !important;
+  background: linear-gradient(to right, #dddddd 0%, #878787 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;

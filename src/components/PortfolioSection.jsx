@@ -59,7 +59,7 @@ const SERVICE_OPTIONS = [
 
 const COMPLEXITY_OPTIONS = ["High", "Medium", "Low"];
 
-const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioPage = false }) => {
+const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioPage = false, baseService = "" }) => {
   const [caseStudies, setCaseStudies] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -79,7 +79,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
   // Reset startIndex when filters or pages change
   useEffect(() => {
     setStartIndex(0);
-  }, [filters, isHomePage, isPortfolioPage]);
+  }, [filters, isHomePage, isPortfolioPage, baseService]);
 
   const handlePrev = () => {
     if (startIndex > 0) {
@@ -135,7 +135,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
       setLoading(true);
       const { data } = await axios.post(
         `${apiUrl}/api/v1/management/filter-case-studies`,
-        filters
+        { ...filters, baseService }
       );
 
       if (data?.success) {
@@ -157,8 +157,8 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
       return;
     }
 
-    // B. If on Portfolio Page, check if filters are active
-    const hasActiveFilters = Object.values(filters).some((val) => val !== "");
+    // B. If filters or baseService are active, trigger filterResults
+    const hasActiveFilters = Object.values(filters).some((val) => val !== "") || baseService !== "";
 
     if (hasActiveFilters) {
       filterResults();
@@ -167,7 +167,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
       getCaseStudies();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters, isHomePage]);
+  }, [filters, isHomePage, baseService]);
 
   const scrollToFilterRow = () => {
     const el = filterRowRef.current;
@@ -256,7 +256,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
             e.target.style.color = "#888";
           }}
         >
-          All {category.charAt(0).toUpperCase() + category.slice(1)}
+          {category === "duration" ? "All Project Duration" : `All ${category.charAt(0).toUpperCase() + category.slice(1)}`}
         </li>
         {options.map((option, index) => (
           <li
@@ -286,7 +286,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
     );
   };
 
-  const displayedCaseStudies = isPortfolioPage
+  const displayedCaseStudies = (isPortfolioPage || baseService !== "")
     ? caseStudies.slice(startIndex, startIndex + 6)
     : isHomePage
     ? caseStudies.slice(0, 6)
@@ -414,7 +414,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                 }`}
               onClick={() => toggleDropdown("duration")}
             >
-              <span>{filters.duration || "Duration"}</span>
+              <span>{filters.duration || "Project Duration"}</span>
               <svg
                 width="10"
                 height="6"
@@ -483,7 +483,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                     <div className="portfolio-card-wrapper">
                       <Link href={`/case-study/${item.slug}`}>
                         <PortfolioItem
-                          imageSrc={`${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
+                          imageSrc={item.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
                           title={item.case_study_name}
                           slug={item.slug}
                         />
@@ -500,7 +500,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
           </div>
 
           {/* Portfolio Pagination Controls in the rightmost empty space */}
-          {isPortfolioPage && (
+          {(isPortfolioPage || baseService !== "") && (
             <div className="portfolio-controls">
               <button
                 onClick={handlePrev}

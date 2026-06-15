@@ -128,7 +128,7 @@ const UIUXPage = () => {
 
       {/* Portfolio Section */}
       <section className="portfolio">
-        <PortfolioSection />
+        <PortfolioSection baseService="UI/UX" />
       </section>
 
       {/* Dimaag Kharab Section */}

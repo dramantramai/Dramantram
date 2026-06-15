@@ -4,6 +4,7 @@ import "../../styles/Management.css";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
+import Image from "next/image";
 
 // --- CONSTANTS FOR DROPDOWNS ---
 const INDUSTRY_OPTIONS = [
@@ -88,6 +89,7 @@ const UpdateCaseStudy = () => {
     showOnHomepage: false,
   });
 
+  const [existingThumbnail, setExistingThumbnail] = useState("");
   const apiUrl = "";
 
   // 1. Fetch existing data
@@ -99,6 +101,7 @@ const UpdateCaseStudy = () => {
       if (data?.success) {
         const cs = data.caseStudy;
         setId(cs._id);
+        setExistingThumbnail(cs.thumbnail_image || "");
         setForm({
           case_study_name: cs.case_study_name || "",
           case_study_description: cs.case_study_description || "",
@@ -444,11 +447,18 @@ const UpdateCaseStudy = () => {
 
               {/* Preview existing thumbnail */}
               <div style={{ marginBottom: "10px" }}>
-                <img
-                  src={`${apiUrl}/api/v1/management/case-study-thumbnail/${id}`}
+                <Image
+                  src={
+                    existingThumbnail && existingThumbnail.startsWith("http")
+                      ? existingThumbnail
+                      : `${apiUrl}/api/v1/management/get-thumbnail-image/${id}`
+                  }
                   alt="current"
+                  width={48}
+                  height={48}
                   style={{
-                    height: "50px",
+                    height: "48px",
+                    width: "auto",
                     borderRadius: "4px",
                     border: "1px solid #444",
                   }}

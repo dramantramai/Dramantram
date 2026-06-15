@@ -138,7 +138,7 @@ const BrandingPage = () => {
 
       {/* Portfolio Section */}
       <section className="portfolio">
-        <PortfolioSection />
+        <PortfolioSection baseService="Branding" />
       </section>
 
       {/* Dimaag Kharab Section */}

@@ -136,7 +136,7 @@ const LiveActionPage = () => {
 
       {/* Portfolio Section */}
       <section className="portfolio">
-        <PortfolioSection />
+        <PortfolioSection baseService="Live Action" />
       </section>
 
       {/* Dimaag Kharab Section */}

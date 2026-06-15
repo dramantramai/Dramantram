@@ -133,7 +133,8 @@
   padding-bottom: 50px;
 }
 
-.philosophies-left h2 {
+.philosophies-left h2,
+.philosophies-left h3 {
   
   margin-bottom: 80px;
   
@@ -142,8 +143,9 @@
 }
 
 .philosophies-text p {
-  font-size: clamp(1.875rem, 3.5vw, 6.25rem);
-  margin: 10px 0;
+  font-size: clamp(1.875rem, 3.3vw, 6.25rem);
+  margin: 4px 0;
+  line-height: 1;
   letter-spacing: 1px;
   opacity: 0.4;
   margin-left: 100px;
@@ -316,7 +318,8 @@
     padding-bottom: 0 !important;
   }
 
-  .philosophies-container .philosophies-left h2 {
+  .philosophies-container .philosophies-left h2,
+  .philosophies-container .philosophies-left h3 {
     margin-left: 0 !important;
     margin-bottom: 50px !important;
     
@@ -331,12 +334,10 @@
 
   .philosophies-container .philosophies-text p {
     margin-left: 0 !important;
-    margin: 18px 0 !important;
-    
-    
-    line-height: 1.1 !important;
+    margin: 6px 0 !important;
+    line-height: 1 !important;
     width: max-content !important;
-    background: linear-gradient(to right, #c5c5c5 0%, #444444 100%) !important;
+    background: linear-gradient(to right, #ededed 0%, #878787 100%) !important;
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
@@ -390,6 +391,7 @@
 
   /* Staggered stack reveal animation */
   .philosophies-container .philosophies-left h2,
+  .philosophies-container .philosophies-left h3,
   .philosophies-container .philosophies-text p,
   .philosophies-container .philosophies-right p,
   .philosophies-container .phy-p-r,
@@ -400,7 +402,8 @@
   }
 
   /* Reveal text on scroll trigger */
-  .philosophies-animate .philosophies-left h2 {
+  .philosophies-animate .philosophies-left h2,
+  .philosophies-animate .philosophies-left h3 {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.1s;
@@ -672,7 +675,8 @@
     padding-bottom: 30px;
   }
 
-  .philosophies-left h2 {
+  .philosophies-left h2,
+  .philosophies-left h3 {
     
     margin-bottom: 40px;
     margin-left: 20px;
@@ -785,7 +789,8 @@
     padding: 30px 15px;
   }
 
-  .philosophies-left h2 {
+  .philosophies-left h2,
+  .philosophies-left h3 {
     
     margin-bottom: 30px;
     margin-left: 10px;
@@ -856,7 +861,8 @@
     width: 100%;
   }
 
-  .philosophies-left h2 {
+  .philosophies-left h2,
+  .philosophies-left h3 {
     
     margin-bottom: 20px;
   }

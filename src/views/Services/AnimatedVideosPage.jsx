@@ -134,7 +134,7 @@ const AnimatedVideosPage = () => {
 
       {/* Portfolio Section */}
       <section className="portfolio">
-        <PortfolioSection />
+        <PortfolioSection baseService="Animated Videos" />
       </section>
 
       {/* Dimaag Kharab Section */}

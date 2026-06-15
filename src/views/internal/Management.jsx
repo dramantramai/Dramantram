@@ -579,7 +579,7 @@ export default function Management() {
     <AdminLayout>
       <div className="management-wrapper">
         <div className="management-form-box" style={{ maxWidth: viewMode === "list" ? "1050px" : "850px" }}>
-          
+
           {/* Header */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
             <h2 style={{ color: "#fff", fontSize: 20, margin: 0 }}>

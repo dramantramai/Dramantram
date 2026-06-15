@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
-import CaseStudyModel from "@/lib/models/caseStudyModel";
+// OLD MODEL:
+// import CaseStudyModel from "@/lib/models/caseStudyModel";
+import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
+import { uploadToCloudinary } from "@/lib/cloudinary";
 import slugify from "slugify";
+import { invalidateCache } from "@/lib/cache";
 
 export async function PUT(request, { params }) {
   try {
@@ -63,6 +67,7 @@ export async function PUT(request, { params }) {
     const video_link_2 = formData.get("video_link_2");
     if (video_link_2 !== null) caseStudy.video_link_2 = video_link_2;
 
+    /* OLD BUFFER STORAGE LOGIC
     // Handle image updates
     const thumbnail_image = formData.get("thumbnail_image");
     if (thumbnail_image && thumbnail_image.size > 0) {
@@ -93,8 +98,25 @@ export async function PUT(request, { params }) {
         };
       }
     }
+    */
+
+    // NEW CLOUDINARY UPLOAD LOGIC
+    const thumbnail_image = formData.get("thumbnail_image");
+    if (thumbnail_image && thumbnail_image.size > 0) {
+      const thumbBuffer = Buffer.from(await thumbnail_image.arrayBuffer());
+      caseStudy.thumbnail_image = await uploadToCloudinary(thumbBuffer);
+    }
+
+    for (let i = 1; i <= 5; i++) {
+      const file = formData.get(`image${i}`);
+      if (file && file.size > 0) {
+        const buf = Buffer.from(await file.arrayBuffer());
+        caseStudy[`image${i}`] = await uploadToCloudinary(buf);
+      }
+    }
 
     await caseStudy.save();
+    invalidateCache();
 
     return NextResponse.json({
       success: true,

@@ -45,25 +45,32 @@ const Layout = ({ children }) => {
 
       {/* Shared wrapper: page content + footer in one stacking context.
           The layout-footer-glow ensures the warm red reaches the footer area. */}
-      <div style={{ position: "relative", overflowX: "clip" }}>
-        {/* Permanent bottom-of-page glow — always bleeds into footer */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            bottom: "-10vh",
-            left: "-10vw",
-            width: "55vw",
-            height: "55vw",
-            background: "radial-gradient(circle, rgba(184,0,0,0.55) 0%, transparent 50%)",
-            filter: "blur(80px)",
-            borderRadius: "50%",
-            pointerEvents: "none",
-            mixBlendMode: "screen",
-            zIndex: 0,
-          }}
-        />
-        <main>{children}</main>
+      <div style={{
+        position: "relative",
+        overflowX: "clip",
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh"
+      }}>
+        {/* Permanent bottom-of-page glow — always bleeds into footer without extending height */}
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0, contain: "paint" }}>
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              bottom: "-10vh",
+              left: "-10vw",
+              width: "55vw",
+              height: "55vw",
+              background: "radial-gradient(circle, rgba(184,0,0,0.55) 0%, transparent 50%)",
+              filter: "blur(80px)",
+              borderRadius: "50%",
+              pointerEvents: "none",
+              mixBlendMode: "screen",
+            }}
+          />
+        </div>
+        <main style={{ flex: 1 }}>{children}</main>
         <Footer />
       </div>
     </>

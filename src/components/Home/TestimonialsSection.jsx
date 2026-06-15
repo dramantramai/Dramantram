@@ -6,6 +6,8 @@ const TestimonialsSection = () => {
   const [startIndex, setStartIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState("");
 
+  const [isPaused, setIsPaused] = useState(false);
+
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -19,6 +21,25 @@ const TestimonialsSection = () => {
     };
     fetchTestimonials();
   }, []);
+
+  useEffect(() => {
+    if (testimonials.length <= 3 || isPaused) return;
+
+    const interval = setInterval(() => {
+      setStartIndex((prevIndex) => {
+        const nextIndex = prevIndex + 3;
+        if (nextIndex >= testimonials.length) {
+          setAnimationClass("slide-from-top");
+          return 0;
+        } else {
+          setAnimationClass("slide-from-bottom");
+          return nextIndex;
+        }
+      });
+    }, 5000); // Auto-scroll every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [testimonials.length, startIndex, isPaused]);
 
   const handlePrev = () => {
     if (startIndex > 0) {
@@ -47,7 +68,11 @@ const TestimonialsSection = () => {
   const canGoDown = startIndex + 3 < testimonials.length;
 
   return (
-    <section className="testimonial-section">
+    <section 
+      className="testimonial-section"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <div className="container-fluid">
         <div className="row g-0">
           <div className="col-lg-3 col-md-6 col-12 left-section">

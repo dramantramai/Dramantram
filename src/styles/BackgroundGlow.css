@@ -17,7 +17,8 @@
   inset: 0;              /* top:0 right:0 bottom:0 left:0 */
   width: 100%;
   pointer-events: none;
-  overflow-x: clip;      /* clip horizontal bleed only; vertical glows remain visible on scroll */
+  overflow: hidden;      /* clip both horizontal and vertical bleed so glows don't extend page scroll height */
+  contain: paint;        /* prevent absolute orbs from stretching page scroll height */
   z-index: 0;
 }
 

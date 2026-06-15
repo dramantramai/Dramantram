@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import axios from "axios";
 import "../styles/CaseStudyPage.css";
@@ -49,7 +50,7 @@ const VideoEmbed = ({ src }) => {
 const ImageEmbed = ({ src, alt }) => {
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  if (error) return null;
+  if (error || !src) return null;
 
   return (
     <div className="cs-image-wrap mb-4 position-relative" style={{ width: "100%" }}>
@@ -57,20 +58,25 @@ const ImageEmbed = ({ src, alt }) => {
         <div
           className="cs-skeleton-shimmer"
           style={{
-            width: "100%",
-            height: "400px",
+            position: "absolute",
+            inset: 0,
             borderRadius: "10px",
+            minHeight: "400px",
+            zIndex: 2,
           }}
         />
       )}
-      <img
+      <Image
         src={src}
         alt={alt}
+        width={1200}
+        height={703}
         className="cs-hero img-fluid"
         style={{
           width: "100%",
           height: "auto",
-          display: loaded ? "block" : "none",
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 0.3s ease",
         }}
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
@@ -83,7 +89,7 @@ const ImageEmbed = ({ src, alt }) => {
 const ThumbnailEmbed = ({ src, alt, text }) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  if (error) return null;
+  if (error || !src) return null;
 
   return (
     <figure className="cs-card-figure position-relative">
@@ -91,20 +97,25 @@ const ThumbnailEmbed = ({ src, alt, text }) => {
         <div
           className="cs-skeleton-shimmer"
           style={{
-            width: "100%",
-            height: "250px",
+            position: "absolute",
+            inset: 0,
             borderRadius: "6px",
+            minHeight: "250px",
+            zIndex: 2,
           }}
         />
       )}
-      <img
+      <Image
         src={src}
         className="img-fluid cs-card"
         alt={alt}
+        width={384}
+        height={467}
         style={{
           width: "100%",
           height: "auto",
-          display: loaded ? "block" : "none",
+          opacity: loaded ? 1 : 0,
+          transition: "opacity 0.3s ease",
         }}
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
@@ -236,9 +247,22 @@ const CaseStudy = () => {
   }
 
   // --- ASSET URL CONSTRUCTION ---
-  const getImgUrl = (num) =>
-    `${apiUrl}/api/v1/management/get-image-${num}/${cs._id}`;
-  const thumbnailSrc = `${apiUrl}/api/v1/management/get-thumbnail-image/${cs._id}`;
+  // If stored as Cloudinary URL, use it directly. Otherwise fallback to old database buffer routes.
+  const getImgUrl = (num) => {
+    const val = cs[`image${num}`];
+    if (val && typeof val === "string" && val.trim() !== "") {
+      if (val.startsWith("http")) {
+        return val;
+      }
+      return `${apiUrl}/api/v1/management/get-image-${num}/${cs._id}`;
+    }
+    return null;
+  };
+
+  const thumbnailSrc =
+    cs.thumbnail_image && typeof cs.thumbnail_image === "string" && cs.thumbnail_image.trim() !== ""
+      ? (cs.thumbnail_image.startsWith("http") ? cs.thumbnail_image : `${apiUrl}/api/v1/management/get-thumbnail-image/${cs._id}`)
+      : null;
 
   return (
     <LightLayout>

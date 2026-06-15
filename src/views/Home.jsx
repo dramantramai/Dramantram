@@ -17,9 +17,10 @@ import BackgroundGlow from "../components/BackgroundGlow";
 // remain consistent as the user scrolls.
 const HOME_GLOWS = [
   // Hero — large warm orb visible over the Spline section
-  { top: "70vh",   left:  "-30vw", size: "70vw", opacity: 0.8,  blur: "80px" },
-  { top: "270vh",left:"20vw",  size: "50vw", opacity: 0.65, blur: "90px" },
-  { top: "540vh", right:  "-15vw", size: "45vw", opacity: 0.75, blur: "80px" },
+  { top: "70vh", left: "-30vw", size: "70vw", opacity: 0.8, blur: "80px" },
+  { top: "240vh", left: "20vw", size: "50vw", opacity: 0.65, blur: "90px" },
+  { top: "540vh", right: "-15vw", size: "45vw", opacity: 0.75, blur: "80px" },
+  { top: "450vh", right: "-15vw", size: "45vw", opacity: 0.75, blur: "80px" },
 ];
 
 const Home = () => {
@@ -44,7 +45,7 @@ const Home = () => {
         </section>
 
         {/* Specialization Section */}
-        <SpecializationSection /> 
+        <SpecializationSection />
 
         {/* Agency Intro Section */}
         <AgencyIntroSection />

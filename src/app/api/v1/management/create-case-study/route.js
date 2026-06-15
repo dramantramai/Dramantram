@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
-import CaseStudyModel from "@/lib/models/caseStudyModel";
+// OLD MODEL:
+// import CaseStudyModel from "@/lib/models/caseStudyModel";
+import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
+import { uploadToCloudinary } from "@/lib/cloudinary";
 import slugify from "slugify";
+import { invalidateCache } from "@/lib/cache";
 
 export async function POST(request) {
   try {
@@ -98,6 +102,7 @@ export async function POST(request) {
         { status: 400 }
       );
 
+    /* OLD BUFFER STORAGE LOGIC
     const caseStudy = new CaseStudyModel({
       case_study_name,
       case_study_description,
@@ -132,6 +137,47 @@ export async function POST(request) {
     }
 
     await caseStudy.save();
+    */
+
+    // NEW CLOUDINARY UPLOAD LOGIC
+    // Upload thumbnail
+    const thumbBuffer = Buffer.from(await thumbnail_image.arrayBuffer());
+    const thumbnail_image_url = await uploadToCloudinary(thumbBuffer);
+
+    // Upload inner images
+    const uploadedImages = {};
+    for (let i = 1; i <= 5; i++) {
+      const file = formData.get(`image${i}`);
+      if (file && file.size > 0) {
+        const buf = Buffer.from(await file.arrayBuffer());
+        uploadedImages[`image${i}`] = await uploadToCloudinary(buf);
+      } else {
+        uploadedImages[`image${i}`] = "";
+      }
+    }
+
+    const caseStudy = new CaseStudyModel({
+      case_study_name,
+      case_study_description,
+      client,
+      services,
+      service,
+      complexity,
+      industry,
+      duration,
+      problem,
+      solution,
+      thumbnail_text,
+      video_link_1: video_link_1 || "",
+      video_link_2: video_link_2 || "",
+      showOnHomepage: showOnHomepage === "true",
+      slug: slugify(case_study_name, { lower: true, strict: true }),
+      thumbnail_image: thumbnail_image_url,
+      ...uploadedImages,
+    });
+
+    await caseStudy.save();
+    invalidateCache();
 
     return NextResponse.json(
       {
