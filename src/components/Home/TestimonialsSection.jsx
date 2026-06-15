@@ -3,6 +3,8 @@ import axios from "axios";
 
 const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState([]);
+  const [startIndex, setStartIndex] = useState(0);
+  const [animationClass, setAnimationClass] = useState("");
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -17,6 +19,32 @@ const TestimonialsSection = () => {
     };
     fetchTestimonials();
   }, []);
+
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setStartIndex((prev) => Math.max(0, prev - 3));
+      setAnimationClass("slide-from-top");
+    }
+  };
+
+  const handleNext = () => {
+    if (startIndex + 3 < testimonials.length) {
+      setStartIndex((prev) => prev + 3);
+      setAnimationClass("slide-from-bottom");
+    }
+  };
+
+  useEffect(() => {
+    if (!animationClass) return;
+    const timer = setTimeout(() => {
+      setAnimationClass("");
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [animationClass]);
+
+  const visibleTestimonials = testimonials.slice(startIndex, startIndex + 3);
+  const canGoUp = startIndex > 0;
+  const canGoDown = startIndex + 3 < testimonials.length;
 
   return (
     <section className="testimonial-section">
@@ -43,10 +71,10 @@ const TestimonialsSection = () => {
             </div>
           </div>
 
-          {testimonials.map((testimonial, index) => (
+          {visibleTestimonials.map((testimonial, index) => (
             <div
               key={testimonial._id || index}
-              className="col-lg-3 col-md-6 col-12 testimonial-card"
+              className={`col-lg-3 col-md-6 col-12 testimonial-card ${animationClass}`}
             >
               <div className="card-content">
                 <h3 className="card-name fw-semibold raleway-semibold">
@@ -70,6 +98,48 @@ const TestimonialsSection = () => {
               </div>
             </div>
           ))}
+
+          {/* Testimonial Controls in the rightmost empty space */}
+          <div className="testimonial-controls">
+            <button
+              onClick={handlePrev}
+              disabled={!canGoUp}
+              className="testimonial-btn"
+              aria-label="Previous testimonials"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 15L12 9L6 15"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              onClick={handleNext}
+              disabled={!canGoDown}
+              className="testimonial-btn"
+              aria-label="Next testimonials"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 9L12 15L18 9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -77,4 +147,3 @@ const TestimonialsSection = () => {
 };
 
 export default TestimonialsSection;
-

@@ -170,7 +170,7 @@ const CaseStudy = () => {
                 <div className="cs-pad">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <div key={i} className="mb-4">
-                      <div className="cs-skeleton-shimmer cs-skeleton-meta-label" style={{ marginTop: "10px" }} />
+                      <div className="cs-skeleton-shimmer cs-skeleton-meta-label" style={{ marginTop: i === 1 ? "0px" : "10px" }} />
                       <div className="cs-skeleton-shimmer cs-skeleton-meta-value" />
                     </div>
                   ))}

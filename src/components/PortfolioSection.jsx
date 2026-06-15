@@ -59,7 +59,7 @@ const SERVICE_OPTIONS = [
 
 const COMPLEXITY_OPTIONS = ["High", "Medium", "Low"];
 
-const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
+const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioPage = false }) => {
   const [caseStudies, setCaseStudies] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -72,6 +72,36 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
     industry: "",
     duration: "",
   });
+
+  const [startIndex, setStartIndex] = useState(0);
+  const [animationClass, setAnimationClass] = useState("");
+
+  // Reset startIndex when filters or pages change
+  useEffect(() => {
+    setStartIndex(0);
+  }, [filters, isHomePage, isPortfolioPage]);
+
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setStartIndex((prev) => Math.max(0, prev - 6));
+      setAnimationClass("slide-from-top");
+    }
+  };
+
+  const handleNext = () => {
+    if (startIndex + 6 < caseStudies.length) {
+      setStartIndex((prev) => prev + 6);
+      setAnimationClass("slide-from-bottom");
+    }
+  };
+
+  useEffect(() => {
+    if (!animationClass) return;
+    const timer = setTimeout(() => {
+      setAnimationClass("");
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [animationClass]);
 
   // API URL helper
   const apiUrl = "";
@@ -256,8 +286,11 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
     );
   };
 
-  // Limit case studies to 6 items if on homepage (for a 3x2 grid), otherwise show all matching case studies
-  const displayedCaseStudies = isHomePage ? caseStudies.slice(0, 6) : caseStudies;
+  const displayedCaseStudies = isPortfolioPage
+    ? caseStudies.slice(startIndex, startIndex + 6)
+    : isHomePage
+    ? caseStudies.slice(0, 6)
+    : caseStudies;
 
   return (
     <div className={`portfolio-section ${isHomePage ? "home-portfolio" : ""}`}>
@@ -424,9 +457,9 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
                 {" enthusiasts in practice, and integrated at our core."}
               </p>
               <GlitchButton
-                href="/contact"
+                to={isPortfolioPage ? "/contact" : "/portfolio"}
                 className="connect-link"
-                targetText="Let's Connect"
+                targetText={isPortfolioPage ? "Let's Connect" : "Show All"}
               />
             </div>
           </div>
@@ -446,7 +479,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
                 ))
               ) : displayedCaseStudies.length > 0 ? (
                 displayedCaseStudies.map((item) => (
-                  <div key={item._id} className="col-md-6 col-lg-4">
+                  <div key={item._id} className={`col-md-6 col-lg-4 ${animationClass}`}>
                     <div className="portfolio-card-wrapper">
                       <Link href={`/case-study/${item.slug}`}>
                         <PortfolioItem
@@ -465,6 +498,50 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false }) => {
               )}
             </div>
           </div>
+
+          {/* Portfolio Pagination Controls in the rightmost empty space */}
+          {isPortfolioPage && (
+            <div className="portfolio-controls">
+              <button
+                onClick={handlePrev}
+                disabled={startIndex === 0}
+                className="portfolio-btn"
+                aria-label="Previous case studies"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 15L12 9L6 15"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={startIndex + 6 >= caseStudies.length}
+                className="portfolio-btn"
+                aria-label="Next case studies"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9L12 15L18 9"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

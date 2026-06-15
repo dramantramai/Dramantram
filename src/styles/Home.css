@@ -2235,3 +2235,98 @@ img {
 
   height: auto;
 }
+
+/* ===== TESTIMONIAL PAGINATION CONTROLS ===== */
+.testimonial-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  grid-column: 6 / 7 !important;
+  min-height: 80vh;
+  position: relative;
+  z-index: 10;
+}
+
+.testimonial-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(5px);
+  outline: none;
+  cursor: pointer;
+}
+
+.testimonial-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fbff00;
+  color: #fbff00;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(251, 255, 0, 0.3);
+}
+
+.testimonial-btn:disabled {
+  opacity: 0.25;
+  filter: blur(1px);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.testimonial-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+/* Slide Animations */
+.slide-from-bottom {
+  animation: slideInFromBottom 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.slide-from-top {
+  animation: slideInFromTop 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 991px) {
+  .testimonial-controls {
+    flex-direction: row;
+    justify-content: center;
+    min-height: auto;
+    width: 100%;
+    padding: 20px 0;
+    gap: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}

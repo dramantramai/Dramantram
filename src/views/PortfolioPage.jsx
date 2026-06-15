@@ -73,7 +73,7 @@ const PortfolioPage = () => {
 
       <section className="portfolio">
         {/* <PortfolioFilters /> */}
-        <PortfolioSection showFilters={true} isHomePage={false} />
+        <PortfolioSection showFilters={true} isHomePage={false} isPortfolioPage={true} />
       </section>
 
       <ComesWith />

@@ -56,7 +56,7 @@
   font-family: "Russo One", sans-serif;
   
   letter-spacing: 1px;
-  margin: 8px 0 16px;
+  margin: 0 0 16px;
   
   
 }
@@ -139,6 +139,10 @@
   color: #7e7e7e;
   
   margin-top: 30px;
+}
+
+.cs-col .cs-pad > div:first-child .cs-meta-label {
+  margin-top: 0;
 }
 
 .cs-meta-value {
@@ -452,7 +456,7 @@
 .cs-skeleton-title {
   height: 2.5rem;
   width: 80%;
-  margin: 8px 0 16px;
+  margin: 0 0 16px;
 }
 
 .cs-skeleton-thumbnail {
