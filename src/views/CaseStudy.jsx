@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import "../styles/CaseStudyPage.css";
 import LightLayout from "../components/Layout/LightLayout";
+import ArcPagination from "../components/ArcPagination";
 
 // Helper component for meta fields
 const MetaRow = ({ label, value }) => (
@@ -131,9 +132,11 @@ const ThumbnailEmbed = ({ src, alt, text }) => {
 
 const CaseStudy = () => {
   const { slug } = useParams();
+  const router = useRouter();
   const [cs, setCs] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [relatedCaseStudies, setRelatedCaseStudies] = useState([]);
 
   const apiUrl = "";
 
@@ -159,6 +162,73 @@ const CaseStudy = () => {
   useEffect(() => {
     getCaseStudy();
   }, [slug]);
+
+  // Load related case studies from sessionStorage, or fallback to fetching if empty
+  useEffect(() => {
+    if (!cs) return;
+
+    const loadRelatedCaseStudies = async () => {
+      try {
+        const stored = sessionStorage.getItem("filteredCaseStudies");
+        let list = [];
+        if (stored) {
+          list = JSON.parse(stored);
+        }
+
+        // Fallback: If sessionStorage is empty, fetch case studies matching this category (service)
+        if (!list || list.length === 0) {
+          const { data } = await axios.post(
+            `${apiUrl}/api/v1/management/filter-case-studies`,
+            { baseService: cs.service }
+          );
+          if (data?.success && data.caseStudies) {
+            list = data.caseStudies;
+          }
+        }
+
+        // Process list to limit it to 10 and ensure the current case study is included
+        if (list && list.length > 0) {
+          const currentIndex = list.findIndex((item) => item._id === cs._id || item.slug === cs.slug);
+          if (currentIndex !== -1) {
+            // Keep all if size is <= 10
+            if (list.length > 10) {
+              // Symmetrical slice of 10 items around the current case study
+              let start = Math.max(0, currentIndex - 4);
+              let end = start + 10;
+              if (end > list.length) {
+                end = list.length;
+                start = Math.max(0, end - 10);
+              }
+              list = list.slice(start, end);
+            }
+          } else {
+            // If current case study is not in list, prepend it and slice to 10
+            list = [cs, ...list].slice(0, 10);
+          }
+          setRelatedCaseStudies(list);
+        } else {
+          // If fallback also returned nothing, at least render the current case study as 1 dot
+          setRelatedCaseStudies([cs]);
+        }
+      } catch (err) {
+        console.error("Error loading related case studies:", err);
+        setRelatedCaseStudies([cs]);
+      }
+    };
+
+    loadRelatedCaseStudies();
+  }, [cs]);
+
+  const currentIndexInRelated = relatedCaseStudies.findIndex(
+    (item) => item._id === cs?._id || item.slug === cs?.slug
+  );
+
+  const handlePageChange = (pageIndex) => {
+    const targetCaseStudy = relatedCaseStudies[pageIndex - 1];
+    if (targetCaseStudy && targetCaseStudy.slug !== slug) {
+      router.push(`/case-study/${targetCaseStudy.slug}`);
+    }
+  };
 
   // Loading State
   if (loading) {
@@ -311,6 +381,17 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
+
+          {/* Semicircular Pagination Control */}
+          {relatedCaseStudies.length > 1 && (
+            <div className="cs-pagination-wrapper">
+              <ArcPagination
+                totalPages={relatedCaseStudies.length}
+                currentPage={currentIndexInRelated !== -1 ? currentIndexInRelated + 1 : 1}
+                onPageChange={handlePageChange}
+              />
+            </div>
+          )}
 
           {/* --- BOTTOM ROW: Media Sequence (Left) + Solution (Right) --- */}
           <div className="row g-0 cs-content-row">

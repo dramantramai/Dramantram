@@ -81,6 +81,17 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
     setStartIndex(0);
   }, [filters, isHomePage, isPortfolioPage, baseService]);
 
+  // Save active case studies to sessionStorage for detail view pagination
+  useEffect(() => {
+    if (caseStudies && caseStudies.length > 0) {
+      try {
+        sessionStorage.setItem("filteredCaseStudies", JSON.stringify(caseStudies));
+      } catch (e) {
+        console.error("Failed to save caseStudies to sessionStorage", e);
+      }
+    }
+  }, [caseStudies]);
+
   const handlePrev = () => {
     if (startIndex > 0) {
       setStartIndex((prev) => Math.max(0, prev - 6));
