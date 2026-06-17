@@ -85,6 +85,7 @@ const UpdateCaseStudy = () => {
     // Video Links
     video_link_1: "",
     video_link_2: "",
+    website_link: "",
     // --- 1. NEW STATE FIELD ---
     showOnHomepage: false,
   });
@@ -117,6 +118,7 @@ const UpdateCaseStudy = () => {
           // Load existing video links
           video_link_1: cs.video_link_1 || "",
           video_link_2: cs.video_link_2 || "",
+          website_link: cs.website_link || "",
           // --- 2. POPULATE STATE FROM DB ---
           showOnHomepage: cs.showOnHomepage || false,
 
@@ -188,6 +190,7 @@ const UpdateCaseStudy = () => {
       // Append Video Links (Always send the current state string, whether empty or filled)
       caseStudyData.append("video_link_1", form.video_link_1);
       caseStudyData.append("video_link_2", form.video_link_2);
+      caseStudyData.append("website_link", form.website_link || "");
 
       // Append Images ONLY if a new file is selected
       if (form.thumbnail_image)
@@ -296,6 +299,18 @@ const UpdateCaseStudy = () => {
                 onChange={handleChange}
                 className="management-input"
                 placeholder="Client name"
+              />
+            </div>
+
+            {/* WEBSITE LINK */}
+            <div>
+              <label className="management-label">Website Link</label>
+              <input
+                name="website_link"
+                value={form.website_link || ""}
+                onChange={handleChange}
+                className="management-input"
+                placeholder="e.g. https://example.com"
               />
             </div>
 

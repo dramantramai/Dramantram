@@ -22,6 +22,7 @@ const CaseStudyCloudinarySchema = new mongoose.Schema(
     thumbnail_text: { type: String, required: true, trim: true },
     video_link_1: { type: String, trim: true },
     video_link_2: { type: String, trim: true },
+    website_link: { type: String, trim: true },
     thumbnail_image: { type: String, required: true }, // Cloudinary URL
     image1: { type: String }, // Cloudinary URL
     image2: { type: String }, // Cloudinary URL

@@ -5,7 +5,6 @@ import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import "../styles/CaseStudyPage.css";
 import LightLayout from "../components/Layout/LightLayout";
-import ErrorBoundary from "../components/ErrorBoundary";
 
 // Helper component for meta fields
 const MetaRow = ({ label, value }) => (
@@ -375,7 +374,7 @@ const CaseStudy = () => {
               <div className="col-12 col-md-3 cs-col cs-pagination-pill-col">
                 <div className="cs-pad d-flex align-items-center justify-content-center">
                   <a
-                    href={cs.client.toLowerCase().startsWith('http') ? cs.client : `https://${cs.client.toLowerCase().replace(/\s+/g, "")}.com`}
+                    href={cs.website_link ? (cs.website_link.startsWith('http') ? cs.website_link : `https://${cs.website_link}`) : (cs.client.toLowerCase().startsWith('http') ? cs.client : `https://${cs.client.toLowerCase().replace(/\s+/g, "")}.com`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="cs-client-pill"
@@ -384,7 +383,7 @@ const CaseStudy = () => {
                       <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                       <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
                     </svg>
-                    {cs.client.toLowerCase().endsWith('.com') ? cs.client : `${cs.client}.com`}
+                    {cs.website_link ? cs.website_link.replace(/^https?:\/\/(www\.)?/, "") : (cs.client.toLowerCase().endsWith('.com') ? cs.client : `${cs.client}.com`)}
                   </a>
                 </div>
               </div>

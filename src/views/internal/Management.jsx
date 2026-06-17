@@ -97,6 +97,7 @@ const initialCaseStudyForm = {
   image5: null,
   video_link_1: "",
   video_link_2: "",
+  website_link: "",
   showOnHomepage: false,
 };
 
@@ -427,6 +428,7 @@ export default function Management() {
 
       if (caseStudyForm.video_link_1) caseStudyData.append("video_link_1", caseStudyForm.video_link_1);
       if (caseStudyForm.video_link_2) caseStudyData.append("video_link_2", caseStudyForm.video_link_2);
+      if (caseStudyForm.website_link) caseStudyData.append("website_link", caseStudyForm.website_link);
 
       const { data } = await axios.post("/api/v1/management/create-case-study", caseStudyData);
       if (data?.success) {

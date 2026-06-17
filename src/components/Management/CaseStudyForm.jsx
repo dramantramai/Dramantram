@@ -47,6 +47,17 @@ const CaseStudyForm = ({
         </div>
 
         <div>
+          <label className="management-label">Website Link</label>
+          <input
+            name="website_link"
+            value={form.website_link || ""}
+            onChange={onChange}
+            className="management-input"
+            placeholder="e.g. https://example.com"
+          />
+        </div>
+
+        <div>
           <label className="management-label">Services<span style={{ color: "#e60000", marginLeft: "4px" }}>*</span></label>
           <select
             name="services"

@@ -66,6 +66,8 @@ export async function PUT(request, { params }) {
     if (video_link_1 !== null) caseStudy.video_link_1 = video_link_1;
     const video_link_2 = formData.get("video_link_2");
     if (video_link_2 !== null) caseStudy.video_link_2 = video_link_2;
+    const website_link = formData.get("website_link");
+    if (website_link !== null) caseStudy.website_link = website_link;
 
     /* OLD BUFFER STORAGE LOGIC
     // Handle image updates

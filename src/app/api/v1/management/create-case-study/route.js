@@ -24,6 +24,7 @@ export async function POST(request) {
     const thumbnail_text = formData.get("thumbnail_text");
     const video_link_1 = formData.get("video_link_1");
     const video_link_2 = formData.get("video_link_2");
+    const website_link = formData.get("website_link");
     const showOnHomepage = formData.get("showOnHomepage");
     const thumbnail_image = formData.get("thumbnail_image");
     const service = formData.get("service");
@@ -170,6 +171,7 @@ export async function POST(request) {
       thumbnail_text,
       video_link_1: video_link_1 || "",
       video_link_2: video_link_2 || "",
+      website_link: website_link || "",
       showOnHomepage: showOnHomepage === "true",
       slug: slugify(case_study_name, { lower: true, strict: true }),
       thumbnail_image: thumbnail_image_url,
