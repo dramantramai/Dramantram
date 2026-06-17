@@ -231,6 +231,18 @@ const CaseStudy = () => {
     }
   };
 
+  const handlePrev = () => {
+    if (relatedCaseStudies.length <= 1) return;
+    const prevIndex = (currentIndexInRelated - 1 + relatedCaseStudies.length) % relatedCaseStudies.length;
+    router.push(`/case-study/${relatedCaseStudies[prevIndex].slug}`);
+  };
+
+  const handleNext = () => {
+    if (relatedCaseStudies.length <= 1) return;
+    const nextIndex = (currentIndexInRelated + 1) % relatedCaseStudies.length;
+    router.push(`/case-study/${relatedCaseStudies[nextIndex].slug}`);
+  };
+
   // Loading State
   if (loading) {
     return (
@@ -339,12 +351,63 @@ const CaseStudy = () => {
     <LightLayout>
       <section className="case-study-wrap">
         <div className="container-fluid cs-container">
+          {/* --- PAGINATION ROW --- */}
+          {relatedCaseStudies.length > 1 && (
+            <div className="row g-0 cs-pagination-row">
+              {/* Col 1: Heading */}
+              <div className="col-12 col-md-3 cs-col cs-col-left cs-pagination-heading-col">
+                <div className="cs-pad">
+                  <h3 className="cs-title-top">{cs.case_study_name}</h3>
+                </div>
+              </div>
+
+              {/* Col 2: Prev Button */}
+              <div className="col-12 col-md-3 cs-col cs-prev-col cs-pagination-btn-col">
+                <div className="cs-pad d-flex align-items-center justify-content-center">
+                  <button onClick={handlePrev} className="cs-nav-btn" aria-label="Previous Case Study">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Col 3: Client Link Pill */}
+              <div className="col-12 col-md-3 cs-col cs-pagination-pill-col">
+                <div className="cs-pad d-flex align-items-center justify-content-center">
+                  <a
+                    href={cs.client.toLowerCase().startsWith('http') ? cs.client : `https://${cs.client.toLowerCase().replace(/\s+/g, "")}.com`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cs-client-pill"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffd166" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                    {cs.client.toLowerCase().endsWith('.com') ? cs.client : `${cs.client}.com`}
+                  </a>
+                </div>
+              </div>
+
+              {/* Col 4: Next Button */}
+              <div className="col-12 col-md-3 cs-col cs-col-right cs-next-col cs-pagination-btn-col">
+                <div className="cs-pad d-flex align-items-center justify-content-center">
+                  <button onClick={handleNext} className="cs-nav-btn" aria-label="Next Case Study">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* --- TOP ROW: Header info --- */}
           <div className="row g-0 cs-header">
-            {/* Col 1: Title + Thumbnail Card */}
+            {/* Col 1: Thumbnail Card Only (Heading moved to Pagination Row) */}
             <div className="col-12 col-md-3 cs-col cs-col-left">
               <div className="cs-pad">
-                <h2 className="cs-title"> {cs.case_study_name}</h2>
                 <ThumbnailEmbed
                   src={thumbnailSrc}
                   alt={cs.case_study_name}
@@ -382,19 +445,6 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-
-          {/* Semicircular Pagination Control wrapped in an ErrorBoundary */}
-          {relatedCaseStudies.length > 1 && (
-            <div className="cs-pagination-wrapper">
-              <ErrorBoundary>
-                <ArcPagination
-                  totalPages={relatedCaseStudies.length}
-                  currentPage={currentIndexInRelated !== -1 ? currentIndexInRelated + 1 : 1}
-                  onPageChange={handlePageChange}
-                />
-              </ErrorBoundary>
-            </div>
-          )}
 
           {/* --- BOTTOM ROW: Media Sequence (Left) + Solution (Right) --- */}
           <div className="row g-0 cs-content-row">
