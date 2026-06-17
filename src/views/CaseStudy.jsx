@@ -6,6 +6,7 @@ import axios from "axios";
 import "../styles/CaseStudyPage.css";
 import LightLayout from "../components/Layout/LightLayout";
 import ArcPagination from "../components/ArcPagination";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 // Helper component for meta fields
 const MetaRow = ({ label, value }) => (
@@ -382,14 +383,16 @@ const CaseStudy = () => {
             </div>
           </div>
 
-          {/* Semicircular Pagination Control */}
+          {/* Semicircular Pagination Control wrapped in an ErrorBoundary */}
           {relatedCaseStudies.length > 1 && (
             <div className="cs-pagination-wrapper">
-              <ArcPagination
-                totalPages={relatedCaseStudies.length}
-                currentPage={currentIndexInRelated !== -1 ? currentIndexInRelated + 1 : 1}
-                onPageChange={handlePageChange}
-              />
+              <ErrorBoundary>
+                <ArcPagination
+                  totalPages={relatedCaseStudies.length}
+                  currentPage={currentIndexInRelated !== -1 ? currentIndexInRelated + 1 : 1}
+                  onPageChange={handlePageChange}
+                />
+              </ErrorBoundary>
             </div>
           )}
 

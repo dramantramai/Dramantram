@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "..styles/ArcPagination.css";
+import "../styles/ArcPagination.css";
 
 // Dome geometry constants (for 132px x 72px container)
 const RADIUS = 60;
