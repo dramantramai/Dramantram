@@ -19,7 +19,7 @@
 
 /* top bar */
 .cs-topbar {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
   padding: 8px 12px;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .cs-content-row {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 /* title + card */
@@ -160,8 +160,8 @@
 
 /* hero image */
 .cs-hero-solution-row {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 0.5px solid rgba(113, 113, 113, 0.5);
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
   align-items: stretch;
 }
 
@@ -173,8 +173,8 @@
 }
 
 .cs-hero-row {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 0.5px solid rgba(113, 113, 113, 0.5);
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 .cs-hero {
@@ -193,17 +193,17 @@
 
 /* solution block border to match columns */
 .cs-solution .cs-col {
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 .cs-solution {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 /* gallery thumbs */
 .cs-gallery {
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-left: 0.5px solid rgba(113, 113, 113, 0.5);
+  border-right: 0.5px solid rgba(113, 113, 113, 0.5);
   /* margin-left: 20px; */
   padding-top: 50px;
   padding-left: 100px;
@@ -232,12 +232,12 @@
 }
 
 .cs-hero-solution-row {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 0.5px solid rgba(113, 113, 113, 0.5);
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
   align-items: stretch;
   background-color: #eceff100;
-  border-left: 1px solid rgba(0, 0, 0, 0.12);
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-left: 0.5px solid rgba(113, 113, 113, 0.5);
+  border-right: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 .cs-hero {
@@ -262,7 +262,7 @@
 @media (max-width: 991.98px) {
   .cs-solution-col {
     border-left: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 0.5px solid rgba(113, 113, 113, 0.5);
     background: transparent;
     /* Release the fixed 700px desktop height so stacked content can breathe */
     height: auto;
@@ -291,7 +291,7 @@
   .cs-header .cs-col-right {
     border-right: none;
     border-left: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
   }
 
   .cs-pad {
@@ -363,20 +363,20 @@
   /* Title + thumbnail — column 1 */
   .cs-header > .col-12:nth-child(1) {
     grid-column: 2 / 3 !important;
-    border-left: 1px solid rgba(0, 0, 0, 0.12) !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-left: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
   }
 
   /* Meta list — column 2 */
   .cs-header > .col-12:nth-child(2) {
     grid-column: 3 / 4 !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
   }
 
   /* Problem statement — columns 3 + 4 */
   .cs-header > .col-12:nth-child(3) {
     grid-column: 4 / 6 !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
   }
 
   /* LEFT — images: sticky, 75% of the inner area */
@@ -387,8 +387,8 @@
     flex: 0 0 75% !important;
     max-width: 75% !important;
     width: 75% !important;
-    border-left: 1px solid rgba(0, 0, 0, 0.12) !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-left: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
@@ -401,7 +401,7 @@
     flex: 0 0 25% !important;
     max-width: 25% !important;
     width: 25% !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
@@ -505,7 +505,7 @@
 
 /* --- NEW GRID-ALIGNED PAGINATION ROW --- */
 .cs-pagination-row {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
   margin: 0 !important;
 }
 
@@ -589,8 +589,8 @@
   /* Heading - col 1 */
   .cs-pagination-row > .cs-pagination-heading-col {
     grid-column: 2 / 3 !important;
-    border-left: 1px solid rgba(0, 0, 0, 0.12) !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-left: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
     display: flex;
     align-items: center;
   }
@@ -598,19 +598,19 @@
   /* Prev button - col 2 */
   .cs-pagination-row > .cs-prev-col {
     grid-column: 3 / 4 !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
   }
 
   /* Pill - col 3 */
   .cs-pagination-row > .cs-pagination-pill-col {
     grid-column: 4 / 5 !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
   }
 
   /* Next button - col 4 */
   .cs-pagination-row > .cs-next-col {
     grid-column: 5 / 6 !important;
-    border-right: 1px solid rgba(0, 0, 0, 0.12) !important;
+    border-right: 0.5px solid rgba(113, 113, 113, 0.5) !important;
   }
 }
 

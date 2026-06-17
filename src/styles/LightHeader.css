@@ -19,12 +19,37 @@
   background: transparent !important;
   background-color: transparent !important;
   backdrop-filter: none !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5) !important;
   box-shadow: none !important;
   transition:
     transform 0.3s ease-in-out,
     background 0.3s ease,
     backdrop-filter 0.3s ease;
+}
+
+.navbar-light::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: var(--grid-lines-dark);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-light.navbar-scrolled::after {
+  opacity: 0.5;
+}
+
+.navbar-light .container-fluid {
+  position: relative;
+  z-index: 2;
 }
 
 /* Hide on scroll down, show on scroll up (same behaviour as dark Header) */
@@ -38,7 +63,7 @@
 
 .navbar-light.navbar-scrolled {
   background: #eceff1 !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5) !important;
 }
 
 .navbar-light .container-fluid,
@@ -204,6 +229,10 @@
 }
 
 @media (max-width: 991.98px) {
+  .navbar-light::after {
+    display: none !important;
+  }
+
   .navbar-light .container-fluid {
     padding-left: 15px !important;
     padding-right: 15px !important;

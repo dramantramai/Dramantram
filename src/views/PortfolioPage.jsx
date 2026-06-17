@@ -9,7 +9,7 @@ import BackgroundGlow from "../components/BackgroundGlow";
 
 const PORTFOLIO_GLOWS = [
   // Hero area — upper centre-right
-  { top: "-40vh", right: "10vw", size: "85vw", opacity: 0.85, blur: "80px" },
+  { top: "-50vh", right: "10vw", size: "95vw", opacity: 0.85, blur: "80px" },
   // Portfolio grid mid — left glow
   { top: "100vh", left: "-15vw", size: "55vw", opacity: 0.6, blur: "80px" },
   // ComesWith bottom — right glow

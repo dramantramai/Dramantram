@@ -5,7 +5,7 @@
   position: relative;
   overflow: hidden;
   padding: 0px 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 .light-layout-wrapper .footer-section {
@@ -20,25 +20,7 @@
   padding-top: 100px;
 }
 
-.footer-row-grid::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  pointer-events: none;
-  /* Allows clicking through lines */
-  z-index: 0;
-  background-image: var(--grid-lines-light) !important;
-}
 
-/* Only show grid lines on Desktop */
-@media (max-width: 768px) {
-  .footer-row-grid::after {
-    display: none;
-  }
-}
 
 /* --- Content Alignment --- */
 /* Instead of margin-left: 50px (which breaks grid), we use padding inside the wrapper */

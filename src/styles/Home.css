@@ -27,7 +27,7 @@
   background-image: var(--grid-lines-light);
   /* OPTIONAL: Blend mode ensures lines are visible on both black AND white backgrounds */
   mix-blend-mode: difference;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 /* Hide grid on mobile/tablet if desired */
@@ -575,7 +575,7 @@
   color: #fff;
 
   overflow: hidden;
-  border-bottom: 1px solid rgb(38, 38, 38);
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 /* Old section-level gradient removed — replaced by page-level BackgroundGlow */
@@ -2105,7 +2105,7 @@
 
     border-left: none;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 0.5px solid rgba(113, 113, 113, 0.5);
   }
 
   .card-content {
@@ -2316,6 +2316,6 @@ img {
     width: 100%;
     padding: 20px 0;
     gap: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 0.5px solid rgba(113, 113, 113, 0.5);
   }
 }

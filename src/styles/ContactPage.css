@@ -1,7 +1,7 @@
 .page-grid {
   --text: #0f0f0f;
   --title: #121212;
-  --divider: rgba(0, 0, 0, 0.676);
+  --divider: rgba(113, 113, 113, 0.5);
   --blue: #3aa0ff;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .office-row {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 .office-col {
@@ -135,7 +135,7 @@
 @media (max-width: 991.98px) {
   .office-col {
     border-left: 0;
-    border-top: 1px solid var(--divider);
+    border-top: 0.5px solid var(--divider);
   }
 
   .office-col:first-child {

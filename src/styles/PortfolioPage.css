@@ -7,7 +7,7 @@
   --accent: #fbff00;
   --rail: #f6a400;
   /* thin amber on rail */
-  --divider: rgba(255, 255, 255, 0.08);
+  --divider: rgba(113, 113, 113, 0.5);
 }
 
 .hero-portfolio {
@@ -50,7 +50,7 @@
 
 .portfolio-panel {
   position: relative;
-  border-right: 1px solid var(--divider);
+  border-right: 0.5px solid var(--divider);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,13 +58,13 @@
   height: 55vh;
 }
 
-.portfolio-panel--left {
-  border-left: 1px solid var(--divider);
-}
+/* .portfolio-panel--left {
+  border-left: 0.5px solid var(--divider);
+} */
 
 .portfolio-panel-inner {
   width: 100%;
-  padding: 64px clamp(16px, 4vw, 48px);
+  padding: clamp(32px, 5vh, 48px) clamp(16px, 4vw, 48px);
 }
 
 .btn-connect-portfolio {
@@ -137,7 +137,7 @@
   z-index: 1;
   min-height: 72px;
   padding: 12px clamp(12px, 2vw, 24px);
-  border-bottom: 1px solid var(--divider);
+  border-bottom: 0.5px solid var(--divider);
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.02) 0%,
@@ -200,11 +200,11 @@
     min-height: auto;
     height: auto !important;
     border-right: none;
-    border-bottom: 1px solid var(--divider);
+    border-bottom: 0.5px solid var(--divider);
   }
 
   .portfolio-panel--left {
-    border-left: 1px solid var(--divider);
+    border-left: 0.5px solid var(--divider);
   }
 
   .right-rail {
@@ -228,7 +228,7 @@
   }
 
   .portfolio-panel--left .portfolio-panel--right {
-    border-left: 1px solid var(--divider);
+    border-left: 0.5px solid var(--divider);
   }
 
   .portfolio-panel {
@@ -238,7 +238,7 @@
     /* Make panel smaller */
     flex: 1 1 100%;
     /* Ensure the panels take up full width */
-    border-left: 1px solid var(--divider);
+    border-left: 0.5px solid var(--divider);
   }
 
   .portfolio-panel-inner {
@@ -304,7 +304,7 @@
     /* Further reduce the height */
     flex: 1 1 100%;
     /* Ensure it takes up full width */
-    border-bottom: var(--divider) solid 1px;
+    border-bottom: 0.5px solid var(--divider);
   }
 
   .logo-word {
@@ -333,9 +333,10 @@
   .hero-portfolio .upper-container {
     position: relative;
     z-index: 2;
+    padding-bottom: 0 !important;
   }
 
-  .portfolio-section {
+  section.portfolio .portfolio-section {
     position: relative;
     z-index: 2 !important;
     padding-top: 0 !important;
@@ -346,13 +347,13 @@
     grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
     width: 100% !important;
     margin: 0 !important;
-    height: 88px !important;
-    min-height: 88px !important;
-    padding-top: 12px !important;
+    height: 76px !important;
+    min-height: 76px !important;
+    padding-top: 0 !important;
     padding-bottom: 28px !important;
     margin-bottom: 24px !important;
     border-top: none !important;
-    border-bottom: 1px solid var(--divider) !important;
+    border-bottom: 0.5px solid var(--divider) !important;
   }
 
   .portfolio-section .filter-row > div {
@@ -375,18 +376,22 @@
     grid-column: 5 / 6 !important;
   }
 
+  .hero-portfolio {
+    padding-top: 8vh !important;
+  }
+
   .hero-portfolio .upper-container > .hero-grid {
     display: grid !important;
     grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5% !important;
     width: 100% !important;
     margin: 0 !important;
-    min-height: calc(100vh - 140px) !important;
+    min-height: 45vh !important;
   }
 
   .portfolio-panel {
     border-right: none !important;
-    min-height: calc(100vh - 140px) !important;
-    height: calc(100vh - 140px) !important;
+    min-height: 40vh !important;
+    height: 40vh !important;
     width: auto !important;
     max-width: none !important;
     flex: none !important;

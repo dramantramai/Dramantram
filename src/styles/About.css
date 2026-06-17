@@ -126,8 +126,8 @@
 
 .philosophies-left {
   position: relative;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 0.5px solid rgba(113, 113, 113, 0.5);
+  border-left: 0.5px solid rgba(113, 113, 113, 0.5);
   padding-right: 40px;
   padding-top: 80px;
   padding-bottom: 50px;
@@ -155,7 +155,7 @@
 .philosophies-right {
   padding-left: 30px;
   padding-right: 30px;
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 .philosophies-right p {
@@ -669,7 +669,7 @@
 
   .philosophies-left {
     border-right: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
     padding-right: 20px;
     padding-left: 20px;
     padding-top: 50px;
@@ -690,7 +690,7 @@
 
   .philosophies-right {
     border-right: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
     padding: 30px 20px;
   }
 
@@ -786,7 +786,7 @@
 
   .philosophies-left {
     border-left: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
     padding: 30px 15px;
   }
 
@@ -803,7 +803,7 @@
   }
 
   .philosophies-right {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
     padding: 20px 15px;
   }
 

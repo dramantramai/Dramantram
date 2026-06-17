@@ -5,7 +5,6 @@ import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import "../styles/CaseStudyPage.css";
 import LightLayout from "../components/Layout/LightLayout";
-import ArcPagination from "../components/ArcPagination";
 import ErrorBoundary from "../components/ErrorBoundary";
 
 // Helper component for meta fields

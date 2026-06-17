@@ -6,7 +6,7 @@
   padding-bottom: 50px;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 0.5px solid rgba(113, 113, 113, 0.5);
   border-bottom: none;
 }
 
@@ -195,7 +195,7 @@
     grid-template-columns: 1fr;
   }
   .pcol {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
   }
   .pcol:last-child {
     border-bottom: none;
