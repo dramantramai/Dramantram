@@ -5,7 +5,7 @@ import connectDB from "@/lib/db";
 import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
 import { uploadToCloudinary } from "@/lib/cloudinary";
 import slugify from "slugify";
-import { invalidateCache } from "@/lib/cache";
+import { revalidateTag } from "next/cache";
 
 export async function PUT(request, { params }) {
   try {
@@ -118,7 +118,7 @@ export async function PUT(request, { params }) {
     }
 
     await caseStudy.save();
-    invalidateCache();
+    revalidateTag("case-studies");
 
     return NextResponse.json({
       success: true,

@@ -3,7 +3,7 @@ import connectDB from "@/lib/db";
 // OLD MODEL:
 // import CaseStudyModel from "@/lib/models/caseStudyModel";
 import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
-import { invalidateCache } from "@/lib/cache";
+import { revalidateTag } from "next/cache";
 
 export async function DELETE(request, { params }) {
   try {
@@ -17,7 +17,7 @@ export async function DELETE(request, { params }) {
         { status: 404 }
       );
     }
-    invalidateCache();
+    revalidateTag("case-studies");
 
     return NextResponse.json({
       success: true,

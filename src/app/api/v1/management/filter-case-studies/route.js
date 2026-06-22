@@ -3,24 +3,11 @@ import connectDB from "@/lib/db";
 // OLD MODEL:
 // import CaseStudyModel from "@/lib/models/caseStudyModel";
 import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
-import { getCachedData, setCachedData } from "@/lib/cache";
+import { unstable_cache } from "next/cache";
 
-export async function POST(request) {
-  try {
+const fetchFilteredCaseStudies = unstable_cache(
+  async (service, industry, duration, complexity, baseService) => {
     await connectDB();
-    const { service, industry, duration, complexity, baseService } = await request.json();
-
-    // Cache key incorporates all filtering inputs
-    const cacheKey = `filter-${JSON.stringify({ service, industry, duration, complexity, baseService })}`;
-    const cached = getCachedData(cacheKey);
-    if (cached) {
-      return NextResponse.json({
-        success: true,
-        count: cached.length,
-        caseStudies: cached,
-        cached: true,
-      });
-    }
 
     // Determine active filter values (non-empty strings)
     const hasDropdownService = service && typeof service === "string" && service.trim() !== "";
@@ -78,8 +65,6 @@ export async function POST(request) {
 
     // Run queries sequentially until we find a match
     for (const levelObj of queryLevels) {
-      // Avoid duplicate queries by checking if query is identical to previous, 
-      // but Mongoose queries are fast enough that direct checks are fine.
       const caseStudies = await CaseStudyModel.find(levelObj.query)
         .select("-image1 -image2 -image3 -image4 -image5")
         .lean();
@@ -92,20 +77,37 @@ export async function POST(request) {
     }
 
     const result = finalCaseStudies.map((cs) => {
+      if (cs._id) {
+        cs._id = cs._id.toString();
+      }
       if (cs.thumbnail_image) {
         cs.thumbnailDataUri = cs.thumbnail_image;
       }
       return cs;
     });
 
-    setCachedData(cacheKey, result);
-
-    return NextResponse.json({
-      success: true,
-      count: result.length,
+    return {
       caseStudies: result,
       fallbackLevel: appliedLevel ? appliedLevel.level : 0,
       fallbackDescription: appliedLevel ? appliedLevel.description : "No records",
+    };
+  },
+  ["filtered-case-studies"],
+  { tags: ["case-studies"] }
+);
+
+export async function POST(request) {
+  try {
+    const { service, industry, duration, complexity, baseService } = await request.json();
+
+    const cachedData = await fetchFilteredCaseStudies(service, industry, duration, complexity, baseService);
+
+    return NextResponse.json({
+      success: true,
+      count: cachedData.caseStudies.length,
+      caseStudies: cachedData.caseStudies,
+      fallbackLevel: cachedData.fallbackLevel,
+      fallbackDescription: cachedData.fallbackDescription,
     });
   } catch (error) {
     console.error(error);
