@@ -121,7 +121,7 @@ const ClientsSection = () => {
             </h4>
             <GlitchButton
               className="clients-cta-btn"
-              href="#clients"
+              to="/clients"
               targetText="Complete List"
             >
               Complete List

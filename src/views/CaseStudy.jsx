@@ -7,12 +7,18 @@ import "../styles/CaseStudyPage.css";
 import LightLayout from "../components/Layout/LightLayout";
 
 // Helper component for meta fields
-const MetaRow = ({ label, value }) => (
-  <div className="d-flex flex-column mb-2">
-    <span className="cs-meta-label">{label}</span>
-    <span className="cs-meta-value">{value || "—"}</span>
-  </div>
-);
+const MetaRow = ({ label, value }) => {
+  if (!value) return null;
+  const lines = typeof value === "string" ? value.split(",").map(s => s.trim()) : [value];
+  return (
+    <div className="d-flex flex-column mb-2">
+      <span className="cs-meta-label">{label}</span>
+      {lines.map((line, idx) => (
+        <span key={idx} className="cs-meta-value">{line || "—"}</span>
+      ))}
+    </div>
+  );
+};
 
 // Helper component for Video Embeds
 const VideoEmbed = ({ src }) => {
@@ -222,6 +228,20 @@ const CaseStudy = () => {
     (item) => item._id === cs?._id || item.slug === cs?.slug
   );
 
+  const hasRelated = relatedCaseStudies.length > 1;
+  const prevIndex = hasRelated
+    ? (currentIndexInRelated - 1 + relatedCaseStudies.length) % relatedCaseStudies.length
+    : 0;
+  const nextIndex = hasRelated
+    ? (currentIndexInRelated + 1) % relatedCaseStudies.length
+    : 0;
+
+  const prevProject = hasRelated ? relatedCaseStudies[prevIndex] : null;
+  const nextProject = hasRelated ? relatedCaseStudies[nextIndex] : null;
+
+  const prevProjectName = prevProject?.client || prevProject?.case_study_name || "—";
+  const nextProjectName = nextProject?.client || nextProject?.case_study_name || "—";
+
   const handlePageChange = (pageIndex) => {
     const targetCaseStudy = relatedCaseStudies[pageIndex - 1];
     if (targetCaseStudy && targetCaseStudy.slug !== slug) {
@@ -350,48 +370,76 @@ const CaseStudy = () => {
       <section className="case-study-wrap">
         <div className="container-fluid cs-container">
           {/* --- PAGINATION ROW --- */}
-          {relatedCaseStudies.length > 1 && (
-            <div className="row g-0 cs-pagination-row">
-              {/* Col 1: Heading */}
-              <div className="col-12 col-md-3 cs-col cs-col-left cs-pagination-heading-col">
-                <div className="cs-pad">
-                  <h3 className="cs-title-top">{cs.case_study_name}</h3>
-                </div>
+          <div className="row g-0 cs-pagination-row">
+            {/* Col 1: Heading */}
+            <div className="col-12 col-md-3 cs-col cs-col-left cs-pagination-heading-col">
+              <div className="cs-pad">
+                <h3 className="cs-title-top">{cs.case_study_name}</h3>
               </div>
+            </div>
 
-              {/* Col 2: Prev Button */}
-              <div className="col-12 col-md-3 cs-col cs-prev-col cs-pagination-btn-col">
-                <div className="cs-pad d-flex align-items-center justify-content-center">
-                  <button onClick={handlePrev} className="cs-nav-btn" aria-label="Previous Case Study">
+            {/* Col 2: Prev Button */}
+            <div className="col-12 col-md-3 cs-col cs-prev-col cs-pagination-btn-col">
+              <div className="cs-pad d-flex align-items-center justify-content-center h-100">
+                <div
+                  onClick={hasRelated ? handlePrev : undefined}
+                  className={`cs-nav-block cs-prev-block d-flex align-items-center ${hasRelated ? "clickable" : "disabled"}`}
+                  style={{
+                    cursor: hasRelated ? "pointer" : "default",
+                    opacity: hasRelated ? 1 : 0.4,
+                    pointerEvents: hasRelated ? "auto" : "none"
+                  }}
+                >
+                  <button className="cs-nav-btn me-3" aria-label="Previous Case Study" disabled={!hasRelated}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="15 18 9 12 15 6" />
                     </svg>
                   </button>
+                  <div className="d-flex flex-column text-start">
+                    <span className="cs-nav-label">Previous Project</span>
+                    <span className="cs-nav-name">{prevProjectName}</span>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Col 3: Client Link Pill */}
-              <div className="col-12 col-md-3 cs-col cs-pagination-pill-col">
-                <div className="cs-pad d-flex align-items-center justify-content-center">
-                  <a
-                    href={cs.website_link ? (cs.website_link.startsWith('http') ? cs.website_link : `https://${cs.website_link}`) : (cs.client.toLowerCase().startsWith('http') ? cs.client : `https://${cs.client.toLowerCase().replace(/\s+/g, "")}.com`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cs-client-pill"
-                  >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffd166" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '6px' }}>
-                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                    </svg>
-                    {cs.website_link ? cs.website_link.replace(/^https?:\/\/(www\.)?/, "") : (cs.client.toLowerCase().endsWith('.com') ? cs.client : `${cs.client}.com`)}
-                  </a>
+            {/* Col 3: Counter */}
+            <div className="col-12 col-md-3 cs-col cs-pagination-counter-col">
+              <div className="cs-pad d-flex align-items-center justify-content-center h-100">
+                <div className="cs-counter-block d-flex flex-column align-items-center justify-content-center">
+                  <div className="cs-counter-numbers">
+                    <span className="cs-counter-current fs-h3">
+                      {hasRelated ? String(currentIndexInRelated + 1).padStart(2, '0') : "01"}
+                    </span>
+                    <span className="cs-counter-separator"> / </span>
+                    <span className="cs-counter-total">
+                      {hasRelated ? String(relatedCaseStudies.length).padStart(2, '0') : "01"}
+                    </span>
+                  </div>
+                  <Link href="/portfolio" className="cs-view-all-link">
+                    View All Project
+                  </Link>
                 </div>
               </div>
+            </div>
 
-              {/* Col 4: Next Button */}
-              <div className="col-12 col-md-3 cs-col cs-col-right cs-next-col cs-pagination-btn-col">
-                <div className="cs-pad d-flex align-items-center justify-content-center">
-                  <button onClick={handleNext} className="cs-nav-btn" aria-label="Next Case Study">
+            {/* Col 4: Next Button */}
+            <div className="col-12 col-md-3 cs-col cs-col-right cs-next-col cs-pagination-btn-col">
+              <div className="cs-pad d-flex align-items-center justify-content-center h-100">
+                <div
+                  onClick={hasRelated ? handleNext : undefined}
+                  className={`cs-nav-block cs-next-block d-flex align-items-center ${hasRelated ? "clickable" : "disabled"}`}
+                  style={{
+                    cursor: hasRelated ? "pointer" : "default",
+                    opacity: hasRelated ? 1 : 0.4,
+                    pointerEvents: hasRelated ? "auto" : "none"
+                  }}
+                >
+                  <div className="d-flex flex-column text-end me-3">
+                    <span className="cs-nav-label text-end">Next Project</span>
+                    <span className="cs-nav-name text-end">{nextProjectName}</span>
+                  </div>
+                  <button className="cs-nav-btn" aria-label="Next Case Study" disabled={!hasRelated}>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="9 18 15 12 9 6" />
                     </svg>
@@ -399,7 +447,7 @@ const CaseStudy = () => {
                 </div>
               </div>
             </div>
-          )}
+          </div>
 
           {/* --- TOP ROW: Header info --- */}
           <div className="row g-0 cs-header">
@@ -428,17 +476,35 @@ const CaseStudy = () => {
             {/* Col 3: Problem statement */}
             <div className="col-12 col-md-6 cs-col cs-col-right">
               <div className="cs-pad">
-                <h3>
+                <h3 className="cs-description-title">
                   {cs.case_study_description ||
                     "Bringing your brand vision to life."}
                 </h3>
-                <p className="cs-pill-muted">Case Study</p>
+                <div className="cs-problem-label">Problem Statement</div>
                 <div className="cs-body">
                   {cs.problem?.split("\n").map((line, i) => (
                     <p key={i} style={{ marginTop: "10px", marginBottom: "0" }}>
                       {line}
                     </p>
                   ))}
+
+                  {/* Website link if present in DB */}
+                  {cs.website_link && cs.website_link.trim() !== "" && (
+                    <div style={{ marginTop: "30px" }}>
+                      <a
+                        href={cs.website_link.startsWith("http") ? cs.website_link : `https://${cs.website_link}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cs-client-pill"
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffd166" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "8px" }}>
+                          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        </svg>
+                        {cs.website_link.replace(/^https?:\/\/(www\.)?/, "")}
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

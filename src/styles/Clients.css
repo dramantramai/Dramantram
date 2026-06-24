@@ -13,13 +13,11 @@
   grid-auto-rows: 340px;
   /* adjust height to match your design */
   border-top: 0.5px solid rgba(113, 113, 113, 0.5);
-  border-left: 0.5px solid rgba(113, 113, 113, 0.5);
 }
 
 .tile {
   position: relative;
   padding: 28px 24px;
-  border-right: 0.5px solid rgba(113, 113, 113, 0.5);
   border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
   background: transparent;
 }
