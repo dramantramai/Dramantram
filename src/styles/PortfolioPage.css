@@ -50,17 +50,12 @@
 
 .portfolio-panel {
   position: relative;
-  border-right: 0.5px solid var(--divider);
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 55vh;
   height: 55vh;
 }
-
-/* .portfolio-panel--left {
-  border-left: 0.5px solid var(--divider);
-} */
 
 .portfolio-panel-inner {
   width: 100%;
