@@ -1,10 +1,9 @@
 // src/components/ClientsSection.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import GlitchButton from "../GlitchButton";
-import '../../styles/Clients.css';
+import "../../styles/Clients.css";
 
-// UPDATED COMPONENT
 const LogoStack = ({ items }) => (
   <div className="logo-stack">
     {items.map((it, i) => (
@@ -29,7 +28,7 @@ const ClientsSection = () => {
     Fintech: [],
     Corporate: [],
     Government: [],
-    CSR: []
+    CSR: [],
   });
 
   useEffect(() => {
@@ -43,7 +42,7 @@ const ClientsSection = () => {
             Fintech: [],
             Corporate: [],
             Government: [],
-            CSR: []
+            CSR: [],
           };
           data.clients.forEach((c) => {
             if (grouped[c.category]) {
@@ -51,7 +50,7 @@ const ClientsSection = () => {
                 alt: c.name,
                 src: `/api/v1/management/client/${c._id}/image`,
                 width: c.width,
-                height: c.height
+                height: c.height,
               });
             }
           });
@@ -64,10 +63,17 @@ const ClientsSection = () => {
     fetchClients();
   }, []);
 
+  const uniqueBrands = useMemo(() => Object.values(clients).flat().slice(0, 16), [clients]);
+
+  const mobileBrands = useMemo(() => {
+    return uniqueBrands.length > 0 ? [...uniqueBrands, ...uniqueBrands] : [];
+  }, [uniqueBrands]);
+
+  const brandRowCount = Math.max(1, Math.ceil(uniqueBrands.length / 2));
+
   return (
-    <section className="clients-section">
+    <section className="clients-section home-clients">
       <div className="clients-grid">
-        {/* Top-left Intro */}
         <div className="tile tile-intro">
           <h2 className="intro-title raleway-semibold">
             Our Valued
@@ -79,41 +85,68 @@ const ClientsSection = () => {
             kinds of organizations across geography — from Multinational to
             startup, from Govt. to NGO/NPOs, and more.
           </p>
+          <GlitchButton
+            className="clients-cta-btn clients-cta-mobile"
+            to="/clients"
+            targetText="Complete List"
+          >
+            Complete List
+          </GlitchButton>
         </div>
 
-        {/* Top row categories */}
-        <div className="tile">
+        <div className="home-clients-brand-slider">
+          <div className="brand-slider-viewport">
+            <div
+              className="brand-slider-track"
+              style={{ "--brand-row-count": brandRowCount }}
+            >
+              {mobileBrands.map((brand, i) => (
+                <div key={`${brand.alt}-${i}`} className="brand-slider-cell">
+                  <img
+                    src={brand.src}
+                    alt={brand.alt}
+                    className="logo brand-slider-logo"
+                    style={{
+                      width: brand.width || "auto",
+                      height: brand.height || "auto",
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="tile tile-category">
           <div className="tile-label">Consulting</div>
           <LogoStack items={clients.Consulting} />
         </div>
 
-        <div className="tile">
+        <div className="tile tile-category">
           <div className="tile-label">International</div>
           <LogoStack items={clients.International} />
         </div>
 
-        <div className="tile">
+        <div className="tile tile-category">
           <div className="tile-label">Fintech</div>
           <LogoStack items={clients.Fintech} />
         </div>
 
-        {/* Bottom row categories */}
-        <div className="tile">
+        <div className="tile tile-category">
           <div className="tile-label">Corporate</div>
           <LogoStack items={clients.Corporate} />
         </div>
 
-        <div className="tile">
+        <div className="tile tile-category">
           <div className="tile-label">Government</div>
           <LogoStack items={clients.Government} />
         </div>
 
-        <div className="tile">
+        <div className="tile tile-category">
           <div className="tile-label">CSR</div>
           <LogoStack items={clients.CSR} />
         </div>
 
-        {/* CTA gradient tile */}
         <div className="tile tile-cta">
           <div className="cta-inner">
             <h4 className="cta-head raleway-semibold">
@@ -134,4 +167,3 @@ const ClientsSection = () => {
 };
 
 export default ClientsSection;
-

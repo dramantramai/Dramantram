@@ -1,11 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import GlitchButton from "../GlitchButton";
+
+/** Letter-by-letter morph from one title to another (no random glitch chars). */
+const LetterMorphText = ({ text, fromText, animationKey }) => {
+  const [display, setDisplay] = useState(text);
+  const intervalRef = useRef(null);
+
+  useEffect(() => {
+    setDisplay(text);
+  }, [text]);
+
+  useEffect(() => {
+    if (!fromText || fromText === text) {
+      setDisplay(text);
+      return;
+    }
+
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    const from = fromText;
+    const to = text;
+    let step = 0;
+    const maxSteps = Math.max(from.length, to.length);
+
+    setDisplay(from);
+
+    intervalRef.current = setInterval(() => {
+      step += 1;
+      setDisplay(to.slice(0, step) + from.slice(step));
+
+      if (step >= maxSteps) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+        setDisplay(to);
+      }
+    }, 55);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [animationKey, text, fromText]);
+
+  return <>{display}</>;
+};
 
 const servicesData = [
   {
     id: 0,
     menuTitle: "Branding",
-    image: "Event.avif", // Ensure this exists in public folder
+    image: "Event.avif",
     heading: (
       <>
         <span className="d-inline-block text-nowrap">
@@ -19,11 +62,9 @@ const servicesData = [
       "Brand Identity & Design",
       "Creating Logo",
       "Branding Strategy",
-      "Defining Brand Style Guide",
       "Social Media Branding",
       "Re-Branding",
       "Stationery Design",
-      "Catalogues & Brochure Design",
       "Packaging Design",
     ],
     link: "/services/branding",
@@ -31,7 +72,7 @@ const servicesData = [
   {
     id: 1,
     menuTitle: "Animated Videos",
-    image: "Animation-Hero-Image.avif", // Replace with your actual image
+    image: "Animation-Hero-Image.avif",
     heading: (
       <>
         <span className="d-inline-block text-nowrap">
@@ -54,7 +95,7 @@ const servicesData = [
   {
     id: 2,
     menuTitle: "Live Action",
-    image: "Live-Action500px.avif", // Replace with your actual image
+    image: "Live-Action500px.avif",
     heading: (
       <>
         <span className="d-inline-block text-nowrap">
@@ -79,7 +120,7 @@ const servicesData = [
   {
     id: 3,
     menuTitle: "UI/UX",
-    image: "Ui_UX.avif", // Replace with your actual image
+    image: "Ui_UX.avif",
     heading: (
       <>
         <span className="d-inline-block text-nowrap">
@@ -104,7 +145,7 @@ const servicesData = [
   {
     id: 4,
     menuTitle: "Experiential Lab",
-    image: "Event.avif", // Replace with your actual image
+    image: "Event.avif",
     heading: (
       <>
         <span className="d-inline-block text-nowrap">
@@ -128,7 +169,7 @@ const servicesData = [
   {
     id: 5,
     menuTitle: "Others",
-    image: "Others500px.avif", // Replace with your actual image
+    image: "Others500px.avif",
     heading: (
       <>
         <span className="d-inline-block text-nowrap">Everything else to</span>
@@ -150,13 +191,26 @@ const servicesData = [
 
 const SpecializationSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(0);
+  const [animationKey, setAnimationKey] = useState(0);
   const currentService = servicesData[activeIndex];
+
+  const handleServiceClick = (index) => {
+    if (index === activeIndex) return;
+    setPrevIndex(activeIndex);
+    setActiveIndex(index);
+    setAnimationKey((key) => key + 1);
+  };
 
   return (
     <section className="specialization-sec">
       <section className="svc-band px-5">
         <div className="svc-inner">
-          <h2 className="svc-title russo-one-regular">SERVICES WE SPECIALISE IN</h2>
+          <h2 className="svc-title russo-one-regular">
+            SERVICES WE
+            <br />
+            SPECIALISE IN
+          </h2>
           <div className="svc-right">
             <p className="svc-copy">
               We are humbled by the trust shown to us by our client partners{" "}
@@ -169,7 +223,6 @@ const SpecializationSection = () => {
               <div className="num russo-one-regular-plain fs-h3">1600+</div>
               <div className="label">Projects</div>
             </div>
-
             <div className="metric">
               <div className="num russo-one-regular-plain fs-h3">100+</div>
               <div className="label">Clients</div>
@@ -181,12 +234,10 @@ const SpecializationSection = () => {
       <section className="cap-wrap">
         <div className="container-fluid px-0">
           <div className="row g-0">
-            {/* LEFT: Image (Dynamic based on state) */}
             <div className="col-lg-6 col-12 cap-col cap-left">
               <div className="cap-hero-frame">
-                {/* OPTIONAL: Add a 'fade-in' class via CSS keyframes for smooth transitions */}
                 <img
-                  key={currentService.image} // Key prop forces React to re-render image when src changes (good for animation)
+                  key={currentService.image}
                   src={currentService.image}
                   alt={currentService.menuTitle}
                   className="cap-hero"
@@ -195,33 +246,64 @@ const SpecializationSection = () => {
               </div>
             </div>
 
-            {/* MIDDLE: Menu (Hover triggers state update) */}
             <div className="col-lg-3 col-12 cap-col cap-mid">
               <div className="content-wrapper">
-                <nav className="cap-menu" aria-label="Service categories">
+                {/* Desktop: full list with hover */}
+                <nav
+                  className="cap-menu cap-menu--desktop"
+                  aria-label="Service categories"
+                >
                   {servicesData.map((item, index) => (
                     <button
                       key={item.id}
-                      className={`cap-menu-item ${index === activeIndex ? "is-active" : ""
-                        }`}
+                      className={`cap-menu-item ${
+                        index === activeIndex ? "is-active" : ""
+                      }`}
                       type="button"
-                      // INTERACTION HERE:
                       onMouseEnter={() => setActiveIndex(index)}
-                      onClick={() => setActiveIndex(index)} // Fallback for mobile
+                      onClick={() => setActiveIndex(index)}
                     >
                       <span className="fs-span-lg">{item.menuTitle}</span>
                       <i className="cap-underline" aria-hidden />
                     </button>
                   ))}
                 </nav>
+
+                {/* Mobile: active heading + inactive list (swap on click) */}
+                <div className="cap-menu-mobile">
+                  <h3 className="cap-mobile-heading inter-semibold">
+                    <LetterMorphText
+                      text={currentService.menuTitle}
+                      fromText={servicesData[prevIndex].menuTitle}
+                      animationKey={animationKey}
+                    />
+                  </h3>
+                  <nav className="cap-mobile-list" aria-label="Service categories">
+                    {servicesData.map((item, index) => {
+                      if (index === activeIndex) return null;
+                      return (
+                        <button
+                          key={item.id}
+                          type="button"
+                          className="cap-mobile-list-item"
+                          onClick={() => handleServiceClick(index)}
+                        >
+                          <span>{item.menuTitle}</span>
+                          <span className="cap-mobile-chev" aria-hidden>
+                            ›
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </nav>
+                </div>
               </div>
             </div>
 
-            {/* RIGHT: Content (Dynamic based on state) */}
             <div className="col-lg-3 col-12 cap-col cap-right">
               <div className="content-wrapper">
                 <div className="cap-copy" key={activeIndex}>
-                  <h3>
+                  <h3 className="cap-heading--desktop">
                     <span className="cap-strong inter-semibold">
                       {currentService.heading}
                     </span>

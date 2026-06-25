@@ -43,6 +43,38 @@ const socialIcons = [
   },
 ];
 
+const SERVICE_OPTIONS = [
+  "Branding",
+  "Animation",
+  "Live Action",
+  "UI/UX",
+  "Others",
+];
+
+const DURATION_OPTIONS = [
+  "ASAP",
+  "Within 15 days",
+  "Within a Month",
+  "Not Sure",
+];
+
+const FooterSocialLinks = ({ className = "" }) => (
+  <div className={`footer-social ${className}`.trim()}>
+    {socialIcons.map(({ key, label, href, src }) => (
+      <a
+        key={key}
+        href={href}
+        className="footer-social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+      >
+        <img src={src} alt="" className="footer-social-icon" />
+      </a>
+    ))}
+  </div>
+);
+
 const Footer = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -102,29 +134,16 @@ const Footer = () => {
         {/* ADDED class 'footer-row-grid' here. This ensures lines move WITH the columns. */}
         <div className="row align-items-start footer-row-grid">
           {/* Left Column */}
-          <div className="col-md-3 footer-col">
+          <div className="col-md-3 footer-col footer-col--intro">
             <div className="content-wrapper footer-left-wrap">
               <h2 className="have-a-project-text russo-one-regular">HAVE A PROJECT IN MIND?</h2>
               <img src={logo} alt="Mask Logo" className="footer-logo" />
-              <div className="footer-social">
-                {socialIcons.map(({ key, label, href, src }) => (
-                  <a
-                    key={key}
-                    href={href}
-                    className="footer-social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                  >
-                    <img src={src} alt="" className="footer-social-icon" />
-                  </a>
-                ))}
-              </div>
+              <FooterSocialLinks className="footer-social--desktop" />
             </div>
           </div>
 
           {/* Middle Column: Form */}
-          <div className="col-md-3 footer-col">
+          <div className="col-md-3 footer-col footer-col--form">
             <div className="content-wrapper">
               <form className="form-contact" onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -190,21 +209,38 @@ const Footer = () => {
             </div>
           </div>
 
+          <div className="footer-options-row">
           {/* Services Column */}
-          <div className="col-md-3 checkbox-column footer-col">
+          <div className="col-md-3 checkbox-column footer-col footer-col--services">
             <div className="content-wrapper footer-options-wrap">
-              <h4 className="footer-options-head inter-bold">
+              <h4 className="footer-options-head footer-options-head--desktop inter-bold">
                 What Services Do <br />
                 You Need?
               </h4>
-              <div className="footer-options-list">
-                {[
-                  "Branding",
-                  "Animation",
-                  "Live Action",
-                  "UI/UX",
-                  "Others",
-                ].map((service) => {
+              <div className="footer-options-select footer-options-select--mobile">
+                <label className="form-label" htmlFor="footer-services-mobile">
+                  What Services Do You Need?<span style={{ color: "red" }}>*</span>
+                </label>
+                <select
+                  id="footer-services-mobile"
+                  className="form-select"
+                  value={services[0] || ""}
+                  onChange={(e) =>
+                    setServices(e.target.value ? [e.target.value] : [])
+                  }
+                >
+                  <option value="" disabled hidden>
+                    Select option
+                  </option>
+                  {SERVICE_OPTIONS.map((service) => (
+                    <option key={service} value={service}>
+                      {service}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="footer-options-list footer-options-list--desktop">
+                {SERVICE_OPTIONS.map((service) => {
                   const isSelected = services.includes(service);
                   return (
                     <label
@@ -232,14 +268,34 @@ const Footer = () => {
           </div>
 
           {/* Duration Column */}
-          <div className="col-md-3 checkbox-column footer-col">
+          <div className="col-md-3 checkbox-column footer-col footer-col--duration">
             <div className="content-wrapper footer-options-wrap">
-              <h4 className="footer-options-head inter-bold">
+              <h4 className="footer-options-head footer-options-head--desktop inter-bold">
                 When Do You Need <br />
                 Your Product?
               </h4>
-              <div className="footer-options-list">
-                {["ASAP", "Within 15 days", "Within a Month", "Not Sure"].map(
+              <div className="footer-options-select footer-options-select--mobile">
+                <label className="form-label" htmlFor="footer-duration-mobile">
+                  When Do You Need Your Product?<span style={{ color: "red" }}>*</span>
+                </label>
+                <select
+                  id="footer-duration-mobile"
+                  className="form-select"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
+                >
+                  <option value="" disabled hidden>
+                    Select option
+                  </option>
+                  {DURATION_OPTIONS.map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="footer-options-list footer-options-list--desktop">
+                {DURATION_OPTIONS.map(
                   (time) => {
                     const isSelected = duration === time;
                     return (
@@ -267,7 +323,7 @@ const Footer = () => {
               </div>
               <button
                 type="button"
-                className="footer-submit-btn"
+                className="footer-submit-btn footer-submit-btn--desktop"
                 onClick={handleSubmit}
                 disabled={loading}
               >
@@ -279,6 +335,24 @@ const Footer = () => {
                 </span>
               </button>
             </div>
+          </div>
+          </div>
+
+          <div className="footer-mobile-bottom">
+            <button
+              type="button"
+              className="footer-submit-btn footer-submit-btn--mobile"
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              <span className="footer-submit-text">
+                {loading ? "Submitting..." : "Submit"}
+              </span>
+              <span className="footer-submit-chev" aria-hidden="true">
+                ›
+              </span>
+            </button>
+            <FooterSocialLinks className="footer-social--mobile" />
           </div>
         </div>
 

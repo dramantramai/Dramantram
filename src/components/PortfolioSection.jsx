@@ -75,11 +75,26 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
 
   const [startIndex, setStartIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState("");
+  const [homeMobileIndex, setHomeMobileIndex] = useState(0);
+  const [homeCarouselMetrics, setHomeCarouselMetrics] = useState({
+    step: 0,
+    centerOffset: 0,
+  });
+  const homeCarouselRef = useRef(null);
+  const homeTrackRef = useRef(null);
+  const touchStartX = useRef(null);
+  const homeAutoplayPaused = useRef(false);
+  const homeAutoplayResumeTimer = useRef(null);
 
   // Reset startIndex when filters or pages change
   useEffect(() => {
     setStartIndex(0);
+    setHomeMobileIndex(0);
   }, [filters, isHomePage, isPortfolioPage, baseService]);
+
+  useEffect(() => {
+    setHomeMobileIndex(0);
+  }, [caseStudies]);
 
   // Save active case studies to sessionStorage for detail view pagination
   useEffect(() => {
@@ -300,8 +315,118 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
   const displayedCaseStudies = (isPortfolioPage || baseService !== "")
     ? caseStudies.slice(startIndex, startIndex + 6)
     : isHomePage
-    ? caseStudies.slice(0, 6)
-    : caseStudies;
+      ? caseStudies.slice(0, 6)
+      : caseStudies;
+
+  const homeMobileCaseStudies = caseStudies.slice(0, 6);
+
+  const measureHomeCarousel = () => {
+    const viewport = homeCarouselRef.current;
+    const track = homeTrackRef.current;
+    const slide = track?.querySelector(".home-mobile-carousel-slide");
+    if (!viewport || !track || !slide) return;
+
+    const gap = parseFloat(window.getComputedStyle(track).gap) || 12;
+    const slideWidth = slide.offsetWidth;
+    const step = slideWidth + gap;
+    /* Center active slide in the middle of grid 2 */
+    const centerOffset = viewport.offsetWidth / 2 - slideWidth / 2;
+
+    setHomeCarouselMetrics({ step, centerOffset });
+  };
+
+  const goToHomeMobileSlide = (index) => {
+    if (homeMobileCaseStudies.length === 0) return;
+
+    const total = homeMobileCaseStudies.length;
+    const nextIndex = ((index % total) + total) % total;
+    setHomeMobileIndex(nextIndex);
+  };
+
+  const pauseHomeAutoplay = (resumeMs = 8000) => {
+    homeAutoplayPaused.current = true;
+    if (homeAutoplayResumeTimer.current) {
+      clearTimeout(homeAutoplayResumeTimer.current);
+    }
+    homeAutoplayResumeTimer.current = setTimeout(() => {
+      homeAutoplayPaused.current = false;
+    }, resumeMs);
+  };
+
+  useEffect(() => {
+    if (!isHomePage || loading) return;
+
+    const updateStep = () => measureHomeCarousel();
+    updateStep();
+
+    const observer = new ResizeObserver(updateStep);
+    if (homeCarouselRef.current) observer.observe(homeCarouselRef.current);
+
+    window.addEventListener("resize", updateStep);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateStep);
+    };
+  }, [isHomePage, loading, homeMobileCaseStudies.length]);
+
+  useEffect(() => {
+    if (!isHomePage || homeMobileCaseStudies.length <= 1) return;
+
+    const interval = setInterval(() => {
+      if (homeAutoplayPaused.current) return;
+      setHomeMobileIndex((prev) => (prev + 1) % homeMobileCaseStudies.length);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [isHomePage, homeMobileCaseStudies.length]);
+
+  useEffect(() => {
+    return () => {
+      if (homeAutoplayResumeTimer.current) {
+        clearTimeout(homeAutoplayResumeTimer.current);
+      }
+    };
+  }, []);
+
+  const handleHomeTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    pauseHomeAutoplay();
+  };
+
+  const handleHomeTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    const threshold = 40;
+
+    if (Math.abs(delta) > threshold) {
+      if (delta > 0) {
+        goToHomeMobileSlide(homeMobileIndex + 1);
+      } else {
+        goToHomeMobileSlide(homeMobileIndex - 1);
+      }
+    }
+
+    touchStartX.current = null;
+  };
+
+  const handleHomePaginationClick = (index) => {
+    pauseHomeAutoplay();
+    goToHomeMobileSlide(index);
+  };
+
+  const getHomeSlideClass = (index) => {
+    if (index === homeMobileIndex) return "is-active";
+    if (index === homeMobileIndex - 1 || index === homeMobileIndex + 1) {
+      return "is-peek";
+    }
+    return "";
+  };
+
+  const homeTrackTransform =
+    homeCarouselMetrics.step > 0
+      ? `translateX(${homeCarouselMetrics.centerOffset - homeMobileIndex * homeCarouselMetrics.step}px)`
+      : undefined;
 
   return (
     <div className={`portfolio-section ${isHomePage ? "home-portfolio" : ""}`}>
@@ -461,7 +586,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
           <div className="col-lg-3 portfolio-sidebar">
             <div className="sidebar-content">
               <h2 className="portfolio-title raleway-semibold">
-                Portfolio & <br/>Case Studies
+                Portfolio & <br />Case Studies
               </h2>
               <p className="portfolio-description">
                 {"We're brand builders at heart, creators by design, tech"}
@@ -477,7 +602,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
 
           {/* Right Column - Grid matching Our Teams */}
           <div className="col-lg-9">
-            <div className="row g-0">
+            <div className={`row g-0 ${isHomePage ? "home-desktop-grid" : ""}`}>
               {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="col-md-6 col-lg-4">
@@ -508,6 +633,75 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                 </div>
               )}
             </div>
+
+            {/* Mobile home carousel — grid 2 */}
+            {isHomePage && (
+              <div
+                className="home-mobile-carousel-wrap"
+                onTouchStart={handleHomeTouchStart}
+                onTouchEnd={handleHomeTouchEnd}
+              >
+                <div ref={homeCarouselRef} className="home-mobile-carousel-viewport">
+                  <div
+                    ref={homeTrackRef}
+                    className="home-mobile-carousel-track"
+                    style={{ transform: homeTrackTransform }}
+                  >
+                    {loading ? (
+                      <div className="home-mobile-carousel-slide is-active">
+                        <div className="portfolio-card-wrapper">
+                          <div className="portfolio-item">
+                            <div className="portfolio-skeleton" />
+                          </div>
+                        </div>
+                      </div>
+                    ) : homeMobileCaseStudies.length > 0 ? (
+                      homeMobileCaseStudies.map((item, index) => (
+                        <div
+                          key={item._id}
+                          className={`home-mobile-carousel-slide ${getHomeSlideClass(index)}`}
+                        >
+                          <div className="portfolio-card-wrapper">
+                            <Link href={`/case-study/${item.slug}`}>
+                              <PortfolioItem
+                                imageSrc={
+                                  item.thumbnailDataUri ||
+                                  `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`
+                                }
+                                title={item.case_study_name}
+                                slug={item.slug}
+                              />
+                            </Link>
+                          </div>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="home-mobile-carousel-slide is-active">
+                        <p className="home-mobile-empty">No case studies found.</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {!loading && homeMobileCaseStudies.length > 1 && (
+                  <div className="home-mobile-pagination" role="tablist" aria-label="Case study slides">
+                    {homeMobileCaseStudies.map((item, index) => (
+                      <button
+                        key={item._id}
+                        type="button"
+                        role="tab"
+                        aria-selected={index === homeMobileIndex}
+                        aria-label={`Go to ${item.case_study_name}`}
+                        className={`home-mobile-pagination-dot ${
+                          index === homeMobileIndex ? "active" : ""
+                        }`}
+                        onClick={() => handleHomePaginationClick(index)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Portfolio Pagination Controls in the rightmost empty space */}
