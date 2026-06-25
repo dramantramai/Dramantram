@@ -44,8 +44,7 @@
 
 .nav-contact-btn:hover,
 .nav-contact-btn:focus,
-.nav-contact-btn:focus-visible,
-.nav-contact-btn:active {
+.nav-contact-btn:focus-visible{
   border: 1px solid #000000 !important;
   outline: none !important;
   background-color: #ffe600 !important;

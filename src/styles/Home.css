@@ -30,13 +30,12 @@
   opacity: 0.5;
 }
 
-/* Hide grid on mobile/tablet if desired */
-
-@media (max-width: 992px) {
+/* Keep global grid lines visible on mobile */
+/* @media (max-width: 992px) {
   .global-grid-overlay {
     display: none;
   }
-}
+} */
 
 /* ===== INTRO SECTION ===== */
 

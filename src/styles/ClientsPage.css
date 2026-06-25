@@ -239,16 +239,17 @@
 
 .categories-filter-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-wrap: nowrap;
+  gap: 10px;
+  width: 100%;
 }
 
 .filter-btn {
   background-color: transparent;
   color: #888888;
   border: none;
-  padding: 8px 0;
-  width: 150px;
+  padding: 8px 12px;
+  flex: 1;
   text-align: center;
   border-radius: 6px;
   font-family: "Inter", sans-serif;
@@ -256,6 +257,8 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
+  box-sizing: border-box !important;
 }
 
 .filter-btn:hover {
@@ -390,6 +393,18 @@
     grid-column: auto !important;
     padding: 0 !important;
     border: none !important;
+  }
+
+  .categories-filter-bar {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .filter-btn {
+    flex: none !important;
+    width: auto !important;
+    padding: 8px 16px !important;
   }
   
   .browse-logos-col {

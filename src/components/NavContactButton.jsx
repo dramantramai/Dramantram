@@ -12,7 +12,7 @@ const NavContactButton = ({
   to,
   href,
   children,
-  className = "inter-bold",
+  className = "",
   ...rest
 }) => {
   const elRef = useRef(null);
@@ -115,7 +115,7 @@ const NavContactButton = ({
   const shared = {
     ref: elRef,
     className:
-      `btn nav-contact-btn nav-contact-btn--${variant} ${className}`.trim(),
+      `btn nav-contact-btn nav-contact-btn--${variant} inter-bold ${className}`.trim(),
     onMouseEnter: handleEnter,
     onMouseLeave: handleLeave,
     onFocus: handleEnter,

@@ -21,6 +21,9 @@ const servicesData = [
       "Branding Strategy",
       "Defining Brand Style Guide",
       "Social Media Branding",
+      "Re-Branding",
+      "Stationery Design",
+      "Catalogues & Brochure Design",
       "Packaging Design",
     ],
     link: "/services/branding",
@@ -199,9 +202,8 @@ const SpecializationSection = () => {
                   {servicesData.map((item, index) => (
                     <button
                       key={item.id}
-                      className={`cap-menu-item ${
-                        index === activeIndex ? "is-active" : ""
-                      }`}
+                      className={`cap-menu-item ${index === activeIndex ? "is-active" : ""
+                        }`}
                       type="button"
                       // INTERACTION HERE:
                       onMouseEnter={() => setActiveIndex(index)}

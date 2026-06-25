@@ -151,18 +151,15 @@ const ClientsPage = () => {
                     >
                       All
                     </button>
-                    {CATEGORIES_ORDER.map((cat) => {
-                      const count = rawClients.filter((c) => c.category === cat).length;
-                      return (
-                        <button
-                          key={cat}
-                          onClick={() => setSelectedCategory(cat)}
-                          className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
-                        >
-                          {cat} ({count})
-                        </button>
-                      );
-                    })}
+                    {CATEGORIES_ORDER.map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => setSelectedCategory(cat)}
+                        className={`filter-btn ${selectedCategory === cat ? "active" : ""}`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
                   </div>
                 </div>
 
