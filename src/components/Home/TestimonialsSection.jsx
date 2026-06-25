@@ -47,6 +47,7 @@ const TestimonialsSection = () => {
   const mobileAutoplayPaused = useRef(false);
   const mobileAutoplayResumeTimer = useRef(null);
   const mobileTransitionTimer = useRef(null);
+  const touchStartX = useRef(null);
 
   const preloadTestimonialImage = useCallback((id) => {
     if (!id) return;
@@ -186,6 +187,28 @@ const TestimonialsSection = () => {
     transitionToMobileSlide(index);
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    pauseMobileAutoplay();
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    const threshold = 40;
+
+    if (Math.abs(delta) > threshold) {
+      if (delta > 0) {
+        transitionToMobileSlide(mobileIndex + 1);
+      } else {
+        transitionToMobileSlide(mobileIndex - 1);
+      }
+    }
+
+    touchStartX.current = null;
+  };
+
   const visibleTestimonials = testimonials.slice(startIndex, startIndex + 3);
   const canGoUp = startIndex > 0;
   const canGoDown = startIndex + 3 < testimonials.length;
@@ -229,7 +252,11 @@ const TestimonialsSection = () => {
           </div>
 
           {testimonials.length > 0 && (
-            <div className="testimonial-mobile-carousel">
+            <div
+              className="testimonial-mobile-carousel"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <div className="testimonial-mobile-viewport">
                 <div
                   className="testimonial-mobile-track"

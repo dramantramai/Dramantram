@@ -224,6 +224,17 @@
   transform: translateY(0);
 }
 
+.portfolio-item-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-mobile-title {
+  display: none;
+}
+
 .case-link {
   color: #fff;
   text-decoration: none;
@@ -411,10 +422,38 @@
 
   .portfolio-item {
     border-radius: 8px;
+    width: 100% !important;
   }
 
-  .overlay {
-    padding: 12px 15px;
+  .portfolio-item .overlay {
+    display: none !important;
+  }
+
+  .portfolio-mobile-title {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    font-size: clamp(0.85rem, 3.2vw, 1.02rem);
+    font-weight: 500;
+    padding: 10px 4px 0 4px;
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .portfolio-mobile-title .title-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 85%;
+  }
+
+  .portfolio-mobile-title .arrow {
+    color: #fbff00;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 }
 
@@ -528,11 +567,36 @@
   }
 }
 
-/* ===== TOUCH DEVICE ENHANCEMENTS ===== */
 @media (hover: none) and (pointer: coarse) {
   .portfolio-item .overlay {
-    transform: translateY(0);
-    background: rgba(0, 0, 0, 0.6);
+    display: none !important;
+  }
+
+  .portfolio-mobile-title {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    font-size: clamp(0.85rem, 3.2vw, 1.02rem);
+    font-weight: 500;
+    padding: 10px 4px 0 4px;
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .portfolio-mobile-title .title-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 85%;
+  }
+
+  .portfolio-mobile-title .arrow {
+    color: #fbff00;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
 
   .portfolio-item:hover .portfolio-img {
@@ -916,7 +980,7 @@
   }
 
   .home-portfolio .portfolio-description {
-    font-size: clamp(0.65rem, 2.8vw, 0.8rem);
+    font-size: clamp(0.65rem, 3.2vw, 0.85rem);
     line-height: 1.45;
     margin-bottom: 14px;
     padding-right: 0;
@@ -972,7 +1036,7 @@
   }
 
   .home-mobile-carousel-slide {
-    flex: 0 0 65%;
+    flex: 0 0 80%;
     min-width: 0;
     transition:
       filter 0.4s ease,

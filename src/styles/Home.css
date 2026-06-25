@@ -479,7 +479,7 @@
 
   .headText {
     color: #ffffff !important;
-    font-size: clamp(0.65rem, 2.8vw, 0.85rem);
+    font-size: clamp(0.65rem, 3vw, 0.85rem);
     line-height: 1.3;
     margin-bottom: 6px;
     padding-left: 12px;
@@ -803,7 +803,7 @@
   }
 
   .specialization-sec .svc-copy {
-    font-size: clamp(0.65rem, 2.8vw, 0.8rem);
+    font-size: clamp(0.65rem, 3vw, 0.85rem);
     line-height: 1.45;
     max-width: 100%;
   }
@@ -1022,7 +1022,7 @@
   padding-left: 18px;
   list-style: disc;
   display: grid;
-  gap: 8px;
+  gap: 14px; /* Increased from 8px */
   color: #d8d8d8;
 
   line-height: 1.4;
@@ -1187,10 +1187,11 @@
   }
 
   .cap-hero-frame {
-    /* On mobile, let frame scale with vw */
+    /* On mobile, let frame scale with aspect-ratio */
 
     width: 95vw;
-    height: 60vw;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
     margin-left: auto;
     margin-right: auto;
     border-radius: 12px;
@@ -1235,10 +1236,13 @@
     margin: 0;
     padding: 0;
     font-size: clamp(1.2rem, 5vw, 1.55rem);
-    line-height: 1;
+    line-height: 1.2;
     color: #ffffff;
     font-weight: 600;
     text-align: left;
+    min-height: calc(2.4 * clamp(1.2rem, 5vw, 1.55rem));
+    display: flex;
+    align-items: flex-start;
   }
 
   .cap-mobile-list {
@@ -1258,7 +1262,7 @@
     padding: 2px 0;
     cursor: pointer;
     color: #8e8e8e;
-    font-size: clamp(0.72rem, 2.8vw, 0.85rem);
+    font-size: clamp(0.72rem, 3vw, 0.85rem);
     line-height: 1.3;
     text-align: left;
   }
@@ -1293,14 +1297,15 @@
   .cap-left {
     grid-column: 1 / -1 !important;
     width: 100% !important;
-    padding: 0 calc(2.5% + 14px) 14px !important;
+    padding: 0 calc(2.5% + 14px) 30px !important; /* Increased gap from 14px to 30px */
     margin-bottom: 0 !important;
     box-sizing: border-box;
   }
 
   .cap-hero-frame {
     width: 100% !important;
-    height: 52vw;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -1348,14 +1353,14 @@
     max-width: 100%;
     margin: 0 0 0 12px;
     padding-left: 14px;
-    font-size: clamp(0.55rem, 3.1vw, 0.65rem);
-    gap: 6px;
+    font-size: clamp(0.55rem, 3.1vw, 0.75rem);
+    gap: 10px; /* Increased from 6px */
     line-height: 1.28;
     list-style-position: outside;
   }
 
   .specialization-sec .cap-bullets li {
-    font-size: clamp(0.55rem, 2.8vw, 0.65rem);
+    font-size: clamp(0.55rem, 3.8vw, 0.75rem);
     line-height: 1.28;
     padding-left: 0;
   }
@@ -2057,7 +2062,7 @@
   }
 
   .ai-metric .lbl {
-    font-size: clamp(0.6rem, 2.8vw, 0.75rem);
+    font-size: clamp(0.6rem, 3vw, 0.75rem);
     margin-top: 2px;
   }
 }
@@ -2446,7 +2451,7 @@
 
   .testimonial-section .subtitle,
   .testimonial-section .description {
-    font-size: clamp(0.62rem, 2.6vw, 0.78rem);
+    font-size: clamp(0.62rem, 3vw, 0.78rem);
     line-height: 1.45;
     margin-bottom: 10px;
     color: #d8d8d8;
@@ -2557,7 +2562,7 @@
   }
 
   .testimonial-mobile-carousel .card-quote {
-    font-size: clamp(0.62rem, 2.6vw, 0.78rem);
+    font-size: clamp(0.62rem, 2.9vw, 0.78rem);
     line-height: 1.45;
     padding: 0;
     opacity: 0.92;
