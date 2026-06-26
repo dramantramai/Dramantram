@@ -75,23 +75,27 @@ const ClientsSection = () => {
     <section className="clients-section home-clients">
       <div className="clients-grid">
         <div className="tile tile-intro">
-          <h2 className="intro-title raleway-semibold">
-            Our Valued
-            <br />
-            Client Partners
-          </h2>
-          <p className="intro-copy">
-            With more than 80% client retention rate, we have worked with all
-            kinds of organizations across geography — from Multinational to
-            startup, from Govt. to NGO/NPOs, and more.
-          </p>
-          <GlitchButton
-            className="clients-cta-btn clients-cta-mobile"
-            to="/clients"
-            targetText="Complete List"
-          >
-            Complete List
-          </GlitchButton>
+          <div className="tile-intro-top">
+            <h2 className="intro-title raleway-semibold">
+              Our Valued
+              <br />
+              Client Partners
+            </h2>
+            <p className="intro-copy">
+              With more than 80% client retention rate, we have worked with all
+              kinds of organizations across geography — from Multinational to
+              startup, from Govt. to NGO/NPOs, and more.
+            </p>
+          </div>
+          <div className="tile-intro-bottom">
+            <GlitchButton
+              className="clients-cta-btn clients-cta-mobile"
+              to="/clients"
+              targetText="Complete List"
+            >
+              Complete List
+            </GlitchButton>
+          </div>
         </div>
 
         <div className="home-clients-brand-slider">

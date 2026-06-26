@@ -119,3 +119,50 @@
   }
 }
 
+/* Footer-area glow (shared across pages) */
+.layout-footer-glow {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  contain: paint;
+}
+
+.layout-footer-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, rgba(184, 0, 0, 0.55) 0%, transparent 50%);
+}
+
+.layout-footer-glow-orb--desktop {
+  bottom: -10vh;
+  left: -10vw;
+  width: 55vw;
+  height: 55vw;
+  filter: blur(80px);
+}
+
+.layout-footer-glow-orb--mobile {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .layout-footer-glow-orb--desktop {
+    display: none;
+  }
+
+  .layout-footer-glow-orb--mobile {
+    display: block;
+    bottom: -6vh;
+    right: -18vw;
+    left: auto;
+    width: 78vw;
+    height: 78vw;
+    filter: blur(58px);
+    opacity: 0.72;
+    background: radial-gradient(circle, rgba(184, 0, 0, 0.62) 0%, transparent 58%);
+  }
+}

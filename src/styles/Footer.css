@@ -135,7 +135,7 @@
   background-color: transparent !important;
   color: white !important;
   border: none !important;
-  border-bottom: 1px solid white !important;
+  border-bottom: 1px solid #4E4E4E !important;
   border-radius: 0 !important;
   padding-left: 0 !important;
 }
@@ -383,26 +383,20 @@
   }
 
   .footer-options-row {
-    grid-column: 2 / 4 !important;
-    grid-row: 3;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    border-top: none;
-    gap: 0 12px;
+    display: contents !important;
   }
 
   .footer-col--services {
-    grid-column: 1 !important;
-    grid-row: auto !important;
-    border-right: none;
+    grid-column: 2 / 3 !important;
+    grid-row: 3 !important;
+    border-right: none !important;
     padding: 0 4px 12px 18px !important;
   }
 
   .footer-col--duration {
-    grid-column: 2 !important;
-    grid-row: auto !important;
-    padding: 0 18px 12px 4px !important;
+    grid-column: 3 / 4 !important;
+    grid-row: 3 !important;
+    padding: 0 14px 12px 14px !important;
   }
 
   .footer-mobile-bottom {
@@ -410,7 +404,6 @@
     flex-direction: column;
     grid-column: 2 / 4 !important;
     grid-row: 4;
-    width: 100%;
     padding: 20px 18px 0;
   }
 
@@ -423,10 +416,10 @@
 
   .have-a-project-text {
     flex: 1;
-    max-width: 40vw;
+    max-width: 45vw;
     padding-left: 0;
     text-align: left;
-    font-size: clamp(1rem, 4.2vw, 1.25rem);
+    font-size: clamp(1rem, 4.8vw, 2.25rem);
     line-height: 1.15;
     margin: 0;
   }
@@ -460,10 +453,33 @@
 
   .footer-submit-btn--mobile {
     display: flex !important;
-    width: 100%;
-    margin: 0;
-    padding: 14px 20px;
-    border-left: none;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    margin: 0 0 15px 0 !important;
+    padding: 14px 20px !important;
+    background-color: transparent !important;
+    border: 2px solid #fbff00 !important;
+    color: #fbff00 !important;
+    font-size: clamp(0.85rem, 3.5vw, 1.05rem) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    border-radius: 0 !important;
+    transition: opacity 0.2s ease, background-color 0.2s ease !important;
+  }
+
+  .footer-submit-btn--mobile:hover:not(:disabled),
+  .footer-submit-btn--mobile:active:not(:disabled) {
+    background-color: rgba(251, 255, 0, 0.08) !important;
+  }
+
+  .footer-submit-btn--mobile .footer-submit-chev {
+    font-size: 1.3rem !important;
+    font-weight: bold !important;
+    transform: none !important;
+    color: #fbff00 !important;
+    display: inline-block !important;
+    line-height: 1 !important;
   }
 
   .footer-col .content-wrapper {
@@ -476,6 +492,7 @@
 
   .footer-options-select--mobile {
     display: block;
+    margin-bottom: 20px;
   }
 
   .footer-options-list--desktop {
@@ -483,15 +500,23 @@
   }
 
   .footer-options-select--mobile .form-label {
-    font-size: clamp(0.62rem, 3.5vw, 0.75rem);
-    line-height: 1.2;
+    font-size: clamp(0.7rem, 4vw, 1.85rem) !important;
+    line-height: 1.2 !important;
     margin-bottom: 2px !important;
+    color: #ffffff !important;
+    display: block !important;
   }
 
   .footer-options-select--mobile .form-select {
-    font-size: clamp(0.62rem, 3.5vw, 1.75rem);
-    padding-top: 2px !important;
-    padding-bottom: 4px !important;
+    font-size: clamp(0.7rem, 2.8vw, 0.85rem) !important;
+    font-weight: 500 !important;
+    color: white !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #4E4E4E !important;
+    border-radius: 0 !important;
+    padding: 4px 20px 6px 0 !important;
+    width: 95% !important;
   }
 
   .footer-options-head {
@@ -599,5 +624,21 @@
 
   .footer-options-wrap {
     min-height: 100%;
+  }
+}
+
+/* Auto-growing Textarea for Message Input */
+.auto-grow-textarea {
+  resize: none !important;
+  overflow: hidden !important;
+  min-height: 30px !important;
+  height: auto;
+  line-height: 1.5 !important;
+  transition: none !important;
+}
+
+@media (max-width: 767px) {
+  .auto-grow-textarea {
+    min-height: 24px !important;
   }
 }

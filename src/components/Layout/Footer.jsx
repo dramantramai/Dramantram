@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import "../../styles/Footer.css";
 const logo = "/logos/DM_White.png";
@@ -85,6 +85,15 @@ const Footer = () => {
   const [duration, setDuration] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const textareaRef = useRef(null);
+
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [message]);
+
   const handleServiceChange = (serviceName) => {
     if (services.includes(serviceName)) {
       setServices(services.filter((s) => s !== serviceName));
@@ -97,6 +106,10 @@ const Footer = () => {
     e.preventDefault();
     if (!name || !email) {
       toast.error("Name and Email are required");
+      return;
+    }
+    if (message.length > 200) {
+      toast.error("Message cannot exceed 200 characters");
       return;
     }
     setLoading(true);
@@ -198,12 +211,18 @@ const Footer = () => {
                 <div className="mb-3">
                   <label className="form-label">Your Message</label>
                   <textarea
-                    rows={3}
+                    ref={textareaRef}
+                    rows={1}
                     placeholder="Type your message here"
-                    className="form-control form-textarea"
+                    className="form-control form-textarea auto-grow-textarea"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
+                  {message.length > 200 && (
+                    <div className="text-danger mt-1" style={{ fontSize: "0.8rem", color: "#e23226" }}>
+                      Message cannot exceed 200 characters (current: {message.length}/200)
+                    </div>
+                  )}
                 </div>
               </form>
             </div>
@@ -219,7 +238,7 @@ const Footer = () => {
               </h4>
               <div className="footer-options-select footer-options-select--mobile">
                 <label className="form-label" htmlFor="footer-services-mobile">
-                  What Services Do You Need?<span style={{ color: "red" }}>*</span>
+                  What Services Do You Need?<span style={{ color: "red" }}> *</span>
                 </label>
                 <select
                   id="footer-services-mobile"
@@ -276,7 +295,7 @@ const Footer = () => {
               </h4>
               <div className="footer-options-select footer-options-select--mobile">
                 <label className="form-label" htmlFor="footer-duration-mobile">
-                  When Do You Need Your Product?<span style={{ color: "red" }}>*</span>
+                  When Do You Need Your Product?<span style={{ color: "red" }}> *</span>
                 </label>
                 <select
                   id="footer-duration-mobile"
@@ -341,15 +360,15 @@ const Footer = () => {
           <div className="footer-mobile-bottom">
             <button
               type="button"
-              className="footer-submit-btn footer-submit-btn--mobile"
+              className="footer-submit-btn footer-submit-btn--mobile raleway-regular"
               onClick={handleSubmit}
               disabled={loading}
             >
               <span className="footer-submit-text">
-                {loading ? "Submitting..." : "Submit"}
+                {loading ? "SUBMITTING..." : "SUBMIT REQUEST"}
               </span>
               <span className="footer-submit-chev" aria-hidden="true">
-                ›
+                ↗
               </span>
             </button>
             <FooterSocialLinks className="footer-social--mobile" />

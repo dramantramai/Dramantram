@@ -53,22 +53,9 @@ const Layout = ({ children }) => {
         minHeight: "100vh"
       }}>
         {/* Permanent bottom-of-page glow — always bleeds into footer without extending height */}
-        <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", zIndex: 0, contain: "paint" }}>
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              bottom: "-10vh",
-              left: "-10vw",
-              width: "55vw",
-              height: "55vw",
-              background: "radial-gradient(circle, rgba(184,0,0,0.55) 0%, transparent 50%)",
-              filter: "blur(80px)",
-              borderRadius: "50%",
-              pointerEvents: "none",
-              mixBlendMode: "screen",
-            }}
-          />
+        <div className="layout-footer-glow" aria-hidden="true">
+          <div className="layout-footer-glow-orb layout-footer-glow-orb--desktop" />
+          <div className="layout-footer-glow-orb layout-footer-glow-orb--mobile" />
         </div>
         <main style={{ flex: 1 }}>{children}</main>
         <Footer />

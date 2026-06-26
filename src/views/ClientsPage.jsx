@@ -102,19 +102,19 @@ const ClientsPage = () => {
           <div className="clients-stats-grid">
             <div className="grid-col-spacer"></div>
             <div className="stat-col">
-              <div className="stat-num raleway-semibold fs-h3">100+</div>
+              <div className="stat-num russo-one-regular-plain fs-h3">100+</div>
               <div className="stat-label raleway-regular">Clients Served</div>
             </div>
             <div className="stat-col">
-              <div className="stat-num raleway-semibold fs-h3">15+</div>
+              <div className="stat-num russo-one-regular-plain fs-h3">15+</div>
               <div className="stat-label raleway-regular">Industries</div>
             </div>
             <div className="stat-col">
-              <div className="stat-num raleway-semibold fs-h3">10+</div>
+              <div className="stat-num russo-one-regular-plain fs-h3">10+</div>
               <div className="stat-label raleway-regular">Years Of Experience</div>
             </div>
             <div className="stat-col">
-              <div className="stat-num raleway-semibold fs-h3">25+</div>
+              <div className="stat-num russo-one-regular-plain fs-h3">25+</div>
               <div className="stat-label raleway-regular">Countries Impacted</div>
             </div>
             <div className="grid-col-spacer"></div>

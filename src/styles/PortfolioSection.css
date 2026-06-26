@@ -384,8 +384,8 @@
 /* Small Tablet (576px - 767px) */
 @media (max-width: 767px) {
   .portfolio-section {
-    padding-top: 40px;
-    padding-bottom: 30px;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
   }
 
   .portfolio-section .container-fluid {
@@ -508,8 +508,8 @@
 /* Mobile Small (320px - 479px) */
 @media (max-width: 479px) {
   .portfolio-section {
-    padding-top: 25px;
-    padding-bottom: 20px;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
   }
 
   .portfolio-section .container-fluid {
@@ -928,11 +928,13 @@
   .portfolio:has(.home-portfolio) {
     padding-left: 0 !important;
     padding-right: 0 !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
   }
 
   .home-portfolio.portfolio-section {
-    padding-top: 36px !important;
-    padding-bottom: 36px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
   }
 
   .home-portfolio .container-fluid-custom {
@@ -956,7 +958,7 @@
     width: auto !important;
     max-width: 100% !important;
     min-height: auto;
-    padding: 16px 12px 16px 0 !important;
+    padding: 8px 12px 8px 0 !important;
   }
 
   .home-portfolio .portfolio-title,
@@ -982,14 +984,14 @@
   .home-portfolio .portfolio-description {
     font-size: clamp(0.65rem, 3.2vw, 0.85rem);
     line-height: 1.45;
-    margin-bottom: 14px;
+    margin-bottom: 0;
     padding-right: 0;
     color: #bbb;
   }
 
   .home-portfolio .portfolio-sidebar .connect-link {
     margin-left: 0 !important;
-    margin-top: 10px !important;
+    margin-top: 28px !important;
     padding: 8px 10px 8px 12px !important;
     height: auto;
     font-size: clamp(0.7rem, 2.5vw, 0.85rem);
@@ -1020,7 +1022,7 @@
     flex-direction: column;
     width: 100%;
     min-width: 0;
-    padding: 12px 10px 8px 10px;
+    padding: 8px 10px 4px 10px;
   }
 
   .home-mobile-carousel-viewport {
@@ -1030,13 +1032,13 @@
 
   .home-mobile-carousel-track {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
 
   .home-mobile-carousel-slide {
-    flex: 0 0 80%;
+    flex: 0 0 68%;
     min-width: 0;
     transition:
       filter 0.4s ease,
@@ -1054,11 +1056,11 @@
     transform: scale(1);
   }
 
-  /* Prev + next peeks — blurred on both sides */
+  /* Prev + next peeks — more visible on both sides */
   .home-mobile-carousel-slide.is-peek {
-    filter: blur(4px);
-    opacity: 0.5;
-    transform: scale(0.96);
+    filter: blur(1.5px);
+    opacity: 0.82;
+    transform: scale(0.98);
   }
 
   .home-mobile-carousel-slide .portfolio-card-wrapper {

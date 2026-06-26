@@ -22,6 +22,10 @@
   z-index: 0;
 }
 
+.bg-glow-layer--mobile {
+  display: none;
+}
+
 /* Individual orb */
 .bg-glow-orb {
   position: absolute;
@@ -34,19 +38,33 @@
 
 /* ── Responsive size corrections ──────────────────────────────── */
 
-/* On tablet (≤ 991px) shrink orbs slightly so they don't crowd content */
+/* On tablet (≤ 991px) shrink desktop orbs slightly */
 @media (max-width: 991px) {
-  .bg-glow-orb {
-    /* Scale down inline sizes by ~30% via CSS custom property fallback */
+  .bg-glow-layer--desktop .bg-glow-orb {
     transform: scale(0.7);
     transform-origin: center center;
   }
 }
 
-/* On mobile (≤ 600px) shrink even further */
+/* On small mobile (≤ 600px) shrink desktop orbs further (hidden on ≤768 when mobile layer active) */
 @media (max-width: 600px) {
-  .bg-glow-orb {
+  .bg-glow-layer--desktop .bg-glow-orb {
     transform: scale(0.45);
     transform-origin: center center;
+  }
+}
+
+/* Mobile-specific glow layer (≤ 767.98px) */
+@media (max-width: 767.98px) {
+  .bg-glow-layer--desktop {
+    display: none;
+  }
+
+  .bg-glow-layer--mobile {
+    display: block;
+  }
+
+  .bg-glow-layer--mobile .bg-glow-orb {
+    transform: none;
   }
 }

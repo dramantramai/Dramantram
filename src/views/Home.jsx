@@ -23,12 +23,20 @@ const HOME_GLOWS = [
   { top: "450vh", right: "-15vw", size: "45vw", opacity: 0.75, blur: "80px" },
 ];
 
+// Tuned for stacked mobile sections (shorter scroll, tighter orbs)
+const HOME_GLOWS_MOBILE = [
+  { top: "40vh", left: "-32vw", size: "92vw", opacity: 0.78, blur: "55px" },
+  { top: "80vh", right: "-28vw", size: "78vw", opacity: 0.72, blur: "62px" },
+  { top: "110vh", left: "10vw", size: "72vw", opacity: 0.88, blur: "58px" },
+  { top: "270vh", right: "-15vw", size: "68vw", opacity: 0.9, blur: "55px" },
+];
+
 const Home = () => {
   return (
     <Layout>
       <div className="home-page-wrapper">
         {/* Page-level gradient bowls — scrolls with content */}
-        <BackgroundGlow glows={HOME_GLOWS} />
+        <BackgroundGlow glows={HOME_GLOWS} mobileGlows={HOME_GLOWS_MOBILE} />
         <div className="global-grid-overlay"></div>
 
         {/* Intro Section */}

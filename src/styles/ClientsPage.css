@@ -117,12 +117,12 @@
 }
 
 .stat-num {
-  color: #fff;
+  color: #e23226;
   line-height: 1;
 }
 
 .stat-label {
-  color: #888;
+  color: #fff;
   text-transform: capitalize;
 }
 

@@ -785,10 +785,10 @@
     grid-row: 1 / 3;
     margin: 0;
     padding: 0 6px 0 12px;
-    font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+    font-size: clamp(1.1rem, 5.4vw, 1.35rem);
     line-height: 1.05;
     text-align: left;
-    align-self: center;
+    align-self: flex-start; /* Aligned to the top of the right para */
   }
 
   .specialization-sec .svc-title br {
@@ -1229,7 +1229,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 16px;
   }
 
   .cap-mobile-heading {
@@ -1248,7 +1247,7 @@
   .cap-mobile-list {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 24px;
     width: 100%;
   }
 
@@ -1294,23 +1293,34 @@
     display: contents !important;
   }
 
-  .cap-left {
-    grid-column: 1 / -1 !important;
+  .specialization-sec .cap-left {
+    grid-column: 2 / 4 !important;
     width: 100% !important;
-    padding: 0 calc(2.5% + 14px) 30px !important; /* Increased gap from 14px to 30px */
+    max-width: 100%;
+    padding: 0 16px 30px !important;
     margin-bottom: 0 !important;
     box-sizing: border-box;
+    overflow: hidden;
   }
 
-  .cap-hero-frame {
+  .specialization-sec .cap-hero-frame {
     width: 100% !important;
+    max-width: 90%;
     height: auto !important;
     aspect-ratio: 16 / 9 !important;
-    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 12px;
     overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .specialization-sec .cap-hero {
+    width: 100% !important;
+    max-width: 100%;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
   }
 
   .cap-mid {
@@ -1319,7 +1329,6 @@
     margin-bottom: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    border-right: 0.5px solid rgba(113, 113, 113, 0.5);
   }
 
   .cap-right {
@@ -1349,6 +1358,10 @@
     min-height: 100%;
   }
 
+  .specialization-sec .cap-copy {
+    margin-top: calc(2.4 * clamp(1.2rem, 5vw, 1.55rem)) !important;
+  }
+
   .specialization-sec .cap-bullets {
     max-width: 100%;
     margin: 0 0 0 12px;
@@ -1368,8 +1381,8 @@
   .specialization-sec .cap-cta {
     margin-top: 12px !important;
     margin-left: 0 !important;
-    padding: 8px 10px 8px 12px !important;
-    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    padding: 6px 8px 6px 10px !important; /* Made smaller */
+    font-size: clamp(0.58rem, 2.2vw, 0.72rem); /* Made smaller */
     align-self: flex-start;
     border-left: 2px solid #fbff00;
     position: relative;
@@ -1972,7 +1985,7 @@
     grid-column: 3 / 4 !important;
     grid-row: 1 / 3;
     width: 100% !important;
-    align-self: center;
+    align-self: stretch !important;
   }
 
   .ai-left .content-wrapper {
@@ -2035,9 +2048,9 @@
   .ai-wrap .ai-cta {
     margin-top: 6px !important;
     margin-left: 0 !important;
-    padding: 8px 10px 8px 12px !important;
+    padding: 6px 8px 6px 10px !important; /* Made smaller */
     border-left: 2px solid #e03a2f;
-    font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    font-size: clamp(0.58rem, 2.2vw, 0.72rem); /* Made smaller */
     align-self: flex-start;
     position: relative;
     z-index: 2;
@@ -2048,21 +2061,20 @@
   }
 
   .ai-right .content-wrapper {
-    padding: 12px 8px 12px 14px !important;
+    padding: 0px 8px 16px 14px !important;
     display: flex !important;
     flex-direction: column;
-    gap: clamp(0.85rem, 6.5vw, 1.5rem);
-    height: auto !important;
-    justify-content: center !important;
+    height: 100% !important;
+    justify-content: space-between !important;
   }
 
   .ai-metric .num {
-    font-size: clamp(1rem, 4.2vw, 1.4rem);
+    font-size: clamp(1.4rem, 6vw, 1.95rem);
     line-height: 1.1;
   }
 
   .ai-metric .lbl {
-    font-size: clamp(0.6rem, 3vw, 0.75rem);
+    font-size: clamp(0.7rem, 3.2vw, 0.85rem);
     margin-top: 2px;
   }
 }

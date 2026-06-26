@@ -7,7 +7,7 @@
  *
  * Usage:
  *   <div className="page-wrapper">
- *     <BackgroundGlow glows={HOME_GLOWS} />
+ *     <BackgroundGlow glows={HOME_GLOWS} mobileGlows={HOME_GLOWS_MOBILE} />
  *     ... page sections ...
  *   </div>
  *
@@ -27,36 +27,46 @@
 import React from "react";
 import "../styles/BackgroundGlow.css";
 
-const BackgroundGlow = ({ glows = [] }) => {
+const renderGlowOrbs = (glows = []) =>
+  glows.map((glow, i) => {
+    const {
+      top,
+      left,
+      right,
+      bottom,
+      size = "50vw",
+      opacity = 1,
+      color = "rgba(184, 0, 0, 0.55)",
+      blur = "80px",
+    } = glow;
+
+    const style = {
+      width: size,
+      height: size,
+      background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
+      filter: `blur(${blur})`,
+      opacity,
+      ...(top !== undefined && { top }),
+      ...(left !== undefined && { left }),
+      ...(right !== undefined && { right }),
+      ...(bottom !== undefined && { bottom }),
+    };
+
+    return <div key={i} className="bg-glow-orb" style={style} />;
+  });
+
+const BackgroundGlow = ({ glows = [], mobileGlows = null }) => {
+  const mobileList = mobileGlows ?? glows;
+
   return (
-    <div className="bg-glow-layer" aria-hidden="true">
-      {glows.map((glow, i) => {
-        const {
-          top,
-          left,
-          right,
-          bottom,
-          size = "50vw",
-          opacity = 1,
-          color = "rgba(184, 0, 0, 0.55)",
-          blur = "80px",
-        } = glow;
-
-        const style = {
-          width: size,
-          height: size,
-          background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-          filter: `blur(${blur})`,
-          opacity,
-          ...(top !== undefined && { top }),
-          ...(left !== undefined && { left }),
-          ...(right !== undefined && { right }),
-          ...(bottom !== undefined && { bottom }),
-        };
-
-        return <div key={i} className="bg-glow-orb" style={style} />;
-      })}
-    </div>
+    <>
+      <div className="bg-glow-layer bg-glow-layer--desktop" aria-hidden="true">
+        {renderGlowOrbs(glows)}
+      </div>
+      <div className="bg-glow-layer bg-glow-layer--mobile" aria-hidden="true">
+        {renderGlowOrbs(mobileList)}
+      </div>
+    </>
   );
 };
 
