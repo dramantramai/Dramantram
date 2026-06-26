@@ -33,7 +33,7 @@ const TeamList = ({ teamMembers, loading, onEdit, onDelete, onAddClick }) => {
                 <tr key={member._id}>
                   <td>
                     <img
-                      src={`/api/v1/management/team/${member._id}/image`}
+                      src={`/api/v1/management/team/${member._id}/image?t=${new Date(member.updatedAt).getTime()}`}
                       alt={member.name}
                       className="management-table-img"
                       onError={(e) => {

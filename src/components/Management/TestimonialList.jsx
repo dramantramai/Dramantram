@@ -34,7 +34,7 @@ const TestimonialList = ({ testimonials, loading, onEdit, onDelete, onAddClick }
                 <tr key={t._id}>
                   <td>
                     <img
-                      src={`/api/v1/management/testimonial/${t._id}/image`}
+                      src={`/api/v1/management/testimonial/${t._id}/image?t=${new Date(t.updatedAt).getTime()}`}
                       alt={`${t.firstName} ${t.lastName}`}
                       className="management-table-img"
                       onError={(e) => {

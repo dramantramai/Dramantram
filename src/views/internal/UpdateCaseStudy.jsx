@@ -91,6 +91,7 @@ const UpdateCaseStudy = () => {
   });
 
   const [existingThumbnail, setExistingThumbnail] = useState("");
+  const [updatedAt, setUpdatedAt] = useState("");
   const apiUrl = "";
 
   // 1. Fetch existing data
@@ -103,6 +104,7 @@ const UpdateCaseStudy = () => {
         const cs = data.caseStudy;
         setId(cs._id);
         setExistingThumbnail(cs.thumbnail_image || "");
+        setUpdatedAt(cs.updatedAt || "");
         setForm({
           case_study_name: cs.case_study_name || "",
           case_study_description: cs.case_study_description || "",
@@ -466,7 +468,7 @@ const UpdateCaseStudy = () => {
                   src={
                     existingThumbnail && existingThumbnail.startsWith("http")
                       ? existingThumbnail
-                      : `${apiUrl}/api/v1/management/get-thumbnail-image/${id}`
+                      : `${apiUrl}/api/v1/management/get-thumbnail-image/${id}?t=${updatedAt ? new Date(updatedAt).getTime() : ""}`
                   }
                   alt="current"
                   width={48}

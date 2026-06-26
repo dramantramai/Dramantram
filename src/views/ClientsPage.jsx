@@ -32,32 +32,35 @@ const ClientsPage = () => {
             _id: c._id,
             name: c.name,
             category: c.category,
-            src: `/api/v1/management/client/${c._id}/image`,
+            src: `/api/v1/management/client/${c._id}/image?t=${new Date(c.updatedAt).getTime()}`,
             width: c.width,
             height: c.height
           }));
           setRawClients(formatted);
 
           // Update featured partner image URLs if found in the fetched database items
+          const unClient = data.clients.find(c => c.name.toLowerCase().includes("united nations"));
+          const npciClient = data.clients.find(c => c.name.toLowerCase().includes("npci"));
+          const eyClient = data.clients.find(c => c.name.toLowerCase().includes("ey") || c.name.toLowerCase().includes("ernst"));
           setFeaturedPartners([
             {
               name: "United Nations",
-              src: data.clients.find(c => c.name.toLowerCase().includes("united nations"))
-                ? `/api/v1/management/client/${data.clients.find(c => c.name.toLowerCase().includes("united nations"))._id}/image`
+              src: unClient
+                ? `/api/v1/management/client/${unClient._id}/image?t=${new Date(unClient.updatedAt).getTime()}`
                 : "/images/un.png",
               desc: "Partnered for impactful communication across global development initiatives."
             },
             {
               name: "NPCI",
-              src: data.clients.find(c => c.name.toLowerCase().includes("npci"))
-                ? `/api/v1/management/client/${data.clients.find(c => c.name.toLowerCase().includes("npci"))._id}/image`
+              src: npciClient
+                ? `/api/v1/management/client/${npciClient._id}/image?t=${new Date(npciClient.updatedAt).getTime()}`
                 : "/images/npci.png",
               desc: "Partnered for impactful communication across global development initiatives."
             },
             {
               name: "EY",
-              src: data.clients.find(c => c.name.toLowerCase().includes("ey") || c.name.toLowerCase().includes("ernst"))
-                ? `/api/v1/management/client/${data.clients.find(c => c.name.toLowerCase().includes("ey") || c.name.toLowerCase().includes("ernst"))._id}/image`
+              src: eyClient
+                ? `/api/v1/management/client/${eyClient._id}/image?t=${new Date(eyClient.updatedAt).getTime()}`
                 : "/images/ey.png",
               desc: "Partnered for impactful communication across global development initiatives."
             }

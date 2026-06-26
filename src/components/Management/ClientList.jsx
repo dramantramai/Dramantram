@@ -41,7 +41,7 @@ const ClientList = ({ clients, loading, onEdit, onDelete, onAddClick }) => {
                       }}
                     >
                       <img
-                        src={`/api/v1/management/client/${c._id}/image`}
+                        src={`/api/v1/management/client/${c._id}/image?t=${new Date(c.updatedAt).getTime()}`}
                         alt={c.name}
                         style={{ height: "30px", maxWidth: "100px", objectFit: "contain" }}
                         onError={(e) => {

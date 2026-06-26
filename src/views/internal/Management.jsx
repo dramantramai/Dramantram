@@ -295,7 +295,7 @@ export default function Management() {
       order: member.order || 0,
       image: null,
     });
-    setTeamImagePreview(`/api/v1/management/team/${member._id}/image`);
+    setTeamImagePreview(`/api/v1/management/team/${member._id}/image?t=${new Date(member.updatedAt).getTime()}`);
     setViewMode("edit");
   };
 
@@ -310,7 +310,7 @@ export default function Management() {
       order: t.order || 0,
       image: null,
     });
-    setTestimonialImagePreview(`/api/v1/management/testimonial/${t._id}/image`);
+    setTestimonialImagePreview(`/api/v1/management/testimonial/${t._id}/image?t=${new Date(t.updatedAt).getTime()}`);
     setViewMode("edit");
   };
 
@@ -324,7 +324,7 @@ export default function Management() {
       order: c.order || 0,
       logo: null,
     });
-    setClientLogoPreview(`/api/v1/management/client/${c._id}/image`);
+    setClientLogoPreview(`/api/v1/management/client/${c._id}/image?t=${new Date(c.updatedAt).getTime()}`);
     setViewMode("edit");
   };
 

@@ -164,7 +164,7 @@ const About = () => {
                       <div className="team-card">
                         <div className="team-image-wrapper">
                           <img
-                            src={`/api/v1/management/team/${member._id}/image`}
+                            src={`/api/v1/management/team/${member._id}/image?t=${new Date(member.updatedAt).getTime()}`}
                             alt={member.name}
                             className="team-image"
                           />
