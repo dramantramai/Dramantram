@@ -354,16 +354,19 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
   };
 
   useEffect(() => {
-    if (!isHomePage || loading) return;
+    if (!isHomePage) return;
 
     const updateStep = () => measureHomeCarousel();
+
     updateStep();
+    const rafId = requestAnimationFrame(updateStep);
 
     const observer = new ResizeObserver(updateStep);
     if (homeCarouselRef.current) observer.observe(homeCarouselRef.current);
 
     window.addEventListener("resize", updateStep);
     return () => {
+      cancelAnimationFrame(rafId);
       observer.disconnect();
       window.removeEventListener("resize", updateStep);
     };
@@ -603,7 +606,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
           {/* Right Column - Grid matching Our Teams */}
           <div className="col-lg-9">
             <div className={`row g-0 ${isHomePage ? "home-desktop-grid" : ""}`}>
-              {loading ? (
+              {loading && !isHomePage ? (
                 Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="col-md-6 col-lg-4">
                     <div className="portfolio-card-wrapper">
@@ -613,7 +616,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                     </div>
                   </div>
                 ))
-              ) : displayedCaseStudies.length > 0 ? (
+              ) : !loading && displayedCaseStudies.length > 0 ? (
                 displayedCaseStudies.map((item) => (
                   <div key={item._id} className={`col-md-6 col-lg-4 ${animationClass}`}>
                     <div className="portfolio-card-wrapper">
@@ -627,17 +630,17 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                     </div>
                   </div>
                 ))
-              ) : (
+              ) : !loading ? (
                 <div className="col-12 text-center text-white py-5">
                   <p>No case studies found matching these filters.</p>
                 </div>
-              )}
+              ) : null}
             </div>
 
             {/* Mobile home carousel — grid 2 */}
             {isHomePage && (
               <div
-                className="home-mobile-carousel-wrap"
+                className={`home-mobile-carousel-wrap${loading ? " is-loading" : ""}`}
                 onTouchStart={handleHomeTouchStart}
                 onTouchEnd={handleHomeTouchEnd}
               >

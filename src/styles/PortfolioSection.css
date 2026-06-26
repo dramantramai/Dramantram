@@ -1074,6 +1074,20 @@
     aspect-ratio: 4 / 5;
   }
 
+  /* Center skeleton in carousel viewport while API data loads */
+  .home-mobile-carousel-wrap.is-loading .home-mobile-carousel-track {
+    transform: none !important;
+    justify-content: center;
+  }
+
+  .home-mobile-carousel-wrap.is-loading .home-mobile-carousel-slide {
+    flex: 0 0 68%;
+  }
+
+  .home-mobile-carousel-wrap.is-loading .portfolio-skeleton {
+    border-radius: 12px;
+  }
+
   .home-mobile-empty {
     color: #bbb;
     font-size: 0.85rem;

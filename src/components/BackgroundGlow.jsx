@@ -36,7 +36,7 @@ const renderGlowOrbs = (glows = []) =>
       bottom,
       size = "50vw",
       opacity = 1,
-      color = "rgba(184, 0, 0, 0.55)",
+      color = "#8E2324",
       blur = "80px",
     } = glow;
 

@@ -352,6 +352,36 @@
 @media (max-width: 767.98px) {
   .footer-section {
     padding: 0 !important;
+    background-color: #000 !important;
+  }
+
+  /* Hide global center grid line in footer; show outer lines only */
+  .footer-section::after,
+  .light-layout-wrapper .footer-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: linear-gradient(
+      to right,
+      transparent 0%,
+      transparent 2.5%,
+      #717171 2.5%,
+      #717171 calc(2.5% + 1px),
+      transparent calc(2.5% + 1px),
+      transparent 97.5%,
+      #717171 97.5%,
+      #717171 calc(97.5% + 1px),
+      transparent calc(97.5% + 1px),
+      transparent 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.5;
   }
 
   .footer-row-grid {

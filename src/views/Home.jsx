@@ -27,7 +27,7 @@ const HOME_GLOWS = [
 const HOME_GLOWS_MOBILE = [
   { top: "40vh", left: "-32vw", size: "92vw", opacity: 0.78, blur: "55px" },
   { top: "80vh", right: "-28vw", size: "78vw", opacity: 0.72, blur: "62px" },
-  { top: "110vh", left: "10vw", size: "72vw", opacity: 0.88, blur: "58px" },
+  { top: "118vh", left: "10vw", size: "72vw", opacity: 0.88, blur: "58px" },
   { top: "270vh", right: "-15vw", size: "68vw", opacity: 0.9, blur: "55px" },
 ];
 

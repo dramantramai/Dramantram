@@ -16,7 +16,6 @@ const CATEGORIES_ORDER = ["Consulting", "International", "Fintech", "Corporate",
 const ClientsPage = () => {
   const [rawClients, setRawClients] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [searchQuery, setSearchQuery] = useState("");
   const [featuredPartners, setFeaturedPartners] = useState([
     { name: "United Nations", src: "/images/un.png", desc: "Partnered for impactful communication across global development initiatives." },
     { name: "NPCI", src: "/images/npci.png", desc: "Partnered for impactful communication across global development initiatives." },
@@ -72,6 +71,10 @@ const ClientsPage = () => {
     };
     fetchClients();
   }, []);
+
+  const filteredClients = rawClients.filter(
+    (c) => selectedCategory === "All" || c.category === selectedCategory
+  );
 
   return (
     <Layout>
@@ -138,11 +141,10 @@ const ClientsPage = () => {
                 <div className="grid-col-spacer"></div>
               </div>
 
-              {/* Filters & Search Row (Aligned with columns) */}
-              <div className="clients-filters-search-grid">
+              {/* Filters Row */}
+              <div className="clients-filters-grid">
                 <div className="grid-col-spacer"></div>
-                
-                {/* Columns 1, 2, 3 combined for filters */}
+
                 <div className="browse-filters-col">
                   <div className="categories-filter-bar">
                     <button
@@ -163,23 +165,6 @@ const ClientsPage = () => {
                   </div>
                 </div>
 
-                {/* Column 4 for Search Bar */}
-                <div className="browse-search-col">
-                  <div className="search-box-wrapper">
-                    <input
-                      type="text"
-                      placeholder="Search Client"
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="search-input"
-                    />
-                    <svg className="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                  </div>
-                </div>
-
                 <div className="grid-col-spacer"></div>
               </div>
 
@@ -189,9 +174,7 @@ const ClientsPage = () => {
                 
                 {/* Column 1 */}
                 <div className="browse-logos-col browse-col-1">
-                  {rawClients
-                    .filter((c) => selectedCategory === "All" || c.category === selectedCategory)
-                    .filter((c) => c.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                  {filteredClients
                     .filter((_, idx) => idx % 4 === 0)
                     .map((c) => (
                       <div key={c._id} className="client-logo-wrapper">
@@ -207,9 +190,7 @@ const ClientsPage = () => {
 
                 {/* Column 2 */}
                 <div className="browse-logos-col browse-col-2">
-                  {rawClients
-                    .filter((c) => selectedCategory === "All" || c.category === selectedCategory)
-                    .filter((c) => c.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                  {filteredClients
                     .filter((_, idx) => idx % 4 === 1)
                     .map((c) => (
                       <div key={c._id} className="client-logo-wrapper">
@@ -225,9 +206,7 @@ const ClientsPage = () => {
 
                 {/* Column 3 */}
                 <div className="browse-logos-col browse-col-3">
-                  {rawClients
-                    .filter((c) => selectedCategory === "All" || c.category === selectedCategory)
-                    .filter((c) => c.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                  {filteredClients
                     .filter((_, idx) => idx % 4 === 2)
                     .map((c) => (
                       <div key={c._id} className="client-logo-wrapper">
@@ -243,9 +222,7 @@ const ClientsPage = () => {
 
                 {/* Column 4 */}
                 <div className="browse-logos-col browse-col-4">
-                  {rawClients
-                    .filter((c) => selectedCategory === "All" || c.category === selectedCategory)
-                    .filter((c) => c.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                  {filteredClients
                     .filter((_, idx) => idx % 4 === 3)
                     .map((c) => (
                       <div key={c._id} className="client-logo-wrapper">

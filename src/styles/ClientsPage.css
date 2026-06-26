@@ -212,8 +212,8 @@
   text-transform: uppercase;
 }
 
-/* --- FILTERS & SEARCH ROW --- */
-.clients-filters-search-grid {
+/* --- FILTERS ROW --- */
+.clients-filters-grid {
   display: grid;
   grid-template-columns: 2.5% 23.75% 23.75% 23.75% 23.75% 2.5%;
   width: 100%;
@@ -221,17 +221,9 @@
 }
 
 .browse-filters-col {
-  grid-column: 2 / 5;
+  grid-column: 2 / 6;
   padding: 0 40px 30px;
   border-left: 1px solid rgba(113, 113, 113, 0.3);
-  border-right: 1px solid rgba(113, 113, 113, 0.3);
-  display: flex;
-  align-items: center;
-}
-
-.browse-search-col {
-  grid-column: 5 / 6;
-  padding: 0 30px 30px;
   border-right: 1px solid rgba(113, 113, 113, 0.3);
   display: flex;
   align-items: center;
@@ -306,47 +298,6 @@
   grid-column: 5;
 }
 
-/* --- Search Input Box in Column 4 --- */
-.search-box-container {
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.search-box-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 10px 40px 10px 16px;
-  color: #ffffff;
-  font-family: "Inter", sans-serif;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: #FFD200;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.search-icon {
-  position: absolute;
-  right: 14px;
-  width: 18px;
-  height: 18px;
-  color: #888888;
-  pointer-events: none;
-}
-
-
 /* --- Logo Wrappers --- */
 .client-logo-wrapper {
   width: 100%;
@@ -381,15 +332,14 @@
     padding: 0 24px;
   }
 
-  .clients-filters-search-grid {
+  .clients-filters-grid {
     grid-template-columns: 1fr;
     padding: 0 24px 30px;
     gap: 20px;
     border-left: 1px solid rgba(113, 113, 113, 0.3);
   }
 
-  .browse-filters-col,
-  .browse-search-col {
+  .browse-filters-col {
     grid-column: auto !important;
     padding: 0 !important;
     border: none !important;
@@ -435,7 +385,7 @@
     padding-left: 0 !important;
     border: none !important;
   }
-  .clients-filters-search-grid {
+  .clients-filters-grid {
     padding-left: 24px;
     padding-right: 24px;
     border-left: none;
