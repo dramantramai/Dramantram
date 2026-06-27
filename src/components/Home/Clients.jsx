@@ -6,18 +6,26 @@ import "../../styles/Clients.css";
 
 const LogoStack = ({ items }) => (
   <div className="logo-stack">
-    {items.map((it, i) => (
-      <img
-        key={i}
-        src={it.src}
-        alt={it.alt}
-        className="logo"
-        style={{
-          width: it.width || "auto",
-          height: it.height || "auto",
-        }}
-      />
-    ))}
+    {items.map((it, i) => {
+      const widthVal = it.width || "auto";
+      const heightVal = it.height || "auto";
+
+      const numericWidth = parseInt(widthVal, 10);
+      const numericHeight = parseInt(heightVal, 10);
+
+      const width = !isNaN(numericWidth) && numericWidth > 130 ? "130px" : widthVal;
+      const height = !isNaN(numericHeight) && numericHeight > 42 ? "42px" : heightVal;
+
+      return (
+        <img
+          key={i}
+          src={it.src}
+          alt={it.alt}
+          className="logo"
+          style={{ width, height }}
+        />
+      );
+    })}
   </div>
 );
 
@@ -48,7 +56,7 @@ const ClientsSection = () => {
             if (grouped[c.category]) {
               grouped[c.category].push({
                 alt: c.name,
-                src: `/api/v1/management/client/${c._id}/image`,
+                src: `/api/v1/management/client/${c._id}/image?t=${new Date(c.updatedAt).getTime()}`,
                 width: c.width,
                 height: c.height,
               });

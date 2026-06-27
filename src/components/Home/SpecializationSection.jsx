@@ -214,7 +214,6 @@ const SpecializationSection = () => {
           <div className="svc-right">
             <p className="svc-copy">
               We are humbled by the trust shown to us by our client partners{" "}
-              <br />
               which helped us achieve more than
             </p>
           </div>
