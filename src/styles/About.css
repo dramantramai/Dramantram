@@ -97,6 +97,7 @@
 .philosophies-container {
   color: black;
   position: relative;
+  z-index: 1;
   padding-top: 0px;
   background-color: #ffffff;
 }

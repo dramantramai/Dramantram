@@ -1630,6 +1630,8 @@
 
   position: relative;
 
+  z-index: 1;
+
   overflow: hidden;
 
   /* Top/bottom padding for the section itself */
@@ -1935,10 +1937,13 @@
   .ai-sticky-container {
     height: auto !important;
     background-color: #ffffff !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
 
   .ai-wrap {
-    position: static !important;
+    position: relative !important;
+    z-index: 1 !important;
     top: auto !important;
     height: auto !important;
     min-height: unset !important;
