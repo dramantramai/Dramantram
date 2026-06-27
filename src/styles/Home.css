@@ -2083,7 +2083,7 @@
 
 .testimonial-section {
   background: transparent; /* old gradient removed — page-level BackgroundGlow handles it */
-  min-height: 80vh;
+  /* min-height: 80vh; */
   color: white;
 }
 
@@ -2108,7 +2108,7 @@
 
   align-items: center;
 
-  min-height: 80vh;
+  /* min-height: 80vh; */
 
   padding: 40px 50px !important;
   /* padding-top: 40px !important; */
@@ -2198,7 +2198,7 @@
 
   line-height: 1;
 
-  padding-left: 50px;
+  /* padding-left: 50px; */
 }
 
 .card-role {
@@ -2208,7 +2208,7 @@
 
   line-height: 1.3;
 
-  padding-left: 50px;
+  /* padding-left: 50px; */
 
   opacity: 0.7;
 }
@@ -2220,7 +2220,7 @@
 
   line-height: 1.3;
 
-  padding-left: 50px;
+  /* padding-left: 50px; */
 
   opacity: 0.5;
 }
@@ -2236,7 +2236,7 @@
 .card-image-wrapper {
   margin-bottom: 20px;
 
-  padding-left: 50px;
+  /* padding-left: 50px; */
 }
 
 .card-image img {
@@ -2256,9 +2256,9 @@
 
   opacity: 0.9;
 
-  padding-left: 50px;
+  /* padding-left: 50px; */
 
-  padding-right: 30px;
+  /* padding-right: 30px; */
 }
 
 /* --- Testimonial Grid Lines --- */
@@ -2268,7 +2268,7 @@
 
   /* Ensures the row takes full height so lines stretch top-to-bottom */
 
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .testimonial-grid::after {
@@ -2366,7 +2366,7 @@
     grid-column: 2 / 3 !important;
     width: 100% !important;
     padding: 80px 20px !important;
-    min-height: 80vh !important;
+    /* min-height: 80vh !important; */
     align-items: flex-start !important;
     justify-content: flex-start !important;
   }
@@ -2378,8 +2378,8 @@
 
   .testimonial-desktop-cards .testimonial-card {
     width: 100% !important;
-    min-height: 80vh !important;
-    padding: 80px 20px 40px !important;
+    /* min-height: 80vh !important; */
+    padding: 80px 10px 0 20px !important;
     background-color: rgba(0, 0, 0, 0.1);
   }
 
@@ -2451,7 +2451,7 @@
   }
 
   .testimonial-section .main-heading {
-    font-size: clamp(1rem, 5vw, 1.3rem);
+    font-size: clamp(1rem, 5vw, 1.8rem);
     line-height: 1.1;
     letter-spacing: 0.04em;
     margin-bottom: 14px;
@@ -2621,11 +2621,7 @@
   .card-company,
   .card-image-wrapper,
   .card-quote {
-    padding-left: 30px;
-  }
-
-  .card-quote {
-    padding-right: 20px;
+    padding-left: 8px;
   }
 }
 

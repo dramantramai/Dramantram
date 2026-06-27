@@ -15,7 +15,7 @@ const TestimonialCard = ({
   <div className={`${colClass} testimonial-card ${className}`.trim()}>
     <div className="card-content">
       <h3 className="card-name fw-semibold raleway-semibold">
-        {testimonial.firstName} {testimonial.lastName}
+        {testimonial.firstName} <br /> {testimonial.lastName}
       </h3>
       <p className="card-role">{testimonial.post}</p>
       <p className="card-company">{testimonial.company}</p>
