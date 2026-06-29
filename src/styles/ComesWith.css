@@ -26,9 +26,8 @@
 
 /* Headline */
 .cw-head {
-  
   text-transform: uppercase;
-  
+
   line-height: 1.05;
   letter-spacing: 0.02em;
   margin: 10px 0 22px;
@@ -50,20 +49,28 @@
   position: relative;
   background: transparent;
   border: 0;
-  padding: 0 0 12px 0;
+  padding: 0;
   color: #aeb2b7;
-  
-  
+
   line-height: 1.2;
   text-align: left;
   cursor: pointer;
-  
+  display: flex;
 }
 .cw-tab:hover {
   color: #d5d9de;
 }
 .cw-tab.is-active {
   color: #ffffff;
+}
+
+.cw-tab-inner {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding-bottom: 12px;
+  width: fit-content;
 }
 
 .cw-tab-line {
@@ -74,11 +81,15 @@
 .cw-active-underline {
   position: absolute;
   left: 0;
-  right: 0;
   bottom: 0;
+  width: 0;
   height: 3px;
   background: #e33;
   border-radius: 2px;
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.cw-tab.is-active .cw-active-underline {
+  width: 100%;
 }
 
 /* hairline under tabs */
@@ -112,9 +123,10 @@
   visibility: hidden;
   pointer-events: none;
   transform: translateY(12px);
-  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              visibility 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition:
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .cw-body.is-active {
@@ -126,8 +138,6 @@
 
 /* Desktop Layout Lines and Column Alignments */
 @media (min-width: 992px) {
-
-
   .cw-wrap .row {
     display: grid !important;
     grid-template-columns: 2.5% 47.5% 47.5% 2.5% !important;
@@ -159,6 +169,34 @@
 /* Responsive tweaks */
 @media (max-width: 991.98px) {
   .cw-mask {
-    margin: 10px auto 24px;
+    margin: 10px auto 48px; /* Increased bottom margin from 24px to 48px */
+    width: min(
+      300px,
+      70%
+    ); /* Made image smaller from min(520px, 90%) to min(300px, 70%) */
+  }
+
+  .cw-tabs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px 20px !important;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .cw-tab {
+    font-size: clamp(11px, 3.5vw, 13px) !important;
+    padding: 0 !important;
+    text-align: left;
+    white-space: normal !important;
+    display: flex !important;
+  }
+
+  .cw-tab-inner {
+    padding-bottom: 8px !important;
+  }
+
+  .cw-tab-line {
+    display: block !important;
   }
 }
