@@ -383,6 +383,17 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
       ? `translateX(${carouselMetrics.centerOffset - mobileIndex * carouselMetrics.step}px)`
       : undefined;
 
+  const pageSize = 6;
+  const totalPages = Math.max(1, Math.ceil(caseStudies.length / pageSize));
+  const currentPage = Math.floor(startIndex / pageSize);
+
+  const goToPage = (page) => {
+    const nextIndex = page * pageSize;
+    if (nextIndex === startIndex) return;
+    setAnimationClass(nextIndex > startIndex ? "slide-from-bottom" : "slide-from-top");
+    setStartIndex(nextIndex);
+  };
+
   const filterConfigs = [
     { key: "service", label: "Service", options: SERVICE_OPTIONS },
     { key: "complexity", label: "Complexity", options: COMPLEXITY_OPTIONS },
@@ -391,7 +402,11 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
   ];
 
   return (
-    <div className={`portfolio-section ${isCarouselView ? "home-portfolio" : ""}`}>
+    <div
+      className={`portfolio-section ${isCarouselView ? "home-portfolio" : ""}${
+        isPortfolioPage ? " portfolio-page-section" : ""
+      }`}
+    >
       {/* FILTER ROW - Only show if showFilters is true AND not on Homepage */}
       {showFilters && !isHomePage && (
         <div
@@ -561,7 +576,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
 
           {/* Portfolio Pagination Controls in the rightmost empty space */}
           {(isPortfolioPage || baseService !== "") && (
-            <div className="portfolio-controls">
+            <div className="portfolio-controls portfolio-controls--desktop">
               <button
                 onClick={handlePrev}
                 disabled={startIndex === 0}
@@ -600,6 +615,28 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                   />
                 </svg>
               </button>
+            </div>
+          )}
+
+          {isPortfolioPage && totalPages > 1 && (
+            <div
+              className="portfolio-mobile-page-pagination"
+              role="tablist"
+              aria-label="Case study pages"
+            >
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  role="tab"
+                  aria-selected={index === currentPage}
+                  aria-label={`Go to page ${index + 1}`}
+                  className={`portfolio-mobile-page-dot ${
+                    index === currentPage ? "active" : ""
+                  }`}
+                  onClick={() => goToPage(index)}
+                />
+              ))}
             </div>
           )}
         </div>

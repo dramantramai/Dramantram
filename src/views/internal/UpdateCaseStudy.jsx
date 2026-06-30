@@ -13,14 +13,19 @@ const INDUSTRY_OPTIONS = [
   "Edtech",
   "Hospitality",
   "Consulting",
-  "Tech",
-  "NGO",
+  "Technology",
+  "NGO",  
   "School",
   "Service",
   "Product",
+  'Luxury Jewellery',
+  'Healthcare',
+  'Food & Agriculture',
+  'Real Estate',
 ];
 
 const DURATION_OPTIONS = [
+  'Under 1 month',
   "1 month",
   "2 months",
   "3 months",
@@ -49,9 +54,9 @@ const SERVICE_OPTIONS = [
   "Testimonials",
   "Event Video",
   "Website Design",
-  "web development",
-  "app design",
-  "game development",
+  "Web Development",
+  "App Design",
+  "Game Development",
   "Interactive Screens (Touch, Gesture, Motion)",
   "Anamorphic",
   "AR/VR",
@@ -152,7 +157,17 @@ const UpdateCaseStudy = () => {
 
     // Handle File Inputs
     if (type === "file") {
-      setForm((s) => ({ ...s, [name]: files[0] || null }));
+      const file = files[0];
+      if (!file) {
+        setForm((s) => ({ ...s, [name]: null }));
+        return;
+      }
+      if (file.size > 1000000) {
+        toast.error("Image size should be less than 1MB");
+        e.target.value = null;
+        return;
+      }
+      setForm((s) => ({ ...s, [name]: file }));
       return;
     }
 

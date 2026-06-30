@@ -9,7 +9,7 @@ import BackgroundGlow from "../components/BackgroundGlow";
 
 const PORTFOLIO_GLOWS = [
   // Hero area — upper centre-right
-  { top: "-50vh", right: "10vw", size: "95vw", opacity: 0.85, blur: "80px" },
+  { top: "-50vh", right: "10vw", size: "95vw", opacity: 0.75, blur: "80px" },
   // Portfolio grid mid — left glow
   { top: "100vh", left: "-15vw", size: "55vw", opacity: 0.6, blur: "80px" },
   // ComesWith bottom — right glow
@@ -22,7 +22,7 @@ const PortfolioPage = () => {
       <div style={{ position: "relative" }}>
         <BackgroundGlow glows={PORTFOLIO_GLOWS} />
 
-        <section className="hero-portfolio">
+        <section className="hero-portfolio portfolio-page-hero">
           <div className="bg-grad" />
           <div className="container-fluid upper-container">
             {/* TOP GRID */}
@@ -37,11 +37,11 @@ const PortfolioPage = () => {
               {/* Col 2 */}
               <div className="col-12 col-md-3 portfolio-panel">
                 <div className="portfolio-panel-inner">
-                  <h3 className="hero-title">
+                  <h4 className="hero-title">
                     A locally set up
                     <br />
-                    global creative <br /> agency
-                  </h3>
+                    global creative agency
+                  </h4>
                 </div>
               </div>
 
@@ -71,7 +71,7 @@ const PortfolioPage = () => {
           </div>
         </section>
 
-        <section className="portfolio">
+        <section className="portfolio portfolio-page-content">
           {/* <PortfolioFilters /> */}
           <PortfolioSection showFilters={true} isHomePage={false} isPortfolioPage={true} />
         </section>
