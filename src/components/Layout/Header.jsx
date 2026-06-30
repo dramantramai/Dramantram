@@ -132,7 +132,7 @@ const Header = () => {
             <div className={`mobile-menu-slider ${activeSubMenu ? "slide-sub" : ""}`}>
               {/* Main Pane */}
               <div className="mobile-menu-pane main-pane">
-                <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+                <ul className="navbar-nav mb-2 mb-lg-0">
                   {/* SERVICES DROPDOWN (Desktop only) */}
                   <li
                     className="nav-item dropdown d-none d-lg-block"
@@ -197,6 +197,11 @@ const Header = () => {
                   <li className="nav-item">
                     <Link className="nav-link" href="/portfolio" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
                       Portfolio
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" href="/clients" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
+                      Clients
                     </Link>
                   </li>
                   <li className="nav-item">
