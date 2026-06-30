@@ -16,11 +16,20 @@ const PORTFOLIO_GLOWS = [
   { top: "200vh", right: "10vw", size: "60vw", opacity: 0.65, blur: "80px" },
 ];
 
+const PORTFOLIO_GLOWS_MOBILE = [
+  // Hero area — top
+  { top: "-10vh", right: "0vw", size: "95vw", opacity: 0.85, blur: "70px" },
+  // Portfolio grid mid — left glow
+  { top: "50vh", left: "-40vw", size: "110vw", opacity: 0.75, blur: "75px" },
+  // ComesWith bottom — right glow
+  { top: "180vh", right: "-20vw", size: "100vw", opacity: 0.7, blur: "70px" },
+];
+
 const PortfolioPage = () => {
   return (
     <Layout>
       <div style={{ position: "relative" }}>
-        <BackgroundGlow glows={PORTFOLIO_GLOWS} />
+        <BackgroundGlow glows={PORTFOLIO_GLOWS} mobileGlows={PORTFOLIO_GLOWS_MOBILE} />
 
         <section className="hero-portfolio portfolio-page-hero">
           <div className="bg-grad" />
