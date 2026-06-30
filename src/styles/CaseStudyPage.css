@@ -690,13 +690,24 @@
 
 /* --- Mobile / Tablet styles --- */
 @media (max-width: 991.98px) {
+  /* Case Study Wrapper */
+  .case-study-wrap {
+    background: transparent !important; /* Transparent so layout grid lines show through */
+  }
+
+  /* Main Pagination Grid */
   .cs-pagination-row {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 16px;
-    gap: 15px;
+    display: grid !important;
+    grid-template-columns: 50% 50% !important;
+    grid-template-areas:
+      "heading ."
+      "prev next" !important;
+    width: 100% !important;
+    position: relative !important;
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+    align-items: stretch !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .cs-pagination-row > [class*="col-"] {
@@ -705,26 +716,322 @@
     width: auto !important;
   }
 
+  /* Title / Heading placement - wraps in grid 1 only (left column) */
   .cs-pagination-row > .cs-pagination-heading-col {
+    grid-area: heading !important;
     width: 100% !important;
-    text-align: center;
-    justify-content: center;
+    border-bottom: none !important;
+    padding: 0 !important;
+  }
+
+  .cs-pagination-row > .cs-pagination-heading-col .cs-pad {
+    padding-top: 24px !important;
+    padding-bottom: 0px !important; /* Reduces gap beneath heading */
+    padding-left: 20px !important;
+    padding-right: 0 !important;
   }
 
   .cs-title-top {
-    text-align: center;
-    width: 100%;
+    font-size: clamp(0.85rem, 4.7vw, 1.8rem) !important;
+    text-align: left !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1.25 !important;
+    margin: 0 !important;
+    word-break: break-word !important;
   }
 
+  /* Previous Button Block */
   .cs-pagination-row > .cs-prev-col {
-    order: 2;
+    grid-area: prev !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding-left: 5px !important;
   }
 
-  .cs-pagination-row > .cs-pagination-counter-col {
-    order: 3;
+  .cs-prev-block {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
   }
 
+  .cs-prev-block .cs-nav-label {
+    font-size: clamp(0.65rem, 2vw, 0.75rem) !important;
+    color: #EB1C24 !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+  }
+
+  .cs-prev-block .cs-nav-name {
+    font-size: clamp(0.8rem, 2.8vw, 0.95rem) !important;
+    font-weight: 700 !important;
+    color: #0f0f0f !important;
+    margin-top: 1px !important;
+  }
+
+  /* Next Button Block */
   .cs-pagination-row > .cs-next-col {
-    order: 4;
+    grid-area: next !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding-right: 5px !important;
+  }
+
+  .cs-next-block {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    width: 100% !important;
+  }
+
+  .cs-next-block .cs-nav-label {
+    font-size: clamp(0.65rem, 2vw, 0.75rem) !important;
+    color: #EB1C24 !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+  }
+
+  .cs-next-block .cs-nav-name {
+    font-size: clamp(0.8rem, 2.8vw, 0.95rem) !important;
+    font-weight: 700 !important;
+    color: #0f0f0f !important;
+    margin-top: 1px !important;
+  }
+
+  /* Hide Counter Block on mobile */
+  .cs-pagination-row > .cs-pagination-counter-col {
+    display: none !important;
+  }
+
+  /* Header Grid (Image + Metadata + Problem) */
+  .cs-header {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas:
+      "thumb meta"
+      "problem problem" !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+  }
+
+  .cs-header > [class*="col-"] {
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+  }
+
+  /* Thumbnail Column styling */
+  .cs-header .cs-col-left {
+    grid-area: thumb !important;
+    padding: 40px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .cs-header .cs-col-left .cs-pad {
+    padding: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important; /* Stack elements vertically */
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .cs-header .cs-skeleton-title {
+    width: 100% !important;
+    height: 1.8rem !important;
+    margin-bottom: 12px !important;
+    padding-left: 15px !important;
+  }
+
+  .cs-header .cs-skeleton-thumbnail {
+    width: 100% !important;
+    aspect-ratio: 4 / 5 !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    margin-top: 12px !important;
+  }
+
+  .cs-header .cs-card-figure {
+    margin: 0 auto !important;
+    width: 100% !important; /* Kept 100% width only as requested */
+    max-width: 100% !important;
+    border-radius: 16px !important;
+    aspect-ratio: 4 / 5 !important;
+    /* overflow: hidden !important; */
+    display: flex !important; /* Center the image child */
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .cs-header .cs-card-figure img {
+    display: block !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Metadata Column styling - aligns details cleanly without borders */
+  .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) {
+    grid-area: meta !important;
+    padding: 40px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 0 !important; /* Space is handled by items padding */
+  }
+
+  /* Skeleton rows in metadata column on mobile */
+  .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) .mb-4 {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    padding: 14px 0 !important;
+  }
+
+  .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) .cs-skeleton-meta-label {
+    margin: 0 !important;
+    width: 40% !important;
+    height: 1rem !important;
+  }
+
+  .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) .cs-skeleton-meta-value {
+    margin: 0 !important;
+    width: 50% !important;
+    height: 1.2rem !important;
+  }
+
+  .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) .cs-pad {
+    padding: 0 !important; /* Removed redundant double padding */
+  }
+
+  .cs-header .cs-col .d-flex.flex-column.mb-2 {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    border-bottom: none !important; /* removed bottom border */
+    padding: 14px 0 !important; /* Increased space at the top and bottom of each item */
+    margin-bottom: 0 !important;
+    width: 100% !important;
+  }
+
+  .cs-header .cs-meta-label {
+    margin: 0 !important;
+    font-size: clamp(0.6rem, 2.5vw, 0.8rem) !important;
+    color: #888888 !important;
+    text-transform: capitalize !important;
+    text-align: left !important;
+    flex-shrink: 0 !important;
+    width: 45% !important;
+  }
+
+  .cs-header .cs-meta-value {
+    margin: 0 !important;
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem) !important;
+    font-weight: 500 !important;
+    color: #000000 !important;
+    text-align: right !important;
+    width: 60% !important;
+    word-break: break-word !important;
+  }
+
+  /* Problem statement Column styling */
+  .cs-header .cs-col-right {
+    grid-area: problem !important;
+    border-top: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+    padding: 24px 16px !important;
+    width: 100% !important;
+  }
+
+  .cs-description-title {
+    font-family: "Inter", sans-serif !important;
+    font-size: clamp(1.2rem, 4.5vw, 1.5rem) !important;
+    font-weight: 600 !important;
+    color: #000000 !important;
+    line-height: 1.35 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .cs-problem-label {
+    font-family: "Inter", sans-serif !important;
+    color: #888888 !important;
+    font-size: clamp(0.75rem, 2.4vw, 0.85rem) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 0 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cs-body p {
+    font-family: "Inter", sans-serif !important;
+    font-size: clamp(0.85rem, 3vw, 0.95rem) !important;
+    line-height: 1.55 !important;
+    color: #2c2c2c !important;
+    margin-top: 8px !important;
+  }
+
+  /* Bottom Content Row (Media stream + Solution) */
+  .cs-content-row {
+    border-top: none !important;
+  }
+
+  .cs-content-row > .col-12:first-child {
+    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+    padding: 24px 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .cs-media-stream {
+    padding: 0 !important;
+  }
+
+  .cs-image-wrap,
+  .cs-video-wrap,
+  .cs-image-wrap img,
+  .cs-video-wrap iframe {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+  }
+
+  /* Solution Column styling */
+  .cs-content-row > .cs-solution-col {
+    padding: 24px 16px !important; /* Matched to problem statement padding */
+    width: 100% !important;
+    max-width: 100% !important;
+    border-top: none !important;
+  }
+
+  .cs-solution-col .cs-h3 {
+    font-family: "Inter", sans-serif !important;
+    color: #888888 !important;
+    font-size: clamp(0.75rem, 2.4vw, 0.85rem) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .cs-solution-col .cs-body {
+    margin-top: 0 !important;
+  }
+
+  .cs-solution-col .cs-solution-para {
+    font-family: "Inter", sans-serif !important;
+    font-size: clamp(0.85rem, 3vw, 0.95rem) !important;
+    line-height: 1.55 !important;
+    color: #2c2c2c !important;
+    margin-top: 8px !important;
+    margin-bottom: 0 !important;
   }
 }
