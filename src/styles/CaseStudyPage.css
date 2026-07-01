@@ -757,14 +757,14 @@
   }
 
   .cs-prev-block .cs-nav-label {
-    font-size: clamp(0.65rem, 2vw, 0.75rem) !important;
+    font-size: clamp(0.55rem, 1.8vw, 0.75rem) !important;
     color: #eb1c24 !important;
     text-transform: uppercase !important;
     font-weight: 600 !important;
   }
 
   .cs-prev-block .cs-nav-name {
-    font-size: clamp(0.8rem, 2.8vw, 0.95rem) !important;
+    font-size: clamp(0.7rem, 2.4vw, 0.85rem) !important;
     font-weight: 700 !important;
     color: #0f0f0f !important;
     margin-top: 1px !important;
@@ -787,14 +787,14 @@
   }
 
   .cs-next-block .cs-nav-label {
-    font-size: clamp(0.65rem, 2vw, 0.75rem) !important;
+    font-size: clamp(0.55rem, 1.8vw, 0.75rem) !important;
     color: #eb1c24 !important;
     text-transform: uppercase !important;
     font-weight: 600 !important;
   }
 
   .cs-next-block .cs-nav-name {
-    font-size: clamp(0.8rem, 2.8vw, 0.95rem) !important;
+    font-size: clamp(0.7rem, 2.4vw, 0.85rem) !important;
     font-weight: 700 !important;
     color: #0f0f0f !important;
     margin-top: 1px !important;
@@ -866,6 +866,7 @@
     display: flex !important; /* Center the image child */
     justify-content: center !important;
     align-items: center !important;
+    margin-left: 1.2vw !important;
   }
 
   .cs-header .cs-card-figure img {
@@ -879,7 +880,7 @@
   /* Metadata Column styling - aligns details cleanly without borders */
   .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) {
     grid-area: meta !important;
-    padding: 40px 16px !important;
+    padding: 10px 14px !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;

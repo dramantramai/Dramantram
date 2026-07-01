@@ -142,6 +142,16 @@ const CaseStudy = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [relatedCaseStudies, setRelatedCaseStudies] = useState([]);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 362);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const apiUrl = "";
 
@@ -396,7 +406,9 @@ const CaseStudy = () => {
                     </svg>
                   </button>
                   <div className="d-flex flex-column text-start">
-                    <span className="cs-nav-label">Previous Project</span>
+                    <span className="cs-nav-label">
+                      {isSmallScreen ? "Prev Project" : "Previous Project"}
+                    </span>
                     <span className="cs-nav-name">{prevProjectName}</span>
                   </div>
                 </div>
