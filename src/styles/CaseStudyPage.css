@@ -200,7 +200,6 @@
   transform: scale(1.02);
 }
 
-
 .cs-solution {
   border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
 }
@@ -528,7 +527,7 @@
   font-family: "Inter", sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #EB1C24;
+  color: #eb1c24;
   text-transform: uppercase;
   margin-bottom: 2px;
   letter-spacing: 0.5px;
@@ -543,7 +542,7 @@
 }
 
 .cs-nav-block.clickable:hover .cs-nav-name {
-  color: #EB1C24;
+  color: #eb1c24;
 }
 
 .cs-nav-btn {
@@ -551,18 +550,18 @@
   height: 36px;
   border-radius: 50%;
   background-color: transparent;
-  border: 1.5px solid #EB1C24;
+  border: 1.5px solid #eb1c24;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #EB1C24;
+  color: #eb1c24;
   transition: all 0.25s ease;
   padding: 0;
   cursor: pointer;
 }
 
 .cs-nav-block.clickable:hover .cs-nav-btn {
-  background-color: #EB1C24;
+  background-color: #eb1c24;
   color: #ffffff;
   transform: scale(1.05);
 }
@@ -582,7 +581,7 @@
 }
 
 .cs-counter-current {
-  color: #EB1C24;
+  color: #eb1c24;
 }
 
 .cs-counter-separator {
@@ -603,7 +602,7 @@
 }
 
 .cs-view-all-link:hover {
-  color: #EB1C24;
+  color: #eb1c24;
   text-decoration: underline;
 }
 
@@ -759,7 +758,7 @@
 
   .cs-prev-block .cs-nav-label {
     font-size: clamp(0.65rem, 2vw, 0.75rem) !important;
-    color: #EB1C24 !important;
+    color: #eb1c24 !important;
     text-transform: uppercase !important;
     font-weight: 600 !important;
   }
@@ -789,7 +788,7 @@
 
   .cs-next-block .cs-nav-label {
     font-size: clamp(0.65rem, 2vw, 0.75rem) !important;
-    color: #EB1C24 !important;
+    color: #eb1c24 !important;
     text-transform: uppercase !important;
     font-weight: 600 !important;
   }
@@ -898,13 +897,17 @@
     padding: 14px 0 !important;
   }
 
-  .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) .cs-skeleton-meta-label {
+  .cs-header
+    .cs-col:not(.cs-col-left):not(.cs-col-right)
+    .cs-skeleton-meta-label {
     margin: 0 !important;
     width: 40% !important;
     height: 1rem !important;
   }
 
-  .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) .cs-skeleton-meta-value {
+  .cs-header
+    .cs-col:not(.cs-col-left):not(.cs-col-right)
+    .cs-skeleton-meta-value {
     margin: 0 !important;
     width: 50% !important;
     height: 1.2rem !important;

@@ -15,6 +15,17 @@ const ABOUT_GLOWS = [
   { top: "320vh", right: "-15vw", size: "45vw", opacity: 0.55, blur: "80px" },
 ];
 
+const ABOUT_GLOWS_MOBILE = [
+  // Hero section — top-right
+  { top: "-50vh", right: "0vw", size: "120vw", opacity: 0.8, blur: "70px" },
+  // Philosophies section — center-left
+  { top: "100vh", left: "0vw", size: "90vw", opacity: 0.6, blur: "70px" },
+  // Team section — middle-right
+  { top: "250vh", right: "-25vw", size: "90vw", opacity: 0.55, blur: "70px" },
+  // Team section lower — bottom-left
+  { top: "380vh", left: "-30vw", size: "90vw", opacity: 0.5, blur: "70px" },
+];
+
 const About = () => {
   const [teamMembers, setTeamMembers] = useState([]);
 
@@ -58,7 +69,7 @@ const About = () => {
     <Layout>
       {/* Page-level glow wrapper */}
       <div style={{ position: "relative" }}>
-        <BackgroundGlow glows={ABOUT_GLOWS} />
+        <BackgroundGlow glows={ABOUT_GLOWS} mobileGlows={ABOUT_GLOWS_MOBILE} />
 
         {/* Intro section */}
         <section className="discussion-container container-fluid">
@@ -142,17 +153,20 @@ const About = () => {
                     Team
                   </h2>
                   <p className="team-description">
-                    {"It's not how happy we look, but what we do that defines us. From our Batman Fan"}
+                    {"It's not how happy we look, but what we do that defines us. From our Batman Fan."}
                   </p>
                   <p className="team-description">
                     Along with relentless passive support from chai, our desi
                     Avengers have empowered multiple startups and enterprises
                     around the world with our services, SINCE 2015.
                   </p>
-                  <a href="https://www.linkedin.com/company/dramantram/jobs/" target="_blank" rel="noopener noreferrer" className="join-team-link">
-                    Join Our Talented Team
-                    <span className="ab-arrow">›</span>
-                  </a>
+                  <GlitchButton
+                    className="join-team-link"
+                    href="https://www.linkedin.com/company/dramantram/jobs/"
+                    targetText="Join Our Talented Team"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
                 </div>
               </div>
 
