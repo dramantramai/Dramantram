@@ -17,7 +17,7 @@ const ABOUT_GLOWS = [
 
 const ABOUT_GLOWS_MOBILE = [
   // Hero section — top-right
-  { top: "-50vh", right: "0vw", size: "120vw", opacity: 0.8, blur: "70px" },
+  { top: "-30vh", right: "0vw", size: "120vw", opacity: 0.8, blur: "70px" },
   // Philosophies section — center-left
   { top: "100vh", left: "0vw", size: "90vw", opacity: 0.6, blur: "70px" },
   // Team section — middle-right
