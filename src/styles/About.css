@@ -722,6 +722,7 @@
 
   .philosophies-container .philosophies-left {
     display: contents !important;
+    padding-left: 10px;
   }
 
   .philosophies-container .philosophies-left h3 {
