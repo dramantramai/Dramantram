@@ -1,22 +1,25 @@
-import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
+import React from "react";
 import GlitchButton from "../GlitchButton";
-
-const HomePetalsSVG = dynamic(() => import("../HomePetalsSVG"), {
-  ssr: false,
-});
 
 const IntroSection = () => {
   return (
     <section className="intro-section">
+      {/* Background Video Layer */}
+      <div className="spline-container">
+        <video
+          className="hero-background-video"
+          src="/header_bg.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      </div>
+
       {/* Text Content Layer */}
       <div className="main-content">
         <div className="left-side">
-          <div className="spline-container">
-            <Suspense fallback={<div className="loading-3d">Loading...</div>}>
-              <HomePetalsSVG />
-            </Suspense>
-          </div>
+          {/* Left side empty space to keep grid/flex spacing */}
         </div>
 
         <div className="right-side">
