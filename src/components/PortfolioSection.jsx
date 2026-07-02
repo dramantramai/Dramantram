@@ -21,6 +21,7 @@ const INDUSTRY_OPTIONS = [
 ];
 
 const DURATION_OPTIONS = [
+  'Under 1 month',
   "1 month",
   "2 months",
   "3 months",
@@ -33,6 +34,7 @@ const SERVICE_OPTIONS = [
   "Brand Identity & Design",
   "Creating Logo",
   "Branding Strategy",
+  "Booklet design",
   "Defining Brand Style Guide",
   "Social Media Branding",
   "Re-Branding",
@@ -49,9 +51,9 @@ const SERVICE_OPTIONS = [
   "Testimonials",
   "Event Video",
   "Website Design",
-  "web development",
-  "app design",
-  "game development",
+  "Web Development",
+  "App Design",
+  "Game Development",
   "Interactive Screens (Touch, Gesture, Motion)",
   "Anamorphic",
   "AR/VR",
@@ -264,9 +266,9 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
     );
   };
 
-  const displayedCaseStudies = (isPortfolioPage || baseService !== "")
-    ? caseStudies.slice(startIndex, startIndex + 6)
-    : isHomePage
+  const displayedCaseStudies = isPortfolioPage
+    ? caseStudies
+    : baseService !== "" || isHomePage
       ? caseStudies.slice(0, 6)
       : caseStudies;
 
@@ -466,7 +468,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
               <GlitchButton
                 to={isPortfolioPage ? "/contact" : "/portfolio"}
                 className="connect-link"
-                targetText={isPortfolioPage ? "Let's Connect" : "Show All"}
+                targetText={isPortfolioPage ? "Let's Connect" : "Complete List"}
               />
             </div>
           </div>
@@ -574,71 +576,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
             )}
           </div>
 
-          {/* Portfolio Pagination Controls in the rightmost empty space */}
-          {(isPortfolioPage || baseService !== "") && (
-            <div className="portfolio-controls portfolio-controls--desktop">
-              <button
-                onClick={handlePrev}
-                disabled={startIndex === 0}
-                className="portfolio-btn"
-                aria-label="Previous case studies"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 15L12 9L6 15"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={startIndex + 6 >= caseStudies.length}
-                className="portfolio-btn"
-                aria-label="Next case studies"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6 9L12 15L18 9"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
-          )}
-
-          {isPortfolioPage && totalPages > 1 && (
-            <div
-              className="portfolio-mobile-page-pagination"
-              role="tablist"
-              aria-label="Case study pages"
-            >
-              {Array.from({ length: totalPages }).map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  role="tab"
-                  aria-selected={index === currentPage}
-                  aria-label={`Go to page ${index + 1}`}
-                  className={`portfolio-mobile-page-dot ${
-                    index === currentPage ? "active" : ""
-                  }`}
-                  onClick={() => goToPage(index)}
-                />
-              ))}
-            </div>
-          )}
+          {/* Pagination controls are removed since we show all on the portfolio page and a max of 6 on other pages */}
         </div>
       </div>
     </div>

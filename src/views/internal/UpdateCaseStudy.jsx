@@ -22,6 +22,7 @@ const INDUSTRY_OPTIONS = [
   'Healthcare',
   'Food & Agriculture',
   'Real Estate',
+  'Data Security'
 ];
 
 const DURATION_OPTIONS = [
