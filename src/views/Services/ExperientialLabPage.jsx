@@ -98,9 +98,7 @@ const ExperientialLabPage = () => {
                 pill="Experiential Lab"
                 heroTitle={
                   <>
-                    WITH GREAT DESIGN LANGUAGE
-                    <br />
-                    COMES GREAT BRAND RECALL
+                    WITH GREAT DESIGN LANGUAGE COMES GREAT BRAND RECALL
                   </>
                 }
                 lede={

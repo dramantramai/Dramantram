@@ -13,7 +13,6 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: var(--grid-lines-light);
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 1;

@@ -88,9 +88,7 @@ const AnimatedVideosPage = () => {
                 pill="Animated Videos"
                 heroTitle={
                   <>
-                    Bring out your business
-                    <br />
-                    superpower Through Animation
+                    Bring out your business superpower Through Animation
                   </>
                 }
                 lede={

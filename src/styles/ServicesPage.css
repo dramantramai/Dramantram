@@ -36,13 +36,6 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(
-      ellipse at 60% 20%,
-      transparent 55%,
-      rgba(0, 0, 0, 0.45) 100%
-    ),
-    var(--grid-lines-light);
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 1;
@@ -499,18 +492,19 @@
   }
 
   .mobile-grid-hero .hero {
-    font-size: clamp(1.1rem, 5.4vw, 1.35rem);
-    line-height: 1.25;
+    font-size: clamp(0.6rem, 4.7vw, 1.35rem);
+    line-height: 1.5;
     margin: 0;
     text-transform: uppercase;
+    padding-right: 0 !important;
   }
 
   .mobile-grid-right-copy .lede {
     color: #d8d8d8;
-    font-size: 13px;
+    font-size: clamp(0.7rem, 2.9vw, 1.35rem);
     line-height: 1.5;
     margin: 0;
-    margin-bottom: 12px;
+    margin-bottom: 40px;
     padding-left: 20px;
   }
 

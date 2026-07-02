@@ -66,7 +66,7 @@ const LiveActionPage = () => {
                     <br />
                     Real people, their <br />
                     emotion and camera motion. <br />
-                    Say Cheese!{" "}
+                    Say Cheese!
                   </h2>
                   <p className="lede mb-4">
                     When we talk of an something that exists and works, nothing is
@@ -89,11 +89,7 @@ const LiveActionPage = () => {
                 pill="Live Action"
                 heroTitle={
                   <>
-                    Live Action is all about
-                    <br />
-                    Real people, their <br />
-                    emotion and camera motion. <br />
-                    Say Cheese!{" "}
+                    Live Action is all about Real people, their emotion and camera motion. Say Cheese!
                   </>
                 }
                 lede={
