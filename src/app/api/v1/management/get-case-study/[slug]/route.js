@@ -15,7 +15,7 @@ const fetchCaseStudyBySlug = unstable_cache(
     return caseStudy;
   },
   ["case-study-by-slug"],
-  { tags: ["case-studies"] }
+  { tags: ["case-studies"], revalidate: 120 }
 );
 
 export async function GET(request, { params }) {

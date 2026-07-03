@@ -93,7 +93,7 @@ const fetchFilteredCaseStudies = unstable_cache(
     };
   },
   ["filtered-case-studies"],
-  { tags: ["case-studies"] }
+  { tags: ["case-studies"], revalidate: 120 }
 );
 
 export async function POST(request) {

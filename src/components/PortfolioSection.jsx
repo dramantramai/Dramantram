@@ -13,11 +13,18 @@ const INDUSTRY_OPTIONS = [
   "Edtech",
   "Hospitality",
   "Consulting",
-  "Tech",
-  "NGO",
+  "Technology",
+  "NGO",  
   "School",
   "Service",
   "Product",
+  'Luxury Jewellery',
+  'Healthcare',
+  'Food & Agriculture',
+  'Real Estate',
+  'Data Security',
+  'LogisticsTech',
+  'Manufacturing & Printing',
 ];
 
 const DURATION_OPTIONS = [
@@ -28,6 +35,7 @@ const DURATION_OPTIONS = [
   "4 months",
   "5 months",
   "6 months or more",
+  'Monthly Retainer'
 ];
 
 const SERVICE_OPTIONS = [
@@ -57,6 +65,7 @@ const SERVICE_OPTIONS = [
   "Interactive Screens (Touch, Gesture, Motion)",
   "Anamorphic",
   "AR/VR",
+  'Production & Post Production'
 ];
 
 const COMPLEXITY_OPTIONS = ["High", "Medium", "Low"];

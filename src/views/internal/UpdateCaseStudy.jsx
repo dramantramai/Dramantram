@@ -35,6 +35,7 @@ const DURATION_OPTIONS = [
   "4 months",
   "5 months",
   "6 months or more",
+  'Monthly Retainer'
 ];
 
 const SERVICE_OPTIONS = [
