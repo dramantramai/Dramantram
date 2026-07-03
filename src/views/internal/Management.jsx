@@ -31,7 +31,9 @@ const INDUSTRY_OPTIONS = [
   'Healthcare',
   'Food & Agriculture',
   'Real Estate',
-  'Data Security'
+  'Data Security',
+  'LogisticsTech',
+  'Manufacturing & Printing',
 ];
 
 const DURATION_OPTIONS = [
@@ -71,6 +73,7 @@ const SERVICE_OPTIONS = [
   "Interactive Screens (Touch, Gesture, Motion)",
   "Anamorphic",
   "AR/VR",
+  'Production & Post Production'
 ];
 
 const CLIENT_CATEGORIES = [
