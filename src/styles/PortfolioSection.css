@@ -7,7 +7,7 @@
   padding-top: 23px !important;
   padding-bottom: 60px;
   background: transparent;
-  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
+  border-bottom: 0.5px solid #71717150;
   position: relative;
   z-index: 5;
 }
@@ -30,7 +30,7 @@
   margin-right: auto;
   background: none !important;
   border-top: none !important;
-  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+  border-bottom: 0.5px solid #71717150 !important;
 }
 
 /* Ensure columns inside filter row have padding for spacing */
@@ -1219,17 +1219,7 @@
     position: relative !important;
   }
 
-  .portfolio-page-section .container-fluid-custom > .row::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 40px; /* stops above pagination dots */
-    left: 50%;
-    width: 0.5px;
-    background-color: var(--divider);
-    z-index: 1;
-    pointer-events: none;
-  }
+
 
   .portfolio-page-section .portfolio-sidebar {
     grid-column: 1 / -1;

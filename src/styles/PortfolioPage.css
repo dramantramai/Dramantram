@@ -7,7 +7,7 @@
   --accent: #fbff00;
   --rail: #f6a400;
   /* thin amber on rail */
-  --divider: rgba(113, 113, 113, 0.5);
+  --divider: #71717150;
 }
 
 .hero-portfolio {
@@ -187,9 +187,6 @@
     border-bottom: 0.5px solid var(--divider);
   }
 
-  .portfolio-panel--left {
-    border-left: 0.5px solid var(--divider);
-  }
 
   .right-rail {
     width: 56px;
@@ -211,9 +208,7 @@
     margin-bottom: 8px;
   }
 
-  .portfolio-panel--left .portfolio-panel--right {
-    border-left: 0.5px solid var(--divider);
-  }
+
 
   .portfolio-panel {
     padding: 10px;
@@ -222,7 +217,6 @@
     /* Make panel smaller */
     flex: 1 1 100%;
     /* Ensure the panels take up full width */
-    border-left: 0.5px solid var(--divider);
   }
 
   .portfolio-panel-inner {
@@ -440,17 +434,7 @@
     position: relative !important;
   }
 
-  .portfolio-page-hero .hero-grid::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 0.5px;
-    background-color: var(--divider);
-    z-index: 1;
-    pointer-events: none;
-  }
+
 
   .portfolio-page-hero .portfolio-panel {
     min-height: auto !important;
