@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Layout from "../components/Layout/Layout";
 import BackgroundGlow from "../components/BackgroundGlow";
@@ -22,6 +22,51 @@ const ClientsPage = () => {
     { name: "EY", src: "/images/ey.png", desc: "Partnered for impactful communication across global development initiatives." }
   ]);
   const [loading, setLoading] = useState(true);
+  const [partnerIndex, setPartnerIndex] = useState(0);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
+  const autoplayTimeoutRef = useRef(null);
+
+  const resetAutoplay = React.useCallback((delay) => {
+    if (autoplayTimeoutRef.current) {
+      clearTimeout(autoplayTimeoutRef.current);
+    }
+    autoplayTimeoutRef.current = setTimeout(() => {
+      setPartnerIndex((prev) => (prev + 1) % featuredPartners.length);
+      resetAutoplay(4000);
+    }, delay);
+  }, [featuredPartners.length]);
+
+  const handleUserInteraction = (newIndex) => {
+    setPartnerIndex(newIndex);
+    resetAutoplay(8000);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const delta = touchStartX.current - touchEndX.current;
+    const threshold = 40;
+    if (Math.abs(delta) > threshold) {
+      let nextIndex;
+      if (delta > 0) {
+        nextIndex = (partnerIndex + 1) % featuredPartners.length;
+      } else {
+        nextIndex = (partnerIndex - 1 + featuredPartners.length) % featuredPartners.length;
+      }
+      handleUserInteraction(nextIndex);
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  useEffect(() => {
+    resetAutoplay(4000);
+    return () => {
+      if (autoplayTimeoutRef.current) {
+        clearTimeout(autoplayTimeoutRef.current);
+      }
+    };
+  }, [resetAutoplay]);
 
   useEffect(() => {
     const fetchClients = async () => {
@@ -259,20 +304,53 @@ const ClientsPage = () => {
               </p>
             </div>
 
-            {featuredPartners.map((partner, index) => (
-              <div key={index} className="tile-featured-partner">
-                <div className="featured-partner-logo-wrap">
-                  <img
-                    src={partner.src}
-                    alt={`${partner.name} Logo`}
-                    className="featured-partner-logo"
-                  />
-                </div>
-                <p className="featured-partner-desc">
-                  {partner.desc}
-                </p>
+            <div
+              className="featured-partners-slider-wrapper"
+              onTouchStart={(e) => {
+                touchStartX.current = e.touches[0].clientX;
+                touchEndX.current = e.touches[0].clientX;
+              }}
+              onTouchMove={(e) => {
+                touchEndX.current = e.touches[0].clientX;
+              }}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div
+                className="featured-partners-slider-track"
+                style={{
+                  transform: `translate3d(-${partnerIndex * 100}%, 0, 0)`,
+                }}
+              >
+                {featuredPartners.map((partner, index) => (
+                  <div key={index} className="tile-featured-partner">
+                    <div className="featured-partner-logo-wrap">
+                      <img
+                        src={partner.src}
+                        alt={`${partner.name} Logo`}
+                        className="featured-partner-logo"
+                      />
+                    </div>
+                    <p className="featured-partner-desc">
+                      {partner.desc}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
+
+              <div className="featured-mobile-pagination">
+                {featuredPartners.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={`featured-mobile-pagination-dot ${idx === partnerIndex ? "active" : ""}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleUserInteraction(idx);
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
           </section>
         )}
       </div>
