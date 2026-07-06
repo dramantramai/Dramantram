@@ -75,7 +75,7 @@
   background-image: var(--grid-lines-dark);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   :root {
     --grid-line-1: 2.5%;
     --grid-line-2: 50%;

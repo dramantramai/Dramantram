@@ -28,10 +28,8 @@
 }
 
 .discussion-left h2 {
-  
-  
   margin-bottom: 20px;
-  
+
   margin-left: 50px;
   word-break: keep-all;
   overflow-wrap: normal;
@@ -43,11 +41,10 @@
 }
 
 .discussion-left p {
-  
   line-height: 24px;
   opacity: 0.9;
   margin-bottom: 30px;
-  
+
   margin-left: 50px;
   padding-right: 80px;
   margin-top: 50px;
@@ -62,14 +59,16 @@
   border: none;
   border-left: 2px solid #ffe600;
   color: white;
-  
+
   cursor: pointer;
   border-radius: 0;
   margin-left: 50px;
   text-decoration: none;
   padding: 10px 20px 10px 30px;
-  
-  transition: padding-left 0.3s ease, color 0.3s ease;
+
+  transition:
+    padding-left 0.3s ease,
+    color 0.3s ease;
 }
 
 .btn-connect-about:hover {
@@ -125,11 +124,9 @@
 
 .philosophies-left h2,
 .philosophies-left h3 {
-  
   margin-bottom: 80px;
-  
+
   margin-left: 100px;
-  
 }
 
 .philosophies-text p {
@@ -139,7 +136,6 @@
   letter-spacing: 1px;
   opacity: 0.4;
   margin-left: 100px;
-  
 }
 
 .philosophies-right {
@@ -149,32 +145,29 @@
 }
 
 .philosophies-right p {
-  
   line-height: 1.7;
   margin-top: 250px;
   opacity: 0.9;
-  
+
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .philosophies-right-2 {
-  
   line-height: 1.7;
   opacity: 0.9;
-  
 }
 
 .phy-p-r {
   margin-top: 240px;
-  
+
   padding-right: 40px;
   padding-left: 10px;
 }
 
 .phy-p-rr {
   margin-top: 20px;
-  
+
   padding-right: 40px;
   padding-left: 10px;
 }
@@ -211,7 +204,6 @@
   .discussion-container .discussion-left h2 {
     margin-left: 0 !important;
     padding-left: 15px !important;
-    
   }
 
   .discussion-container .discussion-left p {
@@ -300,8 +292,7 @@
   .philosophies-container .philosophies-left h3 {
     margin-left: 0 !important;
     margin-bottom: 50px !important;
-    
-    
+
     line-height: 1.2 !important;
   }
 
@@ -337,7 +328,7 @@
     margin-top: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    
+
     line-height: 1.7 !important;
   }
 
@@ -355,7 +346,7 @@
     margin-top: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    
+
     line-height: 1.7 !important;
   }
 
@@ -363,7 +354,7 @@
     margin-top: 20px !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    
+
     line-height: 1.7 !important;
   }
 
@@ -376,7 +367,9 @@
   .philosophies-container .phy-p-rr {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transition:
+      opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+      transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   /* Reveal text on scroll trigger */
@@ -387,11 +380,31 @@
     transition-delay: 0.1s;
   }
 
-  .philosophies-animate .philosophies-text p:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
-  .philosophies-animate .philosophies-text p:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
-  .philosophies-animate .philosophies-text p:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
-  .philosophies-animate .philosophies-text p:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
-  .philosophies-animate .philosophies-text p:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+  .philosophies-animate .philosophies-text p:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+  .philosophies-animate .philosophies-text p:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+  .philosophies-animate .philosophies-text p:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+  }
+  .philosophies-animate .philosophies-text p:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+  .philosophies-animate .philosophies-text p:nth-child(5) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+  }
 
   .philosophies-animate .philosophies-right p {
     opacity: 0.9;
@@ -477,14 +490,11 @@
 }
 
 .team-title {
-  
-  
   margin-bottom: 30px;
   line-height: 1.1;
 }
 
 .team-description {
-  
   line-height: 1.6;
   color: #ccc;
   margin-bottom: 20px;
@@ -512,7 +522,6 @@
 
 .ab-arrow {
   margin-left: 8px;
-  
 }
 
 .team-card {
@@ -574,14 +583,11 @@
 }
 
 .member-name {
-  
-  
   margin-bottom: 8px;
   color: #fff;
 }
 
 .member-role {
-  
   color: #999;
   margin-bottom: 15px;
   min-height: 40px;
@@ -601,7 +607,6 @@
 
 /* Tablet and mobile screens (max-width: 991px) */
 @media (max-width: 991px) {
-
   /* Discussion Section */
   .discussion-container {
     padding-top: 100px !important;
@@ -721,7 +726,7 @@
 
   .philosophies-container .philosophies-left {
     display: contents !important;
-    padding-left: 10px;
+    padding-left: 10px !important;
   }
 
   .philosophies-container .philosophies-left h3 {
@@ -749,14 +754,22 @@
 
   .philosophies-container .philosophies-text p {
     margin-left: 0 !important;
-    font-size: clamp(0.7rem, 4.4vw, 2.1rem) !important; /* Reduced to fit within left column */
+    font-size: clamp(
+      0.7rem,
+      4.4vw,
+      2.1rem
+    ) !important; /* Reduced to fit within left column */
     line-height: 1.2 !important;
     opacity: 0.85 !important; /* Higher opacity to make text clearly visible */
     font-weight: 1000 !important;
     margin-bottom: 20px !important; /* Gap between items */
     width: max-content !important; /* Fits gradient tightly to text width */
     white-space: nowrap !important; /* Prevents wrapping onto a new line */
-    background: linear-gradient(to right, #a1a1a1 0%, #252525 100%) !important; /* Darker gradient */
+    background: linear-gradient(
+      to right,
+      #a1a1a1 0%,
+      #252525 100%
+    ) !important; /* Darker gradient */
     -webkit-background-clip: text !important;
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
@@ -801,6 +814,10 @@
   }
 
   /* Team Section */
+  .team-section::after {
+    background-image: none;
+  }
+
   .team-section .container-fluid-custom {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -830,7 +847,7 @@
     padding: 20px 15px 20px 0 !important; /* Touch left grid line */
     background: transparent !important; /* Remove special background */
     border: none !important;
-    border-bottom: 0.5px solid rgb(50,50,50) !important; /* same bottom border as team cards */
+    border-bottom: 0.5px solid rgb(50, 50, 50) !important; /* same bottom border as team cards */
   }
 
   .sidebar-content {
@@ -889,13 +906,11 @@
     display: none !important;
   }
 
-
-
   .team-card {
     padding: 20px 15px !important;
     min-height: 320px !important;
     background: transparent !important; /* Make transparent so background glow shows through */
-    border-bottom: 0.5px solid rgb(50,50,50) !important;
+    border-bottom: 0.5px solid rgb(50, 50, 50) !important;
   }
 
   .team-image {

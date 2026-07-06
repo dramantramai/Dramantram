@@ -176,6 +176,10 @@
     ); /* Made image smaller from min(520px, 90%) to min(300px, 70%) */
   }
 
+  .cw-head{
+    padding-left: 10px;
+  }
+
   .cw-tabs {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -186,10 +190,14 @@
 
   .cw-tab {
     font-size: clamp(11px, 3.5vw, 13px) !important;
-    padding: 0 !important;
+    padding: 0 0 0 10px !important;
     text-align: left;
     white-space: normal !important;
     display: flex !important;
+  }
+
+  .cw-body-container{
+    padding-left: 10px;
   }
 
   .cw-tab-inner {

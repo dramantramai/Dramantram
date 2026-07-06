@@ -2087,13 +2087,13 @@
   color: white;
 }
 
-.container-fluid {
+.testimonial-section .container-fluid {
   padding: 0;
 
   max-width: 100%;
 }
 
-.row {
+.testimonial-section .row {
   margin: 0;
 }
 
