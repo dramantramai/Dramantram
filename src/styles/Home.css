@@ -2747,21 +2747,21 @@
 
 @media (max-width: 768px) {
   /* Hide line breaks on mobile except home section headings */
-  br {
+  .home-page-wrapper br {
     display: none;
   }
 
-  .home-portfolio .portfolio-title br,
-  .home-clients .intro-title br,
-  .home-clients .cta-head br,
-  .specialization-sec .svc-title br,
-  .testimonial-section .main-heading br {
+  .home-page-wrapper .home-portfolio .portfolio-title br,
+  .home-page-wrapper .home-clients .intro-title br,
+  .home-page-wrapper .home-clients .cta-head br,
+  .home-page-wrapper .specialization-sec .svc-title br,
+  .home-page-wrapper .testimonial-section .main-heading br {
     display: inline !important;
   }
 
   /* Reduce vertical spacing */
 
-  section {
+  .home-page-wrapper section {
     padding-top: 30px;
 
     padding-bottom: 30px;
@@ -2771,7 +2771,7 @@
 @media (max-width: 480px) {
   /* Compact spacing for small phones */
 
-  section {
+  .home-page-wrapper section {
     padding-top: 20px;
 
     padding-bottom: 20px;
