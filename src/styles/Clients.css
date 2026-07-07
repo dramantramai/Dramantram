@@ -341,3 +341,28 @@
     }
   }
 }
+
+/* Tablet overrides for the brand logo slider on homepage */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .home-clients .brand-slider-track {
+    grid-auto-rows: 100px !important;
+  }
+
+  .home-clients .brand-slider-cell {
+    height: 100px !important;
+  }
+
+  .home-clients .brand-slider-logo {
+    max-height: 52px !important;
+    max-width: 110px !important;
+  }
+
+  @keyframes brand-scroll-up {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(calc(-1 * var(--brand-row-count, 8) * 100px));
+    }
+  }
+}
