@@ -47,7 +47,7 @@ export async function PUT(request, { params }) {
 
     const service = formData.get("service");
     if (service) {
-      const ALLOWED_SERVICES = ["Branding", "Animated Videos", "Live Action", "UI/UX", "Experiential Lab"];
+      const ALLOWED_SERVICES = ["Branding", "Animated Videos", "Live Action", "Web & App Development", "Experiential Lab"];
       if (!ALLOWED_SERVICES.includes(service)) {
         return NextResponse.json(
           { success: false, message: `Invalid service classification: ${service}` },

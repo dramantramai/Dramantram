@@ -168,8 +168,8 @@ const LightHeader = () => {
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" href="/services/ui-ux">
-                            <span className="dropdown-item-label">UI/UX</span>
+                          <Link className="dropdown-item" href="/services/web-app-development">
+                            <span className="dropdown-item-label">Web & App Development</span>
                           </Link>
                         </li>
                         <li>
@@ -254,8 +254,8 @@ const LightHeader = () => {
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link-light nav-link" href="/services/ui-ux" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
-                        UI/UX
+                      <Link className="nav-link-light nav-link" href="/services/web-app-development" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
+                        Web & App Development
                       </Link>
                     </li>
                     <li className="nav-item">

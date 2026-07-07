@@ -367,7 +367,7 @@ const UpdateCaseStudy = () => {
                   <option value="Branding">Branding</option>
                   <option value="Animated Videos">Animated Videos</option>
                   <option value="Live Action">Live Action</option>
-                  <option value="UI/UX">UI/UX</option>
+                  <option value="Web & App Development">Web & App Development</option>
                   <option value="Experiential Lab">Experiential Lab</option>
                 </select>
               </div>

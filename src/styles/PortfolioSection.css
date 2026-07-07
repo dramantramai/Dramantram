@@ -309,8 +309,8 @@
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
-@media (min-width: 768px) {
-  .col-md-12 {
+@media (min-width: 992px) {
+  .col-lg-12 {
     flex: 0 0 auto;
     width: auto !important;
   }
@@ -442,7 +442,7 @@
 }
 
 /* Small Tablet (576px - 767px) */
-@media (max-width: 767px) {
+@media (max-width: 991.98px) {
   .portfolio-section {
     padding-top: 40px !important;
     padding-bottom: 15px !important;
@@ -715,7 +715,7 @@
   --bs-gutter-y: 1.5rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991.98px) {
   .portfolio-section .row {
     --bs-gutter-x: 1rem;
     --bs-gutter-y: 1rem;
@@ -882,7 +882,7 @@
   z-index: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
   .portfolio {
     padding: 30px 15px;
   }
@@ -996,7 +996,7 @@
   display: none;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .portfolio:has(.home-portfolio) {
     padding-left: 0 !important;
     padding-right: 0 !important;

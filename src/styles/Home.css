@@ -69,7 +69,7 @@
   position: static;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .intro-section .main-content .right-side {
     position: relative;
     z-index: 2;
@@ -87,14 +87,8 @@
   object-fit: cover;
 }
 
-/* Tablet (Portrait & Landscape) */
-@media (min-width: 601px) and (max-width: 991px) {
-  /* Commented out to keep video full width and height on tablet */
-  /* .spline-container {
-    transform: scale(0.9);
-    transform-origin: center;
-  } */
-
+/* Tablet (Portrait & Landscape) - disabled to keep mobile layout below 992px */
+/* @media (min-width: 601px) and (max-width: 991px) {
   .main-content {
     flex-direction: column;
     justify-content: center;
@@ -107,7 +101,7 @@
     width: 100%;
     align-items: center;
   }
-}
+} */
 
 /* .intro-section::after {
 
@@ -387,7 +381,7 @@
 }
 
 /* Mobile only — 50vh hero, background left grid / text right grid */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .intro-section {
     position: relative;
     z-index: 11;
@@ -543,7 +537,7 @@
   padding: 0px 0px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
   .clients:has(.home-clients) {
     padding: 0 !important;
   }
@@ -769,7 +763,7 @@
 }
 
 /* ===== SERVICES BAND — MOBILE TWO-GRID (title | copy + metrics) ===== */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .specialization-sec .svc-band {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -1216,7 +1210,7 @@
 }
 
 /* ===== SPECIALIZATION — MOBILE TWO-GRID (heading + list | bullets) ===== */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .specialization-sec {
     position: relative !important;
     z-index: 12 !important;
@@ -1369,9 +1363,12 @@
 
   .cap-right .content-wrapper {
     padding: 10px 8px 14px 0 !important;
-    justify-content: flex-start !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
     align-items: flex-start !important;
     min-height: 100%;
+    height: 100% !important;
   }
 
   .specialization-sec .cap-copy {
@@ -1386,6 +1383,9 @@
     gap: 10px; /* Increased from 6px */
     line-height: 1.28;
     list-style-position: outside;
+    min-height: calc(
+      9 * 1.3 * clamp(0.55rem, 3.8vw, 0.75rem) + 65px
+    ) !important;
   }
 
   .specialization-sec .cap-bullets li {
@@ -1949,7 +1949,7 @@
 }
 
 /* ===== AGENCY INTRO — MOBILE TWO-GRID (intro | metrics), hide ai-stack ===== */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .ai-sticky-container {
     height: auto !important;
     background-color: #ffffff !important;
@@ -2431,7 +2431,7 @@
 }
 
 /* ===== TESTIMONIALS — MOBILE TWO-GRID + AUTO-SLIDE ===== */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .testimonial-section {
     min-height: unset;
     padding: 0 !important;
@@ -2620,7 +2620,9 @@
     padding: 0;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.28);
-    transition: background 0.25s ease, transform 0.25s ease;
+    transition:
+      background 0.25s ease,
+      transform 0.25s ease;
     flex-shrink: 0;
   }
 
@@ -2681,7 +2683,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
   .left-section {
     padding: 20px 0px !important;
   }
@@ -2744,7 +2746,7 @@
 }
 
 /* Testimonial mobile — keep left column off the grid line */
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .testimonial-section .left-section {
     padding: 24px 10px 16px 18px !important;
   }
@@ -2766,7 +2768,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
   /* Hide line breaks on mobile except home section headings */
   .home-page-wrapper br {
     display: none;

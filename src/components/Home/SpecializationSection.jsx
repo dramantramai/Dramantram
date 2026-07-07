@@ -119,7 +119,7 @@ const servicesData = [
   },
   {
     id: 3,
-    menuTitle: "UI/UX",
+    menuTitle: "Web & App Development",
     image: "Ui_UX.avif",
     heading: (
       <>
@@ -140,7 +140,7 @@ const servicesData = [
       "Dashboard Interfaces",
       "User Testing",
     ],
-    link: "/services/ui-ux",
+    link: "/services/web-app-development",
   },
   {
     id: 4,

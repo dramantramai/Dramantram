@@ -109,7 +109,7 @@ const AgencyIntroSection = () => {
 
                 <div className="ai-metric">
                   <div className="num russo-one-regular-plain fs-h3">200+</div>
-                  <div className="lbl">UI/UX Design</div>
+                  <div className="lbl">Web & App Development</div>
                 </div>
 
                 <div className="ai-metric">

@@ -55,7 +55,7 @@ export async function POST(request) {
         { error: "Service classification is required" },
         { status: 400 }
       );
-    const ALLOWED_SERVICES = ["Branding", "Animated Videos", "Live Action", "UI/UX", "Experiential Lab"];
+    const ALLOWED_SERVICES = ["Branding", "Animated Videos", "Live Action", "Web & App Development", "Experiential Lab"];
     if (!ALLOWED_SERVICES.includes(service)) {
       return NextResponse.json(
         { error: `Invalid service classification. Must be one of: ${ALLOWED_SERVICES.join(", ")}` },

@@ -47,7 +47,7 @@ const SERVICE_OPTIONS = [
   "Branding",
   "Animation",
   "Live Action",
-  "UI/UX",
+  "Web & App Development",
   "Others",
 ];
 
@@ -147,7 +147,7 @@ const Footer = () => {
         {/* ADDED class 'footer-row-grid' here. This ensures lines move WITH the columns. */}
         <div className="row align-items-start footer-row-grid">
           {/* Left Column */}
-          <div className="col-md-3 footer-col footer-col--intro">
+          <div className="col-lg-3 col-12 footer-col footer-col--intro">
             <div className="content-wrapper footer-left-wrap">
               <h2 className="have-a-project-text russo-one-regular">HAVE A PROJECT IN MIND?</h2>
               <img src={logo} alt="Mask Logo" className="footer-logo" />
@@ -156,7 +156,7 @@ const Footer = () => {
           </div>
 
           {/* Middle Column: Form */}
-          <div className="col-md-3 footer-col footer-col--form">
+          <div className="col-lg-3 col-12 footer-col footer-col--form">
             <div className="content-wrapper">
               <form className="form-contact" onSubmit={handleSubmit}>
                 <div className="mb-3">
@@ -230,7 +230,7 @@ const Footer = () => {
 
           <div className="footer-options-row">
           {/* Services Column */}
-          <div className="col-md-3 checkbox-column footer-col footer-col--services">
+          <div className="col-lg-3 col-12 checkbox-column footer-col footer-col--services">
             <div className="content-wrapper footer-options-wrap">
               <h4 className="footer-options-head footer-options-head--desktop inter-bold">
                 What Services Do <br />
@@ -287,7 +287,7 @@ const Footer = () => {
           </div>
 
           {/* Duration Column */}
-          <div className="col-md-3 checkbox-column footer-col footer-col--duration">
+          <div className="col-lg-3 col-12 checkbox-column footer-col footer-col--duration">
             <div className="content-wrapper footer-options-wrap">
               <h4 className="footer-options-head footer-options-head--desktop inter-bold">
                 When Do You Need <br />

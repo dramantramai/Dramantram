@@ -193,7 +193,7 @@
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .right-rail {
     display: none;
   }
@@ -415,7 +415,7 @@
   display: none;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .portfolio-page-hero {
     padding-top: 100px !important;
   }

@@ -349,7 +349,7 @@
   display: block;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .footer-section {
     padding: 0 !important;
     background-color: #000 !important;
@@ -530,7 +530,7 @@
   }
 
   .footer-options-select--mobile .form-label {
-    font-size: clamp(0.7rem, 4vw, 1.85rem) !important;
+    font-size: clamp(0.7rem, 4vw, 1.25rem) !important;
     line-height: 1.2 !important;
     margin-bottom: 2px !important;
     color: #ffffff !important;
@@ -598,7 +598,7 @@
 }
 
 /* Align columns to the lines on desktop */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .footer-section {
     padding: 0 !important;
   }
@@ -646,7 +646,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .footer-col .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -667,7 +667,7 @@
   transition: none !important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991.98px) {
   .auto-grow-textarea {
     min-height: 24px !important;
   }

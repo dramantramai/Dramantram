@@ -39,33 +39,33 @@ const DURATION_OPTIONS = [
 ];
 
 const SERVICE_OPTIONS = [
-  "Brand Identity & Design",
-  "Creating Logo",
-  "Branding Strategy",
-  "Booklet design",
-  "Defining Brand Style Guide",
-  "Social Media Branding",
-  "Re-Branding",
-  "Stationery Design",
-  "Catalogues & Brochure Design",
-  "Packaging Design",
-  "Explainer Animated Video",
-  "Ad Film",
-  "Sales & Marketing Video",
-  "Demo Video",
-  "e-Learning Video",
-  "Animated Graphic/GIF",
-  "Corporate Videos",
-  "Testimonials",
-  "Event Video",
-  "Website Design",
-  "Web Development",
-  "App Design",
-  "Game Development",
-  "Interactive Screens (Touch, Gesture, Motion)",
-  "Anamorphic",
-  "AR/VR",
-  'Production & Post Production'
+  "Brand Identity & Design", // - Branding
+  "Creating Logo", // - Branding
+  "Branding Strategy", // - Branding
+  "Booklet design", // - Branding
+  "Defining Brand Style Guide", // - Branding
+  "Social Media Branding", // - Branding
+  "Re-Branding", // - Branding
+  "Stationery Design", // - Branding
+  "Catalogues & Brochure Design", // - Branding
+  "Packaging Design", // - Branding
+  "Explainer Animated Video", // - Animation
+  "Ad Film", // - Live Action
+  "Sales & Marketing Video", // - Animation
+  "Demo Video", // - Animation
+  "e-Learning Video", // - Animation
+  "Animated Graphic/GIF", // - Animation
+  "Corporate Videos", // - Live Action
+  "Testimonials", // - Live Action
+  "Event Video", // - Live Action
+  "Website Design", // - Web & App Development
+  "Web Development", // - Web & App Development
+  "App Design", // - Web & App Development
+  "Game Development", // - Experiential Lab
+  "Interactive Screens (Touch, Gesture, Motion)", // - Experiential Lab
+  "Anamorphic", // - Experiential Lab
+  "AR/VR", // - Experiential Lab
+  'Production & Post Production' // - Live Action
 ];
 
 const COMPLEXITY_OPTIONS = ["High", "Medium", "Low"];
@@ -422,10 +422,10 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
       {showFilters && !isHomePage && (
         <div
           ref={filterRowRef}
-          className="row g-0 p-0 filter-row col-md-12"
+          className="row g-0 p-0 filter-row col-lg-12"
         >
           {filterConfigs.map(({ key, label, options }) => (
-            <div key={key} className="col-6 col-md-3 position-relative">
+            <div key={key} className="col-6 col-lg-3 position-relative">
               <button
                 className={`filter-pill ${activeDropdown === key ? "active" : ""}`}
                 onClick={() => toggleDropdown(key)}
@@ -487,7 +487,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
             <div className={`row g-0 ${isCarouselView ? "home-desktop-grid" : ""}`}>
               {loading && !isHomePage ? (
                 Array.from({ length: 6 }).map((_, index) => (
-                  <div key={index} className="col-md-6 col-lg-4">
+                  <div key={index} className="col-lg-4 col-12">
                     <div className="portfolio-card-wrapper">
                       <div className="portfolio-item">
                         <div className="portfolio-skeleton" />
@@ -497,7 +497,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                 ))
               ) : !loading && displayedCaseStudies.length > 0 ? (
                 displayedCaseStudies.map((item) => (
-                  <div key={item._id} className={`col-md-6 col-lg-4 ${animationClass}`}>
+                  <div key={item._id} className={`col-lg-4 col-12 ${animationClass}`}>
                     <div className="portfolio-card-wrapper">
                       <Link href={`/case-study/${item.slug}`}>
                         <PortfolioItem

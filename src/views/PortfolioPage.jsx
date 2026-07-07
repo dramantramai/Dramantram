@@ -35,16 +35,16 @@ const PortfolioPage = () => {
           <div className="bg-grad" />
           <div className="container-fluid upper-container">
             {/* TOP GRID */}
-            <div className="row g-0 hero-grid col-md-12 ">
+            <div className="row g-0 hero-grid col-lg-12 ">
               {/* Col 1 */}
-              <div className="col-12 col-md-3 portfolio-panel portfolio-panel--left">
+              <div className="col-12 col-lg-3 portfolio-panel portfolio-panel--left">
                 <div className="portfolio-panel-inner">
                   <h2 className="logo-word russo-one-regular">PORTFOLIO</h2>
                 </div>
               </div>
 
               {/* Col 2 */}
-              <div className="col-12 col-md-3 portfolio-panel">
+              <div className="col-12 col-lg-3 portfolio-panel">
                 <div className="portfolio-panel-inner">
                   <h4 className="hero-title">
                     A locally set up
@@ -55,7 +55,7 @@ const PortfolioPage = () => {
               </div>
 
               {/* Col 3 */}
-              <div className="col-12 col-md-3 portfolio-panel">
+              <div className="col-12 col-lg-3 portfolio-panel">
                 <div className="portfolio-panel-inner">
                   <p className="body-copy">
                     Our secret is not our services but our approach towards them.
@@ -67,7 +67,7 @@ const PortfolioPage = () => {
               </div>
 
               {/* Col 4 (dark taper) */}
-              <div className="col-12 col-md-3 portfolio-panel portfolio-panel--right">
+              <div className="col-12 col-lg-3 portfolio-panel portfolio-panel--right">
                 <div className="portfolio-panel-inner">
                   <GlitchButton
                     to="/contact"

@@ -206,9 +206,9 @@ const PortfolioFilters = () => {
   const row2Data = caseStudies.slice(3);
 
   return (
-    <div className="row g-0 p-0 filter-row col-md-12">
+    <div className="row g-0 p-0 filter-row col-lg-12">
       {/* SERVICE FILTER */}
-      <div className="col-6 col-md-3 position-relative">
+      <div className="col-6 col-lg-3 position-relative">
         <button
           className={`filter-pill ${
             activeDropdown === "service" ? "active" : ""
@@ -224,7 +224,7 @@ const PortfolioFilters = () => {
       </div>
 
       {/* COMPLEXITY FILTER */}
-      <div className="col-6 col-md-3 position-relative">
+      <div className="col-6 col-lg-3 position-relative">
         <button
           className={`filter-pill ${
             activeDropdown === "complexity" ? "active" : ""
@@ -239,7 +239,7 @@ const PortfolioFilters = () => {
       </div>
 
       {/* INDUSTRY FILTER */}
-      <div className="col-6 col-md-3 position-relative">
+      <div className="col-6 col-lg-3 position-relative">
         <button
           className={`filter-pill ${
             activeDropdown === "industry" ? "active" : ""
@@ -254,7 +254,7 @@ const PortfolioFilters = () => {
       </div>
 
       {/* DURATION FILTER */}
-      <div className="col-6 col-md-3 position-relative">
+      <div className="col-6 col-lg-3 position-relative">
         <button
           className={`filter-pill ${
             activeDropdown === "duration" ? "active" : ""

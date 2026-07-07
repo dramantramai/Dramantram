@@ -174,7 +174,7 @@ const About = () => {
               <div className="col-lg-9">
                 <div className="row g-0">
                   {teamMembers.map((member, index) => (
-                    <div key={index} className="col-md-6 col-lg-4">
+                    <div key={index} className="col-lg-4 col-12">
                       <div className="team-card">
                         <div className="team-image-wrapper">
                           <img

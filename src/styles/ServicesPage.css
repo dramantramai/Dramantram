@@ -535,8 +535,8 @@
   }
 }
 
-/* Mobile (max-width: 767px) */
-@media (max-width: 767px) {
+/* Mobile (max-width: 991.98px) */
+@media (max-width: 991.98px) {
   .brand-wrap {
     padding-top: 20px;
   }
@@ -673,7 +673,7 @@
 }
 
 /* Landscape mobile adjustments */
-@media (max-width: 767px) and (orientation: landscape) {
+@media (max-width: 991.98px) and (orientation: landscape) {
   .brand-col {
     padding-top: 15px;
     margin-bottom: 15px;

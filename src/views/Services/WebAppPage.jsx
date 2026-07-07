@@ -60,7 +60,7 @@ const UIUXPage = () => {
 
                 {/* RIGHT COPY */}
                 <div className="col-lg-6 px-4 px-lg-5 brand-col mid-copy d-flex flex-column justify-content-center">
-                  <small className="pill mb-2 fs-h4">UI-UX</small>
+                  <small className="pill mb-2 fs-h4">Web & App Development</small>
                   <h2 className="hero mb-4 russo-one-regular">
                     WITH GREAT DESIGN LANGUAGE
                     <br />
@@ -84,7 +84,7 @@ const UIUXPage = () => {
             {/* Mobile Layout */}
             <div className="d-block d-lg-none w-100">
               <ServiceHeroMobile
-                pill="UI-UX"
+                pill="Web & App Development"
                 heroTitle={
                   <>
                     WITH GREAT DESIGN LANGUAGE COMES GREAT BRAND RECALL
@@ -161,7 +161,7 @@ const UIUXPage = () => {
 
         {/* Portfolio Section */}
         <section className="portfolio">
-          <PortfolioSection baseService="UI/UX" />
+          <PortfolioSection baseService="Web & App Development" />
         </section>
 
         {/* Dimaag Kharab Section */}
