@@ -369,7 +369,7 @@ body {
     align-items: flex-start !important;
     gap: 24px;
     margin: 0 !important;
-    padding: 0 8% !important;
+    padding: 0 4% !important;
     width: 100%;
     box-sizing: border-box !important;
   }
@@ -390,6 +390,7 @@ body {
     width: 100%;
     color: #ffffff !important;
     border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
     background: transparent;
     text-align: left;
     margin-left: 0 !important;
@@ -411,9 +412,9 @@ body {
   }
 
   .chevron-icon {
-    width: 18px;
-    height: 18px;
-    color: rgba(255, 255, 255, 0.6);
+    width: 20px;
+    height: 20px;
+    color: #FFD200 !important;
   }
 
   /* Back Button styling */
@@ -427,7 +428,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 8% 24px 8% !important;
+    padding: 12px 4% 24px 4% !important;
     cursor: pointer;
     width: 100%;
     text-transform: uppercase;
@@ -461,6 +462,7 @@ body {
     color: rgba(255, 255, 255, 0.8) !important;
     padding: 8px 0 !important;
     font-family: 'Inter', sans-serif !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
   }
 
   .mobile-sub-nav .nav-link:hover {

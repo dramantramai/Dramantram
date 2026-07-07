@@ -208,16 +208,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, isHomePage, baseService]);
 
-  const scrollToFilterRow = () => {
-    const el = filterRowRef.current;
-    if (!el) return;
 
-    const portfolioSection = el.closest("section.portfolio") ?? el;
-    const top =
-      portfolioSection.getBoundingClientRect().top + window.pageYOffset;
-
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-  };
 
   useEffect(() => {
     if (!activeDropdown) return;
@@ -239,10 +230,6 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
   const toggleDropdown = (name) => {
     const isOpening = activeDropdown !== name;
     setActiveDropdown(isOpening ? name : null);
-
-    if (isOpening) {
-      scrollToFilterRow();
-    }
   };
 
   // Select Option Handler

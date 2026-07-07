@@ -385,8 +385,27 @@
     font-size: clamp(1rem, 3vw, 2.2rem) !important;
   }
 
+  .browse-filters-col {
+    padding: 10px clamp(10px, 3vw, 24px) 24px !important;
+  }
+
   .categories-filter-bar {
-    display: none;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .filter-btn {
+    font-size: clamp(0.6rem, 2.5vw, 0.8rem) !important;
+    padding: 6px 4px !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.2 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 32px !important;
   }
   
   .clients-browse-grid {
