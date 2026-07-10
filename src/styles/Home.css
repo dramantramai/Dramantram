@@ -1239,7 +1239,7 @@
 
   .cap-mobile-heading {
     margin: 0;
-    padding: 0;
+    padding: 0 12px;
     font-size: clamp(1.2rem, 5vw, 1.55rem);
     line-height: 1.2;
     color: #ffffff;
@@ -1253,7 +1253,7 @@
   .cap-mobile-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 12px;
     width: 100%;
   }
 
@@ -1264,17 +1264,24 @@
     justify-content: space-between;
     width: 100%;
     box-sizing: border-box;
-    padding: 12px 0;
+    padding: 8px 0 8px 12px;
     cursor: pointer;
     color: #8e8e8e;
     font-size: clamp(0.72rem, 3vw, 0.85rem);
     line-height: 1.3;
     text-align: left;
-    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
+    border-left: 1.5px solid #fbff00;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .cap-mobile-list-item:hover {
+    color: #bdbdbd;
+    border-color: #fbff00;
   }
 
   .cap-mobile-list-item:active {
     color: #f6d400;
+    border-color: #ffffff;
   }
 
   .cap-wrap .container-fluid {
@@ -1345,7 +1352,7 @@
   }
 
   .cap-mid .content-wrapper {
-    padding: 10px 12px 14px 12px !important;
+    padding: 10px 0 14px 0 !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
     min-height: 100%;
