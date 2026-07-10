@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 
-const testimonialImageUrl = (id) =>
-  `/api/v1/management/testimonial/${id}/image`;
+const testimonialImageUrl = (id, updatedAt) =>
+  `/api/v1/management/testimonial/${id}/image${updatedAt ? `?t=${new Date(updatedAt).getTime()}` : ""}`;
 
 const MOBILE_SLIDE_MS = 500;
 
@@ -15,14 +15,14 @@ const TestimonialCard = ({
   <div className={`${colClass} testimonial-card ${className}`.trim()}>
     <div className="card-content">
       <h3 className="card-name fw-semibold raleway-semibold">
-        {testimonial.firstName} {testimonial.lastName}
+        {testimonial.firstName} <br /> {testimonial.lastName}
       </h3>
       <p className="card-role">{testimonial.post}</p>
       <p className="card-company">{testimonial.company}</p>
       <div className="card-image-wrapper">
         <div className="card-image">
           <img
-            src={testimonialImageUrl(testimonial._id)}
+            src={testimonialImageUrl(testimonial._id, testimonial.updatedAt)}
             alt={`${testimonial.firstName} ${testimonial.lastName}`}
             loading={eagerImage ? "eager" : "lazy"}
             fetchPriority={eagerImage ? "high" : "auto"}
@@ -49,10 +49,10 @@ const TestimonialsSection = () => {
   const mobileTransitionTimer = useRef(null);
   const touchStartX = useRef(null);
 
-  const preloadTestimonialImage = useCallback((id) => {
+  const preloadTestimonialImage = useCallback((id, updatedAt) => {
     if (!id) return;
     const img = new Image();
-    img.src = testimonialImageUrl(id);
+    img.src = testimonialImageUrl(id, updatedAt);
   }, []);
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const TestimonialsSection = () => {
 
   useEffect(() => {
     if (testimonials.length === 0) return;
-    testimonials.forEach((t) => preloadTestimonialImage(t._id));
+    testimonials.forEach((t) => preloadTestimonialImage(t._id, t.updatedAt));
   }, [testimonials, preloadTestimonialImage]);
 
   const isMobileViewport = () =>

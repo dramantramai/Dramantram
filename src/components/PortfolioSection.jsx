@@ -622,7 +622,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                     <div className="portfolio-card-wrapper">
                       <Link href={`/case-study/${item.slug}`}>
                         <PortfolioItem
-                          imageSrc={item.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`}
+                          imageSrc={item.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}?t=${new Date(item.updatedAt).getTime()}`}
                           title={item.case_study_name}
                           slug={item.slug}
                         />
@@ -669,7 +669,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                               <PortfolioItem
                                 imageSrc={
                                   item.thumbnailDataUri ||
-                                  `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}`
+                                  `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}?t=${new Date(item.updatedAt).getTime()}`
                                 }
                                 title={item.case_study_name}
                                 slug={item.slug}

@@ -35,7 +35,7 @@ const CaseStudyList = ({ caseStudies, loading, onDelete, onAddClick, router }) =
                 <tr key={cs._id}>
                   <td>
                     <img
-                      src={cs.thumbnailDataUri || `/api/v1/management/get-thumbnail-image/${cs._id}`}
+                      src={cs.thumbnailDataUri || `/api/v1/management/get-thumbnail-image/${cs._id}?t=${new Date(cs.updatedAt).getTime()}`}
                       alt={cs.case_study_name}
                       className="management-table-img"
                       onError={(e) => {
