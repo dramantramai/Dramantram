@@ -678,7 +678,7 @@
     padding-left: 15px !important;
     max-width: 100% !important;
     width: fit-content !important;
-    font-size: 12px !important;
+    font-size: clamp(0.7rem, 2.7vw, 1rem) !important;
   }
 
   .discussion-container .discussion-left p:nth-of-type(1) {
