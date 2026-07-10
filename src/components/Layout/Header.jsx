@@ -132,7 +132,7 @@ const Header = () => {
             <div className={`mobile-menu-slider ${activeSubMenu ? "slide-sub" : ""}`}>
               {/* Main Pane */}
               <div className="mobile-menu-pane main-pane">
-                <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+                <ul className="navbar-nav mb-2 mb-lg-0">
                   {/* SERVICES DROPDOWN (Desktop only) */}
                   <li
                     className="nav-item dropdown d-none d-lg-block"
@@ -166,8 +166,8 @@ const Header = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" href="/services/ui-ux">
-                          <span className="dropdown-item-label">UI/UX</span>
+                        <Link className="dropdown-item" href="/services/web-app-development">
+                          <span className="dropdown-item-label">Web & App Development</span>
                         </Link>
                       </li>
                       <li>
@@ -197,6 +197,11 @@ const Header = () => {
                   <li className="nav-item">
                     <Link className="nav-link" href="/portfolio" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
                       Portfolio
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" href="/clients" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
+                      Clients
                     </Link>
                   </li>
                   <li className="nav-item">
@@ -238,8 +243,8 @@ const Header = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" href="/services/ui-ux" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
-                      UI/UX
+                    <Link className="nav-link" href="/services/web-app-development" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
+                      Web & App Development
                     </Link>
                   </li>
                   <li className="nav-item">

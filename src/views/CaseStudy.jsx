@@ -142,6 +142,16 @@ const CaseStudy = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [relatedCaseStudies, setRelatedCaseStudies] = useState([]);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 362);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const apiUrl = "";
 
@@ -270,7 +280,7 @@ const CaseStudy = () => {
             {/* Top row skeleton */}
             <div className="row g-0 cs-header">
               {/* Left col */}
-              <div className="col-12 col-md-3 cs-col cs-col-left">
+              <div className="col-12 col-lg-3 cs-col cs-col-left">
                 <div className="cs-pad">
                   <div className="cs-skeleton-shimmer cs-skeleton-title" />
                   <div className="cs-skeleton-shimmer cs-skeleton-thumbnail" />
@@ -278,7 +288,7 @@ const CaseStudy = () => {
               </div>
 
               {/* Middle col */}
-              <div className="col-12 col-md-3 cs-col">
+              <div className="col-12 col-lg-3 cs-col">
                 <div className="cs-pad">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <div key={i} className="mb-4">
@@ -290,7 +300,7 @@ const CaseStudy = () => {
               </div>
 
               {/* Right col */}
-              <div className="col-12 col-md-6 cs-col cs-col-right">
+              <div className="col-12 col-lg-6 cs-col cs-col-right">
                 <div className="cs-pad">
                   <div className="cs-skeleton-shimmer cs-skeleton-problem-title" />
                   <div className="cs-skeleton-shimmer cs-skeleton-pill" />
@@ -305,7 +315,7 @@ const CaseStudy = () => {
             {/* Bottom row skeleton */}
             <div className="row g-0 cs-content-row">
               {/* Left media */}
-              <div className="col-12 col-md-9 p-0">
+              <div className="col-12 col-lg-9 p-0">
                 <div className="cs-media-stream cs-pad">
                   <div className="cs-skeleton-shimmer cs-skeleton-media" />
                   <div className="cs-skeleton-shimmer cs-skeleton-media" />
@@ -313,7 +323,7 @@ const CaseStudy = () => {
               </div>
 
               {/* Right solution */}
-              <div className="col-12 col-md-3 cs-solution-col">
+              <div className="col-12 col-lg-3 cs-solution-col">
                 <div className="cs-pad w-100">
                   <div className="cs-skeleton-shimmer cs-skeleton-solution-title" />
                   <div className="cs-skeleton-text-line cs-skeleton-shimmer" />
@@ -372,14 +382,14 @@ const CaseStudy = () => {
           {/* --- PAGINATION ROW --- */}
           <div className="row g-0 cs-pagination-row">
             {/* Col 1: Heading */}
-            <div className="col-12 col-md-3 cs-col cs-col-left cs-pagination-heading-col">
+            <div className="col-12 col-lg-3 cs-col cs-col-left cs-pagination-heading-col">
               <div className="cs-pad">
                 <h3 className="cs-title-top">{cs.case_study_name}</h3>
               </div>
             </div>
 
             {/* Col 2: Prev Button */}
-            <div className="col-12 col-md-3 cs-col cs-prev-col cs-pagination-btn-col">
+            <div className="col-12 col-lg-3 cs-col cs-prev-col cs-pagination-btn-col">
               <div className="cs-pad d-flex align-items-center justify-content-center h-100">
                 <div
                   onClick={hasRelated ? handlePrev : undefined}
@@ -396,7 +406,9 @@ const CaseStudy = () => {
                     </svg>
                   </button>
                   <div className="d-flex flex-column text-start">
-                    <span className="cs-nav-label">Previous Project</span>
+                    <span className="cs-nav-label">
+                      {isSmallScreen ? "Prev Project" : "Previous Project"}
+                    </span>
                     <span className="cs-nav-name">{prevProjectName}</span>
                   </div>
                 </div>
@@ -404,7 +416,7 @@ const CaseStudy = () => {
             </div>
 
             {/* Col 3: Counter */}
-            <div className="col-12 col-md-3 cs-col cs-pagination-counter-col">
+            <div className="col-12 col-lg-3 cs-col cs-pagination-counter-col">
               <div className="cs-pad d-flex align-items-center justify-content-center h-100">
                 <div className="cs-counter-block d-flex flex-column align-items-center justify-content-center">
                   <div className="cs-counter-numbers">
@@ -424,7 +436,7 @@ const CaseStudy = () => {
             </div>
 
             {/* Col 4: Next Button */}
-            <div className="col-12 col-md-3 cs-col cs-col-right cs-next-col cs-pagination-btn-col">
+            <div className="col-12 col-lg-3 cs-col cs-col-right cs-next-col cs-pagination-btn-col">
               <div className="cs-pad d-flex align-items-center justify-content-center h-100">
                 <div
                   onClick={hasRelated ? handleNext : undefined}
@@ -452,7 +464,7 @@ const CaseStudy = () => {
           {/* --- TOP ROW: Header info --- */}
           <div className="row g-0 cs-header">
             {/* Col 1: Thumbnail Card Only (Heading moved to Pagination Row) */}
-            <div className="col-12 col-md-3 cs-col cs-col-left">
+            <div className="col-12 col-lg-3 cs-col cs-col-left">
               <div className="cs-pad">
                 <ThumbnailEmbed
                   src={thumbnailSrc}
@@ -463,7 +475,7 @@ const CaseStudy = () => {
             </div>
 
             {/* Col 2: Meta list */}
-            <div className="col-12 col-md-3 cs-col">
+            <div className="col-12 col-lg-3 cs-col">
               <div className="cs-pad">
                 <MetaRow label="Client" value={cs.client} />
                 <MetaRow label="Services" value={cs.services} />
@@ -474,7 +486,7 @@ const CaseStudy = () => {
             </div>
 
             {/* Col 3: Problem statement */}
-            <div className="col-12 col-md-6 cs-col cs-col-right">
+            <div className="col-12 col-lg-6 cs-col cs-col-right">
               <div className="cs-pad">
                 <h3 className="cs-description-title">
                   {cs.case_study_description ||
@@ -513,7 +525,7 @@ const CaseStudy = () => {
           {/* --- BOTTOM ROW: Media Sequence (Left) + Solution (Right) --- */}
           <div className="row g-0 cs-content-row">
             {/* LEFT: MEDIA SEQUENCE (Col 9) */}
-            <div className="col-12 col-md-9 p-0">
+            <div className="col-12 col-lg-9 p-0">
               <div className="cs-media-stream">
                 {/* 1. Video 1 */}
                 {cs.video_link_1 && <VideoEmbed src={cs.video_link_1} />}
@@ -539,7 +551,7 @@ const CaseStudy = () => {
             </div>
 
             {/* RIGHT: SOLUTION TEXT (Col 3) — natural height, flows with page */}
-            <div className="col-12 col-md-3 cs-solution-col">
+            <div className="col-12 col-lg-3 cs-solution-col">
               <div className="cs-pad">
                 <h3 className="cs-h3">Our Solution</h3>
                 <div className="cs-body">

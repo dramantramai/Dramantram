@@ -221,7 +221,7 @@ const TestimonialsSection = () => {
     >
       <div className="container-fluid">
         <div className="row g-0">
-          <div className="col-lg-3 col-md-6 col-12 left-section">
+          <div className="col-lg-3 col-12 left-section">
             <div className="content-wrapper">
               <h2 className="main-heading russo-one-regular">
                 THE CENTRE
@@ -245,7 +245,7 @@ const TestimonialsSection = () => {
               <TestimonialCard
                 key={testimonial._id || index}
                 testimonial={testimonial}
-                colClass="col-lg-3 col-md-6 col-12"
+                colClass="col-lg-3 col-12"
                 className={animationClass}
               />
             ))}

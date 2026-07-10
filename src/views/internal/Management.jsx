@@ -22,20 +22,29 @@ const INDUSTRY_OPTIONS = [
   "Edtech",
   "Hospitality",
   "Consulting",
-  "Tech",
+  "Technology",
   "NGO",
   "School",
   "Service",
   "Product",
+  'Luxury Jewellery',
+  'Healthcare',
+  'Food & Agriculture',
+  'Real Estate',
+  'Data Security',
+  'LogisticsTech',
+  'Manufacturing & Printing',
 ];
 
 const DURATION_OPTIONS = [
+  'Under 1 month',
   "1 month",
   "2 months",
   "3 months",
   "4 months",
   "5 months",
   "6 months or more",
+  'Monthly Retainer'
 ];
 
 const SERVICE_OPTIONS = [
@@ -59,12 +68,13 @@ const SERVICE_OPTIONS = [
   "Testimonials",
   "Event Video",
   "Website Design",
-  "web development",
-  "app design",
-  "game development",
+  "Web Development",
+  "App Design",
+  "Game Development",
   "Interactive Screens (Touch, Gesture, Motion)",
   "Anamorphic",
   "AR/VR",
+  'Production & Post Production'
 ];
 
 const CLIENT_CATEGORIES = [
@@ -257,6 +267,30 @@ export default function Management() {
     const reader = new FileReader();
     reader.onloadend = () => {
       setPreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleCaseStudyFileChange = (e) => {
+    const { name } = e.target;
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (file.size > 1000000) {
+      toast.error("Image size should be less than 1MB");
+      e.target.value = null;
+      return;
+    }
+
+    setCaseStudyForm((prev) => ({ ...prev, [name]: file }));
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      if (name === "thumbnail_image") {
+        setThumbnailPreview(reader.result);
+      } else {
+        setImagePreviews((prev) => ({ ...prev, [name]: reader.result }));
+      }
     };
     reader.readAsDataURL(file);
   };
@@ -641,7 +675,7 @@ export default function Management() {
               <CaseStudyForm
                 form={caseStudyForm}
                 onChange={handleCaseStudyChange}
-                onFileChange={(e) => handleFileChange(e, setThumbnailPreview, setCaseStudyForm, "thumbnail_image")}
+                onFileChange={handleCaseStudyFileChange}
                 onSubmit={handleCaseStudySubmit}
                 onCancel={() => setViewMode("list")}
                 submitting={submitting}

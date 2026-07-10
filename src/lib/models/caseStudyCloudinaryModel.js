@@ -10,7 +10,7 @@ const CaseStudyCloudinarySchema = new mongoose.Schema(
     service: {
       type: String,
       required: true,
-      enum: ["Branding", "Animated Videos", "Live Action", "UI/UX", "Experiential Lab"],
+      enum: ["Branding", "Animated Videos", "Live Action", "Web & App Development", "Experiential Lab"],
       default: "Branding",
       trim: true,
     },

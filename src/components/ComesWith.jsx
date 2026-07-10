@@ -37,7 +37,7 @@ const ComesWith = () => {
         {/* RIGHT: headline, tabs, copy */}
         <div className="col-12 col-lg-6 px-4 px-lg-5">
           <h2 className="cw-head russo-one-regular">
-            AND IT ALL
+            AND IT ALL {" "}
             <br />
             COMES WITH…
           </h2>
@@ -53,12 +53,14 @@ const ComesWith = () => {
                   onClick={() => setActive(t.key)}
                   type="button"
                 >
-                  {t.label.split("\n").map((line, i) => (
-                    <span key={i} className="cw-tab-line">
-                      {line}
-                    </span>
-                  ))}
-                  {isActive && <span className="cw-active-underline" />}
+                  <div className="cw-tab-inner">
+                    {t.label.split("\n").map((line, i) => (
+                      <span key={i} className="cw-tab-line">
+                        {line}
+                      </span>
+                    ))}
+                    <span className="cw-active-underline" />
+                  </div>
                 </button>
               );
             })}

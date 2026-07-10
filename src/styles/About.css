@@ -13,7 +13,6 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: var(--grid-lines-light);
   background-repeat: no-repeat;
   pointer-events: none;
   z-index: 1;
@@ -29,10 +28,8 @@
 }
 
 .discussion-left h2 {
-  
-  
   margin-bottom: 20px;
-  
+
   margin-left: 50px;
   word-break: keep-all;
   overflow-wrap: normal;
@@ -44,11 +41,10 @@
 }
 
 .discussion-left p {
-  
   line-height: 24px;
   opacity: 0.9;
   margin-bottom: 30px;
-  
+
   margin-left: 50px;
   padding-right: 80px;
   margin-top: 50px;
@@ -63,14 +59,16 @@
   border: none;
   border-left: 2px solid #ffe600;
   color: white;
-  
+
   cursor: pointer;
   border-radius: 0;
   margin-left: 50px;
   text-decoration: none;
   padding: 10px 20px 10px 30px;
-  
-  transition: padding-left 0.3s ease, color 0.3s ease;
+
+  transition:
+    padding-left 0.3s ease,
+    color 0.3s ease;
 }
 
 .btn-connect-about:hover {
@@ -97,6 +95,7 @@
 .philosophies-container {
   color: black;
   position: relative;
+  z-index: 1;
   padding-top: 0px;
   background-color: #ffffff;
 }
@@ -105,23 +104,13 @@
   position: relative;
 }
 
-.philosophies-container .row::before,
-.philosophies-container .row::after {
+.philosophies-container::after {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.philosophies-container .row::before {
-  left: 2.5%;
-  height: 800px;
-}
-
-.philosophies-container .row::after {
-  right: 2.5%;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: var(--grid-lines-dark);
 }
 
 .philosophies-left {
@@ -135,11 +124,9 @@
 
 .philosophies-left h2,
 .philosophies-left h3 {
-  
   margin-bottom: 80px;
-  
+
   margin-left: 100px;
-  
 }
 
 .philosophies-text p {
@@ -149,7 +136,6 @@
   letter-spacing: 1px;
   opacity: 0.4;
   margin-left: 100px;
-  
 }
 
 .philosophies-right {
@@ -159,32 +145,29 @@
 }
 
 .philosophies-right p {
-  
   line-height: 1.7;
   margin-top: 250px;
   opacity: 0.9;
-  
+
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .philosophies-right-2 {
-  
   line-height: 1.7;
   opacity: 0.9;
-  
 }
 
 .phy-p-r {
   margin-top: 240px;
-  
+
   padding-right: 40px;
   padding-left: 10px;
 }
 
 .phy-p-rr {
   margin-top: 20px;
-  
+
   padding-right: 40px;
   padding-left: 10px;
 }
@@ -221,7 +204,6 @@
   .discussion-container .discussion-left h2 {
     margin-left: 0 !important;
     padding-left: 15px !important;
-    
   }
 
   .discussion-container .discussion-left p {
@@ -282,19 +264,7 @@
     color: #000000 !important;
   }
 
-  .philosophies-container .row::before,
-  .philosophies-container .row::after {
-    display: none !important;
-  }
-
-  .philosophies-container::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    background-image: var(--grid-lines-dark);
-  }
+  /* Global philosophies-container::after handles grid lines overlay */
 
   .philosophies-container .row {
     display: grid !important;
@@ -322,8 +292,7 @@
   .philosophies-container .philosophies-left h3 {
     margin-left: 0 !important;
     margin-bottom: 50px !important;
-    
-    
+
     line-height: 1.2 !important;
   }
 
@@ -359,7 +328,7 @@
     margin-top: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    
+
     line-height: 1.7 !important;
   }
 
@@ -377,7 +346,7 @@
     margin-top: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    
+
     line-height: 1.7 !important;
   }
 
@@ -385,7 +354,7 @@
     margin-top: 20px !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
-    
+
     line-height: 1.7 !important;
   }
 
@@ -398,7 +367,9 @@
   .philosophies-container .phy-p-rr {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    transition:
+      opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+      transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
   /* Reveal text on scroll trigger */
@@ -409,11 +380,31 @@
     transition-delay: 0.1s;
   }
 
-  .philosophies-animate .philosophies-text p:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
-  .philosophies-animate .philosophies-text p:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
-  .philosophies-animate .philosophies-text p:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
-  .philosophies-animate .philosophies-text p:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
-  .philosophies-animate .philosophies-text p:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+  .philosophies-animate .philosophies-text p:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+  .philosophies-animate .philosophies-text p:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+  .philosophies-animate .philosophies-text p:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+  }
+  .philosophies-animate .philosophies-text p:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.5s;
+  }
+  .philosophies-animate .philosophies-text p:nth-child(5) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+  }
 
   .philosophies-animate .philosophies-right p {
     opacity: 0.9;
@@ -442,16 +433,18 @@
   position: relative;
 }
 
+.team-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grid-lines-light);
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 3;
+}
+
 @media (min-width: 992px) {
-  .team-section::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: var(--grid-lines-light);
-    background-repeat: no-repeat;
-    pointer-events: none;
-    z-index: 3;
-  }
+  /* Global team-section::after handles grid lines overlay */
 
   .team-section .container-fluid-custom > .row {
     display: grid !important;
@@ -469,6 +462,10 @@
     max-width: 100% !important;
     padding-left: 40px !important;
     padding-right: 20px !important;
+  }
+
+  .join-team-link {
+    margin-left: -40px !important; /* Pulls button border to touch the left grid line on desktop */
   }
 
   .team-section .col-lg-9 {
@@ -493,43 +490,38 @@
 }
 
 .team-title {
-  
-  
   margin-bottom: 30px;
   line-height: 1.1;
-  padding-left: 10px;
 }
 
 .team-description {
-  
   line-height: 1.6;
   color: #ccc;
   margin-bottom: 20px;
-  padding-left: 10px;
   padding-right: 15px;
 }
 
 .join-team-link {
-  display: inline-flex;
-  align-items: center;
-  color: #fff;
-  text-decoration: none;
-  margin-top: 20px;
-  
-  transition: all 0.3s ease;
-  padding-left: 10px;
-  padding-right: 15px;
-  
+  display: inline-flex !important;
+  align-items: center !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  margin-top: 20px !important;
+  transition: all 0.3s ease !important;
+  padding: 10px 20px 10px 30px !important;
+  border-left: 2px solid #ffe600 !important; /* Left border accent */
+  border-radius: 0 !important;
+  white-space: nowrap !important; /* Prevents wrapping to second line */
 }
 
 .join-team-link:hover {
-  color: #ffe600;
-  transform: translateX(5px);
+  color: #fff !important; /* No color change on hover */
+  padding-left: 35px !important; /* Slide animation */
+  transform: none !important;
 }
 
 .ab-arrow {
   margin-left: 8px;
-  
 }
 
 .team-card {
@@ -591,14 +583,11 @@
 }
 
 .member-name {
-  
-  
   margin-bottom: 8px;
   color: #fff;
 }
 
 .member-role {
-  
   color: #999;
   margin-bottom: 15px;
   min-height: 40px;
@@ -616,265 +605,370 @@
 
 /* Responsive Styles */
 
-/* Tablet and below (max-width: 991px) */
+/* Tablet and mobile screens (max-width: 991px) */
 @media (max-width: 991px) {
-
   /* Discussion Section */
   .discussion-container {
-    padding: 30px 20px;
-  }
-
-  .discussion-left,
-  .discussion-right {
-    max-width: 100%;
-    padding-right: 0;
-  }
-
-  .discussion-left h2 {
-    
-    margin-left: 20px;
-  }
-
-  .discussion-left p {
-    
-    line-height: 24px;
-    margin-left: 20px;
-    padding-right: 20px;
-    margin-top: 30px;
-  }
-
-  .btn-connect {
-    margin-left: 20px;
-  }
-
-  .discussion-right {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .discussion-right img {
-    width: 100%;
-    max-width: 500px;
-  }
-
-  /* Philosophies Section */
-  .philosophies-container .row::before {
-    height: auto;
-  }
-
-  .btn-connect-about {
-    margin-left: 0px;
-  }
-
-  .philosophies-left {
-    border-right: none;
-    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 50px;
-    padding-bottom: 30px;
-  }
-
-  .philosophies-left h2,
-  .philosophies-left h3 {
-    
-    margin-bottom: 40px;
-    margin-left: 20px;
-  }
-
-  .philosophies-text p {
-    
-    margin-left: 20px;
-  }
-
-  .philosophies-right {
-    border-right: none;
-    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
-    padding: 30px 20px;
-  }
-
-  .philosophies-right p {
-    margin-top: 0;
-    
-  }
-
-  .philosophies-right-2 {
-    padding: 30px 20px;
-  }
-
-  .phy-p-r,
-  .phy-p-rr {
-    margin-top: 0;
-    
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
-  .phy-p-rr {
-    margin-top: 20px;
-  }
-
-  /* Team Section */
-  .team-sidebar {
-    min-height: auto;
-    padding: 40px 30px;
-  }
-
-  .sidebar-content {
-    position: relative;
-    top: 0;
-  }
-
-}
-
-/* Mobile (max-width: 767px) */
-@media (max-width: 767px) {
-
-  /* Discussion Section */
-  .discussion-container {
-    padding: 20px 15px;
+    padding-top: 100px !important;
+    padding-bottom: 50px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    background: transparent;
   }
 
   .discussion-container .row {
-    flex-direction: column;
+    display: grid !important;
+    grid-template-columns: 2.5% 47.5% 47.5% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    align-items: start !important;
   }
 
-  .discussion-left {
-    order: 1;
-    padding-top: 80px;
+  .discussion-container .discussion-right {
+    grid-column: 2 / 4 !important;
+    grid-row: 1 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    padding: 0 15px !important; /* Slight gap from the grid lines */
+    margin: 0 0 30px 0 !important;
+    display: flex !important;
+    justify-content: center !important;
   }
 
-  .discussion-right {
-    order: 2;
+  .discussion-container .discussion-right img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    border-radius: 16px !important;
+    object-fit: cover !important;
   }
 
-  .discussion-left h2 {
-    
-    margin-left: 10px;
+  .discussion-container .discussion-left {
+    grid-column: 2 / 4 !important;
+    grid-row: 2 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    column-gap: 0px !important;
+    row-gap: 20px !important;
+    align-items: start !important;
   }
 
-  .discussion-left p {
-    
-    line-height: 22px;
-    margin-left: 10px;
-    padding-right: 10px;
-    margin-top: 20px;
+  .discussion-container .discussion-left h2 {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    margin: 0 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    font-size: clamp(1rem, 4vw, 1.8rem) !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
   }
 
-  .btn-connect {
-    margin-left: 10px;
-    padding: 10px 20px;
-    
+  .discussion-container .discussion-left .btn-connect-about {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    margin: 0 !important;
+    padding-left: 15px !important;
+    max-width: 100% !important;
+    width: fit-content !important;
+    font-size: 12px !important;
   }
 
-  .discussion-right {
-    margin-top: 30px;
+  .discussion-container .discussion-left p:nth-of-type(1) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    margin: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 15px !important;
+    font-size: clamp(0.6rem, 3vw, 0.95rem) !important;
+    line-height: 1.5 !important;
+    opacity: 0.9 !important;
   }
 
-  .discussion-right img {
-    width: 100%;
-    margin: 0 auto;
-    display: block;
+  .discussion-container .discussion-left p:nth-of-type(2) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    margin: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 15px !important;
+    font-size: clamp(0.6rem, 3vw, 0.95rem) !important;
+    line-height: 1.5 !important;
+    opacity: 0.9 !important;
   }
 
   /* Philosophies Section */
-  .philosophies-container .row::before,
-  .philosophies-container .row::after {
-    display: none;
+  .philosophies-container {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    min-height: auto !important;
+    height: auto !important;
+    position: relative !important;
   }
 
-  .philosophies-left {
-    border-left: none;
-    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
-    padding: 30px 15px;
+  .philosophies-container .row {
+    display: grid !important;
+    grid-template-columns: 2.5% 47.5% 47.5% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    align-items: start !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
-  .philosophies-left h2,
-  .philosophies-left h3 {
-    
-    margin-bottom: 30px;
-    margin-left: 10px;
+  .philosophies-container .philosophies-left {
+    display: contents !important;
+    padding-left: 10px !important;
   }
 
-  .philosophies-text p {
-    
-    margin-left: 10px;
+  .philosophies-container .philosophies-left h3 {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 !important;
+    margin-left: 0 !important;
+    margin-bottom: 20px !important;
+    font-size: clamp(1rem, 3vw, 1.8rem) !important;
+    line-height: 1.2 !important;
+    padding-left: 0 !important; /* Reduced left gap */
+    white-space: nowrap !important; /* Prevents wrapping onto a new line */
   }
 
-  .philosophies-right {
-    border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
-    padding: 20px 15px;
+  .philosophies-container .philosophies-left h3 br {
+    display: none !important; /* Hides break to put title on a single line */
   }
 
-  .philosophies-right p {
-    
-    padding-left: 10px;
-    padding-right: 10px;
+  .philosophies-container .philosophies-text {
+    grid-column: 2 / 3 !important;
+    grid-row: 2 / 4 !important; /* Let it span to the bottom */
+    padding-left: 0 !important; /* Reduced left gap */
+    display: flex !important;
+    flex-direction: column !important;
   }
 
-  .philosophies-right-2 {
-    padding: 20px 15px;
+  .philosophies-container .philosophies-text p {
+    margin-left: 0 !important;
+    font-size: clamp(
+      0.7rem,
+      4.4vw,
+      2.1rem
+    ) !important; /* Reduced to fit within left column */
+    line-height: 1.2 !important;
+    opacity: 0.85 !important; /* Higher opacity to make text clearly visible */
+    font-weight: 1000 !important;
+    margin-bottom: 20px !important; /* Gap between items */
+    width: max-content !important; /* Fits gradient tightly to text width */
+    white-space: nowrap !important; /* Prevents wrapping onto a new line */
+    background: linear-gradient(
+      to right,
+      #a1a1a1 0%,
+      #252525 100%
+    ) !important; /* Darker gradient */
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
   }
 
-  .phy-p-r,
-  .phy-p-rr {
-    
-    padding-right: 15px;
-    padding-left: 15px;
+  .philosophies-container .philosophies-right {
+    grid-column: 3 / 4 !important;
+    grid-row: 2 !important; /* Starts at Row 2, aligning with the first philosophy */
+    border: none !important;
+    padding: 0 0 0 14px !important;
+    margin: 0 !important;
+  }
+
+  .philosophies-container .philosophies-right p {
+    margin-top: 0 !important;
+    padding: 0 !important;
+    font-size: clamp(0.6rem, 2.8vw, 0.95rem) !important;
+    line-height: 1.6 !important;
+    font-weight: 400 !important;
+  }
+
+  .philosophies-container .philosophies-right-2 {
+    grid-column: 3 / 4 !important;
+    grid-row: 3 !important; /* Directly below philosophies-right */
+    border: none !important;
+    margin: 0 !important;
+  }
+
+  .philosophies-container .phy-p-r {
+    margin-top: 0 !important;
+    padding: 0 !important;
+    font-size: clamp(0.6rem, 2.8vw, 0.95rem) !important;
+    line-height: 1.6 !important;
+  }
+
+  .philosophies-container .phy-p-rr {
+    margin-top: 15px !important;
+    padding: 0 !important;
+    font-size: clamp(0.6rem, 2.8vw, 0.95rem) !important;
+    line-height: 1.6 !important;
   }
 
   /* Team Section */
-  .team-card {
-    min-height: 400px;
+  .team-section::after {
+    background-image: none;
   }
 
-  .team-image {
-    width: 160px;
-    height: 160px;
+  .team-section .container-fluid-custom {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .team-section .container-fluid-custom > .row {
+    display: grid !important;
+    grid-template-columns: 2.5% 47.5% 47.5% 2.5% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    align-items: start !important;
+  }
+
+  .team-section .col-lg-9 {
+    display: contents !important;
+  }
+
+  .team-section .col-lg-9 .row {
+    display: contents !important;
   }
 
   .team-sidebar {
-    padding: 30px 20px;
+    grid-column: 2 / 3 !important;
+    grid-row: 1 !important;
+    min-height: auto !important;
+    height: 100% !important; /* Stretch to have the same height as the adjacent card */
+    padding: 20px 15px 20px 0 !important; /* Touch left grid line */
+    background: transparent !important; /* Remove special background */
+    border: none !important;
+    border-bottom: 0.5px solid rgb(50, 50, 50) !important; /* same bottom border as team cards */
   }
 
-}
-
-/* Extra small mobile (max-width: 480px) */
-@media (max-width: 480px) {
-
-  .discussion-left p {
-    
-    line-height: 20px;
+  .sidebar-content {
+    position: relative !important;
+    top: 0 !important;
   }
 
-  .btn-connect {
-    
-    padding: 8px 16px;
-    height: 40px;
+  .team-title {
+    font-size: clamp(1rem, 5vw, 1.6rem) !important;
+    line-height: 1.2 !important;
+    padding-left: 0 !important;
+    margin-bottom: 10px !important;
   }
 
-  .discussion-right {
-    padding-top: 40px;
+  .team-title br {
+    display: none !important;
   }
 
-  .discussion-right img {
-    width: 100%;
+  .team-description {
+    font-size: clamp(0.6rem, 3vw, 0.8rem) !important;
+    line-height: 1.5 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-bottom: 0 !important;
   }
 
-  .philosophies-left h2,
-  .philosophies-left h3 {
-    
-    margin-bottom: 20px;
+  .join-team-link {
+    font-size: clamp(0.6rem, 3vw, 0.85rem) !important;
+    padding-left: 10px !important; /* Preserves border gap */
+    margin-left: 0 !important; /* Touches left grid line naturally */
+  }
+
+  .team-section .col-lg-9 .row > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    padding: 0 !important; /* Removes Bootstrap gutter padding so borders touch the grid lines */
+  }
+
+  /* Align cards in the 2-column grid (Columns 2 and 3) */
+  .team-section .col-lg-9 .row > div:nth-child(odd) {
+    grid-column: 3 / 4 !important;
+  }
+
+  .team-section .col-lg-9 .row > div:nth-child(even) {
+    grid-column: 2 / 3 !important;
+  }
+
+  /* Force first card to share Row 1 with sidebar */
+  .team-section .col-lg-9 .row > div:nth-child(1) {
+    grid-row: 1 !important;
+  }
+
+  /* Disable hover effects on team cards for mobile */
+  .team-card::before {
+    display: none !important;
+  }
+
+  .team-card {
+    padding: 20px 15px !important;
+    min-height: 320px !important;
+    background: transparent !important; /* Make transparent so background glow shows through */
+    border-bottom: 0.5px solid rgb(50, 50, 50) !important;
   }
 
   .team-image {
-    width: 220px;
-    height: 220px;
+    width: 100% !important;
+    /* max-width: 150px !important;
+    height: 150px !important; */
   }
 
-  .discussion-container::after {
-    background: none;
+  .member-role {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    min-height: 2.8em !important; /* Exactly 2 lines height; empty if single line */
+    margin-bottom: 5px !important;
+  }
+}
+
+/* Tablet / Mobile (max-width: 767px) overrides (preserve grid layout) */
+@media (max-width: 991.98px) {
+  /* Team Section */
+  .team-card {
+    min-height: 250px !important;
+    padding: 10px 5px 10px !important; /* Reduced padding */
+  }
+
+  .team-image-wrapper {
+    margin-bottom: 10px !important;
+  }
+
+  .team-image {
+    width: 100% !important;
+    /* max-width: 130px !important; Increased image size
+    height: 130px !important; */
+  }
+
+  .member-name {
+    font-size: 13px !important;
+  }
+
+  .member-role {
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    min-height: 2.8em !important; /* Exactly 2 lines height; empty if single line */
+    margin-bottom: 5px !important;
+  }
+
+  .team-sidebar {
+    padding: 20px 10px !important;
+  }
+
+  .join-team-link {
+    margin-left: -10px !important; /* Touches left grid line naturally */
+  }
+}
+
+/* Extra small mobile (max-width: 480px) overrides (preserve grid layout) */
+@media (max-width: 480px) {
+  .team-image {
+    max-width: 40vw !important;
   }
 }
 

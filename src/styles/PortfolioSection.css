@@ -7,7 +7,7 @@
   padding-top: 23px !important;
   padding-bottom: 60px;
   background: transparent;
-  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
+  border-bottom: 0.5px solid #71717150;
   position: relative;
   z-index: 5;
 }
@@ -30,7 +30,7 @@
   margin-right: auto;
   background: none !important;
   border-top: none !important;
-  border-bottom: 0.5px solid rgba(113, 113, 113, 0.5) !important;
+  border-bottom: 0.5px solid #71717150 !important;
 }
 
 /* Ensure columns inside filter row have padding for spacing */
@@ -57,6 +57,10 @@
   backdrop-filter: none;
 }
 
+.filter-pill span {
+  font-size: inherit;
+}
+
 .filter-pill:hover {
   background: rgba(255, 255, 255, 0.04);
 }
@@ -74,6 +78,25 @@
 }
 
 /* Custom scrollbar for the dropdown lists */
+.custom-dropdown-list {
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 280px;
+  overflow-y: auto;
+  margin-top: 8px;
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  list-style: none;
+  padding: 6px 0;
+  text-align: left;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+}
+
 .custom-dropdown-list::-webkit-scrollbar {
   width: 6px;
 }
@@ -91,6 +114,33 @@
 .custom-dropdown-list::-webkit-scrollbar-thumb:hover {
   background: rgba(251, 255, 0, 0.5);
 }
+
+.custom-dropdown-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.custom-dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.custom-dropdown-item.clear-option {
+  color: #888;
+}
+
+.custom-dropdown-item.clear-option:hover {
+  color: #ffffff;
+}
+
+.custom-dropdown-item:last-child {
+  border-bottom: none;
+}
+
 
 /* --- LEFT COLUMN --- */
 .left-col {
@@ -259,8 +309,8 @@
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
-@media (min-width: 768px) {
-  .col-md-12 {
+@media (min-width: 992px) {
+  .col-lg-12 {
     flex: 0 0 auto;
     width: auto !important;
   }
@@ -347,12 +397,22 @@
 
   /* Filter row adjustment for tablet */
   .filter-row {
-    margin-bottom: 30px;
-    padding: 0 5px;
+    margin-bottom: 12px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 95vw !important;
+    max-width: 95vw !important;
+    margin-left: 2.5vw !important;
+    margin-right: auto !important;
   }
 
   .filter-pill {
     padding: 10px 18px;
+    font-size: 13px;
+  }
+
+  .custom-dropdown-item {
+    font-size: 0.8rem;
   }
 
   .left-col {
@@ -382,10 +442,18 @@
 }
 
 /* Small Tablet (576px - 767px) */
-@media (max-width: 767px) {
+@media (max-width: 991.98px) {
   .portfolio-section {
-    padding-top: 15px !important;
+    padding-top: 40px !important;
     padding-bottom: 15px !important;
+  }
+
+  .filter-row > div {
+    margin-bottom: 4px !important;
+  }
+
+  .filter-pill {
+    margin-bottom: 0 !important;
   }
 
   .portfolio-section .container-fluid {
@@ -461,15 +529,19 @@
 @media (max-width: 575px) {
   /* Filter Row Mobile */
   .filter-row > div {
-    padding: 0 5px;
-    /* Tighter spacing on mobile */
+    padding: 0 2px !important;
+    margin-bottom: 4px !important;
   }
 
   .filter-pill {
-    padding: 8px 12px;
+    /* padding: 8px 10px !important; */
+    font-size: 12px !important;
+    justify-content: space-between !important;
+    /* gap: 4px !important; */
+  }
 
-    justify-content: center;
-    gap: 5px;
+  .custom-dropdown-item {
+    font-size: 0.75rem;
   }
 
   /* Remove the conflicting 100% width rule */
@@ -643,7 +715,7 @@
   --bs-gutter-y: 1.5rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 991.98px) {
   .portfolio-section .row {
     --bs-gutter-x: 1rem;
     --bs-gutter-y: 1rem;
@@ -810,7 +882,7 @@
   z-index: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991.98px) {
   .portfolio {
     padding: 30px 15px;
   }
@@ -924,7 +996,7 @@
   display: none;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .portfolio:has(.home-portfolio) {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -1112,11 +1184,161 @@
     padding: 0;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.28);
-    transition: background 0.25s ease, transform 0.25s ease;
+    transition:
+      background 0.25s ease,
+      transform 0.25s ease;
     flex-shrink: 0;
   }
 
   .home-mobile-pagination-dot.active {
+    background: #d42020;
+    transform: scale(1.15);
+  }
+
+  .home-portfolio .portfolio-controls {
+    display: none !important;
+  }
+
+  /* ===== PORTFOLIO PAGE — MOBILE TWO-COLUMN LAYOUT (desktop unchanged) ===== */
+  .portfolio-page-content .portfolio-section.portfolio-page-section {
+    padding-top: 0 !important;
+    padding-bottom: 24px !important;
+  }
+
+  .portfolio-page-section .container-fluid-custom {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .portfolio-page-section .container-fluid-custom > .row {
+    display: grid !important;
+    grid-template-columns: 2.5% 47.5% 47.5% 2.5% !important;
+    grid-template-rows: auto auto auto;
+    width: 100% !important;
+    margin: 0 !important;
+    position: relative !important;
+  }
+
+
+
+  .portfolio-page-section .portfolio-sidebar {
+    grid-column: 1 / -1;
+    display: contents !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+
+  .portfolio-page-section .sidebar-content {
+    display: contents;
+  }
+
+  .portfolio-page-section .portfolio-title {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 12px 12px 8px 16px !important;
+    font-size: clamp(1.1rem, 4.8vw, 1.4rem);
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  .portfolio-page-section .portfolio-title br {
+    display: inline !important;
+  }
+
+  .portfolio-page-section .portfolio-description {
+    grid-column: 3;
+    grid-row: 1;
+    padding: 12px 16px 8px 12px !important;
+    font-size: clamp(0.65rem, 3.1vw, 0.82rem);
+    line-height: 1.45;
+    margin: 0;
+    color: #bbb;
+  }
+
+  .portfolio-page-section .portfolio-sidebar .connect-link {
+    display: none !important;
+  }
+
+  .portfolio-page-section .col-lg-9 {
+    grid-column: 2 / 4;
+    grid-row: 2;
+    width: auto !important;
+    max-width: 100% !important;
+    padding: 8px 8px 0 !important;
+  }
+
+  .portfolio-page-section .col-lg-9 > .row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 8px;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .portfolio-page-section .col-lg-9 > .row > [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+  }
+
+  .portfolio-page-section .portfolio-card-wrapper {
+    padding: 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .portfolio-page-section .portfolio-item {
+    width: 85% !important;
+    max-width: 85% !important;
+    margin: 0 auto !important;
+    border-radius: 12px;
+    aspect-ratio: 4 / 5;
+    overflow: hidden !important;
+  }
+
+  .portfolio-page-section .portfolio-mobile-title {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 85% !important;
+    margin: 0 auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-size: clamp(0.75rem, 2.8vw, 0.95rem) !important;
+  }
+
+  .portfolio-page-section .portfolio-controls--desktop {
+    display: none !important;
+  }
+
+  .portfolio-page-section .portfolio-mobile-page-pagination {
+    grid-column: 2 / 4;
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 0 8px;
+    width: 100%;
+  }
+
+  .portfolio-mobile-page-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.28);
+    transition:
+      background 0.25s ease,
+      transform 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .portfolio-mobile-page-dot.active {
     background: #d42020;
     transform: scale(1.15);
   }

@@ -10,7 +10,7 @@ const Contact = () => {
       address: `D108, 2nd Floor, 100 Feet Rd,
 Chhatarpur, New Delhi, 110074`,
       email: "lkshashi@dramantram.com",
-      phone: "+91 80109 73780 (LK Shashi)",
+      phone: "+91 93557 55002 (LK Shashi)",
       // featured: true, // blue stroke + square
     },
     {
@@ -19,13 +19,13 @@ Chhatarpur, New Delhi, 110074`,
       address: `TCG 3, Summit Building, 12 Floor,
 Gomti Nagar, Lucknow, Uttar Pradesh 226010`,
       email: "ankit@dramantram.com",
-      phone: "+91 89395 71959 (Ankit Raj)",
+      phone: "+91 95995 71599 (Ankit Raj)",
     },
     {
       city: "Hyderabad",
       image: "/USOffice.png",
       address: `2nd floor, Vaishnavi's Cynosure, Lorven Smart Spaces, near Reliance Digital, Gachibowli, Hyderabad, Telangana 500032`,
-      email: "hello@dramantram.com",
+      email: "dramantram@gmail.com",
       phone: "+91 95995 71599 (Ankit Raj)",
     },
   ];

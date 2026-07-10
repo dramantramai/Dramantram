@@ -5,6 +5,45 @@ import connectDB from "@/lib/db";
 import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
 import { unstable_cache } from "next/cache";
 
+const SUB_SERVICE_TO_PARENT = {
+  // Branding
+  "Brand Identity & Design": "Branding",
+  "Creating Logo": "Branding",
+  "Branding Strategy": "Branding",
+  "Booklet design": "Branding",
+  "Defining Brand Style Guide": "Branding",
+  "Social Media Branding": "Branding",
+  "Re-Branding": "Branding",
+  "Stationery Design": "Branding",
+  "Catalogues & Brochure Design": "Branding",
+  "Packaging Design": "Branding",
+
+  // Animated Videos
+  "Explainer Animated Video": "Animated Videos",
+  "Sales & Marketing Video": "Animated Videos",
+  "Demo Video": "Animated Videos",
+  "e-Learning Video": "Animated Videos",
+  "Animated Graphic/GIF": "Animated Videos",
+
+  // Live Action
+  "Ad Film": "Live Action",
+  "Corporate Videos": "Live Action",
+  "Testimonials": "Live Action",
+  "Event Video": "Live Action",
+  "Production & Post Production": "Live Action",
+
+  // Web & App Development
+  "Website Design": "Web & App Development",
+  "Web Development": "Web & App Development",
+  "App Design": "Web & App Development",
+
+  // Experiential Lab
+  "Game Development": "Experiential Lab",
+  "Interactive Screens (Touch, Gesture, Motion)": "Experiential Lab",
+  "Anamorphic": "Experiential Lab",
+  "AR/VR": "Experiential Lab"
+};
+
 const fetchFilteredCaseStudies = unstable_cache(
   async (service, industry, duration, complexity, baseService) => {
     await connectDB();
@@ -50,12 +89,17 @@ const fetchFilteredCaseStudies = unstable_cache(
     }
     queryLevels.push({ level: 2, query: q2, description: "Removed industry" });
 
-    // Level 1: Remove services dropdown detail -> fallback to navbar service
+    // Level 1: Remove services dropdown detail -> fallback to parent service or navbar service
     const q1 = {};
-    if (hasNavbarService) {
+    if (hasDropdownService) {
+      const parentService = SUB_SERVICE_TO_PARENT[service];
+      if (parentService) {
+        q1.service = parentService;
+      }
+    } else if (hasNavbarService) {
       q1.service = baseService;
     }
-    queryLevels.push({ level: 1, query: q1, description: "Removed dropdown service filter (fallback to navbar service)" });
+    queryLevels.push({ level: 1, query: q1, description: "Removed dropdown service filter (fallback to parent/navbar service)" });
 
     // Level 0: All case studies
     queryLevels.push({ level: 0, query: {}, description: "All case studies" });
@@ -93,7 +137,7 @@ const fetchFilteredCaseStudies = unstable_cache(
     };
   },
   ["filtered-case-studies"],
-  { tags: ["case-studies"] }
+  { tags: ["case-studies"], revalidate: 120 }
 );
 
 export async function POST(request) {

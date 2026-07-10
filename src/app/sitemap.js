@@ -31,7 +31,7 @@ export default async function sitemap() {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/services/ui-ux`,
+      url: `${baseUrl}/services/web-app-development`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,

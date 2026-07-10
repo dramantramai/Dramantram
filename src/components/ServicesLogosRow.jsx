@@ -8,25 +8,28 @@ const ServicesLogosRow = ({
   serviceColumns,
   clients = serviceClientLogos,
   logosTitle = DEFAULT_LOGOS_TITLE,
+  showLists = true,
 }) => {
   return (
-    <section className="row gx-0 align-items-start lower-section">
-      <div className="col-lg-6 px-4 px-lg-5">
-        <div className="row row-cols-1 row-cols-md-2 g-4 service-lists">
-          {serviceColumns.map((items, columnIndex) => (
-            <div key={columnIndex} className="col">
-              <ul className="service-list inter-light">
-                {items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+    <section className="lower-section">
+      {showLists && (
+        <div className="lower-section-col lower-section-col-left">
+          <div className="service-lists">
+            {serviceColumns.map((items, columnIndex) => (
+              <div key={columnIndex} className="service-list-column">
+                <ul className="service-list inter-light">
+                  {items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="col-lg-6 px-4 px-lg-5">
-        <p className="logos-title mb-4 raleway-semibold">{logosTitle}</p>
+      <div className="lower-section-col lower-section-col-right">
+        <p className="logos-title raleway-semibold">{logosTitle}</p>
         <div className="logos-grid">
           {clients.map((client) => (
             <div key={client.alt} className="logo-item">

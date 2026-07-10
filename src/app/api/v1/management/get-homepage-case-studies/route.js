@@ -27,7 +27,7 @@ const fetchHomepageCaseStudies = unstable_cache(
     });
   },
   ["homepage-case-studies"],
-  { tags: ["case-studies"] }
+  { tags: ["case-studies"], revalidate: 120 }
 );
 
 export async function GET() {

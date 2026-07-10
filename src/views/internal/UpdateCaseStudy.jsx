@@ -13,20 +13,29 @@ const INDUSTRY_OPTIONS = [
   "Edtech",
   "Hospitality",
   "Consulting",
-  "Tech",
-  "NGO",
+  "Technology",
+  "NGO",  
   "School",
   "Service",
   "Product",
+  'Luxury Jewellery',
+  'Healthcare',
+  'Food & Agriculture',
+  'Real Estate',
+  'Data Security',
+  'LogisticsTech',
+  'Manufacturing & Printing',
 ];
 
 const DURATION_OPTIONS = [
+  'Under 1 month',
   "1 month",
   "2 months",
   "3 months",
   "4 months",
   "5 months",
   "6 months or more",
+  'Monthly Retainer'
 ];
 
 const SERVICE_OPTIONS = [
@@ -49,12 +58,13 @@ const SERVICE_OPTIONS = [
   "Testimonials",
   "Event Video",
   "Website Design",
-  "web development",
-  "app design",
-  "game development",
+  "Web Development",
+  "App Design",
+  "Game Development",
   "Interactive Screens (Touch, Gesture, Motion)",
   "Anamorphic",
   "AR/VR",
+  'Production & Post Production'
 ];
 
 const UpdateCaseStudy = () => {
@@ -152,7 +162,17 @@ const UpdateCaseStudy = () => {
 
     // Handle File Inputs
     if (type === "file") {
-      setForm((s) => ({ ...s, [name]: files[0] || null }));
+      const file = files[0];
+      if (!file) {
+        setForm((s) => ({ ...s, [name]: null }));
+        return;
+      }
+      if (file.size > 1000000) {
+        toast.error("Image size should be less than 1MB");
+        e.target.value = null;
+        return;
+      }
+      setForm((s) => ({ ...s, [name]: file }));
       return;
     }
 
@@ -347,7 +367,7 @@ const UpdateCaseStudy = () => {
                   <option value="Branding">Branding</option>
                   <option value="Animated Videos">Animated Videos</option>
                   <option value="Live Action">Live Action</option>
-                  <option value="UI/UX">UI/UX</option>
+                  <option value="Web & App Development">Web & App Development</option>
                   <option value="Experiential Lab">Experiential Lab</option>
                 </select>
               </div>
