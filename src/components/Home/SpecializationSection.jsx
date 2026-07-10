@@ -288,9 +288,6 @@ const SpecializationSection = () => {
                           onClick={() => handleServiceClick(index)}
                         >
                           <span>{item.menuTitle}</span>
-                          <span className="cap-mobile-chev" aria-hidden>
-                            ›
-                          </span>
                         </button>
                       );
                     })}

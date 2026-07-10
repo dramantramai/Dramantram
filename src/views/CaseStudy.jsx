@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
@@ -92,13 +92,13 @@ const ImageEmbed = ({ src, alt }) => {
 };
 
 // Helper component for Thumbnail
-const ThumbnailEmbed = ({ src, alt, text }) => {
+const ThumbnailEmbed = ({ src, alt, text, innerRef }) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
   if (error || !src) return null;
 
   return (
-    <figure className="cs-card-figure position-relative">
+    <figure ref={innerRef} className="cs-card-figure position-relative">
       {!loaded && (
         <div
           className="cs-skeleton-shimmer"
@@ -143,6 +143,33 @@ const CaseStudy = () => {
   const [error, setError] = useState(false);
   const [relatedCaseStudies, setRelatedCaseStudies] = useState([]);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const thumbRef = useRef(null);
+  const [thumbHeight, setThumbHeight] = useState(null);
+
+  useEffect(() => {
+    if (!cs) return;
+
+    const updateHeight = () => {
+      if (thumbRef.current) {
+        setThumbHeight(thumbRef.current.getBoundingClientRect().height);
+      }
+    };
+
+    const timer = setTimeout(updateHeight, 150);
+
+    const observer = new ResizeObserver(updateHeight);
+    if (thumbRef.current) {
+      observer.observe(thumbRef.current);
+    }
+
+    window.addEventListener("resize", updateHeight);
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, [cs]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -470,6 +497,7 @@ const CaseStudy = () => {
                   src={thumbnailSrc}
                   alt={cs.case_study_name}
                   text={cs.thumbnail_text}
+                  innerRef={thumbRef}
                 />
               </div>
             </div>
@@ -477,11 +505,16 @@ const CaseStudy = () => {
             {/* Col 2: Meta list */}
             <div className="col-12 col-lg-3 cs-col">
               <div className="cs-pad">
-                <MetaRow label="Client" value={cs.client} />
-                <MetaRow label="Services" value={cs.services} />
-                <MetaRow label="Complexity" value={cs.complexity} />
-                <MetaRow label="Industry" value={cs.industry} />
-                <MetaRow label="Duration" value={cs.duration} />
+                <div
+                  className="cs-meta-list"
+                  style={thumbHeight ? { height: "var(--thumb-height)", "--thumb-height": `${thumbHeight}px` } : undefined}
+                >
+                  <MetaRow label="Client" value={cs.client} />
+                  <MetaRow label="Services" value={cs.services} />
+                  <MetaRow label="Complexity" value={cs.complexity} />
+                  <MetaRow label="Industry" value={cs.industry} />
+                  <MetaRow label="Duration" value={cs.duration} />
+                </div>
               </div>
             </div>
 

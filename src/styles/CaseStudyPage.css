@@ -129,6 +129,22 @@
 }
 
 /* meta */
+.cs-meta-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.cs-meta-list > div {
+  margin-bottom: 0 !important;
+}
+
+.cs-meta-list .cs-meta-label {
+  margin-top: 0 !important;
+  margin-bottom: 4px !important;
+}
+
 .cs-meta-label {
   color: #888888;
   font-size: 0.85rem;
@@ -887,6 +903,13 @@
     gap: 0 !important; /* Space is handled by items padding */
   }
 
+  .cs-meta-list {
+    margin-top: 0 !important;
+    height: auto !important;
+    justify-content: flex-start !important;
+    gap: 16px !important;
+  }
+
   /* Skeleton rows in metadata column on mobile */
   .cs-header .cs-col:not(.cs-col-left):not(.cs-col-right) .mb-4 {
     display: flex !important;
@@ -1037,5 +1060,19 @@
     color: #2c2c2c !important;
     margin-top: 8px !important;
     margin-bottom: 0 !important;
+  }
+}
+
+/* Greater than mobile screens till tablet overrides for Case Study page */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .case-study-wrap .cs-container {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .cs-header .cs-card-figure {
+    width: 85% !important;
+    max-width: 300px !important;
+    margin: 0 auto !important;
   }
 }

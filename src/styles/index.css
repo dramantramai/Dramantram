@@ -56,6 +56,7 @@ body {
   overflow-x: clip;
   background-color: #000;
   color: #fff;
+  overflow-anchor: none !important; /* Disable default browser scroll-anchoring to prevent scroll jumps on dynamic content updates */
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none;
   scrollbar-width: none;
