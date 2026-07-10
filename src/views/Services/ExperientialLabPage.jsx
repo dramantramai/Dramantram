@@ -130,7 +130,6 @@ const ExperientialLabPage = () => {
               <div className="step-head">
                 <span className="step-bar" />
                 <h3 className="raleway-regular">Research</h3>
-                <span className="arrow" aria-hidden />
               </div>
               <ul className="bullets">
                 <li>Background Research</li>
@@ -145,7 +144,6 @@ const ExperientialLabPage = () => {
               <div className="step-head">
                 <span className="step-bar" />
                 <h3 className="raleway-regular">Positioning</h3>
-                <span className="arrow" aria-hidden />
               </div>
               <ul className="bullets">
                 <li>Brand Archetype</li>

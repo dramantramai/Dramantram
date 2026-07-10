@@ -120,7 +120,6 @@ const AnimatedVideosPage = () => {
               <div className="step-head">
                 <span className="step-bar" />
                 <h3 className="raleway-regular">Define</h3>
-                <span className="arrow" aria-hidden />
               </div>
               <ul className="bullets">
                 <li>Business Goal</li>
@@ -136,7 +135,6 @@ const AnimatedVideosPage = () => {
               <div className="step-head">
                 <span className="step-bar" />
                 <h3 className="raleway-regular">Design</h3>
-                <span className="arrow" aria-hidden />
               </div>
               <ul className="bullets">
                 <li>Storyboarding</li>
