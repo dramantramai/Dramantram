@@ -108,7 +108,6 @@
 
 .cs-card-overlay {
   background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
-  animation: fadeSlide 0.4s ease;
 }
 
 @keyframes fadeSlide {
