@@ -9,6 +9,7 @@ const IntroSection = () => {
         <video
           className="hero-background-video"
           src="/header_bg.mp4"
+          poster="/header_poster.jpg"
           autoPlay
           loop
           muted
