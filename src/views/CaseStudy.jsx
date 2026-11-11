@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import "../styles/CaseStudyPage.css";
 import LightLayout from "../components/Layout/LightLayout";
+import { resolveMediaOrder } from "../lib/caseStudyMedia";
 
 // Helper component for meta fields
 const MetaRow = ({ label, value }) => {
@@ -425,6 +426,8 @@ const CaseStudy = ({ initialCaseStudy }) => {
     return null;
   };
 
+  const mediaOrder = resolveMediaOrder(cs);
+
   const thumbnailSrc =
     cs.thumbnail_image && typeof cs.thumbnail_image === "string" && cs.thumbnail_image.trim() !== ""
       ? (cs.thumbnail_image.startsWith("http") ? cs.thumbnail_image : `${apiUrl}/api/v1/management/get-thumbnail-image/${cs._id}`)
@@ -588,26 +591,18 @@ const CaseStudy = ({ initialCaseStudy }) => {
             {/* LEFT: MEDIA SEQUENCE (Col 9) */}
             <div className="col-12 col-lg-9 p-0">
               <div className="cs-media-stream">
-                {/* 1. Video 1 */}
-                {cs.video_link_1 && <VideoEmbed src={cs.video_link_1} />}
-
-                {/* 2. Image 1 */}
-                <ImageEmbed src={getImgUrl(1)} alt="Project View 1" priority />
-
-                {/* 3. Image 2 */}
-                <ImageEmbed src={getImgUrl(2)} alt="Project View 2" />
-
-                {/* 4. Video 2 */}
-                {cs.video_link_2 && <VideoEmbed src={cs.video_link_2} />}
-
-                {/* 5. Image 3 */}
-                <ImageEmbed src={getImgUrl(3)} alt="Project View 3" />
-
-                {/* 6. Image 4 */}
-                <ImageEmbed src={getImgUrl(4)} alt="Project View 4" />
-
-                {/* 7. Image 5 */}
-                <ImageEmbed src={getImgUrl(5)} alt="Project View 5" />
+                {mediaOrder.map((key, idx) =>
+                  key.startsWith("video_link_") ? (
+                    <VideoEmbed key={key} src={cs[key]} />
+                  ) : (
+                    <ImageEmbed
+                      key={key}
+                      src={getImgUrl(Number(key.slice(5)))}
+                      alt={`Project View ${key.slice(5)}`}
+                      priority={idx === mediaOrder.findIndex((k) => k.startsWith("image"))}
+                    />
+                  )
+                )}
               </div>
             </div>
 

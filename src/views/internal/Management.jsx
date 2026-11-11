@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
 // Subcomponents
+import { IMAGE_KEYS, DEFAULT_MEDIA_ORDER } from "../../lib/caseStudyMedia";
 import CaseStudyList from "../../components/Management/CaseStudyList";
 import CaseStudyForm from "../../components/Management/CaseStudyForm";
 import TeamList from "../../components/Management/TeamList";
@@ -100,16 +101,14 @@ const initialCaseStudyForm = {
   solution: "",
   thumbnail_image: null,
   thumbnail_text: "",
-  image1: null,
-  image2: null,
-  image3: null,
-  image4: null,
-  image5: null,
+  ...Object.fromEntries(IMAGE_KEYS.map((k) => [k, null])),
   video_link_1: "",
   video_link_2: "",
   website_link: "",
   showOnHomepage: false,
 };
+
+const EMPTY_IMAGE_PREVIEWS = Object.fromEntries(IMAGE_KEYS.map((k) => [k, ""]));
 
 const initialTeamForm = {
   name: "",
@@ -162,13 +161,8 @@ export default function Management() {
 
   // --- IMAGE PREVIEWS STATE ---
   const [thumbnailPreview, setThumbnailPreview] = useState("");
-  const [imagePreviews, setImagePreviews] = useState({
-    image1: "",
-    image2: "",
-    image3: "",
-    image4: "",
-    image5: "",
-  });
+  const [imagePreviews, setImagePreviews] = useState(EMPTY_IMAGE_PREVIEWS);
+  const [mediaOrder, setMediaOrder] = useState(DEFAULT_MEDIA_ORDER);
   const [teamImagePreview, setTeamImagePreview] = useState("");
   const [testimonialImagePreview, setTestimonialImagePreview] = useState("");
   const [clientLogoPreview, setClientLogoPreview] = useState("");
@@ -214,13 +208,8 @@ export default function Management() {
     setClientForm(initialClientForm);
 
     setThumbnailPreview("");
-    setImagePreviews({
-      image1: "",
-      image2: "",
-      image3: "",
-      image4: "",
-      image5: "",
-    });
+    setImagePreviews(EMPTY_IMAGE_PREVIEWS);
+    setMediaOrder(DEFAULT_MEDIA_ORDER);
     setTeamImagePreview("");
     setTestimonialImagePreview("");
     setClientLogoPreview("");
@@ -230,13 +219,8 @@ export default function Management() {
   const resetCaseStudyForm = () => {
     setCaseStudyForm(initialCaseStudyForm);
     setThumbnailPreview("");
-    setImagePreviews({
-      image1: "",
-      image2: "",
-      image3: "",
-      image4: "",
-      image5: "",
-    });
+    setImagePreviews(EMPTY_IMAGE_PREVIEWS);
+    setMediaOrder(DEFAULT_MEDIA_ORDER);
   };
   const resetTeamForm = () => {
     setTeamForm(initialTeamForm);
@@ -454,10 +438,19 @@ export default function Management() {
         return;
       }
 
-      for (let i = 1; i <= 5; i++) {
-        if (caseStudyForm[`image${i}`]) {
-          caseStudyData.append(`image${i}`, caseStudyForm[`image${i}`]);
-        }
+      for (const key of IMAGE_KEYS) {
+        if (caseStudyForm[key]) caseStudyData.append(key, caseStudyForm[key]);
+      }
+      caseStudyData.append("media_order", JSON.stringify(mediaOrder));
+
+      // Hosting platforms cap request bodies (~6MB on Netlify); add the rest via Edit if needed.
+      const totalBytes = [caseStudyForm.thumbnail_image, ...IMAGE_KEYS.map((k) => caseStudyForm[k])]
+        .filter(Boolean)
+        .reduce((sum, f) => sum + f.size, 0);
+      if (totalBytes > 5.5 * 1024 * 1024) {
+        toast.error("Selected images total over 5.5MB. Save with fewer images now and add the rest via Edit.");
+        setSubmitting(false);
+        return;
       }
 
       if (caseStudyForm.video_link_1) caseStudyData.append("video_link_1", caseStudyForm.video_link_1);
@@ -681,6 +674,8 @@ export default function Management() {
                 submitting={submitting}
                 thumbnailPreview={thumbnailPreview}
                 imagePreviews={imagePreviews}
+                mediaOrder={mediaOrder}
+                onMediaOrderChange={setMediaOrder}
                 SERVICE_OPTIONS={SERVICE_OPTIONS}
                 INDUSTRY_OPTIONS={INDUSTRY_OPTIONS}
                 DURATION_OPTIONS={DURATION_OPTIONS}

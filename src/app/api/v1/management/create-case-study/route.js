@@ -5,6 +5,7 @@ import connectDB from "@/lib/db";
 import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
 import { uploadToCloudinary } from "@/lib/cloudinary";
 import slugify from "slugify";
+import { IMAGE_KEYS, normalizeMediaOrder } from "@/lib/caseStudyMedia";
 import { revalidateTag } from "next/cache";
 
 export async function POST(request) {
@@ -147,14 +148,21 @@ export async function POST(request) {
 
     // Upload inner images
     const uploadedImages = {};
-    for (let i = 1; i <= 5; i++) {
-      const file = formData.get(`image${i}`);
+    for (const key of IMAGE_KEYS) {
+      const file = formData.get(key);
       if (file && file.size > 0) {
         const buf = Buffer.from(await file.arrayBuffer());
-        uploadedImages[`image${i}`] = await uploadToCloudinary(buf);
+        uploadedImages[key] = await uploadToCloudinary(buf);
       } else {
-        uploadedImages[`image${i}`] = "";
+        uploadedImages[key] = "";
       }
+    }
+
+    let media_order = [];
+    try {
+      media_order = normalizeMediaOrder(JSON.parse(formData.get("media_order") || "[]"));
+    } catch {
+      media_order = normalizeMediaOrder([]);
     }
 
     const caseStudy = new CaseStudyModel({
@@ -176,6 +184,7 @@ export async function POST(request) {
       slug: slugify(case_study_name, { lower: true, strict: true }),
       thumbnail_image: thumbnail_image_url,
       ...uploadedImages,
+      media_order,
     });
 
     await caseStudy.save();

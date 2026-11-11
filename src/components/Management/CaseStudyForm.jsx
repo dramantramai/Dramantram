@@ -1,4 +1,6 @@
 import React from "react";
+import { IMAGE_KEYS } from "../../lib/caseStudyMedia";
+import MediaOrderEditor from "./MediaOrderEditor";
 
 const CaseStudyForm = ({
   form,
@@ -9,6 +11,8 @@ const CaseStudyForm = ({
   submitting,
   thumbnailPreview,
   imagePreviews,
+  mediaOrder,
+  onMediaOrderChange,
   SERVICE_OPTIONS,
   INDUSTRY_OPTIONS,
   DURATION_OPTIONS,
@@ -246,7 +250,7 @@ const CaseStudyForm = ({
           <h4 style={{ color: "#fff", marginBottom: "5px" }}>Project Images (Optional)</h4>
         </div>
 
-        {[1, 2, 3, 4, 5].map((idx) => (
+        {IMAGE_KEYS.map((_, i) => i + 1).map((idx) => (
           <div key={idx}>
             <label className="management-label">
               Image {idx} <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
@@ -267,6 +271,24 @@ const CaseStudyForm = ({
             )}
           </div>
         ))}
+
+        <hr style={{ gridColumn: "1 / -1", border: "1px solid #222", margin: "10px 0" }} />
+
+        <div style={{ gridColumn: "1 / -1" }}>
+          <h4 style={{ color: "#fff", marginBottom: "5px" }}>Display Order</h4>
+          <p style={{ color: "#888", fontSize: "0.85rem", margin: "0 0 10px" }}>
+            Arrange how images and videos appear on the case study page, top to bottom.
+          </p>
+          <MediaOrderEditor
+            order={mediaOrder}
+            active={{
+              video_link_1: form.video_link_1?.trim() ? true : undefined,
+              video_link_2: form.video_link_2?.trim() ? true : undefined,
+              ...Object.fromEntries(IMAGE_KEYS.map((k) => [k, imagePreviews[k] || undefined])),
+            }}
+            onChange={onMediaOrderChange}
+          />
+        </div>
 
         <hr style={{ gridColumn: "1 / -1", border: "1px solid #222", margin: "10px 0" }} />
 
