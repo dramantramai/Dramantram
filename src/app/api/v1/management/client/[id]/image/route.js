@@ -11,7 +11,7 @@ export async function GET(request, { params }) {
       return new Response(client.logo.data, {
         headers: {
           "Content-Type": client.logo.contentType,
-          "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",
+          "Cache-Control": "public, max-age=31536000, s-maxage=31536000, immutable",
         },
       });
     }

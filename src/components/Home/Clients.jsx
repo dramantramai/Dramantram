@@ -22,6 +22,8 @@ const LogoStack = ({ items }) => (
           src={it.src}
           alt={it.alt}
           className="logo"
+          loading="lazy"
+          decoding="async"
           style={{ width, height }}
         />
       );
@@ -118,6 +120,8 @@ const ClientsSection = () => {
                     src={brand.src}
                     alt={brand.alt}
                     className="logo brand-slider-logo"
+                    loading="lazy"
+                    decoding="async"
                     style={{
                       width: brand.width || "auto",
                       height: brand.height || "auto",
