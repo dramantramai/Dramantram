@@ -1,3 +1,4 @@
+"use client";
 // src/views/Home.jsx
 
 import React from "react";
@@ -31,7 +32,7 @@ const HOME_GLOWS_MOBILE = [
   { top: "270vh", right: "-15vw", size: "68vw", opacity: 0.9, blur: "55px" },
 ];
 
-const Home = () => {
+const Home = ({ initialCaseStudies }) => {
   return (
     <Layout>
       <div className="home-page-wrapper">
@@ -44,7 +45,7 @@ const Home = () => {
 
         {/* Portfolio Section */}
         <section className="portfolio">
-          <PortfolioSection showFilters={false} isHomePage={true} />
+          <PortfolioSection showFilters={false} isHomePage={true} initialCaseStudies={initialCaseStudies} />
         </section>
 
         {/* Clients Section */}

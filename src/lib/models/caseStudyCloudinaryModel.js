@@ -29,6 +29,13 @@ const CaseStudyCloudinarySchema = new mongoose.Schema(
     image3: { type: String }, // Cloudinary URL
     image4: { type: String }, // Cloudinary URL
     image5: { type: String }, // Cloudinary URL
+    image6: { type: String },
+    image7: { type: String },
+    image8: { type: String },
+    image9: { type: String },
+    image10: { type: String },
+    // Display order of images/videos, e.g. ["video_link_1","image1","image2",...]
+    media_order: { type: [String], default: [] },
     showOnHomepage: { type: Boolean, default: false },
   },
   { timestamps: true }

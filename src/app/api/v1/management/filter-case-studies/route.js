@@ -110,7 +110,7 @@ const fetchFilteredCaseStudies = unstable_cache(
     // Run queries sequentially until we find a match
     for (const levelObj of queryLevels) {
       const caseStudies = await CaseStudyModel.find(levelObj.query)
-        .select("-image1 -image2 -image3 -image4 -image5")
+        .select("-image1 -image2 -image3 -image4 -image5 -image6 -image7 -image8 -image9 -image10")
         .lean();
 
       if (caseStudies.length > 0) {

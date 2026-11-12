@@ -5,6 +5,7 @@ import connectDB from "@/lib/db";
 import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
 import { uploadToCloudinary } from "@/lib/cloudinary";
 import slugify from "slugify";
+import { IMAGE_KEYS, normalizeMediaOrder } from "@/lib/caseStudyMedia";
 import { revalidateTag } from "next/cache";
 
 export async function PUT(request, { params }) {
@@ -109,11 +110,20 @@ export async function PUT(request, { params }) {
       caseStudy.thumbnail_image = await uploadToCloudinary(thumbBuffer);
     }
 
-    for (let i = 1; i <= 5; i++) {
-      const file = formData.get(`image${i}`);
+    for (const key of IMAGE_KEYS) {
+      const file = formData.get(key);
       if (file && file.size > 0) {
         const buf = Buffer.from(await file.arrayBuffer());
-        caseStudy[`image${i}`] = await uploadToCloudinary(buf);
+        caseStudy[key] = await uploadToCloudinary(buf);
+      }
+    }
+
+    const mediaOrderRaw = formData.get("media_order");
+    if (mediaOrderRaw) {
+      try {
+        caseStudy.media_order = normalizeMediaOrder(JSON.parse(mediaOrderRaw));
+      } catch {
+        // ignore malformed order; keep the existing one
       }
     }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import "../styles/PortfolioSection.css";
 
-const PortfolioItem = ({ imageSrc, title, slug }) => {
+const PortfolioItem = ({ imageSrc, title, slug, priority = false }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   if (!imageSrc) return null;
@@ -16,6 +16,7 @@ const PortfolioItem = ({ imageSrc, title, slug }) => {
           alt={title || "Portfolio"}
           className="portfolio-img"
           fill
+          priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           onLoad={() => setImageLoaded(true)}
           style={{

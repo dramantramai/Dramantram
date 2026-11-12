@@ -108,7 +108,6 @@
 
 .cs-card-overlay {
   background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
-  animation: fadeSlide 0.4s ease;
 }
 
 @keyframes fadeSlide {
@@ -1075,4 +1074,20 @@
     max-width: 300px !important;
     margin: 0 auto !important;
   }
+}
+
+/* --- Media stream: flush, square-cornered images/videos (no gap, no curve) --- */
+.cs-media-stream .cs-image-wrap,
+.cs-media-stream .cs-video-wrap,
+.cs-media-stream .cs-hero {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.cs-media-stream .cs-image-wrap,
+.cs-media-stream .cs-image-wrap img,
+.cs-media-stream .cs-image-wrap .cs-skeleton-shimmer,
+.cs-media-stream .cs-video-wrap,
+.cs-media-stream .cs-video-wrap iframe {
+  border-radius: 0 !important;
 }
