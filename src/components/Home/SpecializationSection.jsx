@@ -195,6 +195,14 @@ const SpecializationSection = () => {
   const [animationKey, setAnimationKey] = useState(0);
   const currentService = servicesData[activeIndex];
 
+  // Only the active image is rendered, so warm the browser cache for the rest
+  // (otherwise each tab switch waits on a network fetch).
+  useEffect(() => {
+    servicesData.forEach((s) => {
+      new window.Image().src = `/${s.image}`;
+    });
+  }, []);
+
   const handleServiceClick = (index) => {
     if (index === activeIndex) return;
     setPrevIndex(activeIndex);
