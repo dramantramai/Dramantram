@@ -189,6 +189,8 @@ export async function POST(request) {
 
     await caseStudy.save();
     revalidateTag("case-studies");
+    // Visit the new page once so it's built now, not by the first real visitor.
+    await fetch(`${new URL(request.url).origin}/case-study/${caseStudy.slug}`).catch(() => {});
 
     return NextResponse.json(
       {
