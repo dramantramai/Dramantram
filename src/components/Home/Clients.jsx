@@ -1,6 +1,7 @@
 // src/components/ClientsSection.jsx
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
+import { clientLogoUrl } from "../../lib/clientLogo";
 import GlitchButton from "../GlitchButton";
 import "../../styles/Clients.css";
 
@@ -31,47 +32,45 @@ const LogoStack = ({ items }) => (
   </div>
 );
 
-const ClientsSection = () => {
-  const [clients, setClients] = useState({
+const groupByCategory = (list) => {
+  const grouped = {
     Consulting: [],
     International: [],
     Fintech: [],
     Corporate: [],
     Government: [],
     CSR: [],
+  };
+  (list || []).forEach((c) => {
+    if (grouped[c.category]) {
+      grouped[c.category].push({
+        alt: c.name,
+        src: clientLogoUrl(c),
+        width: c.width,
+        height: c.height,
+      });
+    }
   });
+  return grouped;
+};
+
+const ClientsSection = ({ initialClients }) => {
+  // Seeded from the server so the logos are in the HTML and start downloading
+  // immediately, instead of waiting for hydration plus an API round trip.
+  const [clients, setClients] = useState(() => groupByCategory(initialClients));
 
   useEffect(() => {
+    if (initialClients) return; // already have it from the server
     const fetchClients = async () => {
       try {
         const { data } = await axios.get("/api/v1/management/client");
-        if (data?.success) {
-          const grouped = {
-            Consulting: [],
-            International: [],
-            Fintech: [],
-            Corporate: [],
-            Government: [],
-            CSR: [],
-          };
-          data.clients.forEach((c) => {
-            if (grouped[c.category]) {
-              grouped[c.category].push({
-                alt: c.name,
-                src: `/api/v1/management/client/${c._id}/image?t=${new Date(c.updatedAt).getTime()}`,
-                width: c.width,
-                height: c.height,
-              });
-            }
-          });
-          setClients(grouped);
-        }
+        if (data?.success) setClients(groupByCategory(data.clients));
       } catch (err) {
         console.error("Error fetching clients:", err);
       }
     };
     fetchClients();
-  }, []);
+  }, [initialClients]);
 
   const uniqueBrands = useMemo(() => Object.values(clients).flat().slice(0, 16), [clients]);
 
