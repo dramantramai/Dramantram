@@ -21,7 +21,6 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" href="/dramantram.png" />
         <title>Dramantram</title>
         {/* Single font load for the entire app */}
-        <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
