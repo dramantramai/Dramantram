@@ -4,6 +4,7 @@ import connectDB from "@/lib/db";
 // import CaseStudyModel from "@/lib/models/caseStudyModel";
 import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
 import { revalidateTag } from "next/cache";
+import { warmPages } from "@/lib/warmPages";
 
 export async function DELETE(request, { params }) {
   try {
@@ -18,6 +19,7 @@ export async function DELETE(request, { params }) {
       );
     }
     revalidateTag("case-studies");
+    await warmPages(request, ["/"]);
 
     return NextResponse.json({
       success: true,

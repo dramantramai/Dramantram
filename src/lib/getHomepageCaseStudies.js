@@ -22,5 +22,5 @@ export const getHomepageCaseStudies = unstable_cache(
     });
   },
   ["homepage-case-studies"],
-  { tags: ["case-studies"], revalidate: 120 }
+  { tags: ["case-studies"], revalidate: false }
 );

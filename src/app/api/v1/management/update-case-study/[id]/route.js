@@ -7,6 +7,7 @@ import { uploadToCloudinary } from "@/lib/cloudinary";
 import slugify from "slugify";
 import { IMAGE_KEYS, normalizeMediaOrder } from "@/lib/caseStudyMedia";
 import { revalidateTag } from "next/cache";
+import { warmPages } from "@/lib/warmPages";
 
 export async function PUT(request, { params }) {
   try {
@@ -129,6 +130,7 @@ export async function PUT(request, { params }) {
 
     await caseStudy.save();
     revalidateTag("case-studies");
+    await warmPages(request, [`/case-study/${caseStudy.slug}`, "/"]);
 
     return NextResponse.json({
       success: true,

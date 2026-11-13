@@ -7,6 +7,7 @@ import { uploadToCloudinary } from "@/lib/cloudinary";
 import slugify from "slugify";
 import { IMAGE_KEYS, normalizeMediaOrder } from "@/lib/caseStudyMedia";
 import { revalidateTag } from "next/cache";
+import { warmPages } from "@/lib/warmPages";
 
 export async function POST(request) {
   try {
@@ -189,8 +190,7 @@ export async function POST(request) {
 
     await caseStudy.save();
     revalidateTag("case-studies");
-    // Visit the new page once so it's built now, not by the first real visitor.
-    await fetch(`${new URL(request.url).origin}/case-study/${caseStudy.slug}`).catch(() => {});
+    await warmPages(request, [`/case-study/${caseStudy.slug}`, "/"]);
 
     return NextResponse.json(
       {

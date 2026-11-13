@@ -4,8 +4,8 @@ import connectDB from "@/lib/db";
 import CaseStudyModel from "@/lib/models/caseStudyCloudinaryModel";
 
 // Pre-render case study pages so they're served from the CDN (no per-click server render).
-// Admin edits call revalidateTag("case-studies"), which refreshes them.
-export const revalidate = 3600;
+// Admin edits call revalidateTag("case-studies"), which refreshes them (no time-based expiry).
+export const revalidate = false;
 
 export async function generateStaticParams() {
   try {
