@@ -12,5 +12,5 @@ export const getCaseStudyBySlug = unstable_cache(
     return caseStudy;
   },
   ["case-study-by-slug"],
-  { tags: ["case-studies"], revalidate: 120 }
+  { tags: ["case-studies"], revalidate: false }
 );
