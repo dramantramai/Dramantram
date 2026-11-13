@@ -94,7 +94,7 @@ const About = () => {
 
             {/* Right part (Image) */}
             <div className="col-lg-9 discussion-right">
-              <img src="/about.png" alt="Entrepreneurship discussion" />
+              <img src="/about.webp" alt="Entrepreneurship discussion" />
             </div>
           </div>
         </section>

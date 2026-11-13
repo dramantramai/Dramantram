@@ -70,9 +70,9 @@ const SERVICE_OPTIONS = [
 
 const COMPLEXITY_OPTIONS = ["High", "Medium", "Low"];
 
-const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioPage = false, baseService = "" }) => {
-  const [caseStudies, setCaseStudies] = useState([]);
-  const [loading, setLoading] = useState(true);
+const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioPage = false, baseService = "", initialCaseStudies }) => {
+  const [caseStudies, setCaseStudies] = useState(initialCaseStudies ?? []);
+  const [loading, setLoading] = useState(!initialCaseStudies);
 
   // State for Dropdowns
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -192,7 +192,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
   useEffect(() => {
     // A. If on Homepage, ignore filters and just fetch featured items
     if (isHomePage) {
-      getCaseStudies();
+      if (!initialCaseStudies) getCaseStudies(); // already server-rendered otherwise
       return;
     }
 
@@ -472,7 +472,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
           {/* Right Column - Grid matching Our Teams */}
           <div className="col-lg-9">
             <div className={`row g-0 ${isCarouselView ? "home-desktop-grid" : ""}`}>
-              {loading && !isHomePage ? (
+              {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="col-lg-4 col-12">
                     <div className="portfolio-card-wrapper">
@@ -483,7 +483,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                   </div>
                 ))
               ) : !loading && displayedCaseStudies.length > 0 ? (
-                displayedCaseStudies.map((item) => (
+                displayedCaseStudies.map((item, index) => (
                   <div key={item._id} className={`col-lg-4 col-12 ${animationClass}`}>
                     <div className="portfolio-card-wrapper">
                       <Link href={`/case-study/${item.slug}`}>
@@ -491,6 +491,7 @@ const PortfolioSection = ({ showFilters = true, isHomePage = false, isPortfolioP
                           imageSrc={item.thumbnailDataUri || `${apiUrl}/api/v1/management/get-thumbnail-image/${item._id}?t=${new Date(item.updatedAt).getTime()}`}
                           title={item.case_study_name}
                           slug={item.slug}
+                          priority={index < 3}
                         />
                       </Link>
                     </div>

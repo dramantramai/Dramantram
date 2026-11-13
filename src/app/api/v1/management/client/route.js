@@ -1,16 +1,27 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import ClientModel from "@/lib/models/clientModel";
+import { unstable_cache, revalidateTag } from "next/cache";
 
 const ALLOWED_CATEGORIES = ["Consulting", "International", "Fintech", "Corporate", "Government", "CSR"];
+
+const getClients = unstable_cache(
+  async () => {
+    await connectDB();
+    const clients = await ClientModel.find({})
+      .select("-logo")
+      .sort({ category: 1, order: 1, createdAt: -1 })
+      .lean();
+    return JSON.parse(JSON.stringify(clients));
+  },
+  ["clients-list"],
+  { tags: ["clients"], revalidate: 300 }
+);
 
 // GET all client partners (metadata only, no heavy logo buffer)
 export async function GET() {
   try {
-    await connectDB();
-    const clients = await ClientModel.find({})
-      .select("-logo")
-      .sort({ category: 1, order: 1, createdAt: -1 });
+    const clients = await getClients();
 
     return NextResponse.json({ success: true, clients });
   } catch (error) {
@@ -70,6 +81,7 @@ export async function POST(request) {
     };
 
     await client.save();
+    revalidateTag("clients");
 
     return NextResponse.json(
       {

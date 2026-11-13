@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import "../styles/CaseStudyPage.css";
 import LightLayout from "../components/Layout/LightLayout";
+import { resolveMediaOrder } from "../lib/caseStudyMedia";
 
 // Helper component for meta fields
 const MetaRow = ({ label, value }) => {
@@ -20,10 +22,32 @@ const MetaRow = ({ label, value }) => {
   );
 };
 
+// Cloudinary serves resized, auto-format images itself; skips the slower /_next/image round trip.
+const isCloudinary = (src) => typeof src === "string" && src.includes("res.cloudinary.com") && src.includes("/upload/");
+const cloudinaryUrl = (src, width) =>
+  isCloudinary(src) ? src.replace("/upload/", `/upload/f_auto,q_auto,w_${width}/`) : src;
+
+// Stored links sometimes include pasted iframe text (`...?si=x" title="YouTube video player`).
+// Keep only the URL, then add player params correctly.
+const toEmbedUrl = (raw) => {
+  const match = typeof raw === "string" && raw.match(/https?:\/\/[^"'\s]+/);
+  if (!match) return null;
+  try {
+    const url = new URL(match[0]);
+    ["rel=0", "autoplay=1", "mute=1", "loop=1"].forEach((p) => {
+      const [k, v] = p.split("=");
+      url.searchParams.set(k, v);
+    });
+    return url.toString();
+  } catch {
+    return null;
+  }
+};
+
 // Helper component for Video Embeds
 const VideoEmbed = ({ src }) => {
-  if (!src) return null;
-  const videoSrc = `${src}?rel=0&autoplay=1&mute=1&loop=1`;
+  const videoSrc = toEmbedUrl(src);
+  if (!videoSrc) return null;
   return (
     <div className="cs-video-wrap mb-4" style={{ width: "100%" }}>
       {/* Youtube embeds require a defined height or aspect ratio to display.
@@ -33,6 +57,7 @@ const VideoEmbed = ({ src }) => {
       <div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
         <iframe
           src={videoSrc}
+          loading="lazy"
           title="Case Study Video"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -53,7 +78,7 @@ const VideoEmbed = ({ src }) => {
 };
 
 // Helper component for Images
-const ImageEmbed = ({ src, alt }) => {
+const ImageEmbed = ({ src, alt, priority = false }) => {
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
   if (error || !src) return null;
@@ -73,7 +98,9 @@ const ImageEmbed = ({ src, alt }) => {
         />
       )}
       <Image
-        src={src}
+        src={cloudinaryUrl(src, 1200)}
+        unoptimized={isCloudinary(src)}
+        priority={priority}
         alt={alt}
         width={1200}
         height={703}
@@ -112,7 +139,9 @@ const ThumbnailEmbed = ({ src, alt, text, innerRef }) => {
         />
       )}
       <Image
-        src={src}
+        src={cloudinaryUrl(src, 800)}
+        unoptimized={isCloudinary(src)}
+        priority
         className="img-fluid cs-card"
         alt={alt}
         width={384}
@@ -135,11 +164,11 @@ const ThumbnailEmbed = ({ src, alt, text, innerRef }) => {
   );
 };
 
-const CaseStudy = () => {
+const CaseStudy = ({ initialCaseStudy }) => {
   const { slug } = useParams();
   const router = useRouter();
-  const [cs, setCs] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [cs, setCs] = useState(initialCaseStudy ?? null);
+  const [loading, setLoading] = useState(!initialCaseStudy);
   const [error, setError] = useState(false);
   const [relatedCaseStudies, setRelatedCaseStudies] = useState([]);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -202,7 +231,7 @@ const CaseStudy = () => {
   };
 
   useEffect(() => {
-    getCaseStudy();
+    if (!initialCaseStudy) getCaseStudy();
   }, [slug]);
 
   // Load related case studies from sessionStorage, or fallback to fetching if empty
@@ -397,6 +426,8 @@ const CaseStudy = () => {
     return null;
   };
 
+  const mediaOrder = resolveMediaOrder(cs);
+
   const thumbnailSrc =
     cs.thumbnail_image && typeof cs.thumbnail_image === "string" && cs.thumbnail_image.trim() !== ""
       ? (cs.thumbnail_image.startsWith("http") ? cs.thumbnail_image : `${apiUrl}/api/v1/management/get-thumbnail-image/${cs._id}`)
@@ -560,26 +591,18 @@ const CaseStudy = () => {
             {/* LEFT: MEDIA SEQUENCE (Col 9) */}
             <div className="col-12 col-lg-9 p-0">
               <div className="cs-media-stream">
-                {/* 1. Video 1 */}
-                {cs.video_link_1 && <VideoEmbed src={cs.video_link_1} />}
-
-                {/* 2. Image 1 */}
-                <ImageEmbed src={getImgUrl(1)} alt="Project View 1" />
-
-                {/* 3. Image 2 */}
-                <ImageEmbed src={getImgUrl(2)} alt="Project View 2" />
-
-                {/* 4. Video 2 */}
-                {cs.video_link_2 && <VideoEmbed src={cs.video_link_2} />}
-
-                {/* 5. Image 3 */}
-                <ImageEmbed src={getImgUrl(3)} alt="Project View 3" />
-
-                {/* 6. Image 4 */}
-                <ImageEmbed src={getImgUrl(4)} alt="Project View 4" />
-
-                {/* 7. Image 5 */}
-                <ImageEmbed src={getImgUrl(5)} alt="Project View 5" />
+                {mediaOrder.map((key, idx) =>
+                  key.startsWith("video_link_") ? (
+                    <VideoEmbed key={key} src={cs[key]} />
+                  ) : (
+                    <ImageEmbed
+                      key={key}
+                      src={getImgUrl(Number(key.slice(5)))}
+                      alt={`Project View ${key.slice(5)}`}
+                      priority={idx === mediaOrder.findIndex((k) => k.startsWith("image"))}
+                    />
+                  )
+                )}
               </div>
             </div>
 

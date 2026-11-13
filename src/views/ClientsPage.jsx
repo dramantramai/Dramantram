@@ -145,7 +145,7 @@ const ClientsPage = () => {
               </p>
             </div>
             <div className="hero-image-col">
-              <img src="/client_hero.png" alt="Client Partners" className="hero-image" />
+              <img src="/client_hero.webp" alt="Client Partners" className="hero-image" />
             </div>
             <div className="grid-col-spacer"></div>
           </div>

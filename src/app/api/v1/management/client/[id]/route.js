@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/db";
 import ClientModel from "@/lib/models/clientModel";
+import { revalidateTag } from "next/cache";
 
 const ALLOWED_CATEGORIES = ["Consulting", "International", "Fintech", "Corporate", "Government", "CSR"];
 
@@ -50,6 +51,7 @@ export async function PUT(request, { params }) {
     }
 
     await client.save();
+    revalidateTag("clients");
 
     return NextResponse.json({
       success: true,
@@ -75,6 +77,7 @@ export async function DELETE(request, { params }) {
     if (!client) {
       return NextResponse.json({ error: "Client not found" }, { status: 404 });
     }
+    revalidateTag("clients");
 
     return NextResponse.json({
       success: true,

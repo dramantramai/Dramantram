@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { IMAGE_KEYS, normalizeMediaOrder } from "../../lib/caseStudyMedia";
+import MediaOrderEditor from "../../components/Management/MediaOrderEditor";
 import AdminLayout from "../../components/AdminLayout/AdminLayout";
 import "../../styles/Management.css";
 import axios from "axios";
@@ -87,11 +89,7 @@ const UpdateCaseStudy = () => {
     thumbnail_text: "",
     thumbnail_image: null,
     // Images (Initialized to null, only set if user uploads NEW file)
-    image1: null,
-    image2: null,
-    image3: null,
-    image4: null,
-    image5: null,
+    ...Object.fromEntries(IMAGE_KEYS.map((k) => [k, null])),
     // Video Links
     video_link_1: "",
     video_link_2: "",
@@ -101,6 +99,9 @@ const UpdateCaseStudy = () => {
   });
 
   const [existingThumbnail, setExistingThumbnail] = useState("");
+  const [existingImages, setExistingImages] = useState({}); // saved Cloudinary URLs
+  const [newPreviews, setNewPreviews] = useState({}); // object URLs for newly picked files
+  const [mediaOrder, setMediaOrder] = useState(normalizeMediaOrder([]));
   const [updatedAt, setUpdatedAt] = useState("");
   const apiUrl = "";
 
@@ -114,6 +115,8 @@ const UpdateCaseStudy = () => {
         const cs = data.caseStudy;
         setId(cs._id);
         setExistingThumbnail(cs.thumbnail_image || "");
+        setExistingImages(Object.fromEntries(IMAGE_KEYS.map((k) => [k, cs[k] || ""])));
+        setMediaOrder(normalizeMediaOrder(cs.media_order));
         setUpdatedAt(cs.updatedAt || "");
         setForm({
           case_study_name: cs.case_study_name || "",
@@ -136,11 +139,7 @@ const UpdateCaseStudy = () => {
 
           // Images remain null (we don't prefill file inputs)
           thumbnail_image: null,
-          image1: null,
-          image2: null,
-          image3: null,
-          image4: null,
-          image5: null,
+          ...Object.fromEntries(IMAGE_KEYS.map((k) => [k, null])),
         });
       }
     } catch (error) {
@@ -173,6 +172,9 @@ const UpdateCaseStudy = () => {
         return;
       }
       setForm((s) => ({ ...s, [name]: file }));
+      if (IMAGE_KEYS.includes(name)) {
+        setNewPreviews((p) => ({ ...p, [name]: URL.createObjectURL(file) }));
+      }
       return;
     }
 
@@ -217,11 +219,19 @@ const UpdateCaseStudy = () => {
       // Append Images ONLY if a new file is selected
       if (form.thumbnail_image)
         caseStudyData.append("thumbnail_image", form.thumbnail_image);
-      if (form.image1) caseStudyData.append("image1", form.image1);
-      if (form.image2) caseStudyData.append("image2", form.image2);
-      if (form.image3) caseStudyData.append("image3", form.image3);
-      if (form.image4) caseStudyData.append("image4", form.image4);
-      if (form.image5) caseStudyData.append("image5", form.image5);
+      for (const key of IMAGE_KEYS) {
+        if (form[key]) caseStudyData.append(key, form[key]);
+      }
+      caseStudyData.append("media_order", JSON.stringify(mediaOrder));
+
+      // Hosting platforms cap request bodies (~6MB on Netlify); upload the rest in another save.
+      const totalBytes = [form.thumbnail_image, ...IMAGE_KEYS.map((k) => form[k])]
+        .filter(Boolean)
+        .reduce((sum, f) => sum + f.size, 0);
+      if (totalBytes > 5.5 * 1024 * 1024) {
+        toast.error("Selected images total over 5.5MB. Save these first, then add the rest in another edit.");
+        return;
+      }
 
       const { data } = await axios.put(
         `${apiUrl}/api/v1/management/update-case-study/${id}`, //
@@ -557,80 +567,61 @@ const UpdateCaseStudy = () => {
               }}
             />
 
-            {/* --- PROJECT IMAGES SECTION (5 IMAGES) --- */}
+            {/* --- PROJECT IMAGES SECTION (UP TO 10 IMAGES) --- */}
             <div style={{ gridColumn: "1 / -1" }}>
               <h4 style={{ color: "#fff", marginBottom: "10px" }}>
-                Project Images (Optional)
+                Project Images (Optional, up to {IMAGE_KEYS.length})
               </h4>
             </div>
 
-            {/* IMAGE 1 */}
-            <div>
-              <label className="management-label">
-                Image 1 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
-              </label>
-              <input
-                name="image1"
-                onChange={handleChange}
-                type="file"
-                accept="image/*"
-                className="management-file"
-              />
-            </div>
+            {IMAGE_KEYS.map((key, i) => (
+              <div key={key}>
+                <label className="management-label">
+                  Image {i + 1} <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
+                  {existingImages[key] && !form[key] && (
+                    <span style={{ ...infoStyle, color: "#7bd88f" }}> · current image kept unless you choose a new file</span>
+                  )}
+                </label>
+                <input
+                  name={key}
+                  onChange={handleChange}
+                  type="file"
+                  accept="image/*"
+                  className="management-file"
+                />
+              </div>
+            ))}
 
-            {/* IMAGE 2 */}
-            <div>
-              <label className="management-label">
-                Image 2 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
-              </label>
-              <input
-                name="image2"
-                onChange={handleChange}
-                type="file"
-                accept="image/*"
-                className="management-file"
-              />
-            </div>
+            <hr
+              style={{
+                gridColumn: "1 / -1",
+                border: "1px solid #333",
+                margin: "10px 0",
+              }}
+            />
 
-            {/* IMAGE 3 */}
-            <div>
-              <label className="management-label">
-                Image 3 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
-              </label>
-              <input
-                name="image3"
-                onChange={handleChange}
-                type="file"
-                accept="image/*"
-                className="management-file"
-              />
-            </div>
-
-            {/* IMAGE 4 */}
-            <div>
-              <label className="management-label">
-                Image 4 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
-              </label>
-              <input
-                name="image4"
-                onChange={handleChange}
-                type="file"
-                accept="image/*"
-                className="management-file"
-              />
-            </div>
-
-            {/* IMAGE 5 */}
-            <div>
-              <label className="management-label">
-                Image 5 <span style={infoStyle}>(Max 1MB, recommended 1200x703 px)</span>
-              </label>
-              <input
-                name="image5"
-                onChange={handleChange}
-                type="file"
-                accept="image/*"
-                className="management-file"
+            {/* --- DISPLAY ORDER (images + videos) --- */}
+            <div style={{ gridColumn: "1 / -1" }}>
+              <h4 style={{ color: "#fff", marginBottom: "5px" }}>Display Order</h4>
+              <p style={{ color: "#888", fontSize: "0.85rem", margin: "0 0 10px" }}>
+                Arrange how images and videos appear on the case study page, top to bottom.
+              </p>
+              <MediaOrderEditor
+                order={mediaOrder}
+                active={{
+                  video_link_1: form.video_link_1?.trim() ? true : undefined,
+                  video_link_2: form.video_link_2?.trim() ? true : undefined,
+                  ...Object.fromEntries(
+                    IMAGE_KEYS.map((k) => [
+                      k,
+                      (form[k] && newPreviews[k]) ||
+                        (existingImages[k] &&
+                          existingImages[k].replace("/upload/", "/upload/f_auto,q_auto,w_160/")) ||
+                        undefined,
+                    ])
+                  ),
+                }}
+                onChange={setMediaOrder}
               />
             </div>
 

@@ -6,7 +6,7 @@ const Contact = () => {
   const locations = [
     {
       city: "Delhi",
-      image: "/DelhiOffice.png",
+      image: "/DelhiOffice.webp",
       address: `D108, 2nd Floor, 100 Feet Rd,
 Chhatarpur, New Delhi, 110074`,
       email: "lkshashi@dramantram.com",
@@ -15,7 +15,7 @@ Chhatarpur, New Delhi, 110074`,
     },
     {
       city: "Lucknow",
-      image: "/LucknowOffice.png",
+      image: "/LucknowOffice.webp",
       address: `TCG 3, Summit Building, 12 Floor,
 Gomti Nagar, Lucknow, Uttar Pradesh 226010`,
       email: "ankit@dramantram.com",
@@ -23,7 +23,7 @@ Gomti Nagar, Lucknow, Uttar Pradesh 226010`,
     },
     {
       city: "Hyderabad",
-      image: "/USOffice.png",
+      image: "/USOffice.webp",
       address: `2nd floor, Vaishnavi's Cynosure, Lorven Smart Spaces, near Reliance Digital, Gachibowli, Hyderabad, Telangana 500032`,
       email: "dramantram@gmail.com",
       phone: "+91 95995 71599 (Ankit Raj)",
