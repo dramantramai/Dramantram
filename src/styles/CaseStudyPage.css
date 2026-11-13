@@ -73,7 +73,6 @@
     transform 0.5s ease,
     filter 0.5s ease;
   transform: scale(1);
-  cursor: pointer;
 }
 
 /* Overlay base */
@@ -96,11 +95,6 @@
 }
 
 /* Hover states */
-.cs-card-figure:hover .cs-card {
-  transform: scale(1.05);
-  filter: brightness(1.15);
-}
-
 .cs-card-figure:hover .cs-card-overlay {
   opacity: 1;
   transform: translateY(0);
@@ -211,10 +205,6 @@
   transition: transform 0.5s ease;
 }
 
-.cs-hero:hover {
-  transform: scale(1.02);
-}
-
 .cs-solution {
   border-bottom: 0.5px solid rgba(113, 113, 113, 0.5);
 }
@@ -241,11 +231,6 @@
   transition: transform 0.5s ease;
   transform: scale(1);
   object-fit: cover;
-}
-
-.cs-thumb:hover {
-  transform: scale(1.2);
-  /* smooth zoom-in on hover */
 }
 
 .cs-hero-solution-row {
