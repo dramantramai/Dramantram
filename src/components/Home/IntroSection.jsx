@@ -9,13 +9,13 @@ const IntroSection = () => {
   // slow link (page navigation, images), so hold it back until the rest has loaded and
   // abort it if the visitor navigates away while it's still downloading.
   useEffect(() => {
+    const video = videoRef.current;
     const start = () => setSrc("/header_bg.mp4");
     if (document.readyState === "complete") start();
     else window.addEventListener("load", start, { once: true });
 
     return () => {
       window.removeEventListener("load", start);
-      const video = videoRef.current;
       if (video) {
         video.removeAttribute("src");
         video.load(); // cancels an in-flight download

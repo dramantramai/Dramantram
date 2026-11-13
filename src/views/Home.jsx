@@ -32,7 +32,7 @@ const HOME_GLOWS_MOBILE = [
   { top: "270vh", right: "-15vw", size: "68vw", opacity: 0.9, blur: "55px" },
 ];
 
-const Home = ({ initialCaseStudies }) => {
+const Home = ({ initialCaseStudies, initialClients }) => {
   return (
     <Layout>
       <div className="home-page-wrapper">
@@ -50,7 +50,7 @@ const Home = ({ initialCaseStudies }) => {
 
         {/* Clients Section */}
         <section className="clients">
-          <ClientsSection />
+          <ClientsSection initialClients={initialClients} />
         </section>
 
         {/* Specialization Section */}

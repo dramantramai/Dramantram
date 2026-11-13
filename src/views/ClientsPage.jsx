@@ -1,5 +1,7 @@
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { clientLogoUrl } from "../lib/clientLogo";
 import Layout from "../components/Layout/Layout";
 import BackgroundGlow from "../components/BackgroundGlow";
 import "../styles/ClientsPage.css";
@@ -13,15 +15,39 @@ const CLIENTS_GLOWS = [
 
 const CATEGORIES_ORDER = ["Consulting", "International", "Fintech", "Corporate", "Government", "CSR"];
 
-const ClientsPage = () => {
-  const [rawClients, setRawClients] = useState([]);
+const PARTNER_DESC = "Partnered for impactful communication across global development initiatives.";
+
+const formatClients = (list) =>
+  (list || []).map((c) => ({
+    _id: c._id,
+    name: c.name,
+    category: c.category,
+    src: clientLogoUrl(c),
+    width: c.width,
+    height: c.height
+  }));
+
+// Use the real logo from the database when a matching client exists, else the bundled image.
+const buildFeaturedPartners = (list) => {
+  const find = (pred) => (list || []).find(pred);
+  const pick = (client, fallback) => (client ? clientLogoUrl(client) : fallback);
+  const un = find(c => c.name.toLowerCase().includes("united nations"));
+  const npci = find(c => c.name.toLowerCase().includes("npci"));
+  const ey = find(c => c.name.toLowerCase().includes("ey") || c.name.toLowerCase().includes("ernst"));
+  return [
+    { name: "United Nations", src: pick(un, "/images/un.png"), desc: PARTNER_DESC },
+    { name: "NPCI", src: pick(npci, "/images/npci.png"), desc: PARTNER_DESC },
+    { name: "EY", src: pick(ey, "/images/ey.png"), desc: PARTNER_DESC }
+  ];
+};
+
+const ClientsPage = ({ initialClients }) => {
+  // Seeded from the server so the logos are in the HTML and start downloading
+  // immediately, instead of waiting for hydration plus an API round trip.
+  const [rawClients, setRawClients] = useState(() => formatClients(initialClients));
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [featuredPartners, setFeaturedPartners] = useState([
-    { name: "United Nations", src: "/images/un.png", desc: "Partnered for impactful communication across global development initiatives." },
-    { name: "NPCI", src: "/images/npci.png", desc: "Partnered for impactful communication across global development initiatives." },
-    { name: "EY", src: "/images/ey.png", desc: "Partnered for impactful communication across global development initiatives." }
-  ]);
-  const [loading, setLoading] = useState(true);
+  const [featuredPartners, setFeaturedPartners] = useState(() => buildFeaturedPartners(initialClients));
+  const [loading, setLoading] = useState(!initialClients);
   const [partnerIndex, setPartnerIndex] = useState(0);
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
@@ -69,47 +95,13 @@ const ClientsPage = () => {
   }, [resetAutoplay]);
 
   useEffect(() => {
+    if (initialClients) return; // already seeded from the server
     const fetchClients = async () => {
       try {
         const { data } = await axios.get("/api/v1/management/client");
         if (data?.success) {
-          const formatted = data.clients.map((c) => ({
-            _id: c._id,
-            name: c.name,
-            category: c.category,
-            src: `/api/v1/management/client/${c._id}/image?t=${new Date(c.updatedAt).getTime()}`,
-            width: c.width,
-            height: c.height
-          }));
-          setRawClients(formatted);
-
-          // Update featured partner image URLs if found in the fetched database items
-          const unClient = data.clients.find(c => c.name.toLowerCase().includes("united nations"));
-          const npciClient = data.clients.find(c => c.name.toLowerCase().includes("npci"));
-          const eyClient = data.clients.find(c => c.name.toLowerCase().includes("ey") || c.name.toLowerCase().includes("ernst"));
-          setFeaturedPartners([
-            {
-              name: "United Nations",
-              src: unClient
-                ? `/api/v1/management/client/${unClient._id}/image?t=${new Date(unClient.updatedAt).getTime()}`
-                : "/images/un.png",
-              desc: "Partnered for impactful communication across global development initiatives."
-            },
-            {
-              name: "NPCI",
-              src: npciClient
-                ? `/api/v1/management/client/${npciClient._id}/image?t=${new Date(npciClient.updatedAt).getTime()}`
-                : "/images/npci.png",
-              desc: "Partnered for impactful communication across global development initiatives."
-            },
-            {
-              name: "EY",
-              src: eyClient
-                ? `/api/v1/management/client/${eyClient._id}/image?t=${new Date(eyClient.updatedAt).getTime()}`
-                : "/images/ey.png",
-              desc: "Partnered for impactful communication across global development initiatives."
-            }
-          ]);
+          setRawClients(formatClients(data.clients));
+          setFeaturedPartners(buildFeaturedPartners(data.clients));
         }
       } catch (err) {
         console.error("Error fetching clients:", err);
@@ -118,7 +110,7 @@ const ClientsPage = () => {
       }
     };
     fetchClients();
-  }, []);
+  }, [initialClients]);
 
   const filteredClients = rawClients.filter(
     (c) => selectedCategory === "All" || c.category === selectedCategory
