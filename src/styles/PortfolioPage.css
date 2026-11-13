@@ -116,9 +116,11 @@
 }
 
 /* ---------- Filter row ---------- */
+/* No z-index here: PortfolioSection.css owns the filter row's stacking (z-index: 10).
+   A second declaration made the winner depend on which stylesheet loaded last, so the
+   open dropdown fell behind the case study grid (z-index: 2) on first visit. */
 .filter-row {
   position: relative;
-  z-index: 1;
   min-height: 72px;
   padding: 12px clamp(12px, 2vw, 24px);
   border-bottom: 0.5px solid var(--divider);
