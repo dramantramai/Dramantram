@@ -8,9 +8,9 @@ import "../styles/ClientsPage.css";
 
 const CLIENTS_GLOWS = [
   // Top right glow overlaying the hero section
-  { top: "-80vh", left: "-15vw", size: "70vw", opacity: 0.65, blur: "80px" },
+  { top: "-80vh", left: "-15vw", size: "70vw", opacity: 0.65 },
   // Bottom left glow for the listing section
-  { top: "80vh", right: "-15vw", size: "60vw", opacity: 0.65, blur: "90px" },
+  { top: "80vh", right: "-15vw", size: "60vw", opacity: 0.65 },
 ];
 
 const CATEGORIES_ORDER = ["Consulting", "International", "Fintech", "Corporate", "Government", "CSR"];

@@ -8,22 +8,22 @@ import BackgroundGlow from "../components/BackgroundGlow";
 // Glow orbs for About page
 const ABOUT_GLOWS = [
   // Hero (discussion) section — warm glow top-right
-  { top: "-50vh", right: "10vw", size: "85vw", opacity: 0.85, blur: "80px" },
+  { top: "-50vh", right: "10vw", size: "85vw", opacity: 0.85 },
   // Team section (black bg) — bottom-left warm orb
-  { top: "250vh", left: "-10vw", size: "55vw", opacity: 0.65, blur: "80px" },
+  { top: "250vh", left: "-10vw", size: "55vw", opacity: 0.65 },
   // Team section right
-  { top: "320vh", right: "-15vw", size: "45vw", opacity: 0.55, blur: "80px" },
+  { top: "320vh", right: "-15vw", size: "45vw", opacity: 0.55 },
 ];
 
 const ABOUT_GLOWS_MOBILE = [
   // Hero section — top-right
-  { top: "-30vh", right: "0vw", size: "120vw", opacity: 0.8, blur: "70px" },
+  { top: "-30vh", right: "0vw", size: "120vw", opacity: 0.8 },
   // Philosophies section — center-left
-  { top: "100vh", left: "0vw", size: "90vw", opacity: 0.6, blur: "70px" },
+  { top: "100vh", left: "0vw", size: "90vw", opacity: 0.6 },
   // Team section — middle-right
-  { top: "250vh", right: "-25vw", size: "90vw", opacity: 0.55, blur: "70px" },
+  { top: "250vh", right: "-25vw", size: "90vw", opacity: 0.55 },
   // Team section lower — bottom-left
-  { top: "380vh", left: "-30vw", size: "90vw", opacity: 0.5, blur: "70px" },
+  { top: "380vh", left: "-30vw", size: "90vw", opacity: 0.5 },
 ];
 
 const About = () => {

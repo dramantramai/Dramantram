@@ -9,20 +9,20 @@ import BackgroundGlow from "../components/BackgroundGlow";
 
 const PORTFOLIO_GLOWS = [
   // Hero area — upper centre-right
-  { top: "-50vh", right: "10vw", size: "95vw", opacity: 0.75, blur: "80px" },
+  { top: "-50vh", right: "10vw", size: "95vw", opacity: 0.75 },
   // Portfolio grid mid — left glow
-  { top: "100vh", left: "-15vw", size: "55vw", opacity: 0.6, blur: "80px" },
+  { top: "100vh", left: "-15vw", size: "55vw", opacity: 0.6 },
   // ComesWith bottom — right glow
-  { top: "200vh", right: "10vw", size: "60vw", opacity: 0.65, blur: "80px" },
+  { top: "200vh", right: "10vw", size: "60vw", opacity: 0.65 },
 ];
 
 const PORTFOLIO_GLOWS_MOBILE = [
   // Hero area — top
-  { top: "-10vh", right: "0vw", size: "95vw", opacity: 0.85, blur: "70px" },
+  { top: "-10vh", right: "0vw", size: "95vw", opacity: 0.85 },
   // Portfolio grid mid — left glow
-  { top: "50vh", left: "-40vw", size: "110vw", opacity: 0.75, blur: "75px" },
+  { top: "50vh", left: "-40vw", size: "110vw", opacity: 0.75 },
   // ComesWith bottom — right glow
-  { top: "180vh", right: "-20vw", size: "100vw", opacity: 0.7, blur: "70px" },
+  { top: "180vh", right: "-20vw", size: "100vw", opacity: 0.7 },
 ];
 
 const PortfolioPage = () => {
