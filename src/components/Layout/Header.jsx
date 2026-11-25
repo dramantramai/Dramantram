@@ -5,7 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 const logo = "/images/header.png";
 
 const Header = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown
   const [isOpen, setIsOpen] = useState(false); // Mobile menu open/close state
   const [activeSubMenu, setActiveSubMenu] = useState(null); // null or 'services'
@@ -59,7 +59,9 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.pageYOffset;
-      setScrollY(currentScrollY);
+      // Only a boolean is used below, so only re-render when it flips.
+      // Setting the raw offset re-rendered the whole nav on every scroll event.
+      setIsScrolled(currentScrollY > 50);
 
       const nav = document.querySelector("nav");
       if (!nav) return;
@@ -89,7 +91,7 @@ const Header = () => {
       lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -97,7 +99,7 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className={`navbar navbar-expand-lg fixed-top py-3 ${scrollY > 50 ? "navbar-scrolled" : ""} ${isOpen ? "mobile-menu-open" : ""}`}>
+    <nav className={`navbar navbar-expand-lg fixed-top py-3 ${isScrolled ? "navbar-scrolled" : ""} ${isOpen ? "mobile-menu-open" : ""}`}>
       <div className="container-fluid">
         <Link className="navbar-brand" href="/" onClick={() => { setIsOpen(false); setActiveSubMenu(null); }}>
           <img

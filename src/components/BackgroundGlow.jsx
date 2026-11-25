@@ -20,8 +20,11 @@
  *     size    : CSS value for width & height, e.g. "60vw"
  *     opacity?: number (0–1), default 1
  *     color?  : rgba string, default matches site red "#b80000"
- *     blur?   : CSS blur value, default "80px"
  *   }
+ *
+ * No filter: blur() here on purpose. The radial gradient is already soft, so a
+ * blur was invisible but cost the GPU a full re-raster of a ~1400px surface per
+ * orb — the difference between smooth scrolling and jank on weaker Macs.
  */
 
 import React from "react";
@@ -37,14 +40,12 @@ const renderGlowOrbs = (glows = []) =>
       size = "50vw",
       opacity = 1,
       color = "#8E2324",
-      blur = "80px",
     } = glow;
 
     const style = {
       width: size,
       height: size,
       background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
-      filter: `blur(${blur})`,
       opacity,
       ...(top !== undefined && { top }),
       ...(left !== undefined && { left }),

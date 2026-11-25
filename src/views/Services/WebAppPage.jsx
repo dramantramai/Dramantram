@@ -12,18 +12,18 @@ import BackgroundGlow from "../../components/BackgroundGlow";
 import ServiceHeroMobile from "../../components/ServiceHeroMobile";
 
 const SERVICE_GLOWS = [
-  { top: "-50vh", left: "5vw", size: "85vw", opacity: 0.9, blur: "80px" },
-  { top: "60vh", left: "-15vw", size: "55vw", opacity: 0.75, blur: "80px" },
-  { top: "130vh", right: "-20vw", size: "80vw", opacity: 0.75, blur: "80px" },
-  { top: "280vh", right: "25vw", size: "55vw", opacity: 0.75, blur: "80px" },
+  { top: "-50vh", left: "5vw", size: "85vw", opacity: 0.9 },
+  { top: "60vh", left: "-15vw", size: "55vw", opacity: 0.75 },
+  { top: "130vh", right: "-20vw", size: "80vw", opacity: 0.75 },
+  { top: "280vh", right: "25vw", size: "55vw", opacity: 0.75 },
 ];
 
 const SERVICE_GLOWS_MOBILE = [
-  { top: "-10vh", left: "0vw", size: "90vw", opacity: 0.85, blur: "60px" },
-  { top: "45vh", left: "-45vw", size: "120vw", opacity: 0.75, blur: "65px" },
-  { top: "160vh", right: "-20vw", size: "85vw", opacity: 0.8, blur: "60px" },
-  { top: "250vh", right: "0vw", size: "120vw", opacity: 0.75, blur: "65px" },
-  { top: "320vh", right: "-40vw", size: "120vw", opacity: 0.75, blur: "65px" },
+  { top: "-10vh", left: "0vw", size: "90vw", opacity: 0.85 },
+  { top: "45vh", left: "-45vw", size: "120vw", opacity: 0.75 },
+  { top: "160vh", right: "-20vw", size: "85vw", opacity: 0.8 },
+  { top: "250vh", right: "0vw", size: "120vw", opacity: 0.75 },
+  { top: "320vh", right: "-40vw", size: "120vw", opacity: 0.75 },
 ];
 
 const UIUX_SERVICES = [

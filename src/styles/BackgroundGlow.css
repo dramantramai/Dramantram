@@ -33,7 +33,8 @@
   /* width / height / background / filter / opacity are set inline
      from the JS config so each orb is individually tunable */
   mix-blend-mode: screen;   /* additive light blending: glow adds brightness even over dark bgs */
-  will-change: transform;   /* hint GPU for smoother scroll */
+  /* No will-change: these orbs never move, and promoting four ~1400px layers
+     for the whole page life is what it was costing, not saving. */
 }
 
 /* ── Responsive size corrections ──────────────────────────────── */

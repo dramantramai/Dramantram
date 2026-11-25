@@ -7,7 +7,7 @@ import NavContactButton from "../NavContactButton";
 const LINKEDIN_URL = "https://www.linkedin.com/company/dramantram/jobs/";
 
 const LightHeader = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false); // Mobile menu open/close state
   const [activeSubMenu, setActiveSubMenu] = useState(null); // null or 'services'
@@ -63,7 +63,8 @@ const LightHeader = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.pageYOffset;
-      setScrollY(currentScrollY);
+      // Only a boolean is used below, so only re-render when it flips.
+      setIsScrolled(currentScrollY > 50);
 
       const nav = document.querySelector("nav.navbar-light");
       if (!nav) return;
@@ -92,7 +93,7 @@ const LightHeader = () => {
       lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -100,7 +101,7 @@ const LightHeader = () => {
     <>
       <nav
         className={`navbar navbar-light navbar-expand-lg py-3 ${
-          scrollY > 50 ? "navbar-scrolled" : ""
+          isScrolled ? "navbar-scrolled" : ""
         } ${isOpen ? "mobile-menu-open" : ""}`}
       >
         <div className="container-fluid">
